@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>xcaml</groupId>
+        <artifactId>xcaml</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>xacml-jaxp-model</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--for jdk 8 you must run                 -->
+    <!--sudo echo javax.xml.accessExternalSchema=all >>${JAVA_HOME}/lib/jaxp.properties-->
+
+    <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <build>
+        <plugins>
+
+            <!--
+            <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxb2-maven-plugin</artifactId>
+            <version>1.6</version>
+            <configuration>
+
+
+            <packageName>oasis.names.tc.xacml._3_0.core.schema.wd_17</packageName>
+            &lt;!&ndash; The name of your generated source package &ndash;&gt;
+            <enableIntrospection>true</enableIntrospection>
+            <arguments>
+            -verbose
+            </arguments>
+            </configuration>
+            <executions>
+            <execution>
+            <id>xjc</id>
+            <goals>
+            <goal>xjc</goal>
+            </goals>
+            </execution>
+            </executions>
+            </plugin>
+            -->
+        </plugins>
+
+    </build>
+    <profiles>
+        <profile>
+            <id>jaxbgen</id>
+            <properties>
+                <cxf-xjc-plugin.sourceRoot>${basedir}/src/main/java</cxf-xjc-plugin.sourceRoot>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>${cxf-xjc-plugin.sourceRoot}</directory>
+                    </resource>
+                </resources>
+                <plugins>
+                    <plugin>
+                        <!-- We use this plugin to ensure that our usage of the
+                        maven-jaxb2-plugin is JDK 8 compatible in absence of a fix
+                        for https://java.net/jira/browse/MAVEN_JAXB2_PLUGIN-80. -->
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>properties-maven-plugin</artifactId>
+                        <version>1.0-alpha-2</version>
+                        <executions>
+                            <execution>
+                                <id>set-additional-system-properties</id>
+                                <goals>
+                                    <goal>set-system-properties</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>javax.xml.accessExternalSchema</name>
+                                    <value>file,http</value>
+                                </property>
+                            </properties>
+                            <outputFile/>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.cxf</groupId>
+                        <artifactId>cxf-xjc-plugin</artifactId>
+                        <version>3.0.2</version>
+                        <configuration>
+                            <extensions>
+                                <extension>net.java.dev.jaxb2-commons:jaxb-fluent-api:2.1.8</extension>
+                            </extensions>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-sources</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>xsdtojava</goal>
+                                </goals>
+                                <configuration>
+                                    <!--<sourceRoot>${build.directory}/generated-sources</sourceRoot>-->
+                                    <!--ussually generated artifacts are bad for projects so its cleaner to generate them when-->
+                                    <!--needed.  current AT&T firewall breaks xjc under ubuntu to it's being put in a profile and the sources are being stored-->
+                                    <sourceRoot>${cxf-xjc-plugin.sourceRoot}</sourceRoot>
+                                    <xsdOptions>
+                                        <xsdOption>
+                                            <xsd>${basedir}/src/main/xsd/xacml-core-v3-schema-wd-17.xsd</xsd>
+                                            <packagename>oasis.names.tc.xacml._3_0.core.schema.wd_17</packagename>
+                                            <extensionArgs>
+                                                <extensionArg>-Xfluent-api</extensionArg>
+                                            </extensionArgs>
+                                        </xsdOption>
+                                    </xsdOptions>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
