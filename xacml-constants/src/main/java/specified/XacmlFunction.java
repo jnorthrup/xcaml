@@ -337,7 +337,7 @@ public enum XacmlFunction implements F {
     return asList(P).parallelStream().distinct().limit(2).count() == 1;
   }
 
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   static class Registry {
 

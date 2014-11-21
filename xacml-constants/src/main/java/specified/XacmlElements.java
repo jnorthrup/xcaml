@@ -62,7 +62,7 @@ public enum XacmlElements {
   xacml$3AVariableReference,
   xacml$3AXPathVersion,;
 
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   public static class Registry {
     public static final Map<String, Enum> tokens = new LinkedHashMap<>();

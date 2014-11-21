@@ -19,7 +19,7 @@ enum XacmlResolution {
   Permit(),
   NotApplicable(),;
   ;
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   public static class Subsumption {
     public static Map resolution = new EnumMap(XacmlResolution.class) {

@@ -31,7 +31,7 @@ public enum XacmlCombiningAlgorithms {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E1$3Arule$2Dcombining$2Dalgorithm$3Aordered$2Dpermit$2Doverrides,
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E1$3Apolicy$2Dcombining$2Dalgorithm$3Aordered$2Dpermit$2Doverrides,;
   ;
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   public static class Registry {
     public static final Map<String, Enum<XacmlCombiningAlgorithms>> tokens = new LinkedHashMap<String, Enum<XacmlCombiningAlgorithms>>();

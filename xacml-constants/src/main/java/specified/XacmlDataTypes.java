@@ -11,7 +11,7 @@ enum XacmlDataTypes {urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aresource$3Aresou
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A2$2E0$3Aresource$3Atarget$2Dnamespace,
   ;
 
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   public static class Registry {
     public static final Map<String, Enum> tokens = new LinkedHashMap<>();

@@ -15,7 +15,7 @@ enum XacmlSubjectAttributes {urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$3Asession$2Dstart$2Dtime,
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Asubject$3Aauthn$2Dlocality$3Aip$2Daddress,
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Asubject$3Aauthn$2Dlocality$3Adns$2Dname,;
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   static class Registry {
 

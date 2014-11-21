@@ -53,7 +53,7 @@ public enum XacmlDeprecated{
       urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Afunction$3Amap,
 ;
 
-  public final String token = URLDecoder.decode(name().replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   public static class Registry {
     public static final Map<String, Enum> tokens = new LinkedHashMap<>();

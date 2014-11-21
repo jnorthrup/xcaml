@@ -11,7 +11,7 @@ enum Identifier{urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Astatus$3Amissing$2Dat
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Astatus$3Aok,
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Astatus$3Aprocessing$2Derror,
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Astatus$3Asyntax$2Derror,
-;  public final String token = URLDecoder.decode(name().replace('$', '%'));
+;  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
   public static class Registry {
     public static final Map<String, Enum> tokens = new LinkedHashMap<>();
