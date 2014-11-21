@@ -11,26 +11,26 @@ import static java.util.Arrays.asList;
  * Created by jim on 11/20/14.
  */
 enum XacmlResolution {
-  Indeterminate$7BD$7D(),
-  Indeterminate$7BP$7D(),
-  Indeterminate$7BDP$7D(),
+  Indeterminate$7B__D__$7D(),
+  Indeterminate$7B__P__$7D(),
+  Indeterminate$7B__DP__$7D(),
   Indeterminate(),
   Deny(),
   Permit(),
   NotApplicable(),;
   ;
-  public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
+  public final String token = URLDecoder.decode(name().replace("_", "").replace('$', '%'));
 
   public static class Subsumption {
     public static Map resolution = new EnumMap(XacmlResolution.class) {
       {
         put(NotApplicable, NotApplicable);
-        put(Permit, Indeterminate$7BP$7D);
-        put(Deny, Indeterminate$7BD$7D);
-        put(Indeterminate, Indeterminate$7BDP$7D);
-        put(Indeterminate$7BDP$7D, Indeterminate$7BDP$7D);
-        put(Indeterminate$7BP$7D, Indeterminate$7BP$7D);
-        put(Indeterminate$7BD$7D, Indeterminate$7BD$7D);
+        put(Permit, Indeterminate$7B__P__$7D);
+        put(Deny, Indeterminate$7B__D__$7D);
+        put(Indeterminate, Indeterminate$7B__DP__$7D);
+        put(Indeterminate$7B__DP__$7D, Indeterminate$7B__DP__$7D);
+        put(Indeterminate$7B__P__$7D, Indeterminate$7B__P__$7D);
+        put(Indeterminate$7B__D__$7D, Indeterminate$7B__D__$7D);
       }
     };
   }

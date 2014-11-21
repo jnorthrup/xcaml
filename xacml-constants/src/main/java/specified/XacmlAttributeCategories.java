@@ -7,14 +7,15 @@ import static java.util.Arrays.asList;
 
 public
 enum XacmlAttributeCategories{
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Aattribute$2Dcategory$3Aresource,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Aattribute$2Dcategory$3Aaction,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Aattribute$2Dcategory$3Aenvironment,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$2Dcategory$3Aaccess$2Dsubject,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$2Dcategory$3Arecipient$2Dsubject,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$2Dcategory$3Aintermediary$2Dsubject,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$2Dcategory$3Acodebase,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject$2Dcategory$3Arequesting$2Dmachine,;
+  
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Aattribute_$2D_category$3A__resource,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Aattribute_$2D_category$3A__action,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Aattribute_$2D_category$3A__environment,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__access_$2D_subject,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__recipient_$2D_subject,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__intermediary_$2D_subject,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__codebase,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__requesting_$2D_machine,;
 
   public final String token = URLDecoder.decode(name().replace("_","").replace('$', '%'));
 
