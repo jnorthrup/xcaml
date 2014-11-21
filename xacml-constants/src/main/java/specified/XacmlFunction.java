@@ -80,7 +80,7 @@ public enum XacmlFunction implements F {
   urn$58oasis$58names$58tc$58xacml$581$2E0$58function$58base64Binary$2Dequal {
     @Override
     public Object apply(Object[] objects) {
-      return asList(objects).parallelStream().map(String::valueOf).map(o -> Base64.getDecoder().decode(o)).distinct().limit(2).count() == 1;
+      return asList(objects).parallelStream().map(String::valueOf).map(Base64.getDecoder()::decode).distinct().limit(2).count() == 1;
     }
   },
   urn$58oasis$58names$58tc$58xacml$581$2E0$58function$58integer$2Dadd {
