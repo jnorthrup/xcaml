@@ -12,6 +12,11 @@
     <artifactId>pdp-core</artifactId>
     <dependencies>
         <dependency>
+            <groupId>${parent.groupId}</groupId>
+            <artifactId>xacml-constants</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-gson</artifactId>
             <version>${camel.version}</version>

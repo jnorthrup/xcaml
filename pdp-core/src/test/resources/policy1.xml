@@ -2,11 +2,10 @@
 <Policy
         xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17
-  http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd"
+        xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd"
         PolicyId="urn:oasis:names:tc:xacml:3.0:example:SimplePolicy1"
         Version="1.0"
-        RuleCombiningAlgId="identifier:rule-combining-algorithm:deny-overrides">
+        RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:deny-overrides">
     <Description>
         Medi Corp access control policy
     </Description>

@@ -9,6 +9,7 @@ import static java.util.Arrays.asList;
 /**
  * Created by jim on 11/20/14.
  */
+
 public enum XacmlActionAttributes {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aaction$3A__action_$2D_id,
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aaction$3A__implied_$2D_action,;
