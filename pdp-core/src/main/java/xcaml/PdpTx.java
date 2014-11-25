@@ -11,8 +11,7 @@ import org.apache.camel.model.dataformat.JaxbDataFormat;
  */
 public class PdpTx {
 
-
-  public PdpTx(String in, String out, String...args) throws Exception {
+  public PdpTx(String in, String out, String... args) throws Exception {
 
     DefaultCamelContext context = new DefaultCamelContext();
     final String inUri1 = in;
@@ -24,17 +23,18 @@ public class PdpTx {
         private String outUri = outUri1;
 
         public void configure() throws Exception {
-          JaxbDataFormat jaxb = new JaxbDataFormat(true) {{
-            setContextPath(PolicySetType.class.getPackage().getName());
-          }};
-        from(inUri).
-//              unmarshal(jaxb).
-    log("ping!").
-              to((outUri1));
+          JaxbDataFormat jaxb = new JaxbDataFormat(true) {
+            {
+              setContextPath(PolicySetType.class.getPackage().getName());
+            }
+          };
+          from(inUri).
+          // unmarshal(jaxb).
+              log("ping!").to((outUri1));
         }
       });
-context.start();
-     } catch (Exception e) {
+      context.start();
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }

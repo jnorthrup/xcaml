@@ -20,41 +20,41 @@ public class JaxbDataFormatMultipleNamespacesTest extends CamelTestSupport {
   public static final String DIRECT_MARSHALL = "direct:marshall";
   public static final String DIRECT_POLICY_UNMARSHALL = "direct:policy_unmarshall";
   @EndpointInject(uri = MOCK_MARSHALL)
-    private MockEndpoint mockMarshall;
+  private MockEndpoint mockMarshall;
 
-    @EndpointInject(uri = MOCK_UNMARSHALL)
-    private MockEndpoint mockUnmarshall;
+  @EndpointInject(uri = MOCK_UNMARSHALL)
+  private MockEndpoint mockUnmarshall;
 
-    @Test
-    public void testUnarshallMultipleNamespaces() throws Exception {
-        mockUnmarshall.expectedMessageCount(1);
+  @Test
+  public void testUnarshallMultipleNamespaces() throws Exception {
+    mockUnmarshall.expectedMessageCount(1);
 
-      try (InputStream body = Resources.getResource("policy1.xml").openStream()) {
-        template.sendBody(DIRECT_POLICY_UNMARSHALL, body);
-      }
-        assertMockEndpointsSatisfied();
-
-        PolicyType   policyType = (PolicyType) mockUnmarshall.getExchanges().get(0).getIn().getBody();
-        TargetType target = policyType.getTarget();
-         assertEquals("Medi Corp access control policy", policyType.getDescription().trim());
-         assertEquals("urn:oasis:names:tc:xacml:3.0:example:SimplePolicy1", policyType.getPolicyId());
+    try (InputStream body = Resources.getResource("policy1.xml").openStream()) {
+      template.sendBody(DIRECT_POLICY_UNMARSHALL, body);
     }
+    assertMockEndpointsSatisfied();
 
-    @Override
-    protected RouteBuilder createRouteBuilder() throws Exception {
-        return new RouteBuilder() {
-            @Override
-            public void configure() throws Exception {
-                 JaxbDataFormat jaxbDataFormat =   new JaxbDataFormat(){{
-                    setContextPath(ObjectFactory.class.getPackage().getName());
-                    setFragment(Boolean.TRUE);
-                    setPartClass(PolicyType.class.getCanonicalName());
-                }};
+    PolicyType policyType = (PolicyType) mockUnmarshall.getExchanges().get(0).getIn().getBody();
+    TargetType target = policyType.getTarget();
+    assertEquals("Medi Corp access control policy", policyType.getDescription().trim());
+    assertEquals("urn:oasis:names:tc:xacml:3.0:example:SimplePolicy1", policyType.getPolicyId());
+  }
 
-                from(DIRECT_POLICY_UNMARSHALL)
-                        .unmarshal(jaxbDataFormat)
-                        .to(MOCK_UNMARSHALL);
-            }
+  @Override
+  protected RouteBuilder createRouteBuilder() throws Exception {
+    return new RouteBuilder() {
+      @Override
+      public void configure() throws Exception {
+        JaxbDataFormat jaxbDataFormat = new JaxbDataFormat() {
+          {
+            setContextPath(ObjectFactory.class.getPackage().getName());
+            setFragment(Boolean.TRUE);
+            setPartClass(PolicyType.class.getCanonicalName());
+          }
         };
-    }
+
+        from(DIRECT_POLICY_UNMARSHALL).unmarshal(jaxbDataFormat).to(MOCK_UNMARSHALL);
+      }
+    };
+  }
 }
