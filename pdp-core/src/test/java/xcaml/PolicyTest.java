@@ -19,7 +19,6 @@ public class PolicyTest extends CamelTestSupport {
   public static final String MOCK_MARSHALL = "mock:marshall";
   public static final String MOCK_POLICY_SOURCE = "mock:policy_source";
   private static final String MOCK_REQUEST_SOURCE = "mock:request_source";;
-  public static final String DIRECT_MARSHALL = "direct:marshall";
   public static final String POLICY_UNMARSHALL = "direct:policy_unmarshall";
   public static final String REQUEST_UNMARSHALL = "direct:request_unmarshall";
   @EndpointInject(uri = MOCK_MARSHALL)

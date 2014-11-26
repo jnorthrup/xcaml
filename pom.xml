@@ -11,42 +11,41 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8
+        </project.build.sourceEncoding>
     </properties>
     <modules>
         <module>caml</module>
         <module>xacml-jaxp-model</module>
         <module>xacml-constants</module>
         <module>pdp-core</module>
-    </modules><build>    <plugins>
-    <plugin>
-        <groupId>
-            com.googlecode.maven-java-formatter-plugin
-        </groupId>
-        <artifactId>maven-java-formatter-plugin
-        </artifactId>
-        <version>0.4</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>format</goal>
-                </goals>
-            </execution>
-        </executions>
-        <configuration>
-            <compilerSource>1.7</compilerSource>
-            <compilerCompliance>1.7</compilerCompliance>
-            <compilerTargetPlatform>1.7
-            </compilerTargetPlatform>
-            <!--<configFile>${project.basedir}/../fmt/ugh.xml</configFile>-->
-            <!--<configFile>https://raw.github.com/jnorthrup/RelaxFactory/x0uchdb/fmt/gwt-format.xml</configFile>-->
-            <!--http://code.google.com/p/google-web-toolkit/source/browse/trunk/eclipse/settings/code-style/gwt-format.xml</configFile>&ndash;&gt;-->
-            <configFile>
-                ${project.basedir}/../etc/gwt-format.xml
-            </configFile>
-            <lineEnding>LF</lineEnding>
-        </configuration>
-    </plugin>
-</plugins>
-</build>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
+                <artifactId>maven-java-formatter-plugin</artifactId>
+                <version>0.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <compilerSource>1.7</compilerSource>
+                    <compilerCompliance>1.7</compilerCompliance>
+                    <compilerTargetPlatform>1.7</compilerTargetPlatform>
+                    <!--<configFile>${project.basedir}/../fmt/ugh.xml</configFile>-->
+                    <!--<configFile>https://raw.github.com/jnorthrup/RelaxFactory/x0uchdb/fmt/gwt-format.xml</configFile>-->
+                    <!--http://code.google.com/p/google-web-toolkit/source/browse/trunk/eclipse/settings/code-style/gwt-format.xml</configFile>&ndash;&gt;-->
+                    <configFile>
+                        ${project.basedir}/../etc/gwt-format.xml
+                    </configFile>
+                    <lineEnding>LF</lineEnding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
