@@ -1,12 +1,7 @@
 package specified;
 
-import org.apache.commons.lang.NotImplementedException;
-
-import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public enum XacmlCombiningAlgorithm {
   /**
@@ -213,21 +208,15 @@ public enum XacmlCombiningAlgorithm {
   }
 ;
 
-  public final String token = URLDecoder.decode(name().replace("_", "").replace('$', '%'));
-
-  static class Registry {
-    static Map<String, XacmlCombiningAlgorithm> registry = new LinkedHashMap<>();
-  }
-
-  {
-    Registry.registry.put(token, this);
-  }
-
   static public XacmlCombiningAlgorithm from(String key) {
-    return Registry.registry.get(key);
+    return Xacml3.from(key, XacmlCombiningAlgorithm.class);
+  }
+
+  public String token() {
+    return Xacml3.token(this);
   }
 
   public XacmlResolution apply(XacmlResolution... decisions) {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
 }

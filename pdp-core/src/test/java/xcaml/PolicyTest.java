@@ -1,9 +1,7 @@
 package xcaml;
 
 import com.google.common.io.Resources;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicyType;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
@@ -11,18 +9,18 @@ import org.apache.camel.model.dataformat.JaxbDataFormat;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 import specified.XacmlCombiningAlgorithm;
+import specified.XacmlDataType;
 
 import java.io.InputStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PolicyTest extends CamelTestSupport {
 
-  public static final String MOCK_MARSHALL = "mock:marshall";
   public static final String MOCK_POLICY_SOURCE = "mock:policy_source";
   private static final String MOCK_REQUEST_SOURCE = "mock:request_source";;
   public static final String POLICY_UNMARSHALL = "direct:policy_unmarshall";
   public static final String REQUEST_UNMARSHALL = "direct:request_unmarshall";
-  @EndpointInject(uri = MOCK_MARSHALL)
-  private MockEndpoint mockMarshall;
 
   @EndpointInject(uri = MOCK_POLICY_SOURCE)
   private MockEndpoint mockPolicySource;
@@ -37,7 +35,7 @@ public class PolicyTest extends CamelTestSupport {
     try (InputStream body = Resources.getResource("policy1.xml").openStream()) {
       template.sendBody(POLICY_UNMARSHALL, body);
     }
-    PolicyType policyType =
+    PolicyType policy =
         mockPolicySource.assertExchangeReceived(0).getIn().getBody(PolicyType.class);
 
     mockRequestSource.expectedMessageCount(1);
@@ -47,12 +45,53 @@ public class PolicyTest extends CamelTestSupport {
 
     RequestType requestType =
         mockRequestSource.assertExchangeReceived(0).getIn().getBody(RequestType.class);
-    class Evaluator {
 
-      XacmlCombiningAlgorithm combiningAlgorithm = XacmlCombiningAlgorithm.from(policyType
-          .getRuleCombiningAlgId());
+    XacmlCombiningAlgorithm combiningAlgorithm = XacmlCombiningAlgorithm.from(policy.getRuleCombiningAlgId());
 
-    }
+    String policyId = policy.getPolicyId();
+    policy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().forEach(o -> {
+      System.err.println("resolving: " + o.toString());
+      if (!(o instanceof RuleType)) {
+        throw new UnsupportedOperationException();
+      }
+      RuleType rule = (RuleType) o;
+      System.err.println("eval Rule: " + rule.getRuleId());
+      rule.getTarget().getAnyOf().stream()
+          .forEach(anyOfType -> anyOfType.getAllOf().stream()
+              .forEach(a -> a.getMatch().stream()
+                  .forEach(m -> {
+                    String matchId = m.getMatchId();
+                    System.err.println("eval match: " + matchId);
+                    AttributeDesignatorType attributeDesignator = m.getAttributeDesignator();
+                    AttributeValueType attributeValue = m.getAttributeValue();
+                    String dataType1 = attributeValue.getDataType();
+                    System.err.println("att type: "+ XacmlDataType.from(dataType1));
+                    List<Object> content = attributeValue.getContent();
+                    System.err.println("att value: " + content.stream().map(String::valueOf).map(String::trim).collect(Collectors.joining(", ")));
+
+                    if (null!=attributeDesignator) {
+                      String attId = attributeDesignator.getAttributeId();
+                      String category1 = attributeDesignator.getCategory();
+                      String dataType = attributeDesignator.getDataType();
+                      System.err.println("eval att: " + attId+ "::"+XacmlDataType.from(dataType ));
+                      String issuer = attributeDesignator.getIssuer();
+                    }else {
+                    AttributeSelectorType attributeSelector = m.getAttributeSelector();
+                    if (null != attributeSelector) {
+                      String category = attributeSelector.getCategory();
+                      System.err.println("eval cat: " + category);
+                      String contextSelectorId = attributeSelector.getContextSelectorId();
+                    }
+
+                    }
+
+
+                  })));
+    });
+
+    policy.getTarget();
+
+
   }
 
   @Override
@@ -69,7 +108,6 @@ public class PolicyTest extends CamelTestSupport {
         };
 
         from(POLICY_UNMARSHALL).unmarshal(jaxbDataFormat).to(mockPolicySource);
-
         from(REQUEST_UNMARSHALL).unmarshal(jaxbDataFormat).to(mockRequestSource);
 
       }

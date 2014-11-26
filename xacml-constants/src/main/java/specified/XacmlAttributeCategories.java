@@ -1,13 +1,5 @@
 package specified;
 
-import com.google.common.base.Joiner;
-
-import java.net.URLDecoder;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import static java.util.Arrays.asList;
-
 public enum XacmlAttributeCategories {
   /**
    * urn:oasis:names:tc:xacml:3.0:attribute-category:resource
@@ -42,26 +34,11 @@ public enum XacmlAttributeCategories {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__requesting_$2D_machine;
 
-  public final String token = URLDecoder.decode(name().replace("_", "").replace('$', '%'));
-
-  public XacmlAttributeCategories from(String key) {
-    return Registry.tokens.get(key);
+  public String token() {
+    return Xacml3.token(this);
   }
 
-  public static class Registry {
-    public static final Map<String, XacmlAttributeCategories> tokens = new LinkedHashMap<>();
-
-    static {
-      asList(values()).stream().forEach(f -> {
-        tokens.put(f.token, f);
-      });
-    }
-
-    public static void main(String[] args) {
-      System.out.println("/**" + Joiner.on(",\n/**").withKeyValueSeparator(" */ ").join(tokens));
-    }
-
+  static public XacmlAttributeCategories from(String key) {
+    return Xacml3.from(key, XacmlAttributeCategories.class);
   }
-
-
 }
