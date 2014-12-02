@@ -720,6 +720,9 @@ public enum XacmlFunction {
    * desired domain-part with a leading ".". For example, if the first argument is “.east.sun.com”, this matches a value
    * in the second argument of "Anderson@east.sun.com" and "anne.anderson@ISRG.EAST.SUN.COM" but not "Anderson@sun.com".
    */
+  @XacmlSignature({
+      XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string,
+      XacmlDataType.urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Adata_$2D_type$3A__rfc822Name})
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Afunction$3A__rfc822Name_$2D_match {
     @Override
     public <T, R> R apply(T... p) {
@@ -1071,5 +1074,21 @@ public enum XacmlFunction {
 
   public String token() {
     return Xacml3.token(this);
+  }
+
+  public XacmlDataType returns;
+  public XacmlDataType[] parms;
+
+  XacmlFunction() {
+    parms =
+        new XacmlDataType[] {XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string};
+    returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean;
+    try {
+      XacmlSignature annotation = getClass().getField(name()).getAnnotation(XacmlSignature.class);
+      returns = annotation.returns();
+      parms = annotation.value();
+    } catch (Throwable e) {
+    }
+
   }
 }
