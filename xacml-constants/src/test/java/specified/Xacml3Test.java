@@ -3,10 +3,13 @@ package specified;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Map;
+
 public class Xacml3Test {
 
   @Test
   public void testFrom() throws Exception {
+    Map<Class<Enum<?>>, Map<String, Enum>> tokens = Xacml3.tokens;
     XacmlFunction from =
         XacmlFunction.from("urn:oasis:names:tc:xacml:3.0:function:access-permitted");
     Assert.assertEquals(from,
