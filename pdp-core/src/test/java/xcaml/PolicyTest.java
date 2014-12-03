@@ -1,7 +1,9 @@
 package xcaml;
 
 import com.google.common.io.Resources;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicyType;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType;
 import org.apache.camel.Endpoint;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Exchange;
@@ -10,30 +12,28 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.model.dataformat.JaxbDataFormat;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
-import specified.XacmlCombiningAlgorithm;
-import specified.XacmlDataType;
 import specified.XacmlEvaluation;
-import specified.XacmlFunction;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class PolicyTest extends CamelTestSupport {
 
   public static final String MOCK_POLICY_SOURCE = "mock:policy_source";
   private static final String MOCK_REQUEST_SOURCE = "mock:request_source";;
+  private static final String MOCK_RESOLUTION_SOURCE = "mock:resolution_source";;
+
   public static final String POLICY_UNMARSHALL = "direct:policy_unmarshall";
   public static final String REQUEST_UNMARSHALL = "direct:request_unmarshall";
+  public static final String RESOLUTION_SINK = "direct:resolution_sink";
 
   @EndpointInject(uri = MOCK_POLICY_SOURCE)
   private Endpoint mockPolicySource;
 
   @EndpointInject(uri = MOCK_REQUEST_SOURCE)
   private Endpoint mockRequestSource;
+
+  @EndpointInject(uri = MOCK_RESOLUTION_SOURCE)
+  private Endpoint mockResolutionSource;
 
   @Test
   public void testPolicy1() throws Exception {
@@ -55,112 +55,12 @@ public class PolicyTest extends CamelTestSupport {
 
     requestBody = requestExchange.getIn().getBody(RequestType.class);
 
-    XacmlEvaluation resolution = EvaluatePolicyAndRule(policy, requestBody);
+    XacmlEvaluation resolution = new PdpTx(policy).evaluatePolicyAndRequest(requestBody);
 
-    System.err.println("resolution endpoint here: " + resolution);
+    System.err.println("insert resolution endpoint here: " + resolution);
+    // template.sendBody(RESOLUTION_SINK, resolution);
 
-    // todo: CombinerAlgorithm pass
-    // todo: Allow
   }
-
-  static XacmlEvaluation EvaluatePolicyAndRule(PolicyType policy, RequestType requestBody) {
-        assert policy.getTarget().getAnyOf().isEmpty():"top level target not yet implemented";
-
-        Map<Object, AttributeType> theMap = new TreeMap<>();
-
-        requestBody.getAttributes().stream().forEach(attributesType -> {
-            String category = attributesType.getCategory();
-
-            attributesType.getAttribute().forEach(attributeType -> {
-                String attributeId = attributeType.getAttributeId();
-
-                String x = category + ":" + attributeId;
-                theMap.put(x, attributeType);
-            });
-        });
-
-        String ruleCombiningAlgId = policy.getRuleCombiningAlgId();
-        System.err.println("combine using " + ruleCombiningAlgId);
-        String policyId = policy.getPolicyId();
-
-        List<XacmlEvaluation> resolutions=new ArrayList<>();
-        policy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().forEach(o -> {
-            System.err.println("resolving: " + o.toString());
-            if (!(o instanceof RuleType)) {
-                throw new UnsupportedOperationException("only ruletype implemented");
-            }
-            RuleType rule = (RuleType) o;
-            System.err.println("eval Rule: " + rule.getRuleId());
-            TargetType target1 = rule.getTarget();
-
-            target1.getAnyOf().forEach(anyOfType -> anyOfType.getAllOf().forEach(allOfType -> allOfType.getMatch().forEach(action -> {
-                String matchId = action.getMatchId();
-                XacmlFunction func = XacmlFunction.from(matchId);
-
-                assert func.returns == XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean : "we only support predicate operation in this test";
-
-                System.err.println("eval match: " + matchId);
-                AttributeDesignatorType attributeDesignator = action.getAttributeDesignator();
-
-                if (null != attributeDesignator) {
-                    String k = attributeDesignator.getCategory() + ":" + attributeDesignator.getAttributeId();
-                    AttributeType reqAtt = theMap.get(k);
-                    if (null != reqAtt) {
-                        XacmlEvaluation eff= XacmlEvaluation.NotApplicable;
-
-
-                        AtomicInteger c = new AtomicInteger(0);
-                        List<Object> send = new ArrayList<Object>();
-
-                        action.getAttributeValue().getContent().forEach(o1 -> {
-                            c.getAndIncrement();
-                            if (o1 instanceof String) {
-                                o1 = String.valueOf(o1).trim();
-                            }
-                            send.add(o1);
-                        });
-
-                        reqAtt.getAttributeValue().forEach(attributeValueType -> {
-
-                            attributeValueType.getContent().forEach(v -> {
-
-                                XacmlDataType parm = func.parms[c.get()];
-                                XacmlDataType from = XacmlDataType.from(attributeValueType.getDataType());
-                                assert from == parm : "parameter type mismatch";
-
-                                if (v instanceof String) {
-                                    v = String.valueOf(v).trim();
-                                }
-                                send.add(v);
-                                c.getAndIncrement();
-
-                            });
-                        });
-                        Object[] p = send.toArray();
-                        eff=func.predicate(p)? XacmlEvaluation.from(rule.getEffect()) :eff;
-                        resolutions.add(eff);
-                    }
-                } else {
-                    AttributeSelectorType attributeSelector = action.getAttributeSelector();
-                    if (null != attributeSelector) {
-                        throw new UnsupportedOperationException("attributeSelector implementation lag");
-//                        String category = attributeSelector.getCategory();
-//                        String contextSelectorId1 = attributeSelector.getContextSelectorId();
-//
-//                        System.err.println("eval cat: " + category);
-                    }
-                }
-
-            })));
-
-
-
-
-        });
-        XacmlCombiningAlgorithm combiningAlgorithm = XacmlCombiningAlgorithm.from(ruleCombiningAlgId);
-
-        return combiningAlgorithm.apply((resolutions.toArray(new XacmlEvaluation[resolutions.size()])));
-    }
 
   @Override
   protected RouteBuilder createRouteBuilder() throws Exception {
@@ -176,6 +76,7 @@ public class PolicyTest extends CamelTestSupport {
         };
         from(POLICY_UNMARSHALL).unmarshal(jaxbDataFormat).to(mockPolicySource);
         from(REQUEST_UNMARSHALL).unmarshal(jaxbDataFormat).to(mockRequestSource);
+        // from(RESOLUTION_SINK).bean(XacmlEvaluation.class).to(mockResolutionSource);
 
       }
     };

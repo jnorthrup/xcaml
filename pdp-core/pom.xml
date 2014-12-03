@@ -61,10 +61,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.auto.factory</groupId>
+            <artifactId>auto-factory</artifactId>
+            <version>0.1-beta1</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.0-rc2</version>
-            <scope>provided</scope>
+            <version>1.0-rc2</version><scope>provided</scope>
         </dependency>
     </dependencies>
     <properties>
