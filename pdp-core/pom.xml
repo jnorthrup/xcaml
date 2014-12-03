@@ -66,11 +66,6 @@
             <version>1.0-rc2</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <version>2.0.1</version>
-        </dependency>
     </dependencies>
     <properties>
         <camel.version>2.14.0</camel.version>

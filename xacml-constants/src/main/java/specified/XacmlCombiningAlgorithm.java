@@ -9,7 +9,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Arule_$2D_combining_$2D_algorithm$3Adeny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -18,7 +18,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Apolicy_$2D_combining_$2D_algorithm$3Adeny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -27,7 +27,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Arule_$2D_combining_$2D_algorithm$3Apermit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -36,7 +36,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Apolicy_$2D_combining_$2D_algorithm$3Apermit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -57,7 +57,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Arule_$2D_combining_$2D_algorithm$3Aordered_$2D_deny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -66,7 +66,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Apolicy_$2D_combining_$2D_algorithm$3Aordered_$2D_deny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -75,7 +75,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Arule_$2D_combining_$2D_algorithm$3Aordered_$2D_permit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -84,7 +84,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Apolicy_$2D_combining_$2D_algorithm$3Aordered_$2D_permit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -109,7 +109,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Arule_$2D_combining_$2D_algorithm$3Adeny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -118,7 +118,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Apolicy_$2D_combining_$2D_algorithm$3Adeny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -127,7 +127,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Arule_$2D_combining_$2D_algorithm$3Apermit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -136,7 +136,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Apolicy_$2D_combining_$2D_algorithm$3Apermit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -145,7 +145,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E1$3Arule_$2D_combining_$2D_algorithm$3Aordered_$2D_deny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -154,7 +154,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E1$3Apolicy_$2D_combining_$2D_algorithm$3Aordered_$2D_deny_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return denyOverrides(decisions);
     }
   },
@@ -163,7 +163,7 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E1$3Arule_$2D_combining_$2D_algorithm$3Aordered_$2D_permit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   },
@@ -172,39 +172,39 @@ public enum XacmlCombiningAlgorithm {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E1$3Apolicy_$2D_combining_$2D_algorithm$3Aordered_$2D_permit_$2D_overrides {
     @Override
-    public XacmlResolution apply(XacmlResolution... decisions) {
+    public XacmlEvaluation apply(XacmlEvaluation... decisions) {
       return permitOverrides(decisions);
     }
   };
 
-  private static XacmlResolution denyOverrides(XacmlResolution[] decisions) {
-    EnumSet<XacmlResolution> xacmlResolutions = EnumSet.noneOf(XacmlResolution.class);
-    Arrays.asList(decisions).stream().distinct().forEach(xacmlResolutions::add);
-    if (xacmlResolutions.contains(XacmlResolution.Deny))
-      return XacmlResolution.Deny;
-    if (xacmlResolutions.contains(XacmlResolution.Indeterminate$7B__DP__$7D) || xacmlResolutions.contains(XacmlResolution.Indeterminate$7B__D__$7D) && (EnumSet.of(XacmlResolution.Indeterminate$7B__P__$7D, XacmlResolution.Permit).removeAll(xacmlResolutions))) {
-      return XacmlResolution.Indeterminate$7B__DP__$7D;
+  private static XacmlEvaluation denyOverrides(XacmlEvaluation[] decisions) {
+    EnumSet<XacmlEvaluation> xacmlEvaluations = EnumSet.noneOf(XacmlEvaluation.class);
+    Arrays.asList(decisions).stream().distinct().forEach(xacmlEvaluations::add);
+    if (xacmlEvaluations.contains(XacmlEvaluation.Deny))
+      return XacmlEvaluation.Deny;
+    if (xacmlEvaluations.contains(XacmlEvaluation.Indeterminate$7B__DP__$7D) || xacmlEvaluations.contains(XacmlEvaluation.Indeterminate$7B__D__$7D) && (EnumSet.of(XacmlEvaluation.Indeterminate$7B__P__$7D, XacmlEvaluation.Permit).removeAll(xacmlEvaluations))) {
+      return XacmlEvaluation.Indeterminate$7B__DP__$7D;
     }
-    final XacmlResolution[] xacmlResolutions1 = {XacmlResolution.Indeterminate$7B__D__$7D, XacmlResolution.Permit, XacmlResolution.Indeterminate$7B__P__$7D};
-    for (XacmlResolution xacmlResolution : xacmlResolutions1)
-      if (xacmlResolutions.contains(xacmlResolution))
-        return xacmlResolution;
-    return XacmlResolution.NotApplicable;
+    final XacmlEvaluation[] xacmlResolutions1 = {XacmlEvaluation.Indeterminate$7B__D__$7D, XacmlEvaluation.Permit, XacmlEvaluation.Indeterminate$7B__P__$7D};
+    for (XacmlEvaluation xacmlEvaluation : xacmlResolutions1)
+      if (xacmlEvaluations.contains(xacmlEvaluation))
+        return xacmlEvaluation;
+    return XacmlEvaluation.NotApplicable;
   }
 
-  private static XacmlResolution permitOverrides(XacmlResolution[] decisions) {
-    EnumSet<XacmlResolution> xacmlResolutions = EnumSet.noneOf(XacmlResolution.class);
-    Arrays.asList(decisions).stream().distinct().forEach(xacmlResolutions::add);
-    if (xacmlResolutions.contains(XacmlResolution.Permit))
-      return XacmlResolution.Permit;
-    if (xacmlResolutions.contains(XacmlResolution.Indeterminate$7B__DP__$7D) || xacmlResolutions.contains(XacmlResolution.Indeterminate$7B__P__$7D) && (EnumSet.of(XacmlResolution.Indeterminate$7B__D__$7D, XacmlResolution.Deny).removeAll(xacmlResolutions))) {
-      return XacmlResolution.Indeterminate$7B__DP__$7D;
+  private static XacmlEvaluation permitOverrides(XacmlEvaluation[] decisions) {
+    EnumSet<XacmlEvaluation> xacmlEvaluations = EnumSet.noneOf(XacmlEvaluation.class);
+    Arrays.asList(decisions).stream().distinct().forEach(xacmlEvaluations::add);
+    if (xacmlEvaluations.contains(XacmlEvaluation.Permit))
+      return XacmlEvaluation.Permit;
+    if (xacmlEvaluations.contains(XacmlEvaluation.Indeterminate$7B__DP__$7D) || xacmlEvaluations.contains(XacmlEvaluation.Indeterminate$7B__P__$7D) && (EnumSet.of(XacmlEvaluation.Indeterminate$7B__D__$7D, XacmlEvaluation.Deny).removeAll(xacmlEvaluations))) {
+      return XacmlEvaluation.Indeterminate$7B__DP__$7D;
     }
-    final XacmlResolution[] xacmlResolutions1 = {XacmlResolution.Indeterminate$7B__P__$7D, XacmlResolution.Deny, XacmlResolution.Indeterminate$7B__D__$7D};
-    for (XacmlResolution xacmlResolution : xacmlResolutions1)
-      if (xacmlResolutions.contains(xacmlResolution))
-        return xacmlResolution;
-    return XacmlResolution.NotApplicable;
+    final XacmlEvaluation[] xacmlResolutions1 = {XacmlEvaluation.Indeterminate$7B__P__$7D, XacmlEvaluation.Deny, XacmlEvaluation.Indeterminate$7B__D__$7D};
+    for (XacmlEvaluation xacmlEvaluation : xacmlResolutions1)
+      if (xacmlEvaluations.contains(xacmlEvaluation))
+        return xacmlEvaluation;
+    return XacmlEvaluation.NotApplicable;
   }
 ;
 
@@ -216,7 +216,7 @@ public enum XacmlCombiningAlgorithm {
     return Xacml3.token(this);
   }
 
-  public XacmlResolution apply(XacmlResolution... decisions) {
+  public XacmlEvaluation apply(XacmlEvaluation... decisions) {
     throw new UnsupportedOperationException();
   }
 }
