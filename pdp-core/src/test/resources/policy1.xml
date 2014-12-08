@@ -14,9 +14,8 @@
             RuleId="urn:oasis:names:tc:xacml:3.0:example:SimpleRule1"
             Effect="Permit">
         <Description>
-            Any subject with an e-mail name in the med.example.com
-            domain
-            can perform any action on any resource.
+            Any subject with an e-mail name in the med.example.com domain can
+            perform any action on any resource.
         </Description>
         <Target>
             <AnyOf>

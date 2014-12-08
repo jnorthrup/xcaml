@@ -52,11 +52,8 @@ public class PolicyTest extends CamelTestSupport {
     }
     RequestType requestBody;
     Exchange requestExchange = ((MockEndpoint) mockRequestSource).assertExchangeReceived(0);
-
     requestBody = requestExchange.getIn().getBody(RequestType.class);
-
     XacmlEvaluation resolution = new PdpTx(policy).evaluatePolicyAndRequest(requestBody);
-
     System.err.println("insert resolution endpoint here: " + resolution);
     // template.sendBody(RESOLUTION_SINK, resolution);
 
@@ -70,14 +67,11 @@ public class PolicyTest extends CamelTestSupport {
         JaxbDataFormat jaxbDataFormat = new JaxbDataFormat() {
           {
             setContextPath(ObjectFactory.class.getPackage().getName());
-            // setFragment(Boolean.TRUE);
-            // setPartClass(PolicyType.class.getCanonicalName());
           }
         };
         from(POLICY_UNMARSHALL).unmarshal(jaxbDataFormat).to(mockPolicySource);
         from(REQUEST_UNMARSHALL).unmarshal(jaxbDataFormat).to(mockRequestSource);
         // from(RESOLUTION_SINK).bean(XacmlEvaluation.class).to(mockResolutionSource);
-
       }
     };
   }

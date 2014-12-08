@@ -34,11 +34,11 @@ public class PdpTx {
 
   public PdpTx(@Provided PolicyType policy) {
         PdpTx.policy = policy;
-        assert policy.getTarget().getAnyOf().isEmpty() : "top level target not yet implemented";
+        assert policy.getTarget().getAnyOf().isEmpty() : "top level target not yet implemented"; //todo: impl
         policy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().forEach(o -> {
             System.err.println("resolving: " + o.toString());
             if (!(o instanceof RuleType)) {
-                throw new UnsupportedOperationException("only ruletype implemented");
+                throw new UnsupportedOperationException("only ruletype implemented");//todo: impl
             }
 
             RuleType rule = (RuleType) o;
@@ -48,7 +48,7 @@ public class PdpTx {
             target1.getAnyOf().forEach(anyOfType -> anyOfType.getAllOf().forEach(allOfType -> allOfType.getMatch().forEach(action -> {
                 String matchId = action.getMatchId();
                 XacmlFunction func = XacmlFunction.from(matchId);
-                assert func.returns == XacmlDataType.from("http://www.w3.org/2001/XMLSchema#boolean") : "we only support predicate operation in this test";
+                assert func.returns == XacmlDataType.from("http://www.w3.org/2001/XMLSchema#boolean") : "we only support predicate operation in this test";//todo: impl
                 System.err.println("eval match: " + matchId);
                 AttributeDesignatorType attributeDesignator = action.getAttributeDesignator();
                 if (attributeDesignator != null) {

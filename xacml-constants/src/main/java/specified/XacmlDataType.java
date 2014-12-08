@@ -82,7 +82,7 @@ public enum XacmlDataType {
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A2$2E0$3Adata_$2D_type$3A__dnsName;
 
-  public <R> R apply(String input) {
+  public <R> R apply(String input) {// todo: should be abstract with 100% implementation above.
     throw new UnsupportedOperationException();
   }
 
