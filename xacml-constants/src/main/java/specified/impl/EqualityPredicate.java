@@ -1,8 +1,9 @@
 package specified.impl;
 
+import specified.F;
 import specified.XacmlFunction;
 
-public enum EqualityPredicate {
+public enum EqualityPredicate implements F {
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#string” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. The function SHALL return "True" if and only if the value of both of
@@ -147,4 +148,3 @@ public enum EqualityPredicate {
     xacmlFunction = XacmlFunction.from(s);
   }
 }
-
