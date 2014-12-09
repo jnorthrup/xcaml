@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.F;
-import specified.XacmlFunction;
 
 /**
  * Created by jim on 12/9/14.
@@ -10,63 +10,71 @@ public enum ArithmeticFunctons implements F {
   /**
    * This function MUST accept two or more arguments.
    */
-  integer_add("urn:oasis:names:tc:xacml:1.0:function:integer-add"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-add")
+  integer_add,
   /**
    * This function MUST accept two or more arguments.
    */
-  double_add("urn:oasis:names:tc:xacml:1.0:function:double-add"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-add")
+  double_add,
   /**
    * The result is the second argument subtracted from the first argument.
    */
-  integer_subtract("urn:oasis:names:tc:xacml:1.0:function:integer-subtract"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-subtract")
+  integer_subtract,
   /**
    * The result is the second argument subtracted from the first argument.
    */
-  double_subtract("urn:oasis:names:tc:xacml:1.0:function:double-subtract"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-subtract")
+  double_subtract,
   /**
    * This function MUST accept two or more arguments.
    */
-  integer_multiply("urn:oasis:names:tc:xacml:1.0:function:integer-multiply"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-multiply")
+  integer_multiply,
   /**
    * This function MUST accept two or more arguments.
    */
-  double_multiply("urn:oasis:names:tc:xacml:1.0:function:double-multiply"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-multiply")
+  double_multiply,
   /**
    * The result is the first argument divided by the second argument.
    */
-  integer_divide("urn:oasis:names:tc:xacml:1.0:function:integer-divide"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-divide")
+  integer_divide,
   /**
    * The result is the first argument divided by the second argument.
    */
-  double_divide("urn:oasis:names:tc:xacml:1.0:function:double-divide"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-divide")
+  double_divide,
   /**
    * The result is remainder of the first argument divided by the second argument.
    */
-  integer_mod("urn:oasis:names:tc:xacml:1.0:function:integer-mod"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-mod")
+  integer_mod,
   /**
    * The round and floor functions SHALL take a single argument of data-type “http://www.w3.org/2001/XMLSchema#double”
    * and return a value of the data-type “http://www.w3.org/2001/XMLSchema#double”.
    */
-  integer_abs("urn:oasis:names:tc:xacml:1.0:function:integer-abs"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-abs")
+  integer_abs,
   /**
    * The round and floor functions SHALL take a single argument of data-type “http://www.w3.org/2001/XMLSchema#double”
    * and return a value of the data-type “http://www.w3.org/2001/XMLSchema#double”.
    */
-  double_abs("urn:oasis:names:tc:xacml:1.0:function:double-abs"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-abs")
+  double_abs,
   /**
    * The round and floor functions SHALL take a single argument of data-type “http://www.w3.org/2001/XMLSchema#double”
    * and return a value of the data-type “http://www.w3.org/2001/XMLSchema#double”.
    */
-  round("urn:oasis:names:tc:xacml:1.0:function:round"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:round")
+  round,
   /**
    * The round and floor functions SHALL take a single argument of data-type “http://www.w3.org/2001/XMLSchema#double”
    * and return a value of the data-type “http://www.w3.org/2001/XMLSchema#double”.
    */
-  floor("urn:oasis:names:tc:xacml:1.0:function:floor");
-  private final XacmlFunction xacmlFunction;
-
-  ArithmeticFunctons(String s) {
-    xacmlFunction = XacmlFunction.from(s);
-  }
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:floor")
+  floor;
 
 }

@@ -18,7 +18,7 @@ public class Xacml3 {
             try {
                 return Arrays.asList((T[]) enumClass.getMethod("values").invoke(null)).stream().collect(Collectors.toMap(e -> token(e), e -> e));
             } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                e.printStackTrace();
+                System.err.println("not a mapped constant: "+key);
             }
             return null;
         });

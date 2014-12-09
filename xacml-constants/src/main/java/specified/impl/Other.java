@@ -1,6 +1,6 @@
 package specified.impl;
 
-import specified.XacmlFunction;
+import specified.BindUri;
 
 /**
  * A.3.16 Other functions
@@ -30,11 +30,7 @@ public enum Other implements specified.F {
    * Indeterminate with a “urn:oasis:names:tc:xacml:1.0:status:processing-error” status code. Also, see the security
    * considerations in section 9.1.8.
    */
-  access_permitted("urn:oasis:names:tc:xacml:3.0:function:access-permitted"), ;
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:access-permitted")
+  access_permitted, ;
 
-  Other(String s) {
-    this.xacmlFunction = XacmlFunction.from(s);
-  }
-
-  private final XacmlFunction xacmlFunction;
 }

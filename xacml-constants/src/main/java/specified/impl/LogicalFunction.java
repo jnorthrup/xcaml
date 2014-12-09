@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.F;
-import specified.XacmlFunction;
 
 /**
  * A.3.5 Logical functions This section contains the specification for logical functions that operate on arguments of
@@ -13,13 +13,15 @@ public enum LogicalFunction implements F {
    * evaluates to "True". The order of evaluation SHALL be from first argument to last. The evaluation SHALL stop with a
    * result of "True" if any argument evaluates to "True", leaving the rest of the arguments unevaluated.
    */
-  or("urn:oasis:names:tc:xacml:1.0:function:or"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:or")
+  or,
   /**
    * This function SHALL return "True" if it has no arguments and SHALL return "False" if one of its arguments evaluates
    * to "False". The order of evaluation SHALL be from first argument to last. The evaluation SHALL stop with a result
    * of "False" if any argument evaluates to "False", leaving the rest of the arguments unevaluated.
    */
-  and("urn:oasis:names:tc:xacml:1.0:function:and"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:and")
+  and,
   /**
    * The first argument to this function SHALL be of data-type http://www.w3.org/2001/XMLSchema#integer. The remaining
    * arguments SHALL be of data-type http://www.w3.org/2001/XMLSchema#boolean. The first argument specifies the minimum
@@ -30,7 +32,8 @@ public enum LogicalFunction implements F {
    * "True" if the specified number of arguments evaluate to "True". The evaluation of arguments SHALL stop if it is
    * determined that evaluating the remaining arguments will not satisfy the requirement.
    */
-  n_of("urn:oasis:names:tc:xacml:1.0:function:n-of"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:n-of")
+  n_of,
 
   /**
    * This function SHALL take one argument of data-type “http://www.w3.org/2001/XMLSchema#boolean”. If the argument
@@ -43,10 +46,6 @@ public enum LogicalFunction implements F {
    * render the argument error free. Such arguments occurring in the expression in a position after the evaluation is
    * stated to stop need not be processed.
    */
-  not("urn:oasis:names:tc:xacml:1.0:function:not"), ;
-  private final XacmlFunction xacmlFunction;
-
-  LogicalFunction(String s) {
-    this.xacmlFunction = XacmlFunction.from(s);
-  }
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:not")
+  not, ;
 }

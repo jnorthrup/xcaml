@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.Rfc822Name;
-import specified.XacmlFunction;
 
 /**
  * Regular-expression-based functions These functions operate on various types using regular expressions and evaluate to
@@ -14,7 +14,8 @@ public enum RegexOp implements specified.F {
    * argument SHALL be a regular expression and the second argument SHALL be a general string. The function
    * specification SHALL be that of the “xf:matches” function with the arguments reversed [XF] Section 7.6.2.
    */
-  string_regexp_match("urn:oasis:names:tc:xacml:1.0:function:string-regexp-match"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:string-regexp-match")
+  string_regexp_match,
   /**
    * This function decides a regular expression match. It SHALL take two arguments; the first is of type
    * “http://www.w3.org/2001/XMLSchema#string” and the second is of type “http://www.w3.org/2001/XMLSchema#anyURI”. It
@@ -23,7 +24,8 @@ public enum RegexOp implements specified.F {
    * “http://www.w3.org/2001/XMLSchema#string” with urn:oasis:names:tc:xacml:3.0:function:string-from-anyURI, then apply
    * “urn:oasis:names:tc:xacml:1.0:function:string-regexp-match”.
    */
-  anyURI_regexp_match("urn:oasis:names:tc:xacml:2.0:function:anyURI-regexp-match"),
+  @BindUri("urn:oasis:names:tc:xacml:2.0:function:anyURI-regexp-match")
+  anyURI_regexp_match,
   /**
    * This function decides a regular expression match. It SHALL take two arguments; the first is of type
    * “http://www.w3.org/2001/XMLSchema#string” and the second is of type
@@ -33,7 +35,8 @@ public enum RegexOp implements specified.F {
    * urn:oasis:names:tc:xacml:3.0:function:string-from-ipAddress, then apply
    * “urn:oasis:names:tc:xacml:1.0:function:string-regexp-match”.
    */
-  ipAddress_regexp_match("urn:oasis:names:tc:xacml:2.0:function:ipAddress-regexp-match"),
+  @BindUri("urn:oasis:names:tc:xacml:2.0:function:ipAddress-regexp-match")
+  ipAddress_regexp_match,
   /**
    * This function decides a regular expression match. It SHALL take two arguments; the first is of type
    * “http://www.w3.org/2001/XMLSchema#string” and the second is of type
@@ -43,7 +46,8 @@ public enum RegexOp implements specified.F {
    * urn:oasis:names:tc:xacml:3.0:function:string-from-dnsName, then apply
    * “urn:oasis:names:tc:xacml:1.0:function:string-regexp-match”.
    */
-  dnsName_regexp_match("urn:oasis:names:tc:xacml:2.0:function:dnsName-regexp-match"),
+  @BindUri("urn:oasis:names:tc:xacml:2.0:function:dnsName-regexp-match")
+  dnsName_regexp_match,
   /**
    * This function decides a regular expression match. It SHALL take two arguments; the first is of type
    * “http://www.w3.org/2001/XMLSchema#string” and the second is of type
@@ -53,7 +57,8 @@ public enum RegexOp implements specified.F {
    * urn:oasis:names:tc:xacml:3.0:function:string-from-rfc822Name, then apply
    * “urn:oasis:names:tc:xacml:1.0:function:string-regexp-match”.
    */
-  rfc822Name_regexp_match("urn:oasis:names:tc:xacml:2.0:function:rfc822Name-regexp-match"),
+  @BindUri("urn:oasis:names:tc:xacml:2.0:function:rfc822Name-regexp-match")
+  rfc822Name_regexp_match,
   /**
    * This function decides a regular expression match. It SHALL take two arguments; the first is of type
    * “http://www.w3.org/2001/XMLSchema#string” and the second is of type
@@ -66,7 +71,8 @@ public enum RegexOp implements specified.F {
    * A.3.14 Special match functions These functions operate on various types and evaluate to
    * “http://www.w3.org/2001/XMLSchema#boolean” based on the specified standard matching algorithm.
    */
-  x500Name_regexp_match("urn:oasis:names:tc:xacml:2.0:function:x500Name-regexp-match"),
+  @BindUri("urn:oasis:names:tc:xacml:2.0:function:x500Name-regexp-match")
+  x500Name_regexp_match,
   /**
    * This function shall take two arguments of "urn:oasis:names:tc:xacml:1.0:data-type:x500Name" and shall return an
    * "http://www.w3.org/2001/XMLSchema#boolean". It shall return “True” if and only if the first argument matches some
@@ -75,7 +81,8 @@ public enum RegexOp implements specified.F {
    * As an example (non-normative), if the first argument is “O=Medico Corp,C=US” and the second argument is “cn=John
    * Smith,o=Medico Corp, c=US”, then the function will return “True”.
    */
-  x500Name_match("urn:oasis:names:tc:xacml:1.0:function:x500Name-match"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:x500Name-match")
+  x500Name_match,
   /**
    * This function SHALL take two arguments, the first is of data-type “http://www.w3.org/2001/XMLSchema#string” and the
    * second is of data-type “urn:oasis:names:tc:xacml:1.0:data-type:rfc822Name” and SHALL return an
@@ -104,7 +111,8 @@ public enum RegexOp implements specified.F {
    * <p>
    * <p>
    */
-  rfc822Name_match("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match") {
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match")
+  rfc822Name_match {
     @Override
     public <R> R apply(Object... p) {
       Rfc822NameMatchInput unmarshal = new Rfc822NameMatchInput(p).invoke();
@@ -125,12 +133,6 @@ public enum RegexOp implements specified.F {
       return ret;
     }
   };
-
-  RegexOp(String s) {
-    this.xacmlFunction = XacmlFunction.from(s);
-  }
-
-  private final XacmlFunction xacmlFunction;
 
   private static class Rfc822NameMatchInput {
     private Object[] p;

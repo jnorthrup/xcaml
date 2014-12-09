@@ -4,6 +4,11 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import specified.impl.Other;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Map;
+
 /**
  * urlencoded urn's to conform to java symbol names. cannot be shortened without some version number guessing. no point,
  * java uses hash lookups for switch/enum things.
@@ -1048,7 +1053,10 @@ public enum XacmlFunction implements F {
    * urn:oasis:names:tc:xacml:3.0:function:access-permitted
    */
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A_3$2E0_$3Afunction$3A__access_$2D_permitted;
-  private F delegate;
+  public static final F NOT_IMPLEMENTED = new F() {
+  };
+  static private Map<XacmlFunction, F> delegates = new EnumMap<XacmlFunction, F>(
+      XacmlFunction.class);
 
   final public <T> boolean predicate(T... p) {
     return (boolean) apply(p);
@@ -1065,51 +1073,71 @@ public enum XacmlFunction implements F {
   public XacmlDataType returns;
   public XacmlDataType[] parms;
 
-  XacmlFunction() {
-        parms =
-                new XacmlDataType[]{XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string};
-        returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean;
-        try {
-            XacmlSignature annotation = getClass().getField(name()).getAnnotation(XacmlSignature.class);
-            parms = annotation.value();
-            returns = annotation.returns();
-        } catch (Throwable e) {
-        }
+  static class Helper {
+    static Package implPackage = Other.class.getPackage();
+    static ImmutableSet<ClassPath.ClassInfo> topLevelClasses;
 
-        try {
-          Package aPackage = Other.class.getPackage();
-          ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClasses(aPackage.getName());
-          topLevelClasses.parallelStream().forEach(classInfo -> {
-                Class<?> load = classInfo.load();
-                if (F.class.isAssignableFrom(load) && Enum.class.isAssignableFrom(load)) {
-                    Object[] enumConstants = load.getEnumConstants();
-                    for (Object enumConstant : enumConstants) {
-                        try {
-                            XacmlFunction xacmlFunction = (XacmlFunction) load.getDeclaredField("xacmlFunction").get(enumConstant);
-                            if (null != xacmlFunction)
-                                delegate = (F) enumConstant;
-                        } catch (IllegalAccessException e) {
-
-                        } catch (NoSuchFieldException e) {
-
-                        }
-                    }
-
-                }
-            });
-
-        } catch (Throwable e) {
-
-        }
+    static {
+      try {
+        topLevelClasses =
+            ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClasses(
+                implPackage.getName());
+      } catch (IOException e) {
+      }
     }
+  }
 
   @Override
-  public <T> T apply(Object... objects) {
-    assert (validateCallParms(this, objects)) : "paramters for " + name() + " dont fit";
-    return (T) delegate.apply(objects);
-  }
+    public <T> T apply(Object... objects) {
+        assert (validateCallParms(this, objects)) : "parameters for " + name() + " dont fit";
+        F xacmlFunction2 = delegates.computeIfAbsent(this, xacmlFunction -> {
+            {
+                String token = token();
+                F ret = null;
+                for (ClassPath.ClassInfo topLevelClass : Helper.topLevelClasses) {
+                    Class<?> load = topLevelClass.load();
+                    if (F.class.isAssignableFrom(load) && Enum.class.isAssignableFrom(load)) {
+                        Object[] enumConstants = load.getEnumConstants();
+                        for (Object enumConstant : enumConstants) {
+                            Enum e = (Enum) enumConstant;
+                            try {
+                                BindXacmlFunctions a = load.getField(e.name()).getAnnotation(BindXacmlFunctions.class);
+                                BindUri annotation = load.getField(e.name()).getAnnotation(BindUri.class);
+
+                                if (null != annotation && Arrays.asList(annotation.value()).contains(token) || null != a && Arrays.asList(a.value()).contains(this)) {
+                                    ret = (F) enumConstant;
+                                    break;
+                                }
+
+                            } catch (NoSuchFieldException e1) {
+
+
+                            }
+                        }
+
+                    }
+                }
+                return ret != null ? ret : NOT_IMPLEMENTED;
+            }
+        });
+
+        return (T) xacmlFunction2.apply(objects);
+    }
 
   private boolean validateCallParms(XacmlFunction xacmlFunction, Object... objects) {
     return true;// todo: real validation that's in the unit tests presently
   }
+
+  XacmlFunction() {
+    parms =
+        new XacmlDataType[] {XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string};
+    returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean;
+    try {
+      XacmlSignature annotation = getClass().getField(name()).getAnnotation(XacmlSignature.class);
+      parms = annotation.value();
+      returns = annotation.returns();
+    } catch (Throwable e) {
+    }
+  }
+
 }

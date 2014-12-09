@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.F;
-import specified.XacmlFunction;
 
 /**
  * A.3.12 Higher-order bag functions This section describes functions in XACML that perform operations on bags such that
@@ -31,7 +31,8 @@ public enum HigherOrderBagOps implements F {
    * DataType=”http://www.w3.org/2001/XMLSchema#string”>Ringo</AttributeValue> </Apply> </Apply> This expression is
    * "True" because the first argument is equal to at least one of the elements of the bag, according to the function.
    */
-  any_of("urn:oasis:names:tc:xacml:3.0:function:any-of"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:any-of")
+  any_of,
   /**
    * This function applies a Boolean function between a specific primitive value and a bag of values, and returns "True"
    * if and only if the predicate is "True" for every element of the bag.
@@ -54,7 +55,8 @@ public enum HigherOrderBagOps implements F {
    * DataType=”http://www.w3.org/2001/XMLSchema#integer”>2</AttributeValue> </Apply> </Apply> This expression is "True"
    * because the first argument (10) is greater than all of the elements of the bag (9,3,4 and 2).
    */
-  all_of("urn:oasis:names:tc:xacml:3.0:function:all-of"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:all-of")
+  all_of,
   /**
    * This function applies a Boolean function on each tuple from the cross product on all bags arguments, and returns
    * "True" if and only if the predicate is "True" for at least one inside-function call.
@@ -82,7 +84,8 @@ public enum HigherOrderBagOps implements F {
    * "True" because at least one of the elements of the first bag, namely “Ringo”, is equal to at least one of the
    * elements of the second bag.
    */
-  any_of_any("urn:oasis:names:tc:xacml:3.0:function:any-of-any"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:any-of-any")
+  any_of_any,
   /**
    * This function applies a Boolean function between the elements of two bags. The expression SHALL be “True” if and
    * only if the supplied predicate is “True” between each element of the first bag and any element of the second bag.
@@ -108,7 +111,8 @@ public enum HigherOrderBagOps implements F {
    * DataType=”http://www.w3.org/2001/XMLSchema#integer”>19</AttributeValue> </Apply> </Apply> This expression is “True”
    * because each of the elements of the first bag is greater than at least one of the elements of the second bag.
    */
-  all_of_any("urn:oasis:names:tc:xacml:1.0:function:all-of-any"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:all-of-any")
+  all_of_any,
   /**
    * This function applies a Boolean function between the elements of two bags. The expression SHALL be “True” if and
    * only if the supplied predicate is “True” between each element of the second bag and any element of the first bag.
@@ -134,7 +138,8 @@ public enum HigherOrderBagOps implements F {
    * DataType=”http://www.w3.org/2001/XMLSchema#integer”>4</AttributeValue> </Apply> </Apply> This expression is “True”
    * because, for all of the values in the second bag, there is a value in the first bag that is greater.
    */
-  any_of_all("urn:oasis:names:tc:xacml:1.0:function:any-of-all"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:any-of-all")
+  any_of_all,
   /**
    * This function applies a Boolean function between the elements of two bags. The expression SHALL be "True" if and
    * only if the supplied predicate is "True" between each and every element of the first bag collectively against all
@@ -163,7 +168,8 @@ public enum HigherOrderBagOps implements F {
    * because all elements of the first bag, “5” and “6”, are each greater than all of the integer values “1”, ”2”, ”3”,
    * ”4” of the second bag.
    */
-  all_of_all("urn:oasis:names:tc:xacml:1.0:function:all-of-all"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:all-of-all")
+  all_of_all,
   /**
    * This function converts a bag of values to another bag of values.
    * <p>
@@ -184,11 +190,7 @@ public enum HigherOrderBagOps implements F {
    * DataType=”http://www.w3.org/2001/XMLSchema#string”>World!</AttributeValue> </Apply> </Apply> evaluates to a bag
    * containing “hello” and “world!”.
    */
-  map("urn:oasis:names:tc:xacml:3.0:function:map"), ;
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:map")
+  map, ;
 
-  HigherOrderBagOps(String s) {
-    this.xacmlFunction = XacmlFunction.from(s);
-  }
-
-  private final XacmlFunction xacmlFunction;
 }

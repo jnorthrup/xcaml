@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.F;
-import specified.XacmlFunction;
 
 /**
  * A.3.6 Numeric comparison functions These functions form a minimal set for comparing two numbers, yielding a Boolean
@@ -11,32 +11,38 @@ public enum NumericComparison implements F {
   /**
 
      */
-  integer_greater_than("urn:oasis:names:tc:xacml:1.0:function:integer-greater-than"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-greater-than")
+  integer_greater_than,
   /**
 
      */
-  integer_greater_than_or_equal(
-      "urn:oasis:names:tc:xacml:1.0:function:integer-greater-than-or-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-greater-than-or-equal")
+  integer_greater_than_or_equal,
   /**
 
      */
-  integer_less_than("urn:oasis:names:tc:xacml:1.0:function:integer-less-than"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-less-than")
+  integer_less_than,
   /**
 
      */
-  integer_less_than_or_equal("urn:oasis:names:tc:xacml:1.0:function:integer-less-than-or-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-less-than-or-equal")
+  integer_less_than_or_equal,
   /**
 
      */
-  double_greater_than("urn:oasis:names:tc:xacml:1.0:function:double-greater-than"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-greater-than")
+  double_greater_than,
   /**
 
      */
-  double_greater_than_or_equal("urn:oasis:names:tc:xacml:1.0:function:double-greater-than-or-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-greater-than-or-equal")
+  double_greater_than_or_equal,
   /**
 
      */
-  double_less_than("urn:oasis:names:tc:xacml:1.0:function:double-less-than"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-less-than")
+  double_less_than,
   /**
 
 
@@ -44,10 +50,6 @@ public enum NumericComparison implements F {
 
 
      */
-  double_less_than_or_equal("urn:oasis:names:tc:xacml:1.0:function:double-less-than-or-equal"), ;
-  private final XacmlFunction xacmlFunction;
-
-  NumericComparison(String s) {
-    this.xacmlFunction = XacmlFunction.from(s);
-  }
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-less-than-or-equal")
+  double_less_than_or_equal, ;
 }

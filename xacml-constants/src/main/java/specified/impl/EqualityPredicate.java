@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.F;
-import specified.XacmlFunction;
 
 public enum EqualityPredicate implements F {
   /**
@@ -11,7 +11,8 @@ public enum EqualityPredicate implements F {
    * The comparison SHALL use Unicode codepoint collation, as defined for the identifier
    * http://www.w3.org/2005/xpath-functions/collation/codepoint by [XF].
    */
-  string_equal("urn:oasis:names:tc:xacml:1.0:function:string-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:string-equal")
+  string_equal,
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#string” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. The result SHALL be “True” if and only if the two strings are equal as
@@ -19,7 +20,8 @@ public enum EqualityPredicate implements F {
    * with urn:oasis:names:tc:xacml:1.0:function:string-normalize-to-lower-case.
    */
 
-  string_equal_ignore_case("urn:oasis:names:tc:xacml:3.0:function:string-equal-ignore-case"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:string-equal-ignore-case")
+  string_equal_ignore_case,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#boolean” and SHALL return an
@@ -27,42 +29,48 @@ public enum EqualityPredicate implements F {
    * equal. Otherwise, it SHALL return “False”.
    */
 
-  boolean_equal("urn:oasis:names:tc:xacml:1.0:function:boolean-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:boolean-equal")
+  boolean_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#integer” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. The function SHALL return “True” if and only if the two arguments
    * represent the same number.
    */
-  integer_equal("urn:oasis:names:tc:xacml:1.0:function:integer-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:integer-equal")
+  integer_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#double” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. It SHALL perform its evaluation on doubles according to IEEE 754
    * [IEEE754].
    */
-  double_equal("urn:oasis:names:tc:xacml:1.0:function:double-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:double-equal")
+  double_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#date” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. It SHALL perform its evaluation according to the “op:date-equal”
    * function [XF] Section 10.4.9.
    */
-  date_equal("urn:oasis:names:tc:xacml:1.0:function:date-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:date-equal")
+  date_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#time” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. It SHALL perform its evaluation according to the “op:time-equal”
    * function [XF] Section 10.4.12.
    */
-  time_equal("urn:oasis:names:tc:xacml:1.0:function:time-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:time-equal")
+  time_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#dateTime” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. It SHALL perform its evaluation according to the “op:dateTime-equal”
    * function [XF] Section 10.4.6.
    */
-  dateTime_equal("urn:oasis:names:tc:xacml:1.0:function:dateTime-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:dateTime-equal")
+  dateTime_equal,
 
   /**
    * This function SHALL take two arguments of data-type
@@ -71,7 +79,8 @@ public enum EqualityPredicate implements F {
    * op:duration-equal" function [XF] Section 10.4.5. Note that the lexical representation of each argument MUST be
    * converted to a value expressed in fractional seconds [XF] Section 10.3.2.
    */
-  dayTimeDuration_equal("urn:oasis:names:tc:xacml:3.0:function:dayTimeDuration-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:dayTimeDuration-equal")
+  dayTimeDuration_equal,
 
   /**
    * This function SHALL take two arguments of data-type
@@ -80,7 +89,8 @@ public enum EqualityPredicate implements F {
    * op:duration-equal" function [XF] Section 10.4.5. Note that the lexical representation of each argument MUST be
    * converted to a value expressed in fractional seconds [XF] Section 10.3.2.
    */
-  yearMonthDuration_equal("urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:yearMonthDuration-equal")
+  yearMonthDuration_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#anyURI” and SHALL return an
@@ -88,7 +98,8 @@ public enum EqualityPredicate implements F {
    * urn:oasis:names:tc:xacml:3.0:function:string-from-anyURI and return “True” if and only if the values of the two
    * arguments are equal on a codepoint-by-codepoint basis.
    */
-  anyURI_equal("urn:oasis:names:tc:xacml:1.0:function:anyURI-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:anyURI-equal")
+  anyURI_equal,
 
   /**
    * This function SHALL take two arguments of "urn:oasis:names:tc:xacml:1.0:data-type:x500Name" and SHALL return an
@@ -107,7 +118,8 @@ public enum EqualityPredicate implements F {
    * "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile", Section
    * 4.1.2.4 "Issuer".
    */
-  x500Name_equal("urn:oasis:names:tc:xacml:1.0:function:x500Name-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:x500Name-equal")
+  x500Name_equal,
 
   /**
    * This function SHALL take two arguments of data-type “urn:oasis:names:tc:xacml:1.0:data-type:rfc822Name” and SHALL
@@ -121,7 +133,8 @@ public enum EqualityPredicate implements F {
    * 2. Compare the expressions by applying the function “urn:oasis:names:tc:xacml:1.0:function:string-equal” to the
    * normalized arguments.
    */
-  rfc822Name_equal("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-equal")
+  rfc822Name_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#hexBinary” and SHALL return
@@ -130,7 +143,8 @@ public enum EqualityPredicate implements F {
    * “urn:oasis:names:tc:xacml:1.0:function:integer-equal” function. Otherwise, it SHALL return “False”. The conversion
    * from the string representation to an octet sequence SHALL be as specified in [XS] Section 3.2.15.
    */
-  hexBinary_equal("urn:oasis:names:tc:xacml:1.0:function:hexBinary-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:hexBinary-equal")
+  hexBinary_equal,
 
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#base64Binary” and SHALL
@@ -139,12 +153,7 @@ public enum EqualityPredicate implements F {
    * “urn:oasis:names:tc:xacml:1.0:function:integer-equal” function. Otherwise, it SHALL return “False”. The conversion
    * from the string representation to an octet sequence SHALL be as specified in [XS] Section 3.2.16.
    */
-  base64Binary_equal("urn:oasis:names:tc:xacml:1.0:function:base64Binary-equal"),
+  @BindUri("urn:oasis:names:tc:xacml:1.0:function:base64Binary-equal")
+  base64Binary_equal,
 
-  ;
-  private final XacmlFunction xacmlFunction;
-
-  EqualityPredicate(String s) {
-    xacmlFunction = XacmlFunction.from(s);
-  }
 }

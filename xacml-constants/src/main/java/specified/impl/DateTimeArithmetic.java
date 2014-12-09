@@ -1,7 +1,7 @@
 package specified.impl;
 
+import specified.BindUri;
 import specified.F;
-import specified.XacmlFunction;
 
 /**
  * A.3.7 Date and time arithmetic functions These functions perform arithmetic operations with date and time.
@@ -13,15 +13,16 @@ public enum DateTimeArithmetic implements F {
    * of “http://www.w3.org/2001/XMLSchema#dateTime”. This function SHALL return the value by adding the second argument
    * to the first argument according to the specification of adding durations to date and time [XS] Appendix E.
    */
-  dateTime_add_dayTimeDuration("urn:oasis:names:tc:xacml:3.0:function:dateTime-add-dayTimeDuration"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:dateTime-add-dayTimeDuration")
+  dateTime_add_dayTimeDuration,
   /**
    * This function SHALL take two arguments, the first SHALL be a “http://www.w3.org/2001/XMLSchema#dateTime” and the
    * second SHALL be a “http://www.w3.org/2001/XMLSchema#yearMonthDuration”. It SHALL return a result of
    * “http://www.w3.org/2001/XMLSchema#dateTime”. This function SHALL return the value by adding the second argument to
    * the first argument according to the specification of adding durations to date and time [XS] Appendix E.
    */
-  dateTime_add_yearMonthDuration(
-      "urn:oasis:names:tc:xacml:3.0:function:dateTime-add-yearMonthDuration"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:dateTime-add-yearMonthDuration")
+  dateTime_add_yearMonthDuration,
   /**
    * This function SHALL take two arguments, the first SHALL be a “http://www.w3.org/2001/XMLSchema#dateTime” and the
    * second SHALL be a “http://www.w3.org/2001/XMLSchema#dayTimeDuration”. It SHALL return a result of
@@ -31,8 +32,8 @@ public enum DateTimeArithmetic implements F {
    * “urn:oasis:names:tc:xacml:1.0:function:dateTime-add-dayTimeDuration” had been applied to the corresponding positive
    * duration.
    */
-  dateTime_subtract_dayTimeDuration(
-      "urn:oasis:names:tc:xacml:3.0:function:dateTime-subtract-dayTimeDuration"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:dateTime-subtract-dayTimeDuration")
+  dateTime_subtract_dayTimeDuration,
   /**
    * This function SHALL take two arguments, the first SHALL be a “http://www.w3.org/2001/XMLSchema#dateTime” and the
    * second SHALL be a “http://www.w3.org/2001/XMLSchema#yearMonthDuration”. It SHALL return a result of
@@ -42,15 +43,16 @@ public enum DateTimeArithmetic implements F {
    * “urn:oasis:names:tc:xacml:1.0:function:dateTime-add-yearMonthDuration” had been applied to the corresponding
    * positive duration.
    */
-  dateTime_subtract_yearMonthDuration(
-      "urn:oasis:names:tc:xacml:3.0:function:dateTime-subtract-yearMonthDuration"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:dateTime-subtract-yearMonthDuration")
+  dateTime_subtract_yearMonthDuration,
   /**
    * This function SHALL take two arguments, the first SHALL be a “http://www.w3.org/2001/XMLSchema#date” and the second
    * SHALL be a “http://www.w3.org/2001/XMLSchema#yearMonthDuration”. It SHALL return a result of
    * “http://www.w3.org/2001/XMLSchema#date”. This function SHALL return the value by adding the second argument to the
    * first argument according to the specification of adding duration to date [XS] Appendix E.
    */
-  date_add_yearMonthDuration("urn:oasis:names:tc:xacml:3.0:function:date-add-yearMonthDuration"),
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:date-add-yearMonthDuration")
+  date_add_yearMonthDuration,
   /**
    * This function SHALL take two arguments, the first SHALL be a “http://www.w3.org/2001/XMLSchema#date” and the second
    * SHALL be a “http://www.w3.org/2001/XMLSchema#yearMonthDuration”. It SHALL return a result of
@@ -60,12 +62,7 @@ public enum DateTimeArithmetic implements F {
    * “urn:oasis:names:tc:xacml:1.0:function:date-add-yearMonthDuration” had been applied to the corresponding positive
    * duration.
    */
-  date_subtract_yearMonthDuration(
-      "urn:oasis:names:tc:xacml:3.0:function:date-subtract-yearMonthDuration"), ;
+  @BindUri("urn:oasis:names:tc:xacml:3.0:function:date-subtract-yearMonthDuration")
+  date_subtract_yearMonthDuration, ;
 
-  DateTimeArithmetic(String s) {
-    this.xacmlFunction = XacmlFunction.from(s);
-  }
-
-  private final XacmlFunction xacmlFunction;
 }
