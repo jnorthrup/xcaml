@@ -1089,6 +1089,5 @@ public enum XacmlFunction {
       parms = annotation.value();
     } catch (Throwable e) {
     }
-
   }
 }
