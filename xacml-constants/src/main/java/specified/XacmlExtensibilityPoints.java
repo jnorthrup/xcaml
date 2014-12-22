@@ -8,10 +8,10 @@ public enum XacmlExtensibilityPoints {
   Category, AttributeId, DataType, FunctionId, MatchId, ObligationId, AdviceId, PolicyCombiningAlgId, RuleCombiningAlgId, StatusCode, SubjectCategory;
 
   static public XacmlExtensibilityPoints from(String key) {
-    return Xacml3.from(key, XacmlExtensibilityPoints.class);
+    return Registrar.from(key, XacmlExtensibilityPoints.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 }

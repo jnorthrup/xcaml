@@ -15,10 +15,10 @@ public enum XacmlActionAttributes {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aaction$3A__implied_$2D_action;
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
   static public XacmlActionAttributes from(String key) {
-    return Xacml3.from(key, XacmlActionAttributes.class);
+    return Registrar.from(key, XacmlActionAttributes.class);
   }
 }

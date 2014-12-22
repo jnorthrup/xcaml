@@ -14,10 +14,10 @@ public enum XacmlRefType {
   public final String token = URLDecoder.decode(name().replace("_", "").replace('$', '%'));
 
   static public XacmlRefType from(String key) {
-    return Xacml3.from(key, XacmlRefType.class);
+    return Registrar.from(key, XacmlRefType.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 }

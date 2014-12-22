@@ -360,11 +360,11 @@ public enum XacmlCombiningAlgorithm {
   }
 
   static public XacmlCombiningAlgorithm from(String key) {
-    return Xacml3.from(key, XacmlCombiningAlgorithm.class);
+    return Registrar.from(key, XacmlCombiningAlgorithm.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
   abstract public XacmlEvaluation apply(XacmlEvaluation... decisions);

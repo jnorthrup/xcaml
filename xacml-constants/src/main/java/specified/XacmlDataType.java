@@ -1,8 +1,7 @@
 package specified;
 
 /**
- * todo: link through {@link javax.xml.datatype.DatatypeFactory
- * }
+ * todo: link through {@link javax.xml.datatype.DatatypeFactory}
  */
 public enum XacmlDataType {
   /**
@@ -87,11 +86,11 @@ public enum XacmlDataType {
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
   static public XacmlDataType from(String key) {
-    return Xacml3.from(key, XacmlDataType.class);
+    return Registrar.from(key, XacmlDataType.class);
   }
 
 }

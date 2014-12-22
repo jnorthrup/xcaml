@@ -35,10 +35,10 @@ public enum XacmlAttributeCategories {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Asubject_$2D_category$3A__requesting_$2D_machine;
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
   static public XacmlAttributeCategories from(String key) {
-    return Xacml3.from(key, XacmlAttributeCategories.class);
+    return Registrar.from(key, XacmlAttributeCategories.class);
   }
 }

@@ -40,11 +40,11 @@ public enum XacmlSubjectAttributes {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Asubject$3A__authn_$2D_locality$3Adns_$2D_name;
 
   static public XacmlSubjectAttributes from(String key) {
-    return Xacml3.from(key, XacmlSubjectAttributes.class);
+    return Registrar.from(key, XacmlSubjectAttributes.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
 }

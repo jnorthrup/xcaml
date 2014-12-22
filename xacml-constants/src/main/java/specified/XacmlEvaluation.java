@@ -22,11 +22,11 @@ public enum XacmlEvaluation {
   }
 
   static public XacmlEvaluation from(String key) {
-    return Xacml3.from(key, XacmlEvaluation.class);
+    return Registrar.from(key, XacmlEvaluation.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
   public static class Mapping {
