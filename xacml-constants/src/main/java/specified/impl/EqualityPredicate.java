@@ -1,7 +1,9 @@
 package specified.impl;
 
 import specified.BindUri;
+import specified.BindXacmlFunctions;
 import specified.F;
+import specified.XacmlFunctionProto;
 
 public enum EqualityPredicate implements F {
   /**
@@ -12,7 +14,8 @@ public enum EqualityPredicate implements F {
    * http://www.w3.org/2005/xpath-functions/collation/codepoint by [XF].
    */
   @BindUri("urn:oasis:names:tc:xacml:1.0:function:string-equal")
-  string_equal,
+  @BindXacmlFunctions(XacmlFunctionProto.urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__string_$2D_equal)
+  string_equal ,
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#string” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. The result SHALL be “True” if and only if the two strings are equal as
@@ -30,6 +33,7 @@ public enum EqualityPredicate implements F {
    */
 
   @BindUri("urn:oasis:names:tc:xacml:1.0:function:boolean-equal")
+  @BindXacmlFunctions(XacmlFunctionProto.urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__boolean_$2D_equal)
   boolean_equal,
 
   /**
@@ -106,14 +110,14 @@ public enum EqualityPredicate implements F {
    * "http://www.w3.org/2001/XMLSchema#boolean". It SHALL return “True” if and only if each Relative Distinguished Name
    * (RDN) in the two arguments matches. Otherwise, it SHALL return “False”. Two RDNs shall be said to match if and only
    * if the result of the following operations is “True” .
-   * <p>
+   * <p/>
    * 1. Normalize the two arguments according to IETF RFC 2253
    * "Lightweight Directory Access Protocol (v3): UTF-8 String Representation of Distinguished Names".
-   * <p>
+   * <p/>
    * 2. If any RDN contains multiple attributeTypeAndValue pairs, re-order the Attribute ValuePairs in that RDN in
    * ascending order when compared as octet strings (described in ITU-T Rec. X.690 (1997 E) Section 11.6
    * "Set-of components").
-   * <p>
+   * <p/>
    * 3. Compare RDNs using the rules in IETF RFC 3280
    * "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile", Section
    * 4.1.2.4 "Issuer".
@@ -127,9 +131,9 @@ public enum EqualityPredicate implements F {
    * equal. Otherwise, it SHALL return “False”. An RFC822 name consists of a local-part followed by "@" followed by a
    * domain-part. The local-part is case-sensitive, while the domain-part (which is usually a DNS host name) is not
    * case-sensitive. Perform the following operations:
-   * <p>
+   * <p/>
    * 1. Normalize the domain-part of each argument to lower case
-   * <p>
+   * <p/>
    * 2. Compare the expressions by applying the function “urn:oasis:names:tc:xacml:1.0:function:string-equal” to the
    * normalized arguments.
    */
@@ -155,5 +159,16 @@ public enum EqualityPredicate implements F {
    */
   @BindUri("urn:oasis:names:tc:xacml:1.0:function:base64Binary-equal")
   base64Binary_equal,
+;
 
+  /**
+   * equality doesn't seem to require a whole lot of specialization
+   * @param objects
+   * @param <T>
+   * @return
+   */
+  @Override
+     public <T> T apply(Object... objects) {
+    return (T) (Boolean) objects[0].equals(objects[1]);
+  }
 }

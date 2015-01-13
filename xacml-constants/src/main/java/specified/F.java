@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public interface F
 {
 
-    default <T>T apply(Object... objects){throw new UnsupportedOperationException("function not implemented");};
+    default <T> T apply(Object... objects){throw new UnsupportedOperationException("function not implemented");};
     default <T>T apply(Stream objects){return apply(objects.toArray());};
     default <T>T apply(Collection objects){return apply(objects.toArray());};
 }
