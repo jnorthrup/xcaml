@@ -18,9 +18,9 @@
         </AnyOf>
     </Target>
 
-    <Policy PolicyId="urn:com:xacml:policy:id:team:View-user-motsid-whitelist-check" Version="1"
+    <Policy PolicyId="urn:com:xacml:policy:id:team:View-user-sysid-whitelist-check" Version="1"
             RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
-        <Description>If Request is asking whether user can view data from access-motsid, check the TEAM White List.
+        <Description>If Request is asking whether user can view data from access-sysid, check the TEAM White List.
         </Description>
         <Target>
             <AnyOf>
@@ -42,7 +42,7 @@
                         <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
                             <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Allow</AttributeValue>
                             <AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
-                                                 AttributeId="urn:com:company:team:xacml:subject:whitelist-motsid"
+                                                 AttributeId="urn:com:company:team:xacml:subject:whitelist-sysid"
                                                  DataType="http://www.w3.org/2001/XMLSchema#string"
                                                  MustBePresent="true"/>
                         </Match>
@@ -54,7 +54,7 @@
             <Description>DENY - Default SYSTEMS ID White List</Description>
             <Target/>
             <AdviceExpressions>
-                <AdviceExpression AdviceId="urn:com:company:team:xacml:advice:uid-motsid:message" AppliesTo="Deny">
+                <AdviceExpression AdviceId="urn:com:company:team:xacml:advice:uid-sysid:message" AppliesTo="Deny">
                     <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
                                                    Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
                         <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">You do not have permission to

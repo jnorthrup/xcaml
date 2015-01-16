@@ -15,7 +15,7 @@ public enum EqualityPredicate implements F {
    */
   @BindUri("urn:oasis:names:tc:xacml:1.0:function:string-equal")
   @BindXacmlFunctions(XacmlFunctionProto.urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__string_$2D_equal)
-  string_equal ,
+  string_equal,
   /**
    * This function SHALL take two arguments of data-type “http://www.w3.org/2001/XMLSchema#string” and SHALL return an
    * “http://www.w3.org/2001/XMLSchema#boolean”. The result SHALL be “True” if and only if the two strings are equal as
@@ -158,17 +158,17 @@ public enum EqualityPredicate implements F {
    * from the string representation to an octet sequence SHALL be as specified in [XS] Section 3.2.16.
    */
   @BindUri("urn:oasis:names:tc:xacml:1.0:function:base64Binary-equal")
-  base64Binary_equal,
-;
+  base64Binary_equal, ;
 
   /**
    * equality doesn't seem to require a whole lot of specialization
+   * 
    * @param objects
    * @param <T>
    * @return
    */
   @Override
-     public <T> T apply(Object... objects) {
+  public <T> T apply(Object... objects) {
     return (T) (Boolean) objects[0].equals(objects[1]);
   }
 }
