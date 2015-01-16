@@ -772,6 +772,9 @@ public enum XacmlFunctionProto implements F {
   /**
    * urn:oasis:names:tc:xacml:3.0:function:xpath-node-count
    */
+  @XacmlSignature(value = {
+      XacmlDataType.urn$3Aoasis$3Anames$3Atc$3Axacml$3A3$2E0$3Adata_$2D_type$3A__xpathExpression,
+      XacmlDataType.ContentType}, returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__integer)
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A_3$2E0_$3Afunction$3A__xpath_$2D_node_$2D_count,
   /**
    * urn:oasis:names:tc:xacml:3.0:function:xpath-node-equal
