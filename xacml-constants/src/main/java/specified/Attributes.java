@@ -7,16 +7,15 @@ import java.util.Map;
 import static java.util.Arrays.asList;
 
 public enum Attributes {
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aenvironment$3Acurrent_$2D_time,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aenvironment$3Acurrent_$2D_date,
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aenvironment$3Acurrent_$2D_dateTime,;
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aenvironment$3Acurrent_$2D_time, urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aenvironment$3Acurrent_$2D_date, urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Aenvironment$3Acurrent_$2D_dateTime, ;
   public final String token = URLDecoder.decode(name().replace("_", "").replace('$', '%'));
 
-  public static class Registry {
-    public static final Map<String, Enum> tokens = new LinkedHashMap<>();
+  static public Attributes from(String key) {
+    return Registrar.from(key, Attributes.class);
 
-    static {
-      asList(values()).stream().forEach(f -> tokens.put(f.token, f));
-    }
+  }
+
+  public String token() {
+    return Registrar.token(this);
   }
 }

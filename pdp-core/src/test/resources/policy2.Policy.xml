@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<PolicySet xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"     
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd"
+           PolicySetId="urn:com:xacml:policy:id:team:Organization-TEAM-permissions-tests" Version="4"
+           PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable">
+    <Description>Global Policy's for the Project/DLPR/Organization</Description>
+    <Target>
+        <AnyOf>
+            <AllOf>
+                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">team.4</AttributeValue>
+                    <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                         AttributeId="urn:com:company:it:pe:pe-service-name"
+                                         DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                </Match>
+            </AllOf>
+        </AnyOf>
+    </Target>
+
+    <Policy PolicyId="urn:com:xacml:policy:id:team:View-user-sysid-whitelist-check" Version="1"
+            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+        <Description>If Request is asking whether user can view data from access-sysid, check the TEAM White List.
+        </Description>
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">viewSYSTEMSID</AttributeValue>
+                        <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                             AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                             DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule RuleId="urn:com:xacml:rule:id:team:view-check-whitelist" Effect="Permit">
+            <Description>PERMIT - User is allowed to View the access SYSTEMS ID.</Description>
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Allow</AttributeValue>
+                            <AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                                 AttributeId="urn:com:company:team:xacml:subject:whitelist-sysid"
+                                                 DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                 MustBePresent="true"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule RuleId='urn:com:xacml:rule:id:team:ViewSYSTEMSID-denied' Effect="Deny">
+            <Description>DENY - Default SYSTEMS ID White List</Description>
+            <Target/>
+            <AdviceExpressions>
+                <AdviceExpression AdviceId="urn:com:company:team:xacml:advice:uid-sysid:message" AppliesTo="Deny">
+                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">You do not have permission to
+                            access data related to this SYSTEMS ID.
+                        </AttributeValue>
+                    </AttributeAssignmentExpression>
+                </AdviceExpression>
+            </AdviceExpressions>
+        </Rule>
+    </Policy>
+
+    <PolicySet PolicySetId="urn:com:xacml:policy:id:team:Feed-related-provisioning-Policies" Version="1"
+               PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:deny-overrides">
+        <Description>Feed-related Provisioning Policies.</Description>
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">create</AttributeValue>
+                        <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                             AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                             DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">modify</AttributeValue>
+                        <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                             AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                             DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">delete</AttributeValue>
+                        <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                             AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                             DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+
+        <Policy PolicyId="urn:com:xacml:policy:id:team:Must-Be-an-Employee" Version="1"
+                RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+            <Description>Must be an employee policy.</Description>
+            <Target/>
+            <Rule RuleId="urn:com:xacml:rule:id:team:You-Are-an-Employee" Effect="Permit">
+                <Description>PERMIT - You are an employee.</Description>
+                <Target>
+                    <AnyOf>
+                        <AllOf>
+                            <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">EMPLOYEE
+                                </AttributeValue>
+                                <AttributeDesignator
+                                        Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                        AttributeId="urn:com:company:xacml:subject:status"
+                                        DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                            </Match>
+                        </AllOf>
+                    </AnyOf>
+                </Target>
+            </Rule>
+            <Rule RuleId="urn:com:xacml:rule:id:team:Not-an-Employee" Effect="Deny">
+                <Description>DENY - Default</Description>
+                <Target/>
+                <AdviceExpressions>
+                    <AdviceExpression AdviceId="urn:com:company:xacml:advice:employeeonly" AppliesTo="Deny">
+                        <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                       Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">You must be an Company
+                                employee.
+                            </AttributeValue>
+                        </AttributeAssignmentExpression>
+                    </AdviceExpression>
+                </AdviceExpressions>
+            </Rule>
+        </Policy>
+        <PolicySet PolicySetId="urn:com:xacml:policy:id:team:Provisioning-Policies" Version="1"
+                   PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable">
+            <Description>Provisioning Policies.</Description>
+            <Target/>
+            <PolicySet PolicySetId="urn:com:xacml:policy:id:team:Publishing-Policies" Version="1"
+                       PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:deny-overrides">
+                <Description>Publishing Policies.</Description>
+                <Target>
+                    <AnyOf>
+                        <AllOf>
+                            <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">source</AttributeValue>
+                                <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                     AttributeId="urn:com:company:team:xacml:resource:provision"
+                                                     DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                     MustBePresent="true"/>
+                            </Match>
+                        </AllOf>
+                    </AnyOf>
+                </Target>
+                <Policy PolicyId="urn:com:xacml:policy:id:team:Publishers-must-own-or-admin-their-source"
+                        Version="1"
+                        RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                    <Description>Publishers must own or admin their source.</Description>
+                    <Target/>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Publish-owns-or-admins-the-data-source"
+                          Effect="Permit">
+                        <Description>PERMIT - owns or admins the data source</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                                AttributeId="urn:com:company:project:xacml:subject:admin"
+                                                DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                MustBePresent="false"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                    </Rule>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Publish-does-not-own-or-admin-source" Effect="Deny">
+                        <Description>DENY - default</Description>
+                        <Target/>
+                        <AdviceExpressions>
+                            <AdviceExpression AdviceId="urn:com:company:xacml:advice:mustown" AppliesTo="Deny">
+                                <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                               Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">You must own or
+                                        admin the data source.
+                                    </AttributeValue>
+                                </AttributeAssignmentExpression>
+                                <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:url"
+                                                               Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                        http://www.company.com
+                                    </AttributeValue>
+                                </AttributeAssignmentExpression>
+                            </AdviceExpression>
+                        </AdviceExpressions>
+                    </Rule>
+                </Policy>
+                <PolicySet PolicySetId="urn:com:xacml:policy:id:team:Publish-Create-Modify-Delete-source-policies"
+                           Version="1"
+                           PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable">
+                    <Description>Create/Modify/Delete Feed Policies.</Description>
+                    <Target>
+                        <AnyOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">create
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                                </Match>
+                            </AllOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">modify
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                                </Match>
+                            </AllOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">delete
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                                </Match>
+                            </AllOf>
+                        </AnyOf>
+                    </Target>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Publish-Unrestricted-source-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Unrestricted data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Internal Use Only)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Non-Sensitive
+                                            Customer Data
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-Unrestricted-source-Permit"
+                              Effect="Permit">
+                            <Description>PERMIT - Unrestricted sources</Description>
+                            <Target/>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Pubish-Secure-Restricted-source-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Secure Restricted data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Secure Restricted)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-Secure-Restricted-source-Deny"
+                              Effect="Deny">
+                            <Description>DENY - Secure Restricted sources should NOT go through the Project.
+                            </Description>
+                            <Target/>
+                            <AdviceExpressions>
+                                <AdviceExpression AdviceId="urn:com:company:division:xacml:advice:secure_restricted"
+                                                  AppliesTo="Deny">
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Secure Restricted) data should NOT go through the Project.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:url"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            http://dataprotection.division.company.com/Classification/SecureRestricted.html
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </AdviceExpression>
+                            </AdviceExpressions>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Publish-Restricted-source-classification"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Restricted data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Restricted)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-Restricted-source-Permit" Effect="Permit">
+                            <Description>PERMIT - The source IS encrypted.</Description>
+                            <Target>
+                                <AnyOf>
+                                    <AllOf>
+                                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                            </AttributeValue>
+                                            <AttributeDesignator
+                                                    Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                    AttributeId="urn:com:company:division:xacml:resource:encrypted"
+                                                    DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                    MustBePresent="false"/>
+                                        </Match>
+                                    </AllOf>
+                                </AnyOf>
+                            </Target>
+                            <ObligationExpressions>
+                                <ObligationExpression ObligationId="urn:com:company:division:xacml:obligation:ABC-001"
+                                                      FulfillOn="Permit">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:ABC-001:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d23372
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:ABC-001:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please oblige
+                                            to follow Company Company Policy regarding the encryption of transmitted
+                                            data.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </ObligationExpression>
+                            </ObligationExpressions>
+                        </Rule>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-Restricted-source-encryption"
+                              Effect="Permit">
+                            <Description>PERMIT - Restricted sources SHOULD be encrypted. If not, then must have
+                                documented approval.
+                            </Description>
+                            <Target/>
+                            <ObligationExpressions>
+                                <ObligationExpression
+                                        ObligationId="urn:com:company:division:xacml:obligation:ABC-001:exception"
+                                        FulfillOn="Permit">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:ABC-001:exception:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d23372
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:ABC-001:exception:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please oblige
+                                            that you have documented approval to transmit Restricted data unencrypted
+                                            and will provide such documentation upon audit.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </ObligationExpression>
+                            </ObligationExpressions>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Publish-Sensitive-source-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Sensitive data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Sensitive Personal Information)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Sensitive
+                                            Customer Data
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Customer Data
+                                            Through A Conduit
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-Sensitive-is-encrypted" Effect="Permit">
+                            <Description>PERMIT - The source IS encrypted.</Description>
+                            <Target>
+                                <AnyOf>
+                                    <AllOf>
+                                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                            </AttributeValue>
+                                            <AttributeDesignator
+                                                    Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                    AttributeId="urn:com:company:division:xacml:resource:encrypted"
+                                                    DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                    MustBePresent="false"/>
+                                        </Match>
+                                    </AllOf>
+                                </AnyOf>
+                            </Target>
+                            <ObligationExpressions>
+                                <ObligationExpression ObligationId="urn:com:company:division:xacml:obligation:ABC-001"
+                                                      FulfillOn="Permit">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:ABC-001:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3dfr3221%26Id%3d234234
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:ABC-001:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please oblige
+                                            to follow Company Company Policy regarding the encryption of transmitted
+                                            data.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </ObligationExpression>
+                            </ObligationExpressions>
+                        </Rule>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-Sensitive-must-be-encrypted"
+                              Effect="Deny">
+                            <Description>DENY - Sensitive sources MUST be encrypted.</Description>
+                            <Target/>
+                            <AdviceExpressions>
+                                <AdviceExpression AdviceId="urn:com:company:division:xacml:advice:ABC-001" AppliesTo="Deny">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:advice:ABC-001:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d23372
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:advice:ABC-001:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please follow
+                                            Company Company Policy regarding the encryption of transmitted data.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </AdviceExpression>
+                            </AdviceExpressions>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Publish-no-source-classification-given"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>No data source classification given.</Description>
+                        <Target/>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Publish-no-source-classification-deny"
+                              Effect="Deny">
+                            <Description>DENY - Default, must declare the ORG classification for the source.</Description>
+                            <Target/>
+                            <AdviceExpressions>
+                                <AdviceExpression AdviceId="urn:com:company:division:xacml:advice:mustclassify" AppliesTo="Deny">
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">All data
+                                            sources must be classified according to XYZP.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:url"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            http://dataprotection.division.company.com/default-new.html
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </AdviceExpression>
+                            </AdviceExpressions>
+                        </Rule>
+                    </Policy>
+                </PolicySet>
+            </PolicySet>
+            <PolicySet PolicySetId="urn:com:xacml:policy:id:Subscriber-Policies" Version="1"
+                       PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:deny-overrides">
+                <Description>Subscribing Policies.</Description>
+                <Target>
+                    <AnyOf>
+                        <AllOf>
+                            <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">subscription
+                                </AttributeValue>
+                                <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                     AttributeId="urn:com:company:team:xacml:resource:provision"
+                                                     DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                     MustBePresent="true"/>
+                            </Match>
+                        </AllOf>
+                    </AnyOf>
+                </Target>
+                <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-must-own-or-admin-subscription"
+                        Version="1"
+                        RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                    <Description>You must own or admin the subscription to modify or delete it.</Description>
+                    <Target>
+                        <AnyOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">modify
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                                </Match>
+                            </AllOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">delete
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                                </Match>
+                            </AllOf>
+                        </AnyOf>
+                    </Target>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-owns-or-admins" Effect="Permit">
+                        <Description>PERMIT - owns or admins the subscription.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                                AttributeId="urn:com:company:project:xacml:subject:admin"
+                                                DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                    </Rule>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-does-not-own-or-admin" Effect="Deny">
+                        <Description>DENY - default</Description>
+                        <Target/>
+                        <AdviceExpressions>
+                            <AdviceExpression AdviceId="urn:com:company:xacml:advice:mustown" AppliesTo="Deny">
+                                <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                               Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">You must own or
+                                        admin the subscription.
+                                    </AttributeValue>
+                                </AttributeAssignmentExpression>
+                                <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:url"
+                                                               Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                        http://www.company.com
+                                    </AttributeValue>
+                                </AttributeAssignmentExpression>
+                            </AdviceExpression>
+                        </AdviceExpressions>
+                    </Rule>
+                </Policy>
+                <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-must-be-publisher-if-private" Version="1"
+                        RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:deny-unless-permit">
+                    <Description>Subscriber MUST be the Publisher IF privacy=TRUE</Description>
+                    <Target/>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-source-is-not-private" Effect="Permit">
+                        <Description>PERMIT - Privacy=false</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">false
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:team:xacml:resource:private"
+                                                DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                MustBePresent="false"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                    </Rule>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-check-privacy-true-and-subscriber-is-publisher"
+                          Effect="Permit">
+                        <Description>PERMIT - Privacy=true and subscriber=publisher</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:team:xacml:resource:private"
+                                                DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                MustBePresent="false"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Condition>
+                            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-is-in">
+                                <Description>Subscriber must be the Publisher</Description>
+                                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                                    <Description>Should only be ONE ATTUID.</Description>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                                </Apply>
+                                <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                     AttributeId="urn:com:company:team:xacml:resource:publisher"
+                                                     DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                     MustBePresent="false"/>
+                            </Apply>
+                        </Condition>
+                    </Rule>
+                    <AdviceExpressions>
+                        <AdviceExpression AdviceId="urn:com:company:team:xacml:advice:private:message"
+                                          AppliesTo="Deny">
+                            <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                           Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">This source is
+                                    designated as private. You must ask the publisher to create a subscription for you.
+                                </AttributeValue>
+                            </AttributeAssignmentExpression>
+                        </AdviceExpression>
+                    </AdviceExpressions>
+                </Policy>
+                <PolicySet PolicySetId="urn:com:xacml:policy:id:team:Subscribe-creation-Policies" Version="1"
+                           PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable">
+                    <Description>Create Subscription Policies.</Description>
+                    <Target>
+                        <AnyOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">create
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                                </Match>
+                            </AllOf>
+                        </AnyOf>
+                    </Target>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-create-nrestricted-source-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Unrestricted data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Internal Use Only)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Non-Sensitive
+                                            Customer Data
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-unrestricted-permit"
+                              Effect="Permit">
+                            <Description>PERMIT - Unrestricted sources</Description>
+                            <Target/>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-create-Secure-Restricted-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Secure Restricted data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Secure Restricted)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-Secure-Restricted-Deny" Effect="Deny">
+                            <Description>DENY - Secure Restricted sources should NOT go through the Project.
+                            </Description>
+                            <Target/>
+                            <AdviceExpressions>
+                                <AdviceExpression AdviceId="urn:com:company:division:xacml:advice:secure_restricted"
+                                                  AppliesTo="Deny">
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Secure Restricted) data should NOT go through the Project.
+                                            This Data Feed should NOT have this classification.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:url"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            http://dataprotection.division.company.com/Classification/SecureRestricted.html
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:email"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            mailto:dplr@company.com
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </AdviceExpression>
+                            </AdviceExpressions>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-create-Restricted-source-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Restricted data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Restricted)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-Restricted-is-encrypted"
+                              Effect="Permit">
+                            <Description>PERMIT - The source IS encrypted.</Description>
+                            <Target>
+                                <AnyOf>
+                                    <AllOf>
+                                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                            </AttributeValue>
+                                            <AttributeDesignator
+                                                    Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                    AttributeId="urn:com:company:division:xacml:resource:encrypted"
+                                                    DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                    MustBePresent="true"/>
+                                        </Match>
+                                    </AllOf>
+                                </AnyOf>
+                            </Target>
+                            <ObligationExpressions>
+                                <ObligationExpression ObligationId="urn:com:company:division:xacml:obligation:XYZP-4213"
+                                                      FulfillOn="Permit">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:XYZP-4213:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d54321
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:XYZP-4213:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please oblige
+                                            to follow Company Company Policy regarding the encryption of data at rest.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </ObligationExpression>
+                            </ObligationExpressions>
+                        </Rule>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-Restricted-should-be-encrypted"
+                              Effect="Permit">
+                            <Description>PERMIT - Restricted sources SHOULD be encrypted. If not, then they must have
+                                documented approval.
+                            </Description>
+                            <Target/>
+                            <ObligationExpressions>
+                                <ObligationExpression
+                                        ObligationId="urn:com:company:division:xacml:obligation:XYZP-4213:exception"
+                                        FulfillOn="Permit">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:XYZP-4213:exception:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d54321
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:XYZP-4213:exception:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please oblige
+                                            that you have documented approval to store Restricted data unencrypted and
+                                            will provide such documentation upon audit.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </ObligationExpression>
+                            </ObligationExpressions>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-create-Sensitive-source-classifications"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>Sensitive data source classifications.</Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Company
+                                            Proprietary (Sensitive Personal Information)
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Sensitive
+                                            Customer Data
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Customer Data
+                                            Through A Conduit
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                AttributeId="urn:com:company:division:xacml:resource:classification"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-Sensitive-is-encrypted"
+                              Effect="Permit">
+                            <Description>PERMIT - The source IS encrypted.</Description>
+                            <Target>
+                                <AnyOf>
+                                    <AllOf>
+                                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+                                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true
+                                            </AttributeValue>
+                                            <AttributeDesignator
+                                                    Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                    AttributeId="urn:com:company:division:xacml:resource:encrypted"
+                                                    DataType="http://www.w3.org/2001/XMLSchema#boolean"
+                                                    MustBePresent="true"/>
+                                        </Match>
+                                    </AllOf>
+                                </AnyOf>
+                            </Target>
+                            <ObligationExpressions>
+                                <ObligationExpression ObligationId="urn:com:company:division:xacml:obligation:XYZP-4213"
+                                                      FulfillOn="Permit">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:XYZP-4213:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d54321
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:obligation:XYZP-4213:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please oblige
+                                            to follow Company Company Policy regarding the encryption of data at rest.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </ObligationExpression>
+                            </ObligationExpressions>
+                        </Rule>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-Sensitive-must-be-encrypted"
+                              Effect="Deny">
+                            <Description>DENY - Sensitive sources MUST be encrypted.</Description>
+                            <Target/>
+                            <AdviceExpressions>
+                                <AdviceExpression AdviceId="urn:com:company:division:xacml:advice:XYZP-4213" AppliesTo="Deny">
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:advice:XYZP-4213:url"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            https://fable.division.company.com/fable/default.aspx?requestUrl=..%2fcontent%2fview.aspx%3fPageID%3da1234%26Id%3d54321
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression
+                                            AttributeId="urn:com:company:division:xacml:advice:XYZP-4213:message"
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                            Issuer="Company ORG">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Please follow
+                                            Company Company Policy regarding the encryption of data at rest.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </AdviceExpression>
+                            </AdviceExpressions>
+                        </Rule>
+                    </Policy>
+                    <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-create-No-data-source-classification-given"
+                            Version="1"
+                            RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                        <Description>No data source classification given.</Description>
+                        <Target/>
+                        <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-No-data-source-classification-deny"
+                              Effect="Deny">
+                            <Description>DENY - Default, must declare the ORG classification for the source.</Description>
+                            <Target/>
+                            <AdviceExpressions>
+                                <AdviceExpression AdviceId="urn:com:company:division:xacml:advice:mustclassify" AppliesTo="Deny">
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:message"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">All data
+                                            sources must be classified according to XYZP.
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                    <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:advice:url"
+                                                                   Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#anyURI">
+                                            http://dataprotection.division.company.com/default-new.html
+                                        </AttributeValue>
+                                    </AttributeAssignmentExpression>
+                                </AdviceExpression>
+                            </AdviceExpressions>
+                        </Rule>
+                    </Policy>
+                </PolicySet>
+                <Policy PolicyId="urn:com:xacml:policy:id:team:Subscribe-create-White-List-Check-Policy"
+                        Version="1"
+                        RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:deny-unless-permit">
+                    <Description>If creating a subscription, check whitelist/blacklist.</Description>
+                    <Target>
+                        <AnyOf>
+                            <AllOf>
+                                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">create
+                                    </AttributeValue>
+                                    <AttributeDesignator
+                                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+                                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+                                            DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                                </Match>
+                            </AllOf>
+                        </AnyOf>
+                    </Target>
+                    <Rule RuleId="urn:com:xacml:rule:id:team:Subscribe-create-White-List-Permit-Rule"
+                          Effect="Permit">
+                        <Description>PERMIT - Subscriber has access to the source OR the source allows access to everyone. *
+                            is the entry.
+                        </Description>
+                        <Target>
+                            <AnyOf>
+                                <AllOf>
+                                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">Allow
+                                        </AttributeValue>
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                                AttributeId="urn:com:company:team:xacml:subject:whitelist"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="true"/>
+                                    </Match>
+                                </AllOf>
+                            </AnyOf>
+                        </Target>
+                    </Rule>
+                    <ObligationExpressions>
+                        <ObligationExpression ObligationId="urn:com:company:project:team:subscriber:access"
+                                              FulfillOn="Deny">
+                            <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:obligation:message">
+                                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">You must request
+                                    access to subscribe to this source.
+                                </AttributeValue>
+                            </AttributeAssignmentExpression>
+                            <AttributeAssignmentExpression AttributeId="urn:com:company:xacml:obligation:email">
+                                <Apply FunctionId="urn:oasis:names:tc:xacml:2.0:function:string-concatenate">
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">
+                                        mailto://g27477@company.com?subject=Feed%20Access%20Request&amp;body=http://zzz.vvv.company.com:9080/TeamPipAdmin/CreateObsForm%3FsysUid%3D
+                                    </AttributeValue>
+                                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+                                        <AttributeDesignator
+                                                Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+                                                AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+                                                DataType="http://www.w3.org/2001/XMLSchema#string"
+                                                MustBePresent="false"/>
+                                    </Apply>
+                                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">%26sourceId%3D
+                                    </AttributeValue>
+                                    <Apply FunctionId="urn:oasis:names:tc:xacml:3.0:function:string-from-integer">
+                                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+                                            <AttributeDesignator
+                                                    Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+                                                    AttributeId="urn:com:company:team:xacml:resource:sourceid"
+                                                    DataType="http://www.w3.org/2001/XMLSchema#integer"
+                                                    MustBePresent="false"/>
+                                        </Apply>
+                                    </Apply>
+                                </Apply>
+                            </AttributeAssignmentExpression>
+                        </ObligationExpression>
+                    </ObligationExpressions>
+                </Policy>
+            </PolicySet>
+            <Policy PolicyId="urn:com:xacml:policy:id:team:Default-Deny-Policy" Version="1"
+                    RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+                <Description>DENY - Default</Description>
+                <Target/>
+                <Rule RuleId="urn:com:xacml:rule:id:team:Default-Deny-Rule" Effect="Deny">
+                    <Description>DENY - Default</Description>
+                    <Target/>
+                </Rule>
+            </Policy>
+        </PolicySet>
+    </PolicySet>
+
+
+</PolicySet>

@@ -113,10 +113,11 @@ public enum RegexOp implements specified.F {
    */
   @BindUri("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match")
   rfc822Name_match {
+
     @Override
-    public <R> R apply(Object... p) {
+    public <T> T apply(Object... p) {
       Rfc822NameMatchInput unmarshal = new Rfc822NameMatchInput(p).invoke();
-      return (R) (Boolean) rfc822NameMatch(unmarshal);
+      return (T) (Boolean) rfc822NameMatch(unmarshal);
     }
 
     private boolean rfc822NameMatch(Rfc822NameMatchInput matchInput) {

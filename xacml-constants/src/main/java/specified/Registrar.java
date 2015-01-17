@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Created by jim on 11/25/14.
+ * a utility class to provide registries of uri mappings to xacml constant enums that use url/dollarsign encoded names.
  */
-public class Xacml3 {
+public class Registrar {
   static Map<Class<Enum<?>>, Map<String, Enum>> tokens = new LinkedHashMap<>();
 
   public static <T extends Enum<T>, C extends Class<T>> T from(String key, C c) {

@@ -53,7 +53,8 @@ public class PolicyTest extends CamelTestSupport {
     RequestType requestBody;
     Exchange requestExchange = ((MockEndpoint) mockRequestSource).assertExchangeReceived(0);
     requestBody = requestExchange.getIn().getBody(RequestType.class);
-    XacmlEvaluation resolution = new PdpTx(policy).evaluatePolicyAndRequest(requestBody);
+    PdpTx pdpTx = new PdpTx(policy);
+    XacmlEvaluation resolution = pdpTx.evaluatePolicyAndRequest(requestBody);
     System.err.println("insert resolution endpoint here: " + resolution);
     // template.sendBody(RESOLUTION_SINK, resolution);
 

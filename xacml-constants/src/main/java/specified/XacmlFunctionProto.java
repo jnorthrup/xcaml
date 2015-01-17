@@ -10,18 +10,30 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * urlencoded urn's to conform to java symbol names. cannot be shortened without some version number guessing. no point,
- * java uses hash lookups for switch/enum things.
+ * {@link specified.XacmlFunctionProto} enum elements compose a .h file, where {@link specified.impl} package provides
+ * .cxx for the runtime to bind functions to those function prototypes.
+ * <p/>
+ * the first time a {@link specified.XacmlFunctionProto} is called and executes
+ * {@link specified.XacmlFunctionProto#apply}, the registration of that element iterates this package for the first
+ * matching {@link specified.BindXacmlFunctions} or {@link specified.BindUri} element to provide apply().
+ * <p/>
+ * if for whatever reason it makes sense, apply() can be overridden inline below to circumvent the map lookup.
  */
-public enum XacmlFunction implements F {
+public enum XacmlFunctionProto implements F {
 
   /**
    * urn:oasis:names:tc:xacml:1.0:function:string-equal
    */
+  @XacmlSignature(value = {
+      XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string,
+      XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string,}, returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean)
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__string_$2D_equal,
   /**
    * urn:oasis:names:tc:xacml:1.0:function:boolean-equal
    */
+  @XacmlSignature(value = {
+      XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean,
+      XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean}, returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean)
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__boolean_$2D_equal,
   /**
    * urn:oasis:names:tc:xacml:1.0:function:integer-equal
@@ -709,22 +721,22 @@ public enum XacmlFunction implements F {
    * “urn:oasis:names:tc:xacml:1.0:data-type:rfc822Name” and SHALL return an “http://www.w3.org/2001/XMLSchema#boolean”.
    * This function SHALL evaluate to "True" if the first argument matches the second argument according to the following
    * specification.
-   * <p>
+   * <p/>
    * An RFC822 name consists of a local-part followed by "@" followed by a domain-part. The local-part is
    * case-sensitive, while the domain-part (which is usually a DNS name) is not case-sensitive.
-   * <p>
+   * <p/>
    * The second argument contains a complete rfc822Name. The first argument is a complete or partial rfc822Name used to
    * select appropriate values in the second argument as follows.
-   * <p>
+   * <p/>
    * In order to match a particular address in the second argument, the first argument must specify the complete mail
    * address to be matched. For example, if the first argument is “Anderson@sun.com”, this matches a value in the second
    * argument of “Anderson@sun.com” and “Anderson@SUN.COM”, but not “Anne.Anderson@sun.com”, “anderson@sun.com” or
    * “Anderson@east.sun.com”.
-   * <p>
+   * <p/>
    * In order to match any address at a particular domain in the second argument, the first argument must specify only a
    * domain name (usually a DNS name). For example, if the first argument is “sun.com”, this matches a value in the
    * first argument of “Anderson@sun.com” or “Baxter@SUN.COM”, but not “Anderson@east.sun.com”.
-   * <p>
+   * <p/>
    * In order to match any address in a particular domain in the second argument, the first argument must specify the
    * desired domain-part with a leading ".". For example, if the first argument is “.east.sun.com”, this matches a value
    * in the second argument of "Anderson@east.sun.com" and "anne.anderson@ISRG.EAST.SUN.COM" but not "Anderson@sun.com".
@@ -1058,19 +1070,19 @@ public enum XacmlFunction implements F {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A_3$2E0_$3Afunction$3A__access_$2D_permitted;
   public static final F NOT_IMPLEMENTED = new F() {
   };
-  static private Map<XacmlFunction, F> delegates = new EnumMap<XacmlFunction, F>(
-      XacmlFunction.class);
+  static private Map<XacmlFunctionProto, F> delegates = new EnumMap<XacmlFunctionProto, F>(
+      XacmlFunctionProto.class);
 
   final public <T> boolean predicate(T... p) {
     return (boolean) apply(p);
   }
 
-  static public XacmlFunction from(String key) {
-    return Xacml3.from(key, XacmlFunction.class);
+  static public XacmlFunctionProto from(String key) {
+    return Registrar.from(key, XacmlFunctionProto.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 
   public XacmlDataType returns;
@@ -1127,11 +1139,19 @@ public enum XacmlFunction implements F {
         return (T) xacmlFunction2.apply(objects);
     }
 
-  private boolean validateCallParms(XacmlFunction xacmlFunction, Object... objects) {
+  /**
+   * cross reference the {@link #parms} in this prototype against the runtime parameters passed in via objects
+   * 
+   * @param xacmlFunctionProto
+   * @param objects
+   * @return todo: true if the right objects are passed in
+   */
+  private boolean validateCallParms(XacmlFunctionProto xacmlFunctionProto, Object... objects) {
+
     return true;// todo: real validation that's in the unit tests presently
   }
 
-  XacmlFunction() {
+  XacmlFunctionProto() {
     parms =
         new XacmlDataType[] {XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string};
     returns = XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__boolean;

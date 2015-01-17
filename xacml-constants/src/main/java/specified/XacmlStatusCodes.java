@@ -19,10 +19,10 @@ public enum XacmlStatusCodes {
   urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Astatus$3A__processing_$2D_error;
 
   static public XacmlStatusCodes from(String key) {
-    return Xacml3.from(key, XacmlStatusCodes.class);
+    return Registrar.from(key, XacmlStatusCodes.class);
   }
 
   public String token() {
-    return Xacml3.token(this);
+    return Registrar.token(this);
   }
 }

@@ -47,7 +47,7 @@ public class PdpTx {
 
             target1.getAnyOf().forEach(anyOfType -> anyOfType.getAllOf().forEach(allOfType -> allOfType.getMatch().forEach(action -> {
                 String matchId = action.getMatchId();
-                XacmlFunction func = XacmlFunction.from(matchId);
+                XacmlFunctionProto func = XacmlFunctionProto.from(matchId);
                 assert func.returns == XacmlDataType.from("http://www.w3.org/2001/XMLSchema#boolean") : "we only support predicate operation in this test";//todo: impl
                 System.err.println("eval match: " + matchId);
                 AttributeDesignatorType attributeDesignator = action.getAttributeDesignator();
@@ -99,7 +99,7 @@ public class PdpTx {
                         send.add(o1);
                     });
                     matchTypeAttributeDesignatorTypePair.attributeDesignatorType();
-                    XacmlFunction func = XacmlFunction.from(action.getMatchId());
+                    XacmlFunctionProto func = XacmlFunctionProto.from(action.getMatchId());
                     reqAtt.getAttributeValue().forEach(attributeValueType -> {
 
                         attributeValueType.getContent().forEach(v -> {
