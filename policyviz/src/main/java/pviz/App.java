@@ -3,8 +3,7 @@ package pviz;
 import de.martin_loetzsch.dotml.ClusterOrGraph;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicyType;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.w3c.dom.Document;
+ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
@@ -49,7 +48,7 @@ public class App {
         JAXBElement<PolicyType> e = (JAXBElement) unmarshaller.unmarshal(doc, PolicyType.class);
         PolicyType value = e.getValue();
 
-        System.err.println("r: " + new ReflectionToStringBuilder(value).toString());
+        System.err.println("PolicySet: " + (value).toString());
         break;
       default:
         break;
