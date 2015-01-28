@@ -4,7 +4,7 @@
            xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd"
            PolicySetId="urn:com:xacml:policy:id:team:Organization-TEAM-permissions-tests" Version="4"
            PolicyCombiningAlgId="urn:oasis:names:tc:xacml:1.0:policy-combining-algorithm:first-applicable">
-    <Description>Global Policy's for the Project/DLPR/Organization</Description>
+    <Description>Global Policy's for the Project/Division/Organization</Description>
     <Target>
         <AnyOf>
             <AllOf>

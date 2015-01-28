@@ -1,8 +1,26 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
+    <dependencies>
+        <dependency>
+        <groupId>org.apache.cxf.xjc-utils</groupId>
+        <artifactId>cxf-xjc-runtime</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+
+    </dependencies>
     <parent>
         <groupId>xcaml</groupId>
         <artifactId>xcaml</artifactId>
@@ -17,37 +35,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <build>
-        <plugins>
 
-            <!--
-            <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>jaxb2-maven-plugin</artifactId>
-            <version>1.6</version>
-            <configuration>
-
-
-            <packageName>oasis.names.tc.xacml._3_0.core.schema.wd_17</packageName>
-            &lt;!&ndash; The name of your generated source package &ndash;&gt;
-            <enableIntrospection>true</enableIntrospection>
-            <arguments>
-            -verbose
-            </arguments>
-            </configuration>
-            <executions>
-            <execution>
-            <id>xjc</id>
-            <goals>
-            <goal>xjc</goal>
-            </goals>
-            </execution>
-            </executions>
-            </plugin>
-            -->
-        </plugins>
-
-    </build>
     <profiles>
         <profile>
             <id>jaxbgen</id>
@@ -86,14 +74,17 @@
                             <outputFile/>
                         </configuration>
                     </plugin>
+<!--
                     <plugin>
                         <groupId>org.apache.cxf</groupId>
                         <artifactId>cxf-xjc-plugin</artifactId>
-                        <version>3.0.2</version>
+                        <version>3.0.3</version>
                         <configuration>
                             <extensions>
                                 <extension>net.java.dev.jaxb2-commons:jaxb-fluent-api:2.1.8</extension>
+                                <extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:3.0.3</extension>
                             </extensions>
+
                         </configuration>
                         <executions>
                             <execution>
@@ -103,25 +94,135 @@
                                     <goal>xsdtojava</goal>
                                 </goals>
                                 <configuration>
-                                    <!--<sourceRoot>${build.directory}/generated-sources</sourceRoot>-->
-                                    <!--ussually generated artifacts are bad for projects so its cleaner to generate them when-->
-                                    <!--needed.  current AT&T firewall breaks xjc under ubuntu to it's being put in a profile and the sources are being stored-->
+                                    &lt;!&ndash;<sourceRoot>${build.directory}/generated-sources</sourceRoot>&ndash;&gt;
+                                    &lt;!&ndash;ussually generated artifacts are bad for projects so its cleaner to generate them when&ndash;&gt;
+                                    &lt;!&ndash;needed.  current AT&T firewall breaks xjc under ubuntu to it's being put in a profile and the sources are being stored&ndash;&gt;
                                     <sourceRoot>${cxf-xjc-plugin.sourceRoot}</sourceRoot>
                                     <xsdOptions>
                                         <xsdOption>
+                                            <extension>true</extension>
                                             <xsd>${basedir}/src/main/xsd/xacml-core-v3-schema-wd-17.xsd</xsd>
                                             <packagename>oasis.names.tc.xacml._3_0.core.schema.wd_17</packagename>
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
+                                            </extensionArgs>
+                                        </xsdOption>
+                                        <xsdOption>
+                                            <extension>true</extension>
+                                            <xsd>${basedir}/src/main/xsd/dotml-1.4.xsd</xsd>
+                                            <extensionArgs>
+                                                <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
                                         </xsdOption>
                                     </xsdOptions>
+                                    &lt;!&ndash;<extensions>         &ndash;&gt;
+                                    &lt;!&ndash;<extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:2.3.0</extension>&ndash;&gt;
+                                    &lt;!&ndash;</extensions>&ndash;&gt;
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
+-->
+                    <plugin>
+                        <groupId>org.jvnet.jaxb2.maven2</groupId>
+                        <artifactId>maven-jaxb22-plugin</artifactId>
+                        <version>0.12.3</version>
+                        <executions>
+                            <execution>
+                                <id>xsd-generate-2.2</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                                <configuration>
+
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <schemaIncludes>
+                                <schemaInclude>**/*.xsd</schemaInclude>
+                            </schemaIncludes>
+
+                            <strict>true</strict>
+                            <verbose>true</verbose>
+                            <extension>true</extension>
+                            <removeOldOutput>true</removeOldOutput>
+                            <generateDirectory>src/main/java</generateDirectory>
+                            <args>
+
+                                <arg>-Xgroup-contract</arg>
+                                <arg>-Xfluent-builder</arg>
+                                <arg>-XvsEqualsHashCode</arg>
+                                <arg>-XvsToString</arg>
+                                <arg>-Xclone</arg>
+                                <arg>-Ximmutable</arg>
+                                <!--<arg>-Xannotate</arg>-->
+                                <!--<arg>-XvsSetter</arg>-->
+                                <!--<arg>-XvsSerializable</arg>-->
+                                <!--breaks us
+                                <arg>-Xconstrained-properties</arg>-->
+                            </args>
+                            <plugins>
+                                <plugin>
+                                    <groupId>com.kscs.util</groupId>
+                                    <artifactId>jaxb2-rich-contract-plugin</artifactId>
+                                    <version>1.3.1-SNAPSHOT</version>
+                                </plugin>
+                                <plugin>
+                                <groupId>org.jvnet.jaxb2_commons</groupId>
+                                <artifactId>jaxb2-basics-annotate</artifactId>
+                                <version>1.0.1</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>org.jvnet.jaxb2_commons</groupId>
+                                    <artifactId>jaxb2-annotate-plugin-test-annox-annotations</artifactId>
+                                    <version>1.0.0</version>
+                                </plugin>
+                                <plugin>
+                                    <groupId>com.github.vsspt</groupId>
+                                    <artifactId>jaxb-ri-xjc</artifactId>
+                                    <version>1.1.1</version>
+                                </plugin>
+                            </plugins>
+                            <dependencies>
+                                <!--<dependency>-->
+                                    <!--<groupId>com.github.danielwegener.xjc</groupId>-->
+                                    <!--<artifactId>xjc-guava-plugin</artifactId>-->
+                                    <!--<version>0.3.1</version>-->
+                                <!--</dependency>-->
+                                <!-- Put this in if your default JAXB version is 2.1 or lower,
+                                or if &quot;tools.jar&quot; isn't in your classpath -->
+                             <!--   <dependency>
+                                    <groupId>com.sun.xml.bind</groupId>
+                                    <artifactId>jaxb-xjc</artifactId>
+                                    <version>2.2.7</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>com.sun.xml.bind</groupId>
+                                    <artifactId>jaxb-impl</artifactId>
+                                    <version>2.2.7</version>
+                                </dependency>-->
+                            </dependencies>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
+            <pluginRepositories>
+            <pluginRepository>
+                <releases>
+                    <enabled>false</enabled>
+                    <updatePolicy>always</updatePolicy>
+                    <checksumPolicy>warn</checksumPolicy>
+                </releases>
+                <id>jaxb2-plugins</id>
+                <name>JAXB2 XJC Plugin Repository</name>
+                <url>http://maven.klemm-scs.com/release</url>
+                <layout>default</layout>
+            </pluginRepository>
+            </pluginRepositories>
         </profile>
     </profiles>
 </project>
