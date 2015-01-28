@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>model
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright OASIS Open 2010. All Rights Reserved. -->
 <xs:schema xmlns:xacml="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
