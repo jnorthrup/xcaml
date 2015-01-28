@@ -1,4 +1,4 @@
-package xcaml;
+package xcaml.pdp;
 
 import com.google.auto.factory.AutoFactory;
 import com.google.auto.factory.Provided;
@@ -81,7 +81,6 @@ public class PdpTx {
         Multiset<XacmlEvaluation> resolutionBag= HashMultiset.create();
         requestBody.getAttributes().stream().forEach(attributesType -> {
             String category = attributesType.getCategory();
-
             attributesType.getAttribute().forEach(reqAtt -> {
                 String attributeId = reqAtt.getAttributeId();
                 List<String> key = Arrays.asList(category, attributeId);

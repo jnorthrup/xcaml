@@ -13,6 +13,7 @@ import org.apache.camel.model.dataformat.JaxbDataFormat;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 import specified.XacmlEvaluation;
+import xcaml.pdp.PdpTx;
 
 import java.io.InputStream;
 
