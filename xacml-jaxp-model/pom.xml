@@ -1,14 +1,22 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <dependencies>
+
+
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
+        <groupId>org.apache.cxf.xjc-utils</groupId>
+        <artifactId>cxf-xjc-runtime</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
         </dependency>
+
     </dependencies>
     <parent>
         <groupId>xcaml</groupId>
@@ -96,11 +104,13 @@
                     <plugin>
                         <groupId>org.apache.cxf</groupId>
                         <artifactId>cxf-xjc-plugin</artifactId>
-                        <version>3.0.2</version>
+                        <version>3.0.3</version>
                         <configuration>
                             <extensions>
                                 <extension>net.java.dev.jaxb2-commons:jaxb-fluent-api:2.1.8</extension>
+                                <extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:3.0.3</extension>
                             </extensions>
+
                         </configuration>
                         <executions>
                             <execution>
@@ -116,19 +126,26 @@
                                     <sourceRoot>${cxf-xjc-plugin.sourceRoot}</sourceRoot>
                                     <xsdOptions>
                                         <xsdOption>
+                                            <extension>true</extension>
                                             <xsd>${basedir}/src/main/xsd/xacml-core-v3-schema-wd-17.xsd</xsd>
                                             <packagename>oasis.names.tc.xacml._3_0.core.schema.wd_17</packagename>
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
-                                        </xsdOption>                                        <xsdOption>
+                                        </xsdOption>
+                                        <xsdOption>
+                                            <extension>true</extension>
                                             <xsd>${basedir}/src/main/xsd/dotml-1.4.xsd</xsd>
-                                            <!--<packagename>oasis.names.tc.xacml._3_0.core.schema.wd_17</packagename>-->
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
                                         </xsdOption>
                                     </xsdOptions>
+                                    <!--<extensions>         -->
+                                    <!--<extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:2.3.0</extension>-->
+                                    <!--</extensions>-->
                                 </configuration>
                             </execution>
                         </executions>

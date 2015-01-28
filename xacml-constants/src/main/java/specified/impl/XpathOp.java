@@ -43,8 +43,8 @@ public enum XpathOp implements specified.F {
 
           try {
             builder = factory.newDocumentBuilder();
-            return (T) expr.evaluate(builder
-                .parse(new StringBufferInputStream((String) o)), XPathConstants.NUMBER);
+            return (T) expr.evaluate(builder.parse(new StringBufferInputStream((String) o)),
+                XPathConstants.NUMBER);
           } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
           }

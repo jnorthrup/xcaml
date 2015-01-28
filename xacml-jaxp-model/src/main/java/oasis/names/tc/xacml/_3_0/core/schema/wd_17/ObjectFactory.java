@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2014.10.31 at 09:47:06 AM PDT
+// Generated on: 2015.01.27 at 09:43:07 PM PST
 //
 
 package oasis.names.tc.xacml._3_0.core.schema.wd_17;
@@ -530,7 +530,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link TargetType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link TargetType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Target")
@@ -539,7 +539,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AttributeDesignator", substitutionHeadNamespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", substitutionHeadName = "Expression")
@@ -550,7 +550,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link FunctionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link FunctionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Function", substitutionHeadNamespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", substitutionHeadName = "Expression")
@@ -559,7 +559,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ObligationExpressionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ObligationExpressionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "ObligationExpression")
@@ -570,7 +570,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeAssignmentExpressionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributeAssignmentExpressionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AttributeAssignmentExpression")
@@ -581,7 +581,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributeType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Attribute")
@@ -590,7 +590,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicySetCombinerParametersType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link PolicySetCombinerParametersType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicySetCombinerParameters")
@@ -601,7 +601,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link String }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Description")
@@ -610,7 +610,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicyCombinerParametersType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link PolicyCombinerParametersType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicyCombinerParameters")
@@ -621,7 +621,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link DefaultsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link DefaultsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicySetDefaults")
@@ -630,7 +630,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicySetType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link PolicySetType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicySet")
@@ -639,7 +639,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link MatchType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link MatchType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Match")
@@ -648,7 +648,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link CombinerParameterType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link CombinerParameterType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "CombinerParameter")
@@ -658,7 +658,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ExpressionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ExpressionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Expression")
@@ -667,7 +667,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AssociatedAdviceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AssociatedAdviceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AssociatedAdvice")
@@ -677,7 +677,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ResponseType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResponseType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Response")
@@ -686,7 +686,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AllOfType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AllOfType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AllOf")
@@ -695,7 +695,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link String }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "XPathVersion")
@@ -704,7 +704,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AdviceExpressionsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AdviceExpressionsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AdviceExpressions")
@@ -714,7 +714,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "VariableReference", substitutionHeadNamespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", substitutionHeadName = "Expression")
@@ -724,7 +724,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link RequestReferenceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link RequestReferenceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "RequestReference")
@@ -734,7 +734,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ConditionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ConditionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Condition")
@@ -743,7 +743,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link DecisionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link DecisionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Decision")
@@ -752,7 +752,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link String }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "StatusMessage")
@@ -761,7 +761,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link RequestType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link RequestType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Request")
@@ -770,7 +770,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicyIssuerType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link PolicyIssuerType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicyIssuer")
@@ -780,7 +780,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link RuleCombinerParametersType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link RuleCombinerParametersType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "RuleCombinerParameters")
@@ -791,7 +791,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link DefaultsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link DefaultsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicyDefaults")
@@ -800,7 +800,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ApplyType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ApplyType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Apply", substitutionHeadNamespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", substitutionHeadName = "Expression")
@@ -809,7 +809,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ObligationType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ObligationType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Obligation")
@@ -818,7 +818,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AnyOfType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AnyOfType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AnyOf")
@@ -827,7 +827,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link VariableDefinitionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "VariableDefinition")
@@ -837,7 +837,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeValueType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AttributeValue", substitutionHeadNamespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", substitutionHeadName = "Expression")
@@ -847,7 +847,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributesReferenceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributesReferenceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AttributesReference")
@@ -858,7 +858,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicyType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link PolicyType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Policy")
@@ -867,7 +867,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ResultType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResultType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Result")
@@ -876,7 +876,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link StatusCodeType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link StatusCodeType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "StatusCode")
@@ -885,7 +885,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicyIdentifierListType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link PolicyIdentifierListType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicyIdentifierList")
@@ -896,7 +896,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link IdReferenceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link IdReferenceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicyIdReference")
@@ -906,7 +906,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributesType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributesType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Attributes")
@@ -915,7 +915,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ContentType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ContentType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Content")
@@ -924,7 +924,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link CombinerParametersType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link CombinerParametersType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "CombinerParameters")
@@ -934,7 +934,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link IdReferenceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link IdReferenceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "PolicySetIdReference")
@@ -944,7 +944,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link StatusDetailType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link StatusDetailType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "StatusDetail")
@@ -954,7 +954,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ObligationsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ObligationsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Obligations")
@@ -963,7 +963,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AdviceType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AdviceType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Advice")
@@ -972,7 +972,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link RuleType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link RuleType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Rule")
@@ -981,7 +981,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link ObligationExpressionsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link ObligationExpressionsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "ObligationExpressions")
@@ -992,7 +992,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AdviceExpressionType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AdviceExpressionType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AdviceExpression")
@@ -1002,7 +1002,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link MissingAttributeDetailType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link MissingAttributeDetailType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "MissingAttributeDetail")
@@ -1013,7 +1013,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link StatusType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link StatusType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "Status")
@@ -1022,7 +1022,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeAssignmentType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributeAssignmentType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AttributeAssignment")
@@ -1033,7 +1033,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeSelectorType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttributeSelectorType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "AttributeSelector", substitutionHeadNamespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", substitutionHeadName = "Expression")
@@ -1043,7 +1043,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link RequestDefaultsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link RequestDefaultsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "RequestDefaults")
@@ -1053,7 +1053,7 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link javax.xml.bind.JAXBElement }{@code <}{@link MultiRequestsType }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link MultiRequestsType }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", name = "MultiRequests")

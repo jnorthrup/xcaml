@@ -26,23 +26,33 @@ import java.nio.file.Paths;
 
 /**
  * Hello world!
- *
+ * 
  */
-public class App 
-{
+public class App {
 
-    public static void main( String[] args ) throws JAXBException, ParserConfigurationException, IOException, SAXException {
-        JAXBContext jc=JAXBContext.newInstance(ObjectFactory.class.getPackage().getName());
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance( );
-        documentBuilderFactory.setNamespaceAware(true);
-        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document doc = documentBuilder.parse(Paths.get(args[0]).toUri().toASCIIString());
-        Unmarshaller unmarshaller = jc.createUnmarshaller();
-        Element documentElement = doc.getDocumentElement();
-        JAXBElement <PolicyType>e= (JAXBElement) unmarshaller.unmarshal(doc, PolicyType.class);
+  public static void main(String[] args) throws JAXBException, ParserConfigurationException,
+      IOException, SAXException {
+    JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class.getPackage().getName());
+    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+    documentBuilderFactory.setNamespaceAware(true);
+    DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+    Document doc = documentBuilder.parse(Paths.get(args[0]).toUri().toASCIIString());
+    Unmarshaller unmarshaller = jc.createUnmarshaller();
+    Element documentElement = doc.getDocumentElement();
+
+    String tagName = documentElement.getTagName();
+
+    System.err.println("" + tagName);
+
+    switch (tagName) {
+      case "PolicySet":
+        JAXBElement<PolicyType> e = (JAXBElement) unmarshaller.unmarshal(doc, PolicyType.class);
         PolicyType value = e.getValue();
 
-
-        System.err.println("r: "+new ReflectionToStringBuilder(value).toString());
+        System.err.println("r: " + new ReflectionToStringBuilder(value).toString());
+        break;
+      default:
+        break;
     }
+  }
 }

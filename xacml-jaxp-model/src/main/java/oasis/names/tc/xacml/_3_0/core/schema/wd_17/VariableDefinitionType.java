@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2014.10.31 at 09:47:06 AM PDT
+// Generated on: 2015.01.27 at 09:43:07 PM PST
 //
 
 package oasis.names.tc.xacml._3_0.core.schema.wd_17;
@@ -14,6 +14,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlType;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 
 /**
  * <p>
@@ -49,12 +51,11 @@ public class VariableDefinitionType {
   /**
    * Gets the value of the expression property.
    * 
-   * @return possible object is {@link javax.xml.bind.JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
-   *         {@link javax.xml.bind.JAXBElement }{@code <}{@link FunctionType }{@code >} {@link javax.xml.bind.JAXBElement }
-   *         {@code <}{@link AttributeValueType }{@code >} {@link javax.xml.bind.JAXBElement }{@code <}
-   *         {@link AttributeSelectorType }{@code >} {@link javax.xml.bind.JAXBElement }{@code <}{@link ExpressionType }
-   *         {@code >} {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >}
-   *         {@link javax.xml.bind.JAXBElement }{@code <}{@link ApplyType }{@code >}
+   * @return possible object is {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >} {@link JAXBElement }
+   *         {@code <}{@link ApplyType }{@code >} {@link JAXBElement }{@code <}{@link AttributeSelectorType }{@code >}
+   *         {@link JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >} {@link JAXBElement }{@code <}
+   *         {@link FunctionType }{@code >} {@link JAXBElement }{@code <}{@link ExpressionType }{@code >}
+   *         {@link JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
    * 
    */
   public JAXBElement<?> getExpression() {
@@ -64,13 +65,11 @@ public class VariableDefinitionType {
   /**
    * Sets the value of the expression property.
    * 
-   * @param value allowed object is {@link javax.xml.bind.JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
-   *          {@link javax.xml.bind.JAXBElement }{@code <}{@link FunctionType }{@code >}
-   *          {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeValueType }{@code >}
-   *          {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeSelectorType }{@code >}
-   *          {@link javax.xml.bind.JAXBElement }{@code <}{@link ExpressionType }{@code >}
-   *          {@link javax.xml.bind.JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >}
-   *          {@link javax.xml.bind.JAXBElement }{@code <}{@link ApplyType }{@code >}
+   * @param value allowed object is {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >} {@link JAXBElement }
+   *          {@code <}{@link ApplyType }{@code >} {@link JAXBElement }{@code <}{@link AttributeSelectorType }{@code >}
+   *          {@link JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >} {@link JAXBElement }{@code <}
+   *          {@link FunctionType }{@code >} {@link JAXBElement }{@code <}{@link ExpressionType }{@code >}
+   *          {@link JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
    * 
    */
   public void setExpression(JAXBElement<?> value) {
@@ -105,6 +104,16 @@ public class VariableDefinitionType {
   public VariableDefinitionType withVariableId(String value) {
     setVariableId(value);
     return this;
+  }
+
+  /**
+   * Generates a String representation of the contents of this type. This is an extension method, produced by the 'ts'
+   * xjc plugin
+   * 
+   */
+  @Override
+  public String toString() {
+    return ToStringBuilder.reflectionToString(this, JAXBToStringStyle.DEFAULT_STYLE);
   }
 
 }

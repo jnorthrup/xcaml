@@ -3,12 +3,10 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2014.10.31 at 09:47:06 AM PDT
+// Generated on: 2015.01.27 at 09:43:07 PM PST
 //
 
 package oasis.names.tc.xacml._3_0.core.schema.wd_17;
-
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -21,6 +19,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 
 /**
  * <p>
@@ -101,7 +101,7 @@ public class PolicyType {
    * 
    */
   public String getDescription() {
-    return this.description;
+    return description;
   }
 
   /**
@@ -111,7 +111,7 @@ public class PolicyType {
    * 
    */
   public void setDescription(String value) {
-    description = value;
+    this.description = value;
   }
 
   /**
@@ -121,7 +121,7 @@ public class PolicyType {
    * 
    */
   public PolicyIssuerType getPolicyIssuer() {
-    return this.policyIssuer;
+    return policyIssuer;
   }
 
   /**
@@ -131,7 +131,7 @@ public class PolicyType {
    * 
    */
   public void setPolicyIssuer(PolicyIssuerType value) {
-    policyIssuer = value;
+    this.policyIssuer = value;
   }
 
   /**
@@ -141,7 +141,7 @@ public class PolicyType {
    * 
    */
   public DefaultsType getPolicyDefaults() {
-    return this.policyDefaults;
+    return policyDefaults;
   }
 
   /**
@@ -151,7 +151,7 @@ public class PolicyType {
    * 
    */
   public void setPolicyDefaults(DefaultsType value) {
-    policyDefaults = value;
+    this.policyDefaults = value;
   }
 
   /**
@@ -161,7 +161,7 @@ public class PolicyType {
    * 
    */
   public TargetType getTarget() {
-    return this.target;
+    return target;
   }
 
   /**
@@ -171,7 +171,7 @@ public class PolicyType {
    * 
    */
   public void setTarget(TargetType value) {
-    target = value;
+    this.target = value;
   }
 
   /**
@@ -197,10 +197,10 @@ public class PolicyType {
    * 
    */
   public List<Object> getCombinerParametersOrRuleCombinerParametersOrVariableDefinition() {
-    if (this.combinerParametersOrRuleCombinerParametersOrVariableDefinition == null) {
-      this.combinerParametersOrRuleCombinerParametersOrVariableDefinition = new ArrayList<Object>();
+    if (combinerParametersOrRuleCombinerParametersOrVariableDefinition == null) {
+      combinerParametersOrRuleCombinerParametersOrVariableDefinition = new ArrayList<Object>();
     }
-    return combinerParametersOrRuleCombinerParametersOrVariableDefinition;
+    return this.combinerParametersOrRuleCombinerParametersOrVariableDefinition;
   }
 
   /**
@@ -210,7 +210,7 @@ public class PolicyType {
    * 
    */
   public ObligationExpressionsType getObligationExpressions() {
-    return this.obligationExpressions;
+    return obligationExpressions;
   }
 
   /**
@@ -220,7 +220,7 @@ public class PolicyType {
    * 
    */
   public void setObligationExpressions(ObligationExpressionsType value) {
-    obligationExpressions = value;
+    this.obligationExpressions = value;
   }
 
   /**
@@ -230,7 +230,7 @@ public class PolicyType {
    * 
    */
   public AdviceExpressionsType getAdviceExpressions() {
-    return this.adviceExpressions;
+    return adviceExpressions;
   }
 
   /**
@@ -240,7 +240,7 @@ public class PolicyType {
    * 
    */
   public void setAdviceExpressions(AdviceExpressionsType value) {
-    adviceExpressions = value;
+    this.adviceExpressions = value;
   }
 
   /**
@@ -250,7 +250,7 @@ public class PolicyType {
    * 
    */
   public String getPolicyId() {
-    return this.policyId;
+    return policyId;
   }
 
   /**
@@ -260,7 +260,7 @@ public class PolicyType {
    * 
    */
   public void setPolicyId(String value) {
-    policyId = value;
+    this.policyId = value;
   }
 
   /**
@@ -270,7 +270,7 @@ public class PolicyType {
    * 
    */
   public String getVersion() {
-    return this.version;
+    return version;
   }
 
   /**
@@ -280,7 +280,7 @@ public class PolicyType {
    * 
    */
   public void setVersion(String value) {
-    version = value;
+    this.version = value;
   }
 
   /**
@@ -290,7 +290,7 @@ public class PolicyType {
    * 
    */
   public String getRuleCombiningAlgId() {
-    return this.ruleCombiningAlgId;
+    return ruleCombiningAlgId;
   }
 
   /**
@@ -300,46 +300,46 @@ public class PolicyType {
    * 
    */
   public void setRuleCombiningAlgId(String value) {
-    ruleCombiningAlgId = value;
+    this.ruleCombiningAlgId = value;
   }
 
   /**
    * Gets the value of the maxDelegationDepth property.
    * 
-   * @return possible object is {@link java.math.BigInteger }
+   * @return possible object is {@link BigInteger }
    * 
    */
   public BigInteger getMaxDelegationDepth() {
-    return this.maxDelegationDepth;
+    return maxDelegationDepth;
   }
 
   /**
    * Sets the value of the maxDelegationDepth property.
    * 
-   * @param value allowed object is {@link java.math.BigInteger }
+   * @param value allowed object is {@link BigInteger }
    * 
    */
   public void setMaxDelegationDepth(BigInteger value) {
-    maxDelegationDepth = value;
+    this.maxDelegationDepth = value;
   }
 
   public PolicyType withDescription(String value) {
-    this.setDescription(value);
+    setDescription(value);
     return this;
   }
 
   public PolicyType withPolicyIssuer(PolicyIssuerType value) {
-    this.setPolicyIssuer(value);
+    setPolicyIssuer(value);
     return this;
   }
 
   public PolicyType withPolicyDefaults(DefaultsType value) {
-    this.setPolicyDefaults(value);
+    setPolicyDefaults(value);
     return this;
   }
 
   public PolicyType withTarget(TargetType value) {
-    this.setTarget(value);
+    setTarget(value);
     return this;
   }
 
@@ -347,7 +347,7 @@ public class PolicyType {
       Object... values) {
     if (values != null) {
       for (Object value : values) {
-        this.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().add(value);
+        getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().add(value);
       }
     }
     return this;
@@ -356,23 +356,23 @@ public class PolicyType {
   public PolicyType withCombinerParametersOrRuleCombinerParametersOrVariableDefinition(
       Collection<Object> values) {
     if (values != null) {
-      this.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().addAll(values);
+      getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().addAll(values);
     }
     return this;
   }
 
   public PolicyType withObligationExpressions(ObligationExpressionsType value) {
-    this.setObligationExpressions(value);
+    setObligationExpressions(value);
     return this;
   }
 
   public PolicyType withAdviceExpressions(AdviceExpressionsType value) {
-    this.setAdviceExpressions(value);
+    setAdviceExpressions(value);
     return this;
   }
 
   public PolicyType withPolicyId(String value) {
-    this.setPolicyId(value);
+    setPolicyId(value);
     return this;
   }
 
@@ -389,6 +389,16 @@ public class PolicyType {
   public PolicyType withMaxDelegationDepth(BigInteger value) {
     setMaxDelegationDepth(value);
     return this;
+  }
+
+  /**
+   * Generates a String representation of the contents of this type. This is an extension method, produced by the 'ts'
+   * xjc plugin
+   * 
+   */
+  @Override
+  public String toString() {
+    return ToStringBuilder.reflectionToString(this, JAXBToStringStyle.DEFAULT_STYLE);
   }
 
 }

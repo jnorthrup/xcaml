@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2014.10.31 at 09:47:06 AM PDT
+// Generated on: 2015.01.27 at 09:43:07 PM PST
 //
 
 package oasis.names.tc.xacml._3_0.core.schema.wd_17;
@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 
 /**
  * <p>
@@ -76,13 +78,13 @@ public class PolicySetType {
   @XmlElement(name = "Target", required = true)
   protected TargetType target;
   @XmlElementRefs({
-      @XmlElementRef(name = "Policy", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "CombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "PolicySet", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
       @XmlElementRef(name = "PolicyCombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "PolicySetCombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "Policy", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
       @XmlElementRef(name = "PolicyIdReference", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "PolicySetIdReference", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false)})
+      @XmlElementRef(name = "CombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "PolicySetIdReference", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "PolicySetCombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "PolicySet", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false)})
   protected List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference;
   @XmlElement(name = "ObligationExpressions")
   protected ObligationExpressionsType obligationExpressions;
@@ -196,13 +198,12 @@ public class PolicySetType {
    * 
    * 
    * <p>
-   * Objects of the following type(s) are allowed in the list {@link javax.xml.bind.JAXBElement }{@code <}
-   * {@link PolicyType }{@code >} {@link javax.xml.bind.JAXBElement }{@code <}{@link CombinerParametersType }{@code >}
-   * {@link javax.xml.bind.JAXBElement }{@code <}{@link oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySetType }
-   * {@code >} {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicyCombinerParametersType }{@code >}
-   * {@link javax.xml.bind.JAXBElement }{@code <}{@link PolicySetCombinerParametersType }{@code >}
-   * {@link javax.xml.bind.JAXBElement }{@code <}{@link IdReferenceType }{@code >} {@link javax.xml.bind.JAXBElement }
-   * {@code <}{@link IdReferenceType }{@code >}
+   * Objects of the following type(s) are allowed in the list {@link JAXBElement }{@code <}
+   * {@link PolicyCombinerParametersType }{@code >} {@link JAXBElement }{@code <}{@link PolicyType }{@code >}
+   * {@link JAXBElement }{@code <}{@link IdReferenceType }{@code >} {@link JAXBElement }{@code <}
+   * {@link CombinerParametersType }{@code >} {@link JAXBElement }{@code <}{@link IdReferenceType }{@code >}
+   * {@link JAXBElement }{@code <}{@link PolicySetCombinerParametersType }{@code >} {@link JAXBElement }{@code <}
+   * {@link PolicySetType }{@code >}
    * 
    * 
    */
@@ -316,7 +317,7 @@ public class PolicySetType {
   /**
    * Gets the value of the maxDelegationDepth property.
    * 
-   * @return possible object is {@link java.math.BigInteger }
+   * @return possible object is {@link BigInteger }
    * 
    */
   public BigInteger getMaxDelegationDepth() {
@@ -326,7 +327,7 @@ public class PolicySetType {
   /**
    * Sets the value of the maxDelegationDepth property.
    * 
-   * @param value allowed object is {@link java.math.BigInteger }
+   * @param value allowed object is {@link BigInteger }
    * 
    */
   public void setMaxDelegationDepth(BigInteger value) {
@@ -397,6 +398,16 @@ public class PolicySetType {
   public PolicySetType withMaxDelegationDepth(BigInteger value) {
     setMaxDelegationDepth(value);
     return this;
+  }
+
+  /**
+   * Generates a String representation of the contents of this type. This is an extension method, produced by the 'ts'
+   * xjc plugin
+   * 
+   */
+  @Override
+  public String toString() {
+    return ToStringBuilder.reflectionToString(this, JAXBToStringStyle.DEFAULT_STYLE);
   }
 
 }
