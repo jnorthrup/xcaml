@@ -1,9 +1,11 @@
 package pviz;
 
 import de.martin_loetzsch.dotml.ClusterOrGraph;
+import de.martin_loetzsch.dotml.Graph;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicySetType;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.PolicyType;
- import org.w3c.dom.Document;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
@@ -43,15 +45,17 @@ public class App {
 
     System.err.println("" + tagName);
 
-    switch (tagName) {
-      case "PolicySet":
-        JAXBElement<PolicyType> e = (JAXBElement) unmarshaller.unmarshal(doc, PolicyType.class);
-        PolicyType value = e.getValue();
+    if (!tagName.equals("PolicySet")) {
+      return;
+    } else {
+      JAXBElement<PolicyType> e = (JAXBElement) unmarshaller.unmarshal(doc, PolicyType.class);
+      PolicyType top = e.getValue();
+      System.err.println("PolicySet: " + (top).toString());
 
-        System.err.println("PolicySet: " + (value).toString());
-        break;
-      default:
-        break;
+      String policyId = top.getPolicyId();
+      Graph graph =
+          Graph.builder().withLabel(PolicySetType.class.getName() + ":" + policyId).build();
+
     }
   }
 }

@@ -24,6 +24,11 @@
     </dependency>
     <dependency>
       <groupId>xcaml</groupId>
+      <artifactId>dotml-jaxp-model</artifactId>
+      <version>${parent.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>xcaml</groupId>
       <artifactId>xacml-jaxp-model</artifactId>
       <version>${parent.version}</version>
     </dependency>

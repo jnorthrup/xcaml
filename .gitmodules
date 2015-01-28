@@ -1,0 +1,3 @@
+[submodule "jaxb2-rich-contract-plugin"]
+	path = jaxb2-rich-contract-plugin
+	url = https://github.com/mklemm/jaxb2-rich-contract-plugin.git

@@ -15,6 +15,7 @@
     <modules>
         <module>caml</module>
         <module>xacml-jaxp-model</module>
+        <module>dotml-jaxp-model</module>
         <module>xacml-constants</module>
         <module>pdp-core</module>
     <module>policyviz</module>
