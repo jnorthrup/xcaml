@@ -114,6 +114,12 @@
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                             </extensionArgs>
+                                        </xsdOption>                                        <xsdOption>
+                                            <xsd>${basedir}/src/main/xsd/dotml-1.4.xsd</xsd>
+                                            <!--<packagename>oasis.names.tc.xacml._3_0.core.schema.wd_17</packagename>-->
+                                            <extensionArgs>
+                                                <extensionArg>-Xfluent-api</extensionArg>
+                                            </extensionArgs>
                                         </xsdOption>
                                     </xsdOptions>
                                 </configuration>
