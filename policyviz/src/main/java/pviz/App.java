@@ -67,7 +67,12 @@ public class App {
         JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
         HashCode hashCode = Hashing.sha256().hashBytes(input);
         String sha256 = hashCode.toString();
-        Graph parent = Graph.builder().withFileName("z" + sha256)/*.withRatio("1000")*/ /*.withRanksep(BigDecimal.valueOf(2))*/ /*.withNodesep(BigDecimal.valueOf(.0010))*/.build();
+        Graph parent =
+            Graph.builder().withFileName("z" + sha256)
+                /* .withRatio("1000") *//* .withRanksep(BigDecimal.valueOf(2)) *//*
+                                                                                  * .withNodesep(BigDecimal.valueOf(.0010
+                                                                                  * ))
+                                                                                  */.build();
 
         decoratePolicySet(e, parent);
         writeGraph(parent);
@@ -95,8 +100,8 @@ public class App {
     Node policySet =
         Node.builder().withId(safeId(policySetId)).withLabel("PolicySet:" + urnTip(policySetId))
             .build();
-      addChildToFirstOf(policySet, graph);
-      linkChildToFirstOf(graph, policySet, createEdgeToHere);
+    addChildToFirstOf(policySet, graph);
+    linkChildToFirstOf(graph, policySet, createEdgeToHere);
     System.err.println("PolicySet: " + (top).toString());
 
     decorateTarget(graph, policySet, top.getTarget());
@@ -127,65 +132,62 @@ public class App {
     String PolicyId = top.getPolicyId();
     Node Policy =
         Node.builder().withId(safeId(PolicyId)).withLabel("Policy:" + urnTip(PolicyId)).build();
-      addChildToFirstOf(Policy, graph);
-      linkChildToFirstOf(graph, Policy, createEdgeToHere);
+    addChildToFirstOf(Policy, graph);
+    linkChildToFirstOf(graph, Policy, createEdgeToHere);
     System.err.println("Policy: " + (top).toString());
 
     decorateTarget(graph, Policy, top.getTarget());
   }
 
   public static void decorateTarget(ClusterOrGraph graph, Node parent, TargetType targetType) {
-      if (!targetType.getAnyOf().isEmpty()) {
-          Node link = null;
-          Node fnNode = null;
-          for (AnyOfType anAnyOf : targetType.getAnyOf()) {
-              for (AllOfType anAllOf : anAnyOf.getAllOf()) {
-                  for (MatchType aMatch : anAllOf.getMatch()) {
-                      addChildToFirstOf(link, graph);
-                      String matchId = aMatch.getMatchId();
-                      SubGraph matchRecord = SubGraph.builder().build();
-                      addChildToFirstOf(matchRecord, graph);
+      Node link = null;
+      Node fnNode = null;
+      for (AnyOfType anAnyOf : targetType.getAnyOf()) {
+          for (AllOfType anAllOf : anAnyOf.getAllOf()) {
+              for (MatchType aMatch : anAllOf.getMatch()) {
+                  addChildToFirstOf(link, graph);
+                  String matchId = aMatch.getMatchId();
+                  Cluster matchCluster = Cluster.builder().build();
+                  addChildToFirstOf(matchCluster, graph);
 
-                      linkChildToFirstOf(graph, link, fnNode);
-                      fnNode = Node.builder().withId(randChars()).withLabel("fn" + urnTip(matchId)).withColor(GREEN).withShape(Shape.DIAMOND).withStyle(Style.SOLID).build();
-                      addChildToFirstOf(fnNode, matchRecord);
-                      linkChildToFirstOf(graph, fnNode, link, parent);
-                      AttributeValueType attributeValue = aMatch.getAttributeValue();
-                      assert null != aMatch;
-                      String dataType1 = attributeValue.getDataType();
-                      Joiner contentsJoined = Joiner.on(",");
-                      String join = null;
-                      try {
-                          join = contentsJoined.join(attributeValue.getContent().stream().map(String::valueOf).collect(Collectors.toList()));
-                      } catch (Exception e1) {
-                          e1.printStackTrace();
-                      }
-                      Node val = Node.builder().withLabel(hashTip(dataType1) + ":" + join).withId(randChars()).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).withColor("#FFEE88").build();
-
-                      AttributeDesignatorType attributeDesignator = aMatch.getAttributeDesignator();
-                      if (null != attributeDesignator) {
-                          String attributeId = attributeDesignator.getAttributeId();
-                          Node build = Node.builder().withId(randChars()).withLabel(urnTip(attributeId)).withColor(LTBLUE).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).build();
-                          addChildToFirstOf(build, matchRecord);
-                          linkChildToFirstOf(graph, fnNode, build);
-                      } else {
-                          AttributeSelectorType attributeSelector = aMatch.getAttributeSelector();
-                          String contextSelectorId = attributeSelector.getContextSelectorId();
-                          Node build = Node.builder().withId(randChars()).withLabel(urnTip(contextSelectorId)).withFillcolor(LTBLUE).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).build();
-                          addChildToFirstOf(build, matchRecord);
-                          linkChildToFirstOf(graph, fnNode, build);
-                      }
-                      addChildToFirstOf(val, matchRecord);
-                      linkChildToFirstOf(graph, fnNode, val);
-
-                      link = Node.builder().withColor(RED).withLabel("AND").withShape(Shape.PARALLELOGRAM).withId(randChars()).build();
+                  linkChildToFirstOf(graph, link, fnNode);
+                  fnNode = Node.builder().withId(randChars()).withLabel("fn" + urnTip(matchId)).withColor(GREEN).withShape(Shape.DIAMOND).withStyle(Style.SOLID).build();
+                  addChildToFirstOf(fnNode, matchCluster);
+                  linkChildToFirstOf(matchCluster, fnNode, link, parent);
+                  AttributeValueType attributeValue = aMatch.getAttributeValue();
+                  String dataType1 = attributeValue.getDataType();
+                  Joiner contentsJoined = Joiner.on(",");
+                  String join = null;
+                  try {
+                      join = contentsJoined.join(attributeValue.getContent().stream().map(String::valueOf).collect(Collectors.toList()));
+                  } catch (Exception e1) {
+                      e1.printStackTrace();
                   }
-                  link = Node.builder().withColor(PURPLE).withLabel("OR").withShape(Shape.CIRCLE).withId(randChars()).build();
+                  Node val = Node.builder().withLabel(hashTip(dataType1) + ":" + join).withId(randChars()).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).withColor("#FFEE88").build();
+
+                  AttributeDesignatorType attributeDesignator = aMatch.getAttributeDesignator();
+                  if (null != attributeDesignator) {
+                      String attributeId = attributeDesignator.getAttributeId();
+                      Node build = Node.builder().withId(randChars()).withLabel(urnTip(attributeId)).withColor(LTBLUE).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).build();
+                      addChildToFirstOf(build, matchCluster);
+                      linkChildToFirstOf(graph, fnNode, build);
+                  } else {
+                      AttributeSelectorType attributeSelector = aMatch.getAttributeSelector();
+                      String contextSelectorId = attributeSelector.getContextSelectorId();
+                      Node build = Node.builder().withId(randChars()).withLabel(urnTip(contextSelectorId)).withFillcolor(LTBLUE).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).build();
+                      addChildToFirstOf(build, matchCluster);
+                      linkChildToFirstOf(graph, fnNode, build);
+                  }
+                  addChildToFirstOf(val, matchCluster);
+                  linkChildToFirstOf(graph, fnNode, val);
+
+                  link = Node.builder().withColor(RED).withLabel("AND").withShape(Shape.PARALLELOGRAM).withId(randChars()).build();
               }
-              link = Node.builder().withColor(PURPLE).withLabel("OR").withShape(Shape.DOUBLECIRCLE).withId(randChars()).build();
+              link = Node.builder().withColor(PURPLE).withLabel("OR").withShape(Shape.CIRCLE).withId(randChars()).build();
           }
+          link = Node.builder().withColor(PURPLE).withLabel("OR").withShape(Shape.DOUBLECIRCLE).withId(randChars()).build();
       }
-    }
+  }
 
   static String hashTip(String dataType1) {
     char ch = '#';
@@ -217,16 +219,16 @@ public class App {
       StreamSource xslt = new StreamSource(ClassLoader.getSystemResourceAsStream("dotml2dot.xsl"));
       File aaa = File.createTempFile("aaa", ".svg");
 
-        Process start =
+      Process start =
           new ProcessBuilder().command("dot", "-Tsvg", "-o", aaa.getAbsolutePath()).start();
-        try (OutputStream outputStream = start.getOutputStream()) {
-            StreamResult outputTarget = new StreamResult(outputStream);
-            TransformerFactory.newInstance().newTransformer(xslt).transform(ourGraph, outputTarget);
-        }
+      try (OutputStream outputStream = start.getOutputStream()) {
+        StreamResult outputTarget = new StreamResult(outputStream);
+        TransformerFactory.newInstance().newTransformer(xslt).transform(ourGraph, outputTarget);
+      }
 
-        int i = start.waitFor();
+      int i = start.waitFor();
 
-        System.err.println("see " + aaa.toURL().toExternalForm());
+      System.err.println("see " + aaa.toURL().toExternalForm());
     } catch (TransformerException e1) {
       e1.printStackTrace();
     }
@@ -271,14 +273,16 @@ public class App {
             clusterOrGraph.getNodeOrClusterOrSubGraph().add(child);
             return;
           }
-            if (o instanceof Record) {
-                Record record = (Record) o;
-                record.getNodeOrRecord().add(child);return;
-            }
-            if (o instanceof SubGraph) {
-                SubGraph subGraph = (SubGraph) o;
-                subGraph.getNodeOrRecord().add(child);return;
-            }
+          if (o instanceof Record) {
+            Record record = (Record) o;
+            record.getNodeOrRecord().add(child);
+            return;
+          }
+          if (o instanceof SubGraph) {
+            SubGraph subGraph = (SubGraph) o;
+            subGraph.getNodeOrRecord().add(child);
+            return;
+          }
         }
 
   }

@@ -158,12 +158,18 @@
                                 <arg>-XvsEqualsHashCode</arg>
                                 <arg>-XvsToString</arg>
                                 <arg>-Xclone</arg>
-                                <arg>-Ximmutable</arg>
                                 <arg>-Xannotate</arg>
                                 <!--<arg>-XvsSerializable</arg>-->
                                 <!--<arg>-XvsSetter</arg>-->
                                 <!--breaks us
                                 <arg>-Xconstrained-properties</arg>-->
+                                <!--
+                                jn: immutable is a nice pipe dream however for xacml it would confuse the process of
+                                writing a correct response without creating additional distracting inheritance.  an
+                                immutable response graph would have to be created all at once which entails either very
+                                intricate loops or some less-than-perfect DAO where neither of those is necessary with
+                                a mutable class.
+                                <arg>-Ximmutable</arg>-->
                             </args>
                             <plugins>
                                 <plugin>
