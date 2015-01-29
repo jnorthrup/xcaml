@@ -101,18 +101,19 @@ public class App {
     addChildToFirstOf(policySet, graph);
     linkChildToFirstOf(graph, policySet, createEdgeToHere);
     System.err.println("PolicySet: " + (top).toString());
-
-    decorateTarget(graph, policySet, top.getTarget());
+      Cluster c= new Cluster().withStyle(Style.INVIS);
+      addChildToFirstOf(c, graph);
+     decorateTarget(c, policySet, top.getTarget());
 
     List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference =
         top.getPolicySetOrPolicyOrPolicySetIdReference();
     for (JAXBElement<?> jaxbElement : policySetOrPolicyOrPolicySetIdReference) {
       switch (jaxbElement.getValue().getClass().getSimpleName()) {
         case "PolicySetType":
-          decoratePolicySet((JAXBElement<PolicySetType>) jaxbElement, graph, policySet);
+          decoratePolicySet((JAXBElement<PolicySetType>) jaxbElement, c, policySet);
           break;
         case "PolicyType":
-          decoratePolicy((JAXBElement<PolicyType>) jaxbElement, graph, policySet);
+          decoratePolicy((JAXBElement<PolicyType>) jaxbElement, c, policySet);
           break;
         case "PolicySetIdReference":
         case "PolicyIdReference":
@@ -133,29 +134,29 @@ public class App {
     addChildToFirstOf(Policy, graph);
     linkChildToFirstOf(graph, Policy, createEdgeToHere);
     System.err.println("Policy: " + (top).toString());
+    Cluster c= new Cluster().withStyle(Style.INVIS);
+    addChildToFirstOf(c, graph);
 
-    decorateTarget(graph, Policy, top.getTarget());
+    decorateTarget(c, Policy, top.getTarget());
   }
 
-  public static void decorateTarget(ClusterOrGraph graph1, Node parent, TargetType targetType) {
+  public static void decorateTarget(ClusterOrGraph graph, Node parent, TargetType targetType) {
       boolean once = false;
-      Cluster graph = new Cluster().withStyle(Style.INVIS);
       Node link = null;
       Node fnNode = null;
       for (AnyOfType anAnyOf : targetType.getAnyOf()) {
           for (AllOfType anAllOf : anAnyOf.getAllOf()) {
               for (MatchType aMatch : anAllOf.getMatch()) {
                   if(!once) {
-                      addChildToFirstOf(graph, graph1);once=!once;
                   }
                   addChildToFirstOf(link, graph);
                   String matchId = aMatch.getMatchId();
-                  RecordNode  matchCluster = new RecordNode().withFillcolor(LTGREY).withStyle(Style.FILLED) ;
-                  addChildToFirstOf(matchCluster, graph); 
-                  linkChildToFirstOf(graph1, link, fnNode);
+                  Record matchCluster = new Record();
+                  addChildToFirstOf(new RecordNode().withFillcolor(LTGREY).withStyle(Style.FILLED) .withNodeOrRecord(matchCluster), graph);
+                  linkChildToFirstOf(graph, link, fnNode);
                   fnNode = new Node().withId(randChars()).withLabel("fn" + urnTip(matchId)).withColor(GREEN).withShape(Shape.DIAMOND).withStyle(Style.SOLID) ;
                   addChildToFirstOf(fnNode, matchCluster);
-                  linkChildToFirstOf(graph1, fnNode, link, parent);
+                  linkChildToFirstOf(graph, fnNode, link, parent);
                   AttributeValueType attributeValue = aMatch.getAttributeValue();
                   String dataType1 = attributeValue.getDataType();
                   Joiner contentsJoined = Joiner.on(",");
@@ -280,8 +281,7 @@ public class App {
         if (null != parent) {
           String toId = getId(to);
           String fromId = getId(parent);
-          graph.getNodeOrClusterOrSubGraph().add(
-              new Edge().withFrom(fromId).withTo(toId).withStyle(Style.SOLID));
+          graph.getNodeOrClusterOrSubGraph().add( new Edge().withFrom(fromId).withTo(toId).withStyle(Style.SOLID));
           return;
         }
   }
