@@ -674,7 +674,7 @@
                             <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-is-in">
                                 <Description>Subscriber must be the Publisher</Description>
                                 <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
-                                    <Description>Should only be ONE ATTUID.</Description>
+                                    <Description>Should only be ONE SYSUID.</Description>
                                     <AttributeDesignator
                                             Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
                                             AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id"
