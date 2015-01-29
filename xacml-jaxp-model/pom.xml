@@ -74,7 +74,6 @@
                             <outputFile/>
                         </configuration>
                     </plugin>
-<!--
                     <plugin>
                         <groupId>org.apache.cxf</groupId>
                         <artifactId>cxf-xjc-plugin</artifactId>
@@ -94,9 +93,9 @@
                                     <goal>xsdtojava</goal>
                                 </goals>
                                 <configuration>
-                                    &lt;!&ndash;<sourceRoot>${build.directory}/generated-sources</sourceRoot>&ndash;&gt;
-                                    &lt;!&ndash;ussually generated artifacts are bad for projects so its cleaner to generate them when&ndash;&gt;
-                                    &lt;!&ndash;needed.  current AT&T firewall breaks xjc under ubuntu to it's being put in a profile and the sources are being stored&ndash;&gt;
+                                    <!--<sourceRoot>${build.directory}/generated-sources</sourceRoot>-->
+                                    <!--ussually generated artifacts are bad for projects so its cleaner to generate them when-->
+                                    <!--needed.  current AT&T firewall breaks xjc under ubuntu to it's being put in a profile and the sources are being stored-->
                                     <sourceRoot>${cxf-xjc-plugin.sourceRoot}</sourceRoot>
                                     <xsdOptions>
                                         <xsdOption>
@@ -115,17 +114,24 @@
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                                 <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
+                                        </xsdOption>              
+                                        <xsdOption>
+                                            <extension>true</extension>
+                                            <xsd>http://www.yworks.com/xml/schema/graphml/1.1/graphml-structure.xsd</xsd>
+                                            <extensionArgs>
+                                                <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
+                                            </extensionArgs>
                                         </xsdOption>
                                     </xsdOptions>
-                                    &lt;!&ndash;<extensions>         &ndash;&gt;
-                                    &lt;!&ndash;<extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:2.3.0</extension>&ndash;&gt;
-                                    &lt;!&ndash;</extensions>&ndash;&gt;
+                                    <!--<extensions>         -->
+                                    <!--<extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:2.3.0</extension>-->
+                                    <!--</extensions>-->
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
--->
-                    <plugin>
+               <!--     <plugin>
                         <groupId>org.jvnet.jaxb2.maven2</groupId>
                         <artifactId>maven-jaxb22-plugin</artifactId>
                         <version>0.12.3</version>
@@ -159,17 +165,17 @@
                                 <arg>-XvsToString</arg>
                                 <arg>-Xclone</arg>
                                 <arg>-Xannotate</arg>
-                                <!--<arg>-XvsSerializable</arg>-->
-                                <!--<arg>-XvsSetter</arg>-->
-                                <!--breaks us
-                                <arg>-Xconstrained-properties</arg>-->
-                                <!--
+                                &lt;!&ndash;<arg>-XvsSerializable</arg>&ndash;&gt;
+                                &lt;!&ndash;<arg>-XvsSetter</arg>&ndash;&gt;
+                                &lt;!&ndash;breaks us
+                                <arg>-Xconstrained-properties</arg>&ndash;&gt;
+                                &lt;!&ndash;
                                 jn: immutable is a nice pipe dream however for xacml it would confuse the process of
                                 writing a correct response without creating additional distracting inheritance.  an
                                 immutable response graph would have to be created all at once which entails either very
                                 intricate loops or some less-than-perfect DAO where neither of those is necessary with
                                 a mutable class.
-                                <arg>-Ximmutable</arg>-->
+                                <arg>-Ximmutable</arg>&ndash;&gt;
                             </args>
                             <plugins>
                                 <plugin>
@@ -194,7 +200,7 @@
                                 </plugin>
                             </plugins>
                         </configuration>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
             <pluginRepositories>
