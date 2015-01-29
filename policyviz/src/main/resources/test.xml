@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<graph file-name="z53e84b53257eb5e02c1f11838f4953295acea5ebed242384e62500a1c3069728" xmlns="http://www.martin-loetzsch.de/DOTML">
+    <node id="urn:com:xacml:policy:id:team:Organization-TEAM-permissions-tests" label="PolicySet:urn:com:xacml:policy:id:team:Organization-TEAM-permissions-tests"/>
+    <cluster fillcolor="#8080FF" id="uu459bff53bba73c1b4f5e5dbcfe8b8aa0b712813371a05d866c39d9a811c4eb69" label="cluster:urn:oasis:names:tc:xacml:1.0:function:string-equal:(attributeValue = (content = [team.4]), (dataType = http://www.w3.org/2001/XMLSchema#string), (otherAttributes = {}) ), (attributeDesignator = (category = urn:oasis:names:tc:xacml:3.0:attribute-category:resource), (attributeId = urn:com:company:it:pe:pe-service-name), (dataType = http://www.w3.org/2001/XMLSchema#string), (issuer = null), (mustBePresent = false) ), (attributeSelector = null), (matchId = urn:oasis:names:tc:xacml:1.0:function:string-equal) ">
+        <node id="uu3067b940a03aaa179a709f046e4ca47a33209dd8ac935943f87d1019c7ae2f2e" label="match:urn:oasis:names:tc:xacml:1.0:function:string-equal" fillcolor="#00FF00"/>
+        <node id="uu98bf3616c4ea72f628c57565080a6eb51c5e4bbaa09aac2345cf1fcf623bbcc6" label="http://www.w3.org/2001/XMLSchema#string:team.4" fillcolor="#FFFFFF"/>
+        <node id="uueee7b2e44af6cee6a9fae970a845e751dd5e99f3c937d614fc2f403faa0dc1cf" label="urn:oasis:names:tc:xacml:3.0:attribute-category:resource/urn:com:company:it:pe:pe-service-name" fillcolor="#AAAAAA"/>
+    </cluster>
+    <edge from="uu3067b940a03aaa179a709f046e4ca47a33209dd8ac935943f87d1019c7ae2f2e" to="urn:com:xacml:policy:id:team:Organization-TEAM-permissions-tests"/>
+</graph>
