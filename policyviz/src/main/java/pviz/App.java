@@ -66,7 +66,7 @@ public class App {
                 JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
                 HashCode hashCode = Hashing.adler32().hashBytes(input);
                 String adler32 = hashCode.toString();
-                Graph parent = new Graph().withFileName("z" + adler32)
+                Graph parent = new Graph().withFileName("z" + adler32).withRankdir(Rankdir.LR)
         /* .withRatio("1000") */ 
         /* .withRanksep(BigDecimal.valueOf(2)) */
         /* .withNodesep(BigDecimal.valueOf(.0010 )) */;
@@ -99,9 +99,13 @@ public class App {
         addChildToFirstOf(policySet, graph);
         linkChildToFirstOf(graph, policySet, createEdgeToHere);
         System.err.println("PolicySet: " + (top).toString());
-        Cluster c = new Cluster().withStyle(Style.INVIS);
-        addChildToFirstOf(c, graph);
-        decorateTarget(c, policySet, top.getTarget());
+//        Cluster c = new Cluster().withStyle(Style.INVIS);
+//        addChildToFirstOf(c, graph);
+        ClusterOrGraph c = graph;
+        decorateTarget(graph, policySet, top.getTarget());
+//        Cluster c = new Cluster().withStyle(Style.INVIS);
+//        addChildToFirstOf(c, graph);
+//        decorateTarget(c, policySet, top.getTarget());
 
 
         List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference =
@@ -133,8 +137,10 @@ public class App {
         addChildToFirstOf(Policy, graph);
         linkChildToFirstOf(graph, Policy, createEdgeToHere);
         System.err.println("Policy: " + (top).toString());
-        Cluster c = new Cluster().withStyle(Style.INVIS);
-        addChildToFirstOf(c, graph);
+
+        ClusterOrGraph c = graph;
+        //        Cluster c = new Cluster().withStyle(Style.INVIS);
+        //        addChildToFirstOf(c, graph);
 
         Node fnNode = decorateTarget(c, Policy, top.getTarget());
         top.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().filter(o -> o instanceof RuleType).map(o -> (RuleType) o).forEach(ruleType -> {
@@ -145,9 +151,13 @@ public class App {
             addChildToFirstOf(rule, ruleCluster);
             linkChildToFirstOf(c, rule, fnNode, Policy);
             decorateTarget(ruleCluster, rule, ruleType.getTarget());
-            
+
         });
-        
+
+        //todo: resume
+//        boolean b = top.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().map(o -> ((JAXBElement<?>) (o)).getValue()).filter(o -> o instanceof RuleType).map(o -> ()).forEachOrdered(
+
+
     }
 
     public static Node decorateTarget(ClusterOrGraph graph, Node parent, TargetType targetType) {
@@ -170,13 +180,7 @@ public class App {
                     linkChildToFirstOf(graph, fnNode, scope, parent);
                     AttributeValueType attributeValue = aMatch.getAttributeValue();
                     String dataType1 = attributeValue.getDataType();
-                    Joiner contentsJoined = Joiner.on(",");
-                    String join = null;
-                    try {
-                        join = contentsJoined.join(attributeValue.getContent().stream().map(String::valueOf).collect(Collectors.toList()));
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    String join = getContentString(attributeValue.getContent());
                     val = new Node().withLabel(hashTip(dataType1) + ":" + join).withId(randChars()).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID).withColor("#FFEE88");
 
                     AttributeDesignatorType attributeDesignator = aMatch.getAttributeDesignator();
@@ -184,16 +188,13 @@ public class App {
                         String attributeId = attributeDesignator.getAttributeId();
                         Node build = new Node().withId(randChars()).withLabel(urnTip(attributeId)).withColor(LTBLUE).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID);
                         addChildToFirstOf(build, matchCluster);
-//                      linkChildToFirstOf(graph, fnNode, build);
                     } else {
                         AttributeSelectorType attributeSelector = aMatch.getAttributeSelector();
                         String contextSelectorId = attributeSelector.getContextSelectorId();
                         Node build = new Node().withId(randChars()).withLabel(urnTip(contextSelectorId)).withFillcolor(LTBLUE).withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID);
                         addChildToFirstOf(build, matchCluster);
-//                      linkChildToFirstOf(graph, fnNode, build);
                     }
                     addChildToFirstOf(val, matchCluster);
-//                  linkChildToFirstOf(graph, fnNode, val);
 
                     scope = new Node().withColor(RED).withLabel("AND").withShape(Shape.PARALLELOGRAM).withId(randChars());
                 }
@@ -202,6 +203,17 @@ public class App {
             scope = new Node().withColor(PURPLE).withLabel("OR").withShape(Shape.DOUBLECIRCLE).withId(randChars());
         }
         return val;
+    }
+
+    private static String getContentString(List<Object> content) {
+        String join = null;
+        Joiner contentsJoined = Joiner.on(",");
+        try {
+            join = contentsJoined.join(content.stream().map(String::valueOf).collect(Collectors.toList()));
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return join;
     }
 
     static String hashTip(String dataType1) {
@@ -229,42 +241,30 @@ public class App {
 
             marshaller.marshal(graph, writer);
             System.err.println("using: " + writer.toString());
+
             {
                 StreamSource ourGraph = new StreamSource(new StringReader(writer.toString()));
 
                 StreamSource xslt = new StreamSource(ClassLoader.getSystemResourceAsStream("dotml2dot.xsl"));
                 File aaa = new File("/tmp/x.svg");
 
-
-                Process start =
-                        new ProcessBuilder().command("dot", "-Tsvg", "-o", aaa.getAbsolutePath()).start();
-                try (OutputStream outputStream = start.getOutputStream()) {
-                    StreamResult outputTarget = new StreamResult(outputStream);
-                    TransformerFactory.newInstance().newTransformer(xslt).transform(ourGraph, outputTarget);
-                }
-
-                int i = start.waitFor();
-
+                String fileName = "/tmp/x.dot";
+                TransformerFactory.newInstance().newTransformer(xslt).transform(ourGraph, new StreamResult(new FileWriter(fileName)));
+//                "-Gperipheries=0","-Gpack","-Gdecorate","-Gconcentrate",
+                Process start = new ProcessBuilder().command("dot", "-Gclusterrank", "-Gsplines=polyline", fileName, "-Tsvg", "-o/tmp/x.svg", "-Tpng", "-o/tmp/x.png").start();
+//                Process gxl = new ProcessBuilder().command("dot2gxl", "/tmp/x.dot","-o/tmp/x.gxl"  ).start();
+                start.waitFor();
+//                gxl.waitFor();
                 System.err.println("see " + aaa.toURL().toExternalForm());
+
+//                aaa = new File("/tmp/x.pdf");
+//                start = new ProcessBuilder().command("dot", "-i", "/tmp/x.dot", "-Tpdf", "-o", aaa.getAbsolutePath()).start();
+//                start.waitFor();
+//                System.err.println("see " + aaa.toURL().toExternalForm());
+
+
             }
-            {
-                StreamSource ourGraph = new StreamSource(new StringReader(writer.toString()));
 
-                StreamSource xslt = new StreamSource(ClassLoader.getSystemResourceAsStream("dotml2dot.xsl"));
-                File aaa = new File("/tmp/x.png");
-
-
-                Process start =
-                        new ProcessBuilder().command("dot", "-Tpng", "-o", aaa.getAbsolutePath()).start();
-                try (OutputStream outputStream = start.getOutputStream()) {
-                    StreamResult outputTarget = new StreamResult(outputStream);
-                    TransformerFactory.newInstance().newTransformer(xslt).transform(ourGraph, outputTarget);
-                }
-
-                int i = start.waitFor();
-
-                System.err.println("see " + aaa.toURL().toExternalForm());
-            }
         } catch (TransformerException e1) {
             e1.printStackTrace();
         }
@@ -326,4 +326,45 @@ public class App {
                 }
 
     }
+
+    static Node decorateExpression(JAXBElement<?> expression, Cluster outer) {
+            /*possible object is
+            AttributeValueType
+            AttributeDesignatorType
+            VariableReferenceType
+            AttributeSelectorType
+            FunctionType
+            ApplyType
+            ExpressionType
+            */
+        switch (expression.getDeclaredType().getSimpleName()) {
+            case "ApplyType": {
+                ApplyType applyType = (ApplyType) expression.getValue();
+                String functionId = applyType.getFunctionId();
+                Node applyNode = new Node().withLabel("apply:" + urnTip(functionId)).withShape(Shape.TRIANGLE);
+                Cluster applyCluster = new Cluster().withId(randChars()).withStyle(Style.INVIS);
+
+                //decorateExpression
+                addChildToFirstOf(outer, applyCluster);
+                addChildToFirstOf(applyCluster, outer);
+                applyType.getExpression().forEach(jaxbElement -> linkChildToFirstOf(applyCluster, decorateExpression(jaxbElement, applyCluster), applyNode));
+
+
+                return applyNode;
+            }
+            case "AttributeValueType": {
+                AttributeValueType a = (AttributeValueType) expression.getValue();
+
+                String s = hashTip(a.getDataType());
+                String contentString = getContentString(a.getContent());
+                Node valueNode = new Node().withLabel(s + ":" + contentString).withId(randChars()).withFillcolor(LTBLUE).withStyle(Style.FILLED);
+                addChildToFirstOf(valueNode, outer);
+                return valueNode;
+            }
+            default:
+                break;
+        }
+        return null;
+    }
+
 }
