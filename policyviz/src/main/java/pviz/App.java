@@ -23,7 +23,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 /**
@@ -95,10 +94,10 @@ public class App {
         ClusterOrGraph c = graph;
         visitTarget(graph, policySet, top.getTarget());
         final AdviceExpressionsType adviceExpressions = top.getAdviceExpressions();
-        final Node node = visitAdviceExpressions(c, adviceExpressions);
-        addChildToFirstOf(node,c);
-        List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference =
-                top.getPolicySetOrPolicyOrPolicySetIdReference();
+        addChildToFirstOf(visitAdviceExpressions(c, adviceExpressions),c);
+        addChildToFirstOf(visitObligationExpressions(c, top.getObligationExpressions()),c);
+        List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference =top.getPolicySetOrPolicyOrPolicySetIdReference();
+
         for (JAXBElement<?> jaxbElement : policySetOrPolicyOrPolicySetIdReference)
             switch (jaxbElement.getValue().getClass().getSimpleName()) {
                 case "PolicySetType":
@@ -115,28 +114,8 @@ public class App {
             }
     }
 
-    private static Node visitAdviceExpressions(ClusterOrGraph outer, AdviceExpressionsType adviceExpressions) {
-        final Node[] adviceNode = new Node[1];
-
-        if(null!=adviceExpressions)
-        adviceExpressions.getAdviceExpression().forEach(adviceExpressionType -> {
-            final Cluster advCluster = new Cluster().withId(id());
-            addChildToFirstOf(advCluster,outer);
-            final EffectType appliesTo = adviceExpressionType.getAppliesTo();
-            adviceNode[0] = new Node().withId(id()).withColor(appliesTo !=EffectType.DENY? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(Style.FILLED).withLabel(adviceExpressionType.getAdviceId());
-            addChildToFirstOf(adviceNode[0],advCluster);
-            adviceExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
-                final Cluster ac= new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
-                addChildToFirstOf(ac,advCluster);
-                addChildToFirstOf(visitExpression(aa.getExpression(), ac),ac);
-            });
-        });
-
-        return adviceNode[0];
-    }
-
     public static void visitPolicy(JAXBElement<PolicyType> e, ClusterOrGraph graph,
-                                      Object... createEdgeToHere) {
+                                   Object... createEdgeToHere) {
         PolicyType top = e.getValue();
         String PolicyId = top.getPolicyId();
         Node policyNode =
@@ -152,15 +131,78 @@ public class App {
         Node fnNode = visitTarget(c, policyNode, top.getTarget());
         final AdviceExpressionsType adviceExpressions = top.getAdviceExpressions();
         linkChildToFirstOf(graph, visitAdviceExpressions(c, adviceExpressions), policyNode);
-        
-        top.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().filter(o -> o instanceof RuleType).map(o -> (RuleType) o).forEach(ruleType -> {
-            visitRule(policyNode, c, fnNode, ruleType);
+
+        linkChildToFirstOf(graph, visitObligationExpressions(c, top.getObligationExpressions()), policyNode);
+
+//        top.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().filter(o -> o instanceof RuleType).map(o -> (RuleType) o).forEach(ruleType -> {
+//            visitRule(policyNode, c, fnNode, ruleType);
+//        });
+        top.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().forEach(o -> {
+            final String simpleName = o.getClass().getSimpleName();
+            switch (simpleName){
+                case "RuleType":{
+                    visitRule(policyNode, c, fnNode, (RuleType) o);
+                    break;
+                }
+                case "VariableDefinitionType":{
+                    VariableDefinitionType v= (VariableDefinitionType) o;
+                    final Node aaaa00 = new Node().withLabel(urnTip(v.getVariableId())).withId(id()).withColor("#EEEE00").withStyle(Style.FILLED);
+addChildToFirstOf(aaaa00,c);
+                    linkChildToFirstOf(c, aaaa00,policyNode);
+                    linkChildToFirstOf(c,visitExpression(c, v.getExpression()),aaaa00);
+                    
+                    
+                }
+                
+            }
+            
         });
-        
 
     }
+    private static Node visitAdviceExpressions(ClusterOrGraph outer, AdviceExpressionsType adviceExpressions) {
+        final Node[] adviceNode = new Node[1];
 
-    private static void visitRule(Node topLink, ClusterOrGraph c, Node prevLink, RuleType ruleType) {
+        if(null!=adviceExpressions)
+        adviceExpressions.getAdviceExpression().forEach(adviceExpressionType -> {
+            final Cluster advCluster = new Cluster().withId(id());
+            addChildToFirstOf(advCluster,outer);
+            final EffectType appliesTo = adviceExpressionType.getAppliesTo();
+            adviceNode[0] = new Node().withId(id()).withColor(appliesTo !=EffectType.DENY? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(Style.FILLED).withLabel(adviceExpressionType.getAdviceId());
+            addChildToFirstOf(adviceNode[0],advCluster);
+            adviceExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
+
+                final Cluster ac= new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
+
+                addChildToFirstOf(ac,advCluster);
+                addChildToFirstOf(visitExpression(ac, aa.getExpression()),ac);
+            });
+        });
+
+        return adviceNode[0];
+    }
+
+ private static Node visitObligationExpressions(ClusterOrGraph outer, ObligationExpressionsType ObligationExpressions) {
+        final Node[] ObligationNode = new Node[1];
+
+        if(null!=ObligationExpressions)
+        ObligationExpressions.getObligationExpression().forEach(ObligationExpressionType -> {
+            final Cluster advCluster = new Cluster().withId(id());
+            addChildToFirstOf(advCluster,outer);
+            final EffectType appliesTo = ObligationExpressionType.getFulfillOn();
+            ObligationNode[0] = new Node().withId(id()).withColor(appliesTo !=EffectType.DENY? LTGREEN : LTRED).withShape(Shape.INVHOUSE).withStyle(Style.FILLED).withLabel(ObligationExpressionType.getObligationId());
+            addChildToFirstOf(ObligationNode[0],advCluster);
+            ObligationExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
+
+                final Cluster ac= new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
+                addChildToFirstOf(ac, advCluster);
+                addChildToFirstOf(visitExpression(ac, aa.getExpression()),ac);
+            });
+        });
+
+        return ObligationNode[0];
+    }
+
+    private static Node visitRule(Node topLink, ClusterOrGraph c, Node prevLink, RuleType ruleType) {
         boolean permit = ruleType.getEffect() == EffectType.PERMIT;
         Node rule = new Node().withId(id()).withColor(permit ? GREEN : RED).withLabel("Rule:" + urnTip(ruleType.getRuleId())).withShape(permit ? Shape.HOUSE : Shape.OCTAGON).withStyle(Style.FILLED);
         Cluster ruleCluster = new Cluster().withId(id()).withStyle(Style.INVIS);
@@ -174,13 +216,14 @@ public class App {
 
             if (!expression.isNil()) {
                 Cluster outer = new Cluster().withId(id()).withStyle(Style.INVIS);
-                Node node = visitExpression(expression, outer);
+                Node node = visitExpression(outer, expression);
                 addChildToFirstOf(outer, c);
                 linkChildToFirstOf(outer, node, prev);
-
             }
-        }        linkChildToFirstOf(ruleCluster, visitAdviceExpressions(ruleCluster, ruleType.getAdviceExpressions()),prev,prevLink);
-
+        }      
+        linkChildToFirstOf(ruleCluster, visitAdviceExpressions(ruleCluster, ruleType.getAdviceExpressions()),prev,prevLink);
+        linkChildToFirstOf(ruleCluster, visitObligationExpressions(ruleCluster, ruleType.getObligationExpressions()),prev,prevLink);
+        return rule;
     }
 
     public static Node visitTarget(ClusterOrGraph graph, Node parent, TargetType targetType) {
@@ -277,13 +320,12 @@ public class App {
 
                 String fileName = out + ".dot";
                 TransformerFactory.newInstance().newTransformer(xslt).transform(ourGraph, new StreamResult(new FileWriter(fileName)));
-//                "-Gperipheries=0","-Gpack","-Gvisit","-Gconcentrate",
-                Process start = new ProcessBuilder().command("dot", "-Gclusterrank", "-Gsplines=polyline", fileName, "-Tsvg", "-o" + out + ".svg", "-Tpng", "-o" + out + ".png").start();
+//                "-Gperipheries=0","-Gpack","-Gvisit","-Gconcentrate","-Gsplines=ortho","-Gsplines=curved","-Gsplines=polyline","-Gclusterrank","-Gsplines=ortho","-Goverlap=false"
+                Process start = new ProcessBuilder().command("dot",   fileName,"-Goverlap=false", "-Tsvg", "-o" + out + ".svg", "-Tpng", "-o" + out + ".png").start();
 //                Process gxl = new ProcessBuilder().command("dot2gxl", "/tmp/x.dot","-o/tmp/x.gxl"  ).start();
                 start.waitFor();
 //                gxl.waitFor();
                 System.err.println("see " + aaa.toURL().toExternalForm());
-
             }
 
         } catch (TransformerException e1) {
@@ -343,7 +385,7 @@ public class App {
                 }
     }
 
-    static Node visitExpression(JAXBElement<?> expression, Cluster outer) {
+    static Node visitExpression(ClusterOrGraph outer, JAXBElement<?> expression) {
             /*possible object is
             AttributeValueType
             AttributeDesignatorType
@@ -365,7 +407,7 @@ public class App {
                 //visitExpression
                 addChildToFirstOf(applyCluster, outer);
                 addChildToFirstOf(applyNode, applyCluster);
-                applyType.getExpression().forEach(jaxbElement -> linkChildToFirstOf(applyCluster, visitExpression(jaxbElement, applyCluster), applyNode));
+                applyType.getExpression().forEach(jaxbElement -> linkChildToFirstOf(applyCluster, visitExpression(applyCluster, jaxbElement), applyNode));
                 return applyNode;
             }
             case "AttributeValueType": {
