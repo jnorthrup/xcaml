@@ -8,18 +8,19 @@
         <groupId>org.apache.cxf.xjc-utils</groupId>
         <artifactId>cxf-xjc-runtime</artifactId>
         <version>3.0.3</version>
-    </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
+    </dependency><!--
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
         </dependency>
-
+-->
+        <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>2.6</version>
+    </dependency>
     </dependencies>
     <parent>
         <groupId>xcaml</groupId>

@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.01.29 at 11:10:27 AM PST
+// Generated on: 2015.01.30 at 05:51:02 PM PST
 //
 
 package oasis.names.tc.xacml._3_0.core.schema.wd_17;
@@ -78,13 +78,13 @@ public class PolicySetType {
   @XmlElement(name = "Target", required = true)
   protected TargetType target;
   @XmlElementRefs({
-      @XmlElementRef(name = "PolicyIdReference", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
       @XmlElementRef(name = "PolicySetIdReference", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "PolicyCombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "CombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
       @XmlElementRef(name = "PolicySet", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "PolicyCombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "PolicyIdReference", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
       @XmlElementRef(name = "PolicySetCombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
-      @XmlElementRef(name = "Policy", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false)})
+      @XmlElementRef(name = "Policy", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false),
+      @XmlElementRef(name = "CombinerParameters", namespace = "urn:oasis:names:tc:xacml:3.0:core:schema:wd-17", type = JAXBElement.class, required = false)})
   protected List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference;
   @XmlElement(name = "ObligationExpressions")
   protected ObligationExpressionsType obligationExpressions;
@@ -199,10 +199,10 @@ public class PolicySetType {
    * 
    * <p>
    * Objects of the following type(s) are allowed in the list {@link JAXBElement }{@code <}{@link IdReferenceType }
-   * {@code >} {@link JAXBElement }{@code <}{@link IdReferenceType }{@code >} {@link JAXBElement }{@code <}
-   * {@link PolicyCombinerParametersType }{@code >} {@link JAXBElement }{@code <}{@link CombinerParametersType }{@code >}
-   * {@link JAXBElement }{@code <}{@link PolicySetType }{@code >} {@link JAXBElement }{@code <}
-   * {@link PolicySetCombinerParametersType }{@code >} {@link JAXBElement }{@code <}{@link PolicyType }{@code >}
+   * {@code >} {@link JAXBElement }{@code <}{@link PolicySetType }{@code >} {@link JAXBElement }{@code <}
+   * {@link PolicyCombinerParametersType }{@code >} {@link JAXBElement }{@code <}{@link IdReferenceType }{@code >}
+   * {@link JAXBElement }{@code <}{@link PolicySetCombinerParametersType }{@code >} {@link JAXBElement }{@code <}
+   * {@link PolicyType }{@code >} {@link JAXBElement }{@code <}{@link CombinerParametersType }{@code >}
    * 
    * 
    */
