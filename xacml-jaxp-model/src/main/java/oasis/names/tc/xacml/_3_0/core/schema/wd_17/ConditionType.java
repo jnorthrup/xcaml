@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.01.30 at 05:51:02 PM PST
+// Generated on: 2015.02.03 at 12:40:57 AM PST
 //
 
 package oasis.names.tc.xacml._3_0.core.schema.wd_17;
@@ -47,11 +47,11 @@ public class ConditionType {
   /**
    * Gets the value of the expression property.
    * 
-   * @return possible object is {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >} {@link JAXBElement }
-   *         {@code <}{@link VariableReferenceType }{@code >} {@link JAXBElement }{@code <}{@link FunctionType }{@code >}
-   *         {@link JAXBElement }{@code <}{@link ApplyType }{@code >} {@link JAXBElement }{@code <}{@link ExpressionType }
-   *         {@code >} {@link JAXBElement }{@code <}{@link AttributeSelectorType }{@code >} {@link JAXBElement }{@code <}
-   *         {@link AttributeDesignatorType }{@code >}
+   * @return possible object is {@link JAXBElement }{@code <}{@link FunctionType }{@code >} {@link JAXBElement }{@code <}
+   *         {@link ExpressionType }{@code >} {@link JAXBElement }{@code <}{@link AttributeDesignatorType }{@code >}
+   *         {@link JAXBElement }{@code <}{@link ApplyType }{@code >} {@link JAXBElement }{@code <}
+   *         {@link AttributeSelectorType }{@code >} {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >}
+   *         {@link JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
    * 
    */
   public JAXBElement<?> getExpression() {
@@ -61,11 +61,11 @@ public class ConditionType {
   /**
    * Sets the value of the expression property.
    * 
-   * @param value allowed object is {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >} {@link JAXBElement }
-   *          {@code <}{@link VariableReferenceType }{@code >} {@link JAXBElement }{@code <}{@link FunctionType }{@code >}
-   *          {@link JAXBElement }{@code <}{@link ApplyType }{@code >} {@link JAXBElement }{@code <}{@link ExpressionType }
-   *          {@code >} {@link JAXBElement }{@code <}{@link AttributeSelectorType }{@code >} {@link JAXBElement }{@code <}
-   *          {@link AttributeDesignatorType }{@code >}
+   * @param value allowed object is {@link JAXBElement }{@code <}{@link FunctionType }{@code >} {@link JAXBElement }
+   *          {@code <}{@link ExpressionType }{@code >} {@link JAXBElement }{@code <}{@link AttributeDesignatorType }
+   *          {@code >} {@link JAXBElement }{@code <}{@link ApplyType }{@code >} {@link JAXBElement }{@code <}
+   *          {@link AttributeSelectorType }{@code >} {@link JAXBElement }{@code <}{@link AttributeValueType }{@code >}
+   *          {@link JAXBElement }{@code <}{@link VariableReferenceType }{@code >}
    * 
    */
   public void setExpression(JAXBElement<?> value) {
