@@ -110,20 +110,20 @@
                                         </xsdOption>
                                         <xsdOption>
                                             <extension>true</extension>
-                                            <xsd>${basedir}/src/main/xsd/dotml-1.4.xsd</xsd>
+                                            <xsd>${basedir}/src/main/xsd/dotml-1.4.xcaml.xsd</xsd>
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                                 <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
-                                        </xsdOption>              
-                                        <xsdOption>
+                                        </xsdOption>
+                                       <!-- <xsdOption>
                                             <extension>true</extension>
                                             <xsd>http://www.yworks.com/xml/schema/graphml/1.1/graphml-structure.xsd</xsd>
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                                 <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
-                                        </xsdOption>
+                                        </xsdOption>-->
                                     </xsdOptions>
                                     <!--<extensions>         -->
                                     <!--<extension>org.apache.cxf.xjcplugins:cxf-xjc-ts:2.3.0</extension>-->
