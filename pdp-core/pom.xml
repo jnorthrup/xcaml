@@ -84,7 +84,8 @@
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.0-rc2</version><scope>provided</scope>
+            <version>1.0-rc2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <properties>
@@ -106,19 +107,48 @@
                 </dependencies>
             </plugin>
             <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-eclipse-plugin</artifactId>
-            <configuration>
-                <additionalProjectnatures>
-                    <projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
-                </additionalProjectnatures>
-                <classpathContainers>
-                    <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-                    <classpathContainer>GROOVY_DSL_SUPPORT</classpathContainer>
-                </classpathContainers>
-            </configuration>
-        </plugin>
-
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
+                    </additionalProjectnatures>
+                    <classpathContainers>
+                        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+                        <classpathContainer>GROOVY_DSL_SUPPORT</classpathContainer>
+                    </classpathContainers>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-maven-plugin</artifactId>
+                <configuration>
+                    <!--<applicationContextUri>META-INF/spring/*.xml;YOUR_FILE_NAME_IN_THE_CLASS_PATH.xml
+                    </applicationContextUri>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.hawt</groupId>
+                <artifactId>hawtio-maven-plugin</artifactId>
+                <version>1.4.14</version>
+                <configuration>
+                    <!-- configuration options goes here -->
+                    <logClasspath>true</logClasspath>
+                    <!--<port>8090</port>-->
+                    <!--      <systemProperties>
+                          <http.proxyHost>myproxyserver.org</http.proxyHost>
+                          <http.proxyPort>8081<http.proxyPort>
+                        </systemProperties>-->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
