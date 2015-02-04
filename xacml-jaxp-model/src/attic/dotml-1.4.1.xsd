@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="xsd.xsl" type="text/xsl"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+            targetNamespace="http://www.martin-loetzsch.de/DOTML" xml:lang="en"
+            xmlns:dotml="http://www.martin-loetzsch.de/DOTML" xmlns:xh="http://www.w3.org/1999/xhtml"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.martin-loetzsch.de/DOTML http://www.acc.umu.se/~saasha/schemata/dotml-1.4.1.xs http://www.w3.org/1999/xhtml ">
+    <xs:annotation>
+        <xs:documentation>
+            <xh:div>
+
+                <!--<xh:h1 property="dct:title">About the DotML namespace</xh:h1>-->
+                <xh:h1>About the DotML namespace</xh:h1>
+                <xh:div class="bodytext">
+                    <xh:p>A schema for a graph representation as used by the graph drawing tool &#39;dot&#39; (AT&amp;T
+                        Bell Laboratories,<xh:a href="http://www.research.att.com/sw/tools/graphviz/">
+                            http://www.research.att.com/sw/tools/graphviz/</xh:a>). Please note that the dotml language
+                        covers only a subset of the dot language. (c) 2002 - 2010 Martin Loetzsch (<xh:a
+                                href="http://martin-loetzsch.de/">http://martin-loetzsch.de/</xh:a>)
+                    </xh:p>
+                    <xh:p>Slightly modified from version 1.4 to version 1.4.1 by Saašha Metsärantala — August 2010
+                    </xh:p>
+                </xh:div>
+                <xh:h2>Acknowledgements</xh:h2>
+                <xh:dl class="bodytext">
+                    <!--<xh:dt>To the<xh:span property="dct:creator">GraphViz team</xh:span>:-->
+                    <xh:dt>To the<xh:span>GraphViz team</xh:span>:
+                    </xh:dt>
+                    <xh:dd>Thanks for your creation of GraphViz and special thanks to Martin Loetzsch for the DotML file
+                        format, which is very useful to store graphs in an XML based format!
+                    </xh:dd>
+                    <xh:dt>To the<xh:a href="http://www.w3.org/">w3c</xh:a>:
+                    </xh:dt>
+                    <xh:dd>This schema is viewed thanks to the wonderful
+                        <xh:a href="http://www.w3.org/2008/09/xsd.xsl">http://www.w3.org/2008/09/xsd.xsl</xh:a>
+                        from the<xh:a href="http://www.w3.org/">w3c</xh:a>. Many thanks to the w3c for this filter and
+                        its other work for the web!
+                    </xh:dd>
+                </xh:dl>
+                <xh:h2>Licence</xh:h2>
+                <xh:div class="bodytext">
+                    <xh:p>Copyright (c) 2002-2010 Martin Loetzsch. All rights reserved.</xh:p>
+                    <xh:p>Redistribution and use in source and binary forms, with or without modification, are permitted
+                        provided that the following conditions are met:
+                    </xh:p>
+                    <xh:ol>
+                        <xh:li>Redistributions of source code must retain the above copyright notice, this list of
+                            conditions and the following disclaimer.
+                        </xh:li>
+                        <xh:li>Redistributions in binary form must reproduce the above copyright notice, this list of
+                            conditions and the following disclaimer in the documentation and / or other materials
+                            provided with the distribution.
+                        </xh:li>
+                        <xh:li>The end-user documentation included with the redistribution, if any, must include the
+                            following acknowledgment: &quot;This product includes DOTML developed by Martin Loetzsch (
+                            <xh:a href="http://www.martin-loetzsch.de/DOTML/">
+                                http://www.martin-loetzsch.de/DOTML/</xh:a>).&quot; Alternately, this acknowledgment may
+                            appear in the software itself, if and wherever such third-party acknowledgments normally
+                            appear.
+                        </xh:li>
+                    </xh:ol>
+                    <xh:p>THIS SOFTWARE IS PROVIDED BY MARTIN LOETZSCH &quot;AS IS&quot; AND ANY EXPRESSED OR IMPLIED
+                        WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+                        FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL MARTIN LOETZSCH BE LIABLE FOR ANY
+                        DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+                        LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+                        BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+                        STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+                        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                    </xh:p>
+                </xh:div>
+                <xh:h2>What does that mean?</xh:h2>
+                <xh:p class="bodytext">You can do what ever want with it as long as you mention that you use DotML.
+                </xh:p>
+                <xh:hr/>
+                <xh:h1>Specification of the DotML 1.4.1 schema's elements, attributes, complex types and simple types:
+                </xh:h1>
+            </xh:div>
+        </xs:documentation>
+    </xs:annotation>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+    <xs:element name="graph">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:h2>The root element of a &#39;dot&#39; graph.</xh:h2>
+                <xh:div class="bodytext">
+                    <xh:p>@nodesep: Minimum space between two adjacent nodes in the same rank, in inches.</xh:p>
+                    <xh:p>@rankdir: Rank constraints on the nodes in a sub-graph. If rank=&quot;same&quot;, all nodes
+                        are placed on the same rank. If rank=&quot;min&quot;, all nodes are placed on the minimum rank.
+                        If rank=&quot;source&quot;, all nodes are placed on the minimum rank, and the only nodes on the
+                        minimum rank belong to some sub-graph whose rank attribute is &quot;source&quot; or &quot;min&quot;.
+                        Analogous criteria hold for rank=&quot;max&quot; and rank=&quot;sink&quot;.
+                    </xh:p>
+                    <xh:p>@ranksep: the minimum vertical distance between the bottom of the nodes in one rank and the
+                        tops of nodes in the next.
+                    </xh:p>
+                    <xh:p>@ratio: Sets the aspect ratio (drawing height / drawing width) for the drawing. Note that this
+                        is adjusted before the size attribute constraints are enforced. If ratio is numeric, it is taken
+                        as the desired aspect ratio. Then, if the actual aspect ratio is less than the desired ratio,
+                        the drawing height is scaled up to achieve the desired ratio; if the actual ratio is greater
+                        than that desired ratio, the drawing width is scaled up. If ratio=&quot;fill&quot; and the size
+                        attribute is set, the drawing is scaled to achieve the aspect ratio implied by size. As size is
+                        set, when the drawing is later scaled to fit that rectangle, the resulting picture will fill the
+                        rectangle. If ratio=&quot;compress&quot; and the size attribute is set, dot attempts to compress
+                        the initial layout to fit in the given size. This achieves a tighter packing of nodes but
+                        reduces the balance and symmetry.
+                    </xh:p>
+                </xh:div>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="dotml:cluster-or-graph">
+                    <xs:attribute name="file-name" type="xs:token" use="required"/>
+                    <xs:attribute name="margin" type="dotml:point"/>
+                    <xs:attribute name="nodesep" type="xs:decimal"/>
+                    <xs:attribute name="rankdir" type="dotml:rankdir"/>
+                    <xs:attribute name="ranksep" type="xs:decimal"/>
+                    <xs:attribute name="ratio" type="dotml:ratio"/>
+                    <xs:attribute name="size" type="dotml:point"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+        <xs:key name="all-nodes-have-to-have-different-ids">
+            <xs:selector xpath=".//dotml:node"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:key name="all-clusters-have-to-have-different-ids">
+            <xs:selector xpath=".//dotml:cluster"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="attribute-from-must-be-an-existing-node-id"
+                    refer="dotml:all-nodes-have-to-have-different-ids">
+            <xs:selector xpath=".//dotml:edge"/>
+            <xs:field xpath="@from"/>
+        </xs:keyref>
+        <xs:keyref name="attribute-to-must-be-an-existing-node-id" refer="dotml:all-nodes-have-to-have-different-ids">
+            <xs:selector xpath=".//dotml:edge"/>
+            <xs:field xpath="@to"/>
+        </xs:keyref>
+        <xs:keyref name="attribute-ltail-must-be-an-existing-cluster-id"
+                    refer="dotml:all-clusters-have-to-have-different-ids">
+            <xs:selector xpath=".//dotml:edge"/>
+            <xs:field xpath="@ltail"/>
+        </xs:keyref>
+        <xs:keyref name="attribute-lhead-must-be-an-existing-cluster-id"
+                    refer="dotml:all-clusters-have-to-have-different-ids">
+            <xs:selector xpath=".//dotml:edge"/>
+            <xs:field xpath="@lhead"/>
+        </xs:keyref>
+    </xs:element>
+    <xs:complexType name="cluster">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>A rectangular cluster of nodes.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="dotml:cluster-or-graph">
+                <xs:attribute name="color" type="dotml:color"/>
+                <xs:attribute name="fillcolor" type="dotml:color"/>
+                <xs:attribute name="id" type="dotml:id" use="required"/>
+                <xs:attribute name="labeljust" type="dotml:labeljust"/>
+                <xs:attribute name="labelloc" type="dotml:labelloc"/>
+                <xs:attribute name="style" type="dotml:style"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="cluster-or-graph">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The base class for clusters and graphs.</xh:p>
+                <xh:ul>
+                    <xh:li>node: A single node.</xh:li>
+                    <xh:li>cluster: A rectangular cluster of nodes.</xh:li>
+                    <xh:li>sub-graph: A group of nodes with rank constraints.</xh:li>
+                    <xh:li>record: A record node.</xh:li>
+                    <xh:li>edge: An edge.</xh:li>
+                </xh:ul>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:choice>
+                <xs:element name="node" type="dotml:node">
+                    <xs:annotation>
+                        <xs:documentation>A single node.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="cluster" type="dotml:cluster">
+                    <xs:annotation>
+                        <xs:documentation>A rectangular cluster of nodes.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="sub-graph" type="dotml:sub-graph">
+                    <xs:annotation>
+                        <xs:documentation>A group of nodes with rank constraints.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="record" type="dotml:record-node">
+                    <xs:annotation>
+                        <xs:documentation>A record node.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="edge" type="dotml:edge">
+                    <xs:annotation>
+                        <xs:documentation>An edge.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="bgcolor" type="dotml:color"/>
+        <xs:attributeGroup ref="dotml:font-attributes"/>
+        <xs:attribute name="label" type="dotml:label"/>
+        <xs:attribute ref="xml:lang"/>
+    </xs:complexType>
+    <xs:complexType name="sub-graph">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>A group of nodes with rank constraints</xh:p>
+                <xh:ul>
+                    <xh:li>node: A node of the sub-graph</xh:li>
+                    <xh:li>record: A record node of the sub-graph</xh:li>
+                </xh:ul>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+                <xs:element name="node" type="dotml:node">
+                    <xs:annotation>
+                        <xs:documentation>A node of the sub-graph</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="record" type="dotml:record-node">
+                    <xs:annotation>
+                        <xs:documentation>A record node of the sub-graph</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="rank" type="dotml:rank" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="node">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Represents a single node in the graph.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fixedsize" type="xs:boolean"/>
+        <xs:attribute name="id" type="dotml:id" use="required"/>
+        <xs:attribute name="label" type="dotml:label"/>
+        <xs:attribute ref="xml:lang"/>
+        <xs:attribute name="shape" type="dotml:shape"/>
+        <xs:attributeGroup ref="dotml:node-and-record-attributes"/>
+    </xs:complexType>
+    <xs:attributeGroup name="node-and-record-attributes">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Attributes that are used both by records and by nodes.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="color" type="dotml:color"/>
+        <xs:attribute name="fillcolor" type="dotml:color"/>
+        <xs:attributeGroup ref="dotml:font-attributes"/>
+        <xs:attribute name="height" type="xs:decimal"/>
+        <xs:attribute name="style" type="dotml:style"/>
+        <xs:attribute name="width" type="xs:decimal"/>
+    </xs:attributeGroup>
+    <xs:complexType name="record-node">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The root element of a record.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="dotml:record">
+                <xs:attributeGroup ref="dotml:node-and-record-attributes"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="record">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>A record inside a record</xh:p>
+                <xh:ul>
+                    <xh:li>node: A node inside a record.</xh:li>
+                    <xh:li>record: A record inside a record.</xh:li>
+                </xh:ul>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+                <xs:element name="node">
+                    <xs:annotation>
+                        <xs:documentation>A node inside a record.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="id" type="dotml:id" use="required"/>
+                        <xs:attribute name="label" type="dotml:label"/>
+                        <xs:attribute ref="xml:lang"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="record" type="dotml:record">
+                    <xs:annotation>
+                        <xs:documentation>A record inside a record.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="edge">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Represents a single edge in the graph.</xh:p>
+                <xh:ul>
+                    <xh:li>@constraint: If false, the edge is not used in ranking the nodes.</xh:li>
+                    <xh:li>@decorate: If true, the edge label is attached to the edge by a 2-segment polyline,
+                        underlining the label, then going to the closest point of spline.
+                    </xh:li>
+                    <xh:li>@labeldistance: Multiplicative scaling factor adjusting the distance from the headlabel /
+                        taillabel to the head / tail node.
+                    </xh:li>
+                    <xh:li>@labelfloat: If true, allows edge labels to appear on top of other edges.</xh:li>
+                    <xh:li>@lhead: Logical head of an edge.</xh:li>
+                    <xh:li>@samehead: edges with the same head node and the same samehead attribute value are aimed at
+                        the same point on the head.
+                    </xh:li>
+                    <xh:li>@sametail: edges with the same tail node and the same sametail attribute value are aimed at
+                        the same point on the tail.
+                    </xh:li>
+                </xh:ul>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="arrowhead" type="dotml:arrow-type"/>
+        <xs:attribute name="arrowsize" type="xs:decimal"/>
+        <xs:attribute name="arrowtail" type="dotml:arrow-type"/>
+        <xs:attribute name="color" type="dotml:color"/>
+        <xs:attribute name="constraint" type="xs:boolean"/>
+        <xs:attribute name="decorate" type="xs:boolean"/>
+        <xs:attribute name="dir" type="dotml:dir"/>
+        <xs:attributeGroup ref="dotml:font-attributes"/>
+        <xs:attribute name="from" type="dotml:id" use="required"/>
+        <xs:attribute name="headlabel" type="dotml:label"/>
+        <xs:attribute name="headport" type="dotml:node-port"/>
+        <xs:attribute name="label" type="dotml:label"/>
+        <xs:attribute name="labeldistance" type="xs:decimal"/>
+        <xs:attribute name="labelfloat" type="xs:boolean"/>
+        <xs:attribute name="labelfontcolor" type="dotml:color"/>
+        <xs:attribute name="labelfontname" type="xs:token"/>
+        <xs:attribute name="labelfontsize" type="xs:decimal"/>
+        <xs:attribute name="lhead" type="dotml:id"/>
+        <xs:attribute name="ltail" type="dotml:id"/>
+        <xs:attribute name="minlen" type="xs:integer"/>
+        <xs:attribute name="style" type="dotml:style"/>
+        <xs:attribute name="samehead" type="xs:NCName"/>
+        <xs:attribute name="sametail" type="xs:NCName"/>
+        <xs:attribute name="taillabel" type="dotml:label"/>
+        <xs:attribute name="tailport" type="dotml:node-port"/>
+        <xs:attribute name="to" type="dotml:id" use="required"/>
+        <xs:attribute ref="xml:lang"/>
+    </xs:complexType>
+    <xs:simpleType name="shape">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Possible node shapes.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="box"/>
+            <xs:enumeration value="circle"/>
+            <xs:enumeration value="ellipse"/>
+            <xs:enumeration value="point"/>
+            <xs:enumeration value="egg"/>
+            <xs:enumeration value="triangle"/>
+            <xs:enumeration value="plaintext"/>
+            <xs:enumeration value="diamond"/>
+            <xs:enumeration value="trapezium"/>
+            <xs:enumeration value="parallelogram"/>
+            <xs:enumeration value="house"/>
+            <xs:enumeration value="hexagon"/>
+            <xs:enumeration value="octagon"/>
+            <xs:enumeration value="doublecircle"/>
+            <xs:enumeration value="doubleoctagon"/>
+            <xs:enumeration value="invtriangle"/>
+            <xs:enumeration value="invtrapezium"/>
+            <xs:enumeration value="invhouse"/>
+            <xs:enumeration value="Mdiamond"/>
+            <xs:enumeration value="Msquare"/>
+            <xs:enumeration value="Mcircle"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:attributeGroup name="font-attributes">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Common font attributes</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fontname" type="xs:token"/>
+        <xs:attribute name="fontsize" type="xs:decimal"/>
+        <xs:attribute name="fontcolor" type="dotml:color"/>
+    </xs:attributeGroup>
+    <xs:simpleType name="label">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The label attached to an object.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    <xs:simpleType name="id">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The id of a node or a cluster.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName"/>
+    </xs:simpleType>
+    <xs:simpleType name="color">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>A RGB color.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="#[A-Fa-f0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="rankdir">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The general layout direction of the graph.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="TB"/>
+            <xs:enumeration value="LR"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="dir">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The direction of edges.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="back"/>
+            <xs:enumeration value="both"/>
+            <xs:enumeration value="none"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="rank">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Rank types for sub-graphs.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="same"/>
+            <xs:enumeration value="min"/>
+            <xs:enumeration value="source"/>
+            <xs:enumeration value="max"/>
+            <xs:enumeration value="sink"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="arrow-type">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Possible types for edge arrows.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="normal"/>
+            <xs:enumeration value="inv"/>
+            <xs:enumeration value="dot"/>
+            <xs:enumeration value="invdot"/>
+            <xs:enumeration value="odot"/>
+            <xs:enumeration value="invodot"/>
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="tee"/>
+            <xs:enumeration value="empty"/>
+            <xs:enumeration value="invempty"/>
+            <xs:enumeration value="diamond"/>
+            <xs:enumeration value="odiamond"/>
+            <xs:enumeration value="box"/>
+            <xs:enumeration value="obox"/>
+            <xs:enumeration value="open"/>
+            <xs:enumeration value="crow"/>
+            <xs:enumeration value="halfopen"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="style">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The style of nodes or edges.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="dashed"/>
+            <xs:enumeration value="dotted"/>
+            <xs:enumeration value="solid"/>
+            <xs:enumeration value="invis"/>
+            <xs:enumeration value="bold"/>
+            <xs:enumeration value="filled"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="node-port">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Port where an edge can attach to a node.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:Name">
+            <xs:enumeration value=":n"/>
+            <xs:enumeration value=":ne"/>
+            <xs:enumeration value=":e"/>
+            <xs:enumeration value=":se"/>
+            <xs:enumeration value=":s"/>
+            <xs:enumeration value=":sw"/>
+            <xs:enumeration value=":w"/>
+            <xs:enumeration value=":nw"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="point">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>Describes a x-y point.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:pattern value="\d+(\.\d+)?,\d+(\.\d+)?"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ratio">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The aspect ratio of a graph.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:pattern value="fill"/>
+            <xs:pattern value="compress"/>
+            <xs:pattern value="\d+(\.\d+)*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="labelloc">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The vertical cluster label location.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="t"/>
+            <xs:enumeration value="b"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="labeljust">
+        <xs:annotation>
+            <xs:documentation>
+                <xh:p>The horizontal cluster label location.</xh:p>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:NCName">
+            <xs:enumeration value="l"/>
+            <xs:enumeration value="r"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

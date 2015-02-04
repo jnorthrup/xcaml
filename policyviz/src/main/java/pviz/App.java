@@ -32,15 +32,15 @@ import java.util.stream.Collectors;
  */
 public class App {
 
-    public static final String LTBLUE = "#DDDDFF";
-    public static final String WHITE = "#FFFFFF";
-    public static final String LTGREY = "#EEEEEE";
-    public static final String PURPLE = "#FF00FF";
-    public static final String GREEN = "#00FF00";
-    public static final String RED = "#FF0000";
-    public static final String PINKISH = "FFDDDD";
-    public static final String LTGREEN = "#88FF88";
-    public static final String LTRED = "#FF8888";
+    public static final String LTBLUE = "lightblue";
+    public static final String WHITE = "white";
+    public static final String LTGREY = "lightgrey";
+    public static final String PURPLE = "purple";
+    public static final String GREEN = "green";
+    public static final String RED = "red";
+    public static final String PINKISH = "pink";
+    public static final String LTGREEN = "lightgreen";
+    public static final String LTRED = "salmon";
     static long c = 0;
 
     public static void main(String[] args) throws JAXBException, ParserConfigurationException,
@@ -96,8 +96,12 @@ public class App {
         ClusterOrGraph c = graph;
         visitTarget(graph, policySet, top.getTarget());
         final AdviceExpressionsType adviceExpressions = top.getAdviceExpressions();
-        addChildToFirstOf(visitAdviceExpressions(c, adviceExpressions), c);
-        addChildToFirstOf(visitObligationExpressions(c, top.getObligationExpressions()), c);
+        Node child = visitAdviceExpressions(c, adviceExpressions);
+
+        linkChildToFirstOf(graph,child,/*fnNode,policyNode,*/createEdgeToHere);
+        child = visitObligationExpressions(c, top.getObligationExpressions());
+        linkChildToFirstOf(graph,child,/*fnNode,policyNode,*/createEdgeToHere);
+
         List<JAXBElement<?>> policySetOrPolicyOrPolicySetIdReference =
                 top.getPolicySetOrPolicyOrPolicySetIdReference();
 
@@ -133,9 +137,12 @@ public class App {
 
         Node fnNode = visitTarget(c, policyNode, top.getTarget());
         final AdviceExpressionsType adviceExpressions = top.getAdviceExpressions();
-        linkChildToFirstOf(graph, visitAdviceExpressions(c, adviceExpressions), policyNode);
-
-        linkChildToFirstOf(graph, visitObligationExpressions(c, top.getObligationExpressions()), policyNode);
+        Node child = visitAdviceExpressions(c, adviceExpressions);
+        if(null!=child)
+            linkChildToFirstOf(graph,child,fnNode,policyNode,createEdgeToHere);
+        child = visitObligationExpressions(c, top.getObligationExpressions());
+        if(null!=child)
+            linkChildToFirstOf(graph,child,fnNode,policyNode,createEdgeToHere);
 
 //        top.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().filter(o -> o instanceof RuleType).map(o -> (RuleType) o).forEach(ruleType -> {
 //            visitRule(policyNode, c, fnNode, ruleType);
@@ -153,8 +160,6 @@ public class App {
                     addChildToFirstOf(aaaa00, c);
                     linkChildToFirstOf(c, aaaa00, policyNode);
                     linkChildToFirstOf(c, visitExpression(c, v.getExpression()), aaaa00);
-
-
                 }
 
             }
@@ -170,15 +175,15 @@ public class App {
             adviceExpressions.getAdviceExpression().forEach(adviceExpressionType -> {
                 final Cluster advCluster = new Cluster().withId(id());
                 addChildToFirstOf(advCluster, outer);
-                final EffectType appliesTo = adviceExpressionType.getAppliesTo();
-                adviceNode[0] = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(Style.FILLED).withLabel(adviceExpressionType.getAdviceId());
+
+                  EffectType appliesTo = adviceExpressionType.getAppliesTo();
+                final Node node = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(Style.FILLED).withLabel(adviceExpressionType.getAdviceId());
+                adviceNode[0] = node;
                 addChildToFirstOf(adviceNode[0], advCluster);
                 adviceExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
-
-                    final Cluster ac = new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
-
+                    Cluster ac = new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
                     addChildToFirstOf(ac, advCluster);
-                    addChildToFirstOf(visitExpression(ac, aa.getExpression()), ac);
+                    visitExpression(ac, aa.getExpression());
                 });
             });
 
@@ -199,7 +204,7 @@ public class App {
 
                     final Cluster ac = new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
                     addChildToFirstOf(ac, advCluster);
-                    addChildToFirstOf(visitExpression(ac, aa.getExpression()), ac);
+                     visitExpression(ac, aa.getExpression()) ;
                 });
             });
 
@@ -228,10 +233,11 @@ public class App {
                 linkChildToFirstOf(outer, node, prev);
             }
         }
-        linkChildToFirstOf(ruleCluster, visitAdviceExpressions(ruleCluster, ruleType
-                .getAdviceExpressions()), prev, prevLink);
-        linkChildToFirstOf(ruleCluster, visitObligationExpressions(ruleCluster, ruleType
-                .getObligationExpressions()), prev, prevLink);
+        final Node adv = visitAdviceExpressions(ruleCluster, ruleType.getAdviceExpressions());
+        if(null!=adv)
+            linkChildToFirstOf(ruleCluster, adv, prev, prevLink,topLink);
+        final Node ob = visitObligationExpressions(ruleCluster, ruleType.getObligationExpressions());
+        linkChildToFirstOf(ruleCluster, ob, prev, prevLink,topLink);
         return rule;
     }
 
@@ -354,7 +360,7 @@ public class App {
                         new StreamResult(new FileWriter(fileName)));
                 // "-Gperipheries=0","-Gpack","-Gvisit","-Gconcentrate","-Gsplines=ortho","-Gsplines=curved","-Gsplines=polyline","-Gclusterrank","-Gsplines=ortho","-Goverlap=false"
                 Process start =
-                        new ProcessBuilder().command("dot", fileName, "-Goverlap=false", "-Tsvg",
+                        new ProcessBuilder().command("dot", fileName,/*"-Gsplines=ortho",*/ "-Goverlap=false", "-Tsvg",
                                 "-o" + out + ".svg", "-Tpng", "-o" + out + ".png").start();
                 // Process gxl = new ProcessBuilder().command("dot2gxl", "/tmp/x.dot","-o/tmp/x.gxl" ).start();
                 start.waitFor();
