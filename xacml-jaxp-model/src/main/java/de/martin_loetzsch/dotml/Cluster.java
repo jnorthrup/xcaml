@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.04 at 04:25:41 AM PST
+// Generated on: 2015.02.04 at 04:50:20 AM PST
 //
 
 package de.martin_loetzsch.dotml;
@@ -37,7 +37,7 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
  *       &lt;attribute name="id" use="required" type="{http://www.martin-loetzsch.de/DOTML}id" />
  *       &lt;attribute name="labeljust" type="{http://www.martin-loetzsch.de/DOTML}labeljust" />
  *       &lt;attribute name="labelloc" type="{http://www.martin-loetzsch.de/DOTML}labelloc" />
- *       &lt;attribute name="style" type="{http://www.martin-loetzsch.de/DOTML}style" />
+ *       &lt;attribute name="style" type="{http://www.martin-loetzsch.de/DOTML}clusterStyle" />
  *     &lt;/extension>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -61,7 +61,7 @@ public class Cluster extends ClusterOrGraph {
   @XmlAttribute(name = "labelloc")
   protected Labelloc labelloc;
   @XmlAttribute(name = "style")
-  protected Style style;
+  protected ClusterStyle style;
 
   /**
    * Gets the value of the color property.
@@ -166,20 +166,20 @@ public class Cluster extends ClusterOrGraph {
   /**
    * Gets the value of the style property.
    * 
-   * @return possible object is {@link Style }
+   * @return possible object is {@link ClusterStyle }
    * 
    */
-  public Style getStyle() {
+  public ClusterStyle getStyle() {
     return style;
   }
 
   /**
    * Sets the value of the style property.
    * 
-   * @param value allowed object is {@link Style }
+   * @param value allowed object is {@link ClusterStyle }
    * 
    */
-  public void setStyle(Style value) {
+  public void setStyle(ClusterStyle value) {
     this.style = value;
   }
 
@@ -208,7 +208,7 @@ public class Cluster extends ClusterOrGraph {
     return this;
   }
 
-  public Cluster withStyle(Style value) {
+  public Cluster withStyle(ClusterStyle value) {
     setStyle(value);
     return this;
   }

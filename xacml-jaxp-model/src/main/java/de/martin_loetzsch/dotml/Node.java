@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.04 at 04:25:41 AM PST
+// Generated on: 2015.02.04 at 04:50:20 AM PST
 //
 
 package de.martin_loetzsch.dotml;
@@ -63,7 +63,7 @@ public class Node {
   @XmlAttribute(name = "height")
   protected BigDecimal height;
   @XmlAttribute(name = "style")
-  protected Style style;
+  protected NodeStyle style;
   @XmlAttribute(name = "width")
   protected BigDecimal width;
   @XmlAttribute(name = "fontname")
@@ -216,20 +216,20 @@ public class Node {
   /**
    * Gets the value of the style property.
    * 
-   * @return possible object is {@link Style }
+   * @return possible object is {@link NodeStyle }
    * 
    */
-  public Style getStyle() {
+  public NodeStyle getStyle() {
     return style;
   }
 
   /**
    * Sets the value of the style property.
    * 
-   * @param value allowed object is {@link Style }
+   * @param value allowed object is {@link NodeStyle }
    * 
    */
-  public void setStyle(Style value) {
+  public void setStyle(NodeStyle value) {
     this.style = value;
   }
 
@@ -348,7 +348,7 @@ public class Node {
     return this;
   }
 
-  public Node withStyle(Style value) {
+  public Node withStyle(NodeStyle value) {
     setStyle(value);
     return this;
   }

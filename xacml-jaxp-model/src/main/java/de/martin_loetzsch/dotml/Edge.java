@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.04 at 04:25:41 AM PST
+// Generated on: 2015.02.04 at 04:50:20 AM PST
 //
 
 package de.martin_loetzsch.dotml;
@@ -53,7 +53,7 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
  *       &lt;attribute name="lhead" type="{http://www.martin-loetzsch.de/DOTML}id" />
  *       &lt;attribute name="ltail" type="{http://www.martin-loetzsch.de/DOTML}id" />
  *       &lt;attribute name="minlen" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *       &lt;attribute name="style" type="{http://www.martin-loetzsch.de/DOTML}style" />
+ *       &lt;attribute name="style" type="{http://www.martin-loetzsch.de/DOTML}edgeStyle" />
  *       &lt;attribute name="samehead" type="{http://www.w3.org/2001/XMLSchema}NCName" />
  *       &lt;attribute name="sametail" type="{http://www.w3.org/2001/XMLSchema}NCName" />
  *       &lt;attribute name="taillabel" type="{http://www.w3.org/2001/XMLSchema}string" />
@@ -112,7 +112,7 @@ public class Edge {
   @XmlAttribute(name = "minlen")
   protected BigInteger minlen;
   @XmlAttribute(name = "style")
-  protected Style style;
+  protected EdgeStyle style;
   @XmlAttribute(name = "samehead")
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "NCName")
@@ -518,20 +518,20 @@ public class Edge {
   /**
    * Gets the value of the style property.
    * 
-   * @return possible object is {@link Style }
+   * @return possible object is {@link EdgeStyle }
    * 
    */
-  public Style getStyle() {
+  public EdgeStyle getStyle() {
     return style;
   }
 
   /**
    * Sets the value of the style property.
    * 
-   * @param value allowed object is {@link Style }
+   * @param value allowed object is {@link EdgeStyle }
    * 
    */
-  public void setStyle(Style value) {
+  public void setStyle(EdgeStyle value) {
     this.style = value;
   }
 
@@ -790,7 +790,7 @@ public class Edge {
     return this;
   }
 
-  public Edge withStyle(Style value) {
+  public Edge withStyle(EdgeStyle value) {
     setStyle(value);
     return this;
   }

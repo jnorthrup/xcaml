@@ -156,7 +156,7 @@ public class App {
                 }
                 case "VariableDefinitionType": {
                     VariableDefinitionType v = (VariableDefinitionType) o;
-                    final Node aaaa00 = new Node().withLabel(urnTip(v.getVariableId())).withId(id()).withColor("#EEEE00").withStyle(Style.FILLED);
+                    final Node aaaa00 = new Node().withLabel(urnTip(v.getVariableId())).withId(id()).withColor("#EEEE00").withStyle(NodeStyle.FILLED);
                     addChildToFirstOf(aaaa00, c);
                     linkChildToFirstOf(c, aaaa00, policyNode);
                     linkChildToFirstOf(c, visitExpression(c, v.getExpression()), aaaa00);
@@ -177,7 +177,7 @@ public class App {
                 addChildToFirstOf(advCluster, outer);
 
                   EffectType appliesTo = adviceExpressionType.getAppliesTo();
-                final Node node = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(Style.FILLED).withLabel(adviceExpressionType.getAdviceId());
+                final Node node = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(NodeStyle.FILLED).withLabel(adviceExpressionType.getAdviceId());
                 adviceNode[0] = node;
                 addChildToFirstOf(adviceNode[0], advCluster);
                 adviceExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
@@ -198,7 +198,7 @@ public class App {
                 final Cluster advCluster = new Cluster().withId(id());
                 addChildToFirstOf(advCluster, outer);
                 final EffectType appliesTo = ObligationExpressionType.getFulfillOn();
-                ObligationNode[0] = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVHOUSE).withStyle(Style.FILLED).withLabel(ObligationExpressionType.getObligationId());
+                ObligationNode[0] = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVHOUSE).withStyle(NodeStyle.FILLED).withLabel(ObligationExpressionType.getObligationId());
                 addChildToFirstOf(ObligationNode[0], advCluster);
                 ObligationExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
 
@@ -216,8 +216,8 @@ public class App {
         Node rule =
                 new Node().withId(id()).withColor(permit ? GREEN : RED).withLabel(
                         "Rule:" + urnTip(ruleType.getRuleId())).withShape(permit ? Shape.HOUSE : Shape.OCTAGON)
-                        .withStyle(Style.FILLED);
-        Cluster ruleCluster = new Cluster().withId(id()).withStyle(Style.INVIS);
+                        .withStyle(NodeStyle.FILLED);
+        Cluster ruleCluster = new Cluster().withId(id()).withStyle(ClusterStyle.INVIS);
         addChildToFirstOf(ruleCluster, c);
         addChildToFirstOf(rule, ruleCluster);
         linkChildToFirstOf(c, rule, prevLink, topLink);
@@ -227,7 +227,7 @@ public class App {
             JAXBElement<?> expression = condition.getExpression();
 
             if (!expression.isNil()) {
-                Cluster outer = new Cluster().withId(id()).withStyle(Style.INVIS);
+                Cluster outer = new Cluster().withId(id()).withStyle(ClusterStyle.INVIS);
                 Node node = visitExpression(outer, expression);
                 addChildToFirstOf(outer, c);
                 linkChildToFirstOf(outer, node, prev);
@@ -253,12 +253,12 @@ public class App {
                     addChildToFirstOf(scope, graph);
                     String matchId = aMatch.getMatchId();
                     Record matchCluster = new Record();
-                    addChildToFirstOf(new RecordNode().withFillcolor(LTGREY).withStyle(Style.FILLED)
+                    addChildToFirstOf(new RecordNode().withFillcolor(LTGREY).withStyle(NodeStyle.FILLED)
                             .withNodeOrRecord(matchCluster), graph);
                     linkChildToFirstOf(graph, scope, val, fnNode);
                     fnNode =
                             new Node().withId(id()).withLabel("fn" + urnTip(matchId)).withColor(GREEN).withShape(
-                                    Shape.DIAMOND).withStyle(Style.SOLID);
+                                    Shape.DIAMOND).withStyle(NodeStyle.SOLID);
                     addChildToFirstOf(fnNode, matchCluster);
                     linkChildToFirstOf(graph, fnNode, scope, parent);
                     AttributeValueType attributeValue = aMatch.getAttributeValue();
@@ -266,21 +266,21 @@ public class App {
                     String join = getContentString(attributeValue.getContent());
                     val =
                             new Node().withLabel(hashTip(dataType1) + ":" + join).withId(id()).withShape(
-                                    Shape.PARALLELOGRAM).withStyle(Style.SOLID).withColor("#FFEE88");
+                                    Shape.PARALLELOGRAM).withStyle(NodeStyle.SOLID).withColor("#FFEE88");
 
                     AttributeDesignatorType attributeDesignator = aMatch.getAttributeDesignator();
                     if (null != attributeDesignator) {
                         String attributeId = attributeDesignator.getAttributeId();
                         Node build =
                                 new Node().withId(id()).withLabel(urnTip(attributeId)).withColor(LTBLUE).withShape(
-                                        Shape.PARALLELOGRAM).withStyle(Style.SOLID);
+                                        Shape.PARALLELOGRAM).withStyle(NodeStyle.SOLID);
                         addChildToFirstOf(build, matchCluster);
                     } else {
                         AttributeSelectorType attributeSelector = aMatch.getAttributeSelector();
                         String contextSelectorId = attributeSelector.getContextSelectorId();
                         Node build =
                                 new Node().withId(id()).withLabel(urnTip(contextSelectorId)).withFillcolor(LTBLUE)
-                                        .withShape(Shape.PARALLELOGRAM).withStyle(Style.SOLID);
+                                        .withShape(Shape.PARALLELOGRAM).withStyle(NodeStyle.SOLID);
                         addChildToFirstOf(build, matchCluster);
                     }
                     addChildToFirstOf(val, matchCluster);
@@ -394,7 +394,7 @@ public class App {
                     String toId = getId(to);
                     String fromId = getId(parent);
                     graph.getNodeOrClusterOrSubGraph().add(
-                            new Edge().withFrom(fromId).withTo(toId).withStyle(Style.SOLID));
+                            new Edge().withFrom(fromId).withTo(toId).withStyle(EdgeStyle.SOLID));
                     return;
                 }
     }
@@ -444,7 +444,7 @@ public class App {
                 ApplyType applyType = (ApplyType) expression.getValue();
                 String functionId = applyType.getFunctionId();
                 Node applyNode = new Node().withLabel("apply:" + urnTip(functionId)).withShape(Shape.INVTRIANGLE).withId(id());
-                Cluster applyCluster = new Cluster().withId(id()).withStyle(Style.INVIS);
+                Cluster applyCluster = new Cluster().withId(id()).withStyle(ClusterStyle.INVIS);
 
                 //visitExpression
                 addChildToFirstOf(applyCluster, outer);
@@ -457,7 +457,7 @@ public class App {
 
                 String s = hashTip(a.getDataType());
                 String contentString = getContentString(a.getContent());
-                Node valueNode = new Node().withLabel(s + ":" + contentString).withId(id()).withFillcolor(LTBLUE).withStyle(Style.FILLED);
+                Node valueNode = new Node().withLabel(s + ":" + contentString).withId(id()).withFillcolor(LTBLUE).withStyle(NodeStyle.FILLED);
                 addChildToFirstOf(valueNode, outer);
                 return valueNode;
             }
