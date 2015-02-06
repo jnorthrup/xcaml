@@ -15,12 +15,8 @@
             <groupId>${project.parent.groupId}</groupId>
             <artifactId>xacml-constants</artifactId>
             <version>${project.parent.version}</version>
-        </dependency>  
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-spring</artifactId>
-            <version>${camel.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-gson</artifactId>
@@ -34,11 +30,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-script</artifactId>
-            <version>${camel.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-groovy</artifactId>
             <version>${camel.version}</version>
         </dependency>
         <dependency>
@@ -98,63 +89,7 @@
     </properties>
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
-                <configuration>
-                    <compilerId>groovy-eclipse-compiler</compilerId>
 
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.9.1-01</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>2.3.7-01</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
-                    </additionalProjectnatures>
-                    <classpathContainers>
-                        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-                        <classpathContainer>GROOVY_DSL_SUPPORT</classpathContainer>
-                    </classpathContainers>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-maven-plugin</artifactId>
-                <version>${camel.version}</version>
-                <configuration>
-                    <!--<applicationContextUri>META-INF/spring/*.xml;YOUR_FILE_NAME_IN_THE_CLASS_PATH.xml
-                    </applicationContextUri>-->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>io.hawt</groupId>
-                <artifactId>hawtio-maven-plugin</artifactId>
-                <version>1.4.46</version>
-                <configuration>
-                    <!-- configuration options goes here -->
-                    <logClasspath>true</logClasspath>
-                    <!--<port>8090</port>-->
-                    <!--      <systemProperties>
-                          <http.proxyHost>myproxyserver.org</http.proxyHost>
-                          <http.proxyPort>8081<http.proxyPort>
-                        </systemProperties>-->
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <reporting>
