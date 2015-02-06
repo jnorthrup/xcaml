@@ -12,7 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by jim on 11/21/14.
- */@AutoFactory
+ */
+@AutoFactory
 public class PdpTx {
   @AutoValue
   abstract static class Tuple {

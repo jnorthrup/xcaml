@@ -16,8 +16,14 @@
         <module>caml</module>
         <module>xacml-jaxp-model</module>
         <module>xacml-constants</module>
+        <module>policy-decomposition</module>
         <module>pdp-core</module>
-    <module>policyviz</module>
+
+        <!--
+        policyviz is an discrete build not part of deliverables henceforth
+        <module>policyviz</module>-->
+
+        
   </modules>
 
     <profiles>
