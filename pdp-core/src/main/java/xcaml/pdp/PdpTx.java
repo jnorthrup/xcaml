@@ -12,8 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by jim on 11/21/14.
- */
-@AutoFactory
+ */@AutoFactory
 public class PdpTx {
   @AutoValue
   abstract static class Tuple {
@@ -32,7 +31,7 @@ public class PdpTx {
   private static PolicyType policy;
   final Multimap<List<String>, Tuple> policyIndex = ArrayListMultimap.create();
 
-  public PdpTx(@Provided PolicyType policy) {
+  public PdpTx( @Provided PolicyType policy) {
         PdpTx.policy = policy;
         assert policy.getTarget().getAnyOf().isEmpty() : "top level target not yet implemented"; //todo: impl
         policy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().forEach(o -> {

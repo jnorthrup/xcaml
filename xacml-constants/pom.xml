@@ -16,7 +16,6 @@
             <artifactId>guava</artifactId>
             <version>18.0</version>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -24,19 +23,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-        <groupId>com.google.auto.value</groupId>
-        <artifactId>auto-value</artifactId>
-        <version>1.0-rc2</version>
-        <scope>provided</scope>
-    </dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>xcaml</groupId>
             <artifactId>xacml-jaxp-model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-
     </dependencies>
-
-
 </project>

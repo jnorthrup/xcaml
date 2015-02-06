@@ -25,7 +25,7 @@
         <dependency>
             <groupId>xcaml</groupId>
             <artifactId>xacml-jaxp-model</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
