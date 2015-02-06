@@ -103,7 +103,6 @@
                                         <xsdOption>
                                             <extension>true</extension>
                                             <xsd>${basedir}/src/main/xsd/xacml-core-v3-schema-wd-17.xsd</xsd>
-                                            <packagename>oasis.names.tc.xacml._3_0.core.schema.wd_17</packagename>
                                             <extensionArgs>
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                                 <extensionArg>-Xts</extensionArg>
@@ -117,7 +116,7 @@
                                                 <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
                                         </xsdOption>
-                                        <xsdOption>
+<!--                                        <xsdOption>
                                             <extension>true</extension>
                                             <xsd>${basedir}/src/main/xsd/visio.xsd</xsd>
                                             <extensionArgs>
@@ -140,7 +139,7 @@
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                                 <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
-                                        </xsdOption>
+                                        </xsdOption>-->
                                         <!-- <xsdOption>
                                              <extension>true</extension>
                                              <xsd>http://www.yworks.com/xml/schema/graphml/1.1/graphml-structure.xsd</xsd>

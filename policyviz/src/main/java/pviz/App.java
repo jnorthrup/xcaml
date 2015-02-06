@@ -68,7 +68,6 @@ public class App {
     switch (tagName) {
       case "PolicySet": {
         JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
-
         visitPolicySet(e, parent);
         break;
       }
@@ -177,7 +176,7 @@ public class App {
                 addChildToFirstOf(advCluster, outer);
 
                   EffectType appliesTo = adviceExpressionType.getAppliesTo();
-                final Node node = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVTRAPEZIUM).withStyle(NodeStyle.FILLED).withLabel(adviceExpressionType.getAdviceId());
+                final Node node = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.NOTE).withStyle(NodeStyle.FILLED).withLabel(adviceExpressionType.getAdviceId());
                 adviceNode[0] = node;
                 addChildToFirstOf(adviceNode[0], advCluster);
                 adviceExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
@@ -194,13 +193,13 @@ public class App {
         final Node[] ObligationNode = new Node[1];
 
         if (null != ObligationExpressions)
-            ObligationExpressions.getObligationExpression().forEach(ObligationExpressionType -> {
+            ObligationExpressions.getObligationExpression().forEach(obligationExpressionType -> {
                 final Cluster advCluster = new Cluster().withId(id());
                 addChildToFirstOf(advCluster, outer);
-                final EffectType appliesTo = ObligationExpressionType.getFulfillOn();
-                ObligationNode[0] = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.INVHOUSE).withStyle(NodeStyle.FILLED).withLabel(ObligationExpressionType.getObligationId());
+                final EffectType appliesTo = obligationExpressionType.getFulfillOn();
+                ObligationNode[0] = new Node().withId(id()).withColor(appliesTo != EffectType.DENY ? LTGREEN : LTRED).withShape(Shape.CDS).withStyle(NodeStyle.FILLED).withLabel(obligationExpressionType.getObligationId());
                 addChildToFirstOf(ObligationNode[0], advCluster);
-                ObligationExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
+                obligationExpressionType.getAttributeAssignmentExpression().forEach(aa -> {
 
                     final Cluster ac = new Cluster().withId(id()).withColor(LTGREY).withLabel(aa.getAttributeId());
                     addChildToFirstOf(ac, advCluster);
@@ -215,7 +214,7 @@ public class App {
     boolean permit = ruleType.getEffect() == EffectType.PERMIT;
     Node rule =
         new Node().withId(id()).withColor(permit ? GREEN : RED).withLabel(
-            "Rule:" + urnTip(ruleType.getRuleId())).withShape(permit ? Shape.HOUSE : Shape.OCTAGON)
+            "Rule:" + urnTip(ruleType.getRuleId())).withShape(permit ? Shape.RARROW : Shape.OCTAGON)
             .withStyle(NodeStyle.FILLED);
     Cluster ruleCluster = new Cluster().withId(id()).withStyle(ClusterStyle.INVIS);
     addChildToFirstOf(ruleCluster, c);
@@ -453,7 +452,6 @@ public class App {
             }
             case "AttributeValueType": {
                 AttributeValueType a = (AttributeValueType) expression.getValue();
-
                 String s = hashTip(a.getDataType());
                 String contentString = getContentString(a.getContent());
                 Node valueNode = new Node().withLabel(s + ":" + contentString).withId(id()).withFillcolor(LTBLUE).withStyle(NodeStyle.FILLED);
