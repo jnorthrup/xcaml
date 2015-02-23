@@ -9,16 +9,13 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8
-        </project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <modules>
-        <module>caml</module>
         <module>xacml-jaxp-model</module>
         <module>xacml-constants</module>
-        <module>policy-decomposition</module>
+        <module>policy-xform</module>
         <module>pdp-core</module>
-
         <!--
         policyviz is an discrete build not part of deliverables henceforth
         <module>policyviz</module>-->

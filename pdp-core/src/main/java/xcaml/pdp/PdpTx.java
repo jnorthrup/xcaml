@@ -37,9 +37,7 @@ public class PdpTx {
         assert policy.getTarget().getAnyOf().isEmpty() : "top level target not yet implemented"; //todo: impl
         policy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().forEach(o -> {
             System.err.println("resolving: " + o.toString());
-            if (!(o instanceof RuleType)) {
-                throw new UnsupportedOperationException("only ruletype implemented");//todo: impl
-            }
+            assert o instanceof RuleType : "only ruletype implemented";
 
             RuleType rule = (RuleType) o;
             System.err.println("eval Rule: " + rule.getRuleId());

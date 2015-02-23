@@ -48,7 +48,7 @@
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>pviz.App</mainClass>
+                                    <mainClass>policyxform.Ingest</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
