@@ -113,7 +113,26 @@
                                                 <extensionArg>-Xfluent-api</extensionArg>
                                                 <extensionArg>-Xts</extensionArg>
                                             </extensionArgs>
+                                        </xsdOption>                       
+                                        <xsdOption>
+                                            <extension>true</extension>
+                                            <xsd>${basedir}/src/main/xsd/camel-spring-2.14.1.xsd</xsd>
+                                            <bindingFile>${basedir}/src/main/xsd/camel-spring-2.14.1.xjb</bindingFile>
+                                            <extensionArgs>
+                                                <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
+                                            </extensionArgs>
+                                        </xsdOption>                
+                                        <xsdOption>
+                                            <extension>true</extension>
+                                            <bindingFile>${basedir}/src/main/xsd/spring-beans-4.1.xjb</bindingFile>
+                                            <xsd>${basedir}/src/main/xsd/spring-beans-4.1.xsd</xsd>
+                                            <extensionArgs>
+                                                <extensionArg>-Xfluent-api</extensionArg>
+                                                <extensionArg>-Xts</extensionArg>
+                                            </extensionArgs>
                                         </xsdOption>
+                                        
 <!--                                        <xsdOption>
                                             <extension>true</extension>
                                             <xsd>${basedir}/src/main/xsd/visio.xsd</xsd>

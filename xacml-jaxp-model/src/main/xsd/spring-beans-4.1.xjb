@@ -1,0 +1,36 @@
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb"
+
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          version="2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.w3.org/2001/XMLSchema ">
+    <bindings schemaLocation="spring-beans-4.1.xsd" version="1.0">
+        <!-- Customise the package name
+        <schemaBindings>
+            <package name="com.example.schema"/>
+        </schemaBindings>
+-->
+        <!-- rename the value element -->
+        <bindings node="//xs:element[@name='constructor-arg']">
+            <bindings node=".//xs:attribute[@name='ref']">
+                <property name="refAttr"/>
+            </bindings>           
+            <bindings node=".//xs:attribute[@name='value']">
+                <property name="valueAttr"/>
+            </bindings>
+
+        </bindings>
+        <bindings node="//xs:complexType[@name='entryType']">
+               <bindings node=".//xs:attribute[@name='key']">
+                <property name="keyAttr"/>
+            </bindings>
+        </bindings>
+        <bindings node="//xs:complexType[@name='propertyType']">
+               <bindings node=".//xs:attribute[@name='ref']">
+                <property name="refAttr"/>
+            </bindings>     
+            <bindings node=".//xs:attribute[@name='value']">
+                <property name="valueAttr"/>
+            </bindings>
+        </bindings>
+    </bindings>
+</bindings>
