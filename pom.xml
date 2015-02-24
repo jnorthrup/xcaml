@@ -10,6 +10,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <camel.version>2.14.1</camel.version>
     </properties>
     <modules>
         <module>xacml-jaxp-model</module>
@@ -19,8 +20,6 @@
         <!--
         policyviz is an discrete build not part of deliverables henceforth
         <module>policyviz</module>-->
-
-        
   </modules>
 
     <profiles>
@@ -63,4 +62,73 @@
             </build>
         </profile>
     </profiles>
+    <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+    			<groupId>com.google.guava</groupId>
+    			<artifactId>guava</artifactId>
+    			<version>18.0</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>junit</groupId>
+    			<artifactId>junit</artifactId>
+    			<version>4.11</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.apache.camel</groupId>
+    			<artifactId>camel-gson</artifactId>
+    			<version>${camel.version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.apache.camel</groupId>
+    			<artifactId>camel-context</artifactId>
+    			<version>${camel.version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.apache.camel</groupId>
+    			<artifactId>camel-script</artifactId>
+    			<version>${camel.version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.apache.camel</groupId>
+    			<artifactId>camel-jaxb</artifactId>
+    			<version>${camel.version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.apache.camel</groupId>
+    			<artifactId>camel-test</artifactId>
+    			<version>${camel.version}</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.slf4j</groupId>
+    			<artifactId>slf4j-log4j12</artifactId>
+    			<version>1.7.2</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>log4j</groupId>
+    			<artifactId>log4j</artifactId>
+    			<version>1.2.17</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>com.google.auto.factory</groupId>
+    			<artifactId>auto-factory</artifactId>
+    			<version>0.1-beta1</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>com.google.auto.value</groupId>
+    			<artifactId>auto-value</artifactId>
+    			<version>1.0</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>org.apache.cxf.xjc-utils</groupId>
+    			<artifactId>cxf-xjc-runtime</artifactId>
+    			<version>3.0.3</version>
+    		</dependency>
+    		<dependency>
+    			<groupId>commons-lang</groupId>
+    			<artifactId>commons-lang</artifactId>
+    			<version>2.6</version>
+    		</dependency>
+    	</dependencies>
+    </dependencyManagement>
 </project>
