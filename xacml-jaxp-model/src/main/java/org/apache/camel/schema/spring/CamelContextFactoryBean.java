@@ -86,7 +86,7 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement
+@XmlRootElement(name = "camelContext")
 @XmlType(name = "camelContextFactoryBean", propOrder = {
     "properties", "propertyPlaceholder", "_package", "packageScan", "contextScan", "streamCaching",
     "jmxAgent", "templateOrConsumerTemplateOrProxy", "routeBuilder", "routeContextRef",
