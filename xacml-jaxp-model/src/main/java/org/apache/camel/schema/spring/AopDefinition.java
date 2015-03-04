@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -151,7 +151,7 @@ public class AopDefinition extends Output {
   }
 
   @Override
-  public AopDefinition withDescription(DescriptionDefinition value) {
+  public AopDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

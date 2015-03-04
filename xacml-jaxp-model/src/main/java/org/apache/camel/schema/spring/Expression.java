@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -44,13 +44,12 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "expression", propOrder = {"value"})
 @XmlSeeAlso({
-    PythonExpression.class, MvelExpression.class, MethodCallExpression.class,
-    JavaScriptExpression.class, GroovyExpression.class, JsonPathExpression.class,
-    PhpExpression.class, ConstantExpression.class, LanguageExpression.class,
-    SimpleExpression.class, TokenizerExpression.class, RefExpression.class, OgnlExpression.class,
-    ElExpression.class, HeaderExpression.class, JxPathExpression.class, SqlExpression.class,
-    RubyExpression.class, SpELExpression.class, NamespaceAwareExpression.class,
-    PropertyExpression.class})
+    SpELExpression.class, TokenizerExpression.class, PropertyExpression.class,
+    NamespaceAwareExpression.class, SqlElement.class, SimpleElement.class, RubyElement.class,
+    RefElement.class, PythonElement.class, PhpElement.class, OgnlElement.class, MvelElement.class,
+    MethodElement.class, LanguageElement.class, JsonpathElement.class, JavaScriptElement.class,
+    JxpathElement.class, HeaderElement.class, GroovyElement.class, ElElement.class,
+    ConstantElement.class})
 public class Expression {
 
   @XmlValue

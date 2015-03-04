@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -441,73 +441,73 @@ public class RecipientListDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RecipientListDefinition withConstant(ConstantExpression value) {
+  public RecipientListDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withEl(ElExpression value) {
+  public RecipientListDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withGroovy(GroovyExpression value) {
+  public RecipientListDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withHeader(HeaderExpression value) {
+  public RecipientListDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withJxpath(JxPathExpression value) {
+  public RecipientListDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withJavaScript(JavaScriptExpression value) {
+  public RecipientListDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withJsonpath(JsonPathExpression value) {
+  public RecipientListDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withLanguage(LanguageExpression value) {
+  public RecipientListDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withMethod(MethodCallExpression value) {
+  public RecipientListDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withMvel(MvelExpression value) {
+  public RecipientListDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withOgnl(OgnlExpression value) {
+  public RecipientListDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withPhp(PhpExpression value) {
+  public RecipientListDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -519,25 +519,25 @@ public class RecipientListDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RecipientListDefinition withPython(PythonExpression value) {
+  public RecipientListDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withRef(RefExpression value) {
+  public RecipientListDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withRuby(RubyExpression value) {
+  public RecipientListDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withSimple(SimpleExpression value) {
+  public RecipientListDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -549,7 +549,7 @@ public class RecipientListDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RecipientListDefinition withSql(SqlExpression value) {
+  public RecipientListDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -573,13 +573,13 @@ public class RecipientListDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RecipientListDefinition withXpath(XPathExpression value) {
+  public RecipientListDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public RecipientListDefinition withXquery(XQueryExpression value) {
+  public RecipientListDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -609,7 +609,7 @@ public class RecipientListDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RecipientListDefinition withDescription(DescriptionDefinition value) {
+  public RecipientListDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

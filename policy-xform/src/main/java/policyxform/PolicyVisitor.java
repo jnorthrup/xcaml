@@ -2,7 +2,7 @@ package policyxform;
 
 import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
-import org.apache.camel.schema.spring.CamelContextFactoryBean;
+import org.apache.camel.schema.spring.CamelContextElement;
 import org.springframework.schema.beans.Beans;
 import org.springframework.schema.beans.Description;
 import org.w3c.dom.Document;
@@ -10,14 +10,10 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.util.JAXBSource;
-import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
@@ -60,7 +56,7 @@ public class PolicyVisitor {
     String tagName = documentElement.getTagName();
     System.err.println("" + tagName);
     final String out = args[1];
-    CamelContextFactoryBean parent = new CamelContextFactoryBean().withId(id());
+    CamelContextElement parent = new CamelContextElement().withId(id());
     switch (tagName) {
       case "PolicySet": {
         JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
@@ -167,8 +163,7 @@ public class PolicyVisitor {
 
   public void writeGraph(Beans graph, String out) throws JAXBException, IOException,
       InterruptedException {
-    final JAXBContext jaxbContext =
-        JAXBContext.newInstance(Beans.class, CamelContextFactoryBean.class);
+    final JAXBContext jaxbContext = JAXBContext.newInstance(Beans.class, CamelContextElement.class);
 
     final Marshaller marshaller = jaxbContext.createMarshaller();
     marshaller.marshal(graph, Paths.get(out + ".spring.xml").toFile());

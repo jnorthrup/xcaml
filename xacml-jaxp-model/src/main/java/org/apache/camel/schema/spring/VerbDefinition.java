@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -52,12 +52,12 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verbDefinition", propOrder = {"to", "route"})
 @XmlSeeAlso({
-    PutVerbDefinition.class, GetVerbDefinition.class, PostVerbDefinition.class,
-    DeleteVerbDefinition.class, HeadVerbDefinition.class})
+    GetVerbDefinition.class, PostVerbDefinition.class, DeleteVerbDefinition.class,
+    HeadVerbDefinition.class, PutElement.class})
 public class VerbDefinition extends OptionalIdentifiedDefinition {
 
-  protected ToDefinition to;
-  protected RouteDefinition route;
+  protected ToElement to;
+  protected RouteElement route;
   @XmlAttribute(name = "method")
   protected String method;
   @XmlAttribute(name = "uri")
@@ -80,40 +80,40 @@ public class VerbDefinition extends OptionalIdentifiedDefinition {
   /**
    * Gets the value of the to property.
    * 
-   * @return possible object is {@link ToDefinition }
+   * @return possible object is {@link ToElement }
    * 
    */
-  public ToDefinition getTo() {
+  public ToElement getTo() {
     return to;
   }
 
   /**
    * Sets the value of the to property.
    * 
-   * @param value allowed object is {@link ToDefinition }
+   * @param value allowed object is {@link ToElement }
    * 
    */
-  public void setTo(ToDefinition value) {
+  public void setTo(ToElement value) {
     this.to = value;
   }
 
   /**
    * Gets the value of the route property.
    * 
-   * @return possible object is {@link RouteDefinition }
+   * @return possible object is {@link RouteElement }
    * 
    */
-  public RouteDefinition getRoute() {
+  public RouteElement getRoute() {
     return route;
   }
 
   /**
    * Sets the value of the route property.
    * 
-   * @param value allowed object is {@link RouteDefinition }
+   * @param value allowed object is {@link RouteElement }
    * 
    */
-  public void setRoute(RouteDefinition value) {
+  public void setRoute(RouteElement value) {
     this.route = value;
   }
 
@@ -297,12 +297,12 @@ public class VerbDefinition extends OptionalIdentifiedDefinition {
     this.outType = value;
   }
 
-  public VerbDefinition withTo(ToDefinition value) {
+  public VerbDefinition withTo(ToElement value) {
     setTo(value);
     return this;
   }
 
-  public VerbDefinition withRoute(RouteDefinition value) {
+  public VerbDefinition withRoute(RouteElement value) {
     setRoute(value);
     return this;
   }
@@ -353,7 +353,7 @@ public class VerbDefinition extends OptionalIdentifiedDefinition {
   }
 
   @Override
-  public VerbDefinition withDescription(DescriptionDefinition value) {
+  public VerbDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

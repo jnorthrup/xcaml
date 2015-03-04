@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -46,10 +46,10 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlSeeAlso({
     CamelProxyFactoryDefinition.class, ErrorHandlerDefinition.class,
     CamelStreamCachingStrategyDefinition.class, CamelPropertyPlaceholderFunctionDefinition.class,
-    CamelServiceExporterDefinition.class, CamelRouteContextFactoryBean.class,
-    RouteBuilderDefinition.class, CamelRestContextFactoryBean.class, CamelJMXAgentDefinition.class,
-    CamelPropertyPlaceholderDefinition.class, LoadBalancer.class, AbstractCamelFactoryBean.class,
-    AbstractCamelContextFactoryBean.class, DataFormat.class})
+    LoadBalancer.class, RestContextElement.class, RouteContextElement.class,
+    RouteBuilderElement.class, ExportElement.class, JmxAgentElement.class,
+    PropertyPlaceholderElement.class, AbstractCamelContextFactoryBean.class,
+    AbstractCamelFactoryBean.class, DataFormat.class})
 public abstract class IdentifiedType {
 
   @XmlAttribute(name = "id")

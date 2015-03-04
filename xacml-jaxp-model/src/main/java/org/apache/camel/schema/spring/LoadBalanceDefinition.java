@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -129,17 +129,17 @@ public class LoadBalanceDefinition extends ProcessorDefinition {
   protected CircuitBreakerLoadBalancerDefinition circuitBreaker;
   @XmlElements({
       @XmlElement(name = "aop", type = AopDefinition.class),
-      @XmlElement(name = "aggregate", type = AggregateDefinition.class),
-      @XmlElement(name = "bean", type = BeanDefinition.class),
+      @XmlElement(name = "aggregate", type = AggregateElement.class),
+      @XmlElement(name = "bean", type = BeanElement.class),
       @XmlElement(name = "doCatch", type = CatchDefinition.class),
       @XmlElement(name = "when", type = WhenDefinition.class),
-      @XmlElement(name = "choice", type = ChoiceDefinition.class),
-      @XmlElement(name = "otherwise", type = OtherwiseDefinition.class),
+      @XmlElement(name = "choice", type = ChoiceElement.class),
+      @XmlElement(name = "otherwise", type = OtherwiseElement.class),
       @XmlElement(name = "convertBodyTo", type = ConvertBodyDefinition.class),
-      @XmlElement(name = "delay", type = DelayDefinition.class),
+      @XmlElement(name = "delay", type = DelayElement.class),
       @XmlElement(name = "dynamicRouter", type = DynamicRouterDefinition.class),
       @XmlElement(name = "enrich", type = EnrichDefinition.class),
-      @XmlElement(name = "filter", type = FilterDefinition.class),
+      @XmlElement(name = "filter", type = FilterElement.class),
       @XmlElement(name = "doFinally", type = FinallyDefinition.class),
       @XmlElement(name = "idempotentConsumer", type = IdempotentConsumerDefinition.class),
       @XmlElement(name = "inOnly", type = InOnlyDefinition.class),
@@ -148,23 +148,23 @@ public class LoadBalanceDefinition extends ProcessorDefinition {
       @XmlElement(name = "interceptFrom", type = InterceptFromDefinition.class),
       @XmlElement(name = "interceptToEndpoint", type = InterceptSendToEndpointDefinition.class),
       @XmlElement(name = "loadBalance", type = LoadBalanceDefinition.class),
-      @XmlElement(name = "log", type = LogDefinition.class),
+      @XmlElement(name = "log", type = LogElement.class),
       @XmlElement(name = "loop", type = LoopDefinition.class),
       @XmlElement(name = "marshal", type = MarshalDefinition.class),
       @XmlElement(name = "multicast", type = MulticastDefinition.class),
       @XmlElement(name = "onCompletion", type = OnCompletionDefinition.class),
       @XmlElement(name = "onException", type = OnExceptionDefinition.class),
-      @XmlElement(name = "pipeline", type = PipelineDefinition.class),
+      @XmlElement(name = "pipeline", type = PipelineElement.class),
       @XmlElement(name = "policy", type = PolicyDefinition.class),
       @XmlElement(name = "pollEnrich", type = PollEnrichDefinition.class),
-      @XmlElement(name = "process", type = ProcessDefinition.class),
+      @XmlElement(name = "process", type = ProcessElement.class),
       @XmlElement(name = "recipientList", type = RecipientListDefinition.class),
       @XmlElement(name = "removeHeader", type = RemoveHeaderDefinition.class),
       @XmlElement(name = "removeHeaders", type = RemoveHeadersDefinition.class),
       @XmlElement(name = "removeProperty", type = RemovePropertyDefinition.class),
       @XmlElement(name = "resequence", type = ResequenceDefinition.class),
       @XmlElement(name = "rollback", type = RollbackDefinition.class),
-      @XmlElement(name = "route", type = RouteDefinition.class),
+      @XmlElement(name = "route", type = RouteElement.class),
       @XmlElement(name = "routingSlip", type = RoutingSlipDefinition.class),
       @XmlElement(name = "sample", type = SamplingDefinition.class),
       @XmlElement(name = "setBody", type = SetBodyDefinition.class),
@@ -179,14 +179,14 @@ public class LoadBalanceDefinition extends ProcessorDefinition {
       @XmlElement(name = "threads", type = ThreadsDefinition.class),
       @XmlElement(name = "throttle", type = ThrottleDefinition.class),
       @XmlElement(name = "throwException", type = ThrowExceptionDefinition.class),
-      @XmlElement(name = "to", type = ToDefinition.class),
+      @XmlElement(name = "to", type = ToElement.class),
       @XmlElement(name = "transacted", type = TransactedDefinition.class),
-      @XmlElement(name = "transform", type = TransformDefinition.class),
+      @XmlElement(name = "transform", type = TransformElement.class),
       @XmlElement(name = "doTry", type = TryDefinition.class),
       @XmlElement(name = "unmarshal", type = UnmarshalDefinition.class),
       @XmlElement(name = "validate", type = ValidateDefinition.class),
       @XmlElement(name = "wireTap", type = WireTapDefinition.class),
-      @XmlElement(name = "restBinding", type = RestBindingDefinition.class)})
+      @XmlElement(name = "restBinding", type = RestBindingElement.class)})
   protected List<ProcessorDefinition> aopOrAggregateOrBean;
   @XmlAttribute(name = "ref")
   protected String ref;
@@ -368,23 +368,22 @@ public class LoadBalanceDefinition extends ProcessorDefinition {
    * 
    * 
    * <p>
-   * Objects of the following type(s) are allowed in the list {@link AopDefinition } {@link AggregateDefinition }
-   * {@link BeanDefinition } {@link CatchDefinition } {@link WhenDefinition } {@link ChoiceDefinition }
-   * {@link OtherwiseDefinition } {@link ConvertBodyDefinition } {@link DelayDefinition } {@link DynamicRouterDefinition }
-   * {@link EnrichDefinition } {@link FilterDefinition } {@link FinallyDefinition } {@link IdempotentConsumerDefinition }
-   * {@link InOnlyDefinition } {@link InOutDefinition } {@link InterceptDefinition } {@link InterceptFromDefinition }
-   * {@link InterceptSendToEndpointDefinition } {@link LoadBalanceDefinition } {@link LogDefinition }
-   * {@link LoopDefinition } {@link MarshalDefinition } {@link MulticastDefinition } {@link OnCompletionDefinition }
-   * {@link OnExceptionDefinition } {@link PipelineDefinition } {@link PolicyDefinition } {@link PollEnrichDefinition }
-   * {@link ProcessDefinition } {@link RecipientListDefinition } {@link RemoveHeaderDefinition }
-   * {@link RemoveHeadersDefinition } {@link RemovePropertyDefinition } {@link ResequenceDefinition }
-   * {@link RollbackDefinition } {@link RouteDefinition } {@link RoutingSlipDefinition } {@link SamplingDefinition }
-   * {@link SetBodyDefinition } {@link SetExchangePatternDefinition } {@link SetFaultBodyDefinition }
-   * {@link SetHeaderDefinition } {@link SetOutHeaderDefinition } {@link SetPropertyDefinition } {@link SortDefinition }
-   * {@link SplitDefinition } {@link StopDefinition } {@link ThreadsDefinition } {@link ThrottleDefinition }
-   * {@link ThrowExceptionDefinition } {@link ToDefinition } {@link TransactedDefinition } {@link TransformDefinition }
-   * {@link TryDefinition } {@link UnmarshalDefinition } {@link ValidateDefinition } {@link WireTapDefinition }
-   * {@link RestBindingDefinition }
+   * Objects of the following type(s) are allowed in the list {@link AopDefinition } {@link AggregateElement }
+   * {@link BeanElement } {@link CatchDefinition } {@link WhenDefinition } {@link ChoiceElement } {@link OtherwiseElement }
+   * {@link ConvertBodyDefinition } {@link DelayElement } {@link DynamicRouterDefinition } {@link EnrichDefinition }
+   * {@link FilterElement } {@link FinallyDefinition } {@link IdempotentConsumerDefinition } {@link InOnlyDefinition }
+   * {@link InOutDefinition } {@link InterceptDefinition } {@link InterceptFromDefinition }
+   * {@link InterceptSendToEndpointDefinition } {@link LoadBalanceDefinition } {@link LogElement } {@link LoopDefinition }
+   * {@link MarshalDefinition } {@link MulticastDefinition } {@link OnCompletionDefinition } {@link OnExceptionDefinition }
+   * {@link PipelineElement } {@link PolicyDefinition } {@link PollEnrichDefinition } {@link ProcessElement }
+   * {@link RecipientListDefinition } {@link RemoveHeaderDefinition } {@link RemoveHeadersDefinition }
+   * {@link RemovePropertyDefinition } {@link ResequenceDefinition } {@link RollbackDefinition } {@link RouteElement }
+   * {@link RoutingSlipDefinition } {@link SamplingDefinition } {@link SetBodyDefinition }
+   * {@link SetExchangePatternDefinition } {@link SetFaultBodyDefinition } {@link SetHeaderDefinition }
+   * {@link SetOutHeaderDefinition } {@link SetPropertyDefinition } {@link SortDefinition } {@link SplitDefinition }
+   * {@link StopDefinition } {@link ThreadsDefinition } {@link ThrottleDefinition } {@link ThrowExceptionDefinition }
+   * {@link ToElement } {@link TransactedDefinition } {@link TransformElement } {@link TryDefinition }
+   * {@link UnmarshalDefinition } {@link ValidateDefinition } {@link WireTapDefinition } {@link RestBindingElement }
    * 
    * 
    */
@@ -483,7 +482,7 @@ public class LoadBalanceDefinition extends ProcessorDefinition {
   }
 
   @Override
-  public LoadBalanceDefinition withDescription(DescriptionDefinition value) {
+  public LoadBalanceDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

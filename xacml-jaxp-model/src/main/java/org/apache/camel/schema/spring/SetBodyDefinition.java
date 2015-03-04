@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -47,73 +47,73 @@ public class SetBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetBodyDefinition withConstant(ConstantExpression value) {
+  public SetBodyDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withEl(ElExpression value) {
+  public SetBodyDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withGroovy(GroovyExpression value) {
+  public SetBodyDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withHeader(HeaderExpression value) {
+  public SetBodyDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withJxpath(JxPathExpression value) {
+  public SetBodyDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withJavaScript(JavaScriptExpression value) {
+  public SetBodyDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withJsonpath(JsonPathExpression value) {
+  public SetBodyDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withLanguage(LanguageExpression value) {
+  public SetBodyDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withMethod(MethodCallExpression value) {
+  public SetBodyDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withMvel(MvelExpression value) {
+  public SetBodyDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withOgnl(OgnlExpression value) {
+  public SetBodyDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withPhp(PhpExpression value) {
+  public SetBodyDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -125,25 +125,25 @@ public class SetBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetBodyDefinition withPython(PythonExpression value) {
+  public SetBodyDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withRef(RefExpression value) {
+  public SetBodyDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withRuby(RubyExpression value) {
+  public SetBodyDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withSimple(SimpleExpression value) {
+  public SetBodyDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -155,7 +155,7 @@ public class SetBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetBodyDefinition withSql(SqlExpression value) {
+  public SetBodyDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -179,13 +179,13 @@ public class SetBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetBodyDefinition withXpath(XPathExpression value) {
+  public SetBodyDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public SetBodyDefinition withXquery(XQueryExpression value) {
+  public SetBodyDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -215,7 +215,7 @@ public class SetBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetBodyDefinition withDescription(DescriptionDefinition value) {
+  public SetBodyDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

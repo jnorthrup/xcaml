@@ -3,13 +3,12 @@
           xmlns:xs="http://www.w3.org/2001/XMLSchema"
           version="2.1">
     <bindings schemaLocation="camel-spring-2.14.1.xsd" version="1.0">
-        <!-- Customise the package name
-        <schemaBindings>
-            <package name="com.example.schema"/>
-        </schemaBindings>
--->
-        <!-- rename the value element -->
-        <bindings node="//xs:complexType[@name='aggregateDefinition']">
+   <schemaBindings>
+       <nameXmlTransform>
+           <elementName suffix="Element"/>
+       </nameXmlTransform>
+   </schemaBindings>
+        <bindings node="//xs:complexType[@id='aggregateDefinition']">
             <bindings node=".//xs:attribute[@name='completionSize']">
                 <property name="completionSizeInt"/>
             </bindings>

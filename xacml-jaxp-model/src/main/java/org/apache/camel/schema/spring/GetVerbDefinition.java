@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -39,13 +39,13 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 public class GetVerbDefinition extends VerbDefinition {
 
   @Override
-  public GetVerbDefinition withTo(ToDefinition value) {
+  public GetVerbDefinition withTo(ToElement value) {
     setTo(value);
     return this;
   }
 
   @Override
-  public GetVerbDefinition withRoute(RouteDefinition value) {
+  public GetVerbDefinition withRoute(RouteElement value) {
     setRoute(value);
     return this;
   }
@@ -105,7 +105,7 @@ public class GetVerbDefinition extends VerbDefinition {
   }
 
   @Override
-  public GetVerbDefinition withDescription(DescriptionDefinition value) {
+  public GetVerbDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

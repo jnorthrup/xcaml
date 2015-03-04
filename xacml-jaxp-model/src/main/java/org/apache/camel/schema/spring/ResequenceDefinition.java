@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -145,44 +145,44 @@ public class ResequenceDefinition extends ProcessorDefinition {
   @XmlElement(name = "stream-config")
   protected StreamResequencerConfig streamConfig;
   protected Expression expressionDefinition;
-  protected ConstantExpression constant;
-  protected ElExpression el;
-  protected GroovyExpression groovy;
-  protected HeaderExpression header;
-  protected JxPathExpression jxpath;
-  protected JavaScriptExpression javaScript;
-  protected JsonPathExpression jsonpath;
-  protected LanguageExpression language;
-  protected MethodCallExpression method;
-  protected MvelExpression mvel;
-  protected OgnlExpression ognl;
-  protected PhpExpression php;
+  protected ConstantElement constant;
+  protected ElElement el;
+  protected GroovyElement groovy;
+  protected HeaderElement header;
+  protected JxpathElement jxpath;
+  protected JavaScriptElement javaScript;
+  protected JsonpathElement jsonpath;
+  protected LanguageElement language;
+  protected MethodElement method;
+  protected MvelElement mvel;
+  protected OgnlElement ognl;
+  protected PhpElement php;
   @XmlElement(nillable = true)
   protected Object property;
-  protected PythonExpression python;
-  protected RefExpression ref;
-  protected RubyExpression ruby;
-  protected SimpleExpression simple;
+  protected PythonElement python;
+  protected RefElement ref;
+  protected RubyElement ruby;
+  protected SimpleElement simple;
   protected SpELExpression spel;
-  protected SqlExpression sql;
+  protected SqlElement sql;
   protected TokenizerExpression tokenize;
   protected VtdXmlExpression vtdxml;
   protected XmlTokenizerExpression xtokenize;
-  protected XPathExpression xpath;
-  protected XQueryExpression xquery;
+  protected XpathElement xpath;
+  protected XqueryElement xquery;
   @XmlElements({
       @XmlElement(name = "aop", type = AopDefinition.class),
-      @XmlElement(name = "aggregate", type = AggregateDefinition.class),
-      @XmlElement(name = "bean", type = BeanDefinition.class),
+      @XmlElement(name = "aggregate", type = AggregateElement.class),
+      @XmlElement(name = "bean", type = BeanElement.class),
       @XmlElement(name = "doCatch", type = CatchDefinition.class),
       @XmlElement(name = "when", type = WhenDefinition.class),
-      @XmlElement(name = "choice", type = ChoiceDefinition.class),
-      @XmlElement(name = "otherwise", type = OtherwiseDefinition.class),
+      @XmlElement(name = "choice", type = ChoiceElement.class),
+      @XmlElement(name = "otherwise", type = OtherwiseElement.class),
       @XmlElement(name = "convertBodyTo", type = ConvertBodyDefinition.class),
-      @XmlElement(name = "delay", type = DelayDefinition.class),
+      @XmlElement(name = "delay", type = DelayElement.class),
       @XmlElement(name = "dynamicRouter", type = DynamicRouterDefinition.class),
       @XmlElement(name = "enrich", type = EnrichDefinition.class),
-      @XmlElement(name = "filter", type = FilterDefinition.class),
+      @XmlElement(name = "filter", type = FilterElement.class),
       @XmlElement(name = "doFinally", type = FinallyDefinition.class),
       @XmlElement(name = "idempotentConsumer", type = IdempotentConsumerDefinition.class),
       @XmlElement(name = "inOnly", type = InOnlyDefinition.class),
@@ -191,23 +191,23 @@ public class ResequenceDefinition extends ProcessorDefinition {
       @XmlElement(name = "interceptFrom", type = InterceptFromDefinition.class),
       @XmlElement(name = "interceptToEndpoint", type = InterceptSendToEndpointDefinition.class),
       @XmlElement(name = "loadBalance", type = LoadBalanceDefinition.class),
-      @XmlElement(name = "log", type = LogDefinition.class),
+      @XmlElement(name = "log", type = LogElement.class),
       @XmlElement(name = "loop", type = LoopDefinition.class),
       @XmlElement(name = "marshal", type = MarshalDefinition.class),
       @XmlElement(name = "multicast", type = MulticastDefinition.class),
       @XmlElement(name = "onCompletion", type = OnCompletionDefinition.class),
       @XmlElement(name = "onException", type = OnExceptionDefinition.class),
-      @XmlElement(name = "pipeline", type = PipelineDefinition.class),
+      @XmlElement(name = "pipeline", type = PipelineElement.class),
       @XmlElement(name = "policy", type = PolicyDefinition.class),
       @XmlElement(name = "pollEnrich", type = PollEnrichDefinition.class),
-      @XmlElement(name = "process", type = ProcessDefinition.class),
+      @XmlElement(name = "process", type = ProcessElement.class),
       @XmlElement(name = "recipientList", type = RecipientListDefinition.class),
       @XmlElement(name = "removeHeader", type = RemoveHeaderDefinition.class),
       @XmlElement(name = "removeHeaders", type = RemoveHeadersDefinition.class),
       @XmlElement(name = "removeProperty", type = RemovePropertyDefinition.class),
       @XmlElement(name = "resequence", type = ResequenceDefinition.class),
       @XmlElement(name = "rollback", type = RollbackDefinition.class),
-      @XmlElement(name = "route", type = RouteDefinition.class),
+      @XmlElement(name = "route", type = RouteElement.class),
       @XmlElement(name = "routingSlip", type = RoutingSlipDefinition.class),
       @XmlElement(name = "sample", type = SamplingDefinition.class),
       @XmlElement(name = "setBody", type = SetBodyDefinition.class),
@@ -222,14 +222,14 @@ public class ResequenceDefinition extends ProcessorDefinition {
       @XmlElement(name = "threads", type = ThreadsDefinition.class),
       @XmlElement(name = "throttle", type = ThrottleDefinition.class),
       @XmlElement(name = "throwException", type = ThrowExceptionDefinition.class),
-      @XmlElement(name = "to", type = ToDefinition.class),
+      @XmlElement(name = "to", type = ToElement.class),
       @XmlElement(name = "transacted", type = TransactedDefinition.class),
-      @XmlElement(name = "transform", type = TransformDefinition.class),
+      @XmlElement(name = "transform", type = TransformElement.class),
       @XmlElement(name = "doTry", type = TryDefinition.class),
       @XmlElement(name = "unmarshal", type = UnmarshalDefinition.class),
       @XmlElement(name = "validate", type = ValidateDefinition.class),
       @XmlElement(name = "wireTap", type = WireTapDefinition.class),
-      @XmlElement(name = "restBinding", type = RestBindingDefinition.class)})
+      @XmlElement(name = "restBinding", type = RestBindingElement.class)})
   protected List<ProcessorDefinition> aopOrAggregateOrBean;
 
   /**
@@ -295,240 +295,240 @@ public class ResequenceDefinition extends ProcessorDefinition {
   /**
    * Gets the value of the constant property.
    * 
-   * @return possible object is {@link ConstantExpression }
+   * @return possible object is {@link ConstantElement }
    * 
    */
-  public ConstantExpression getConstant() {
+  public ConstantElement getConstant() {
     return constant;
   }
 
   /**
    * Sets the value of the constant property.
    * 
-   * @param value allowed object is {@link ConstantExpression }
+   * @param value allowed object is {@link ConstantElement }
    * 
    */
-  public void setConstant(ConstantExpression value) {
+  public void setConstant(ConstantElement value) {
     this.constant = value;
   }
 
   /**
    * Gets the value of the el property.
    * 
-   * @return possible object is {@link ElExpression }
+   * @return possible object is {@link ElElement }
    * 
    */
-  public ElExpression getEl() {
+  public ElElement getEl() {
     return el;
   }
 
   /**
    * Sets the value of the el property.
    * 
-   * @param value allowed object is {@link ElExpression }
+   * @param value allowed object is {@link ElElement }
    * 
    */
-  public void setEl(ElExpression value) {
+  public void setEl(ElElement value) {
     this.el = value;
   }
 
   /**
    * Gets the value of the groovy property.
    * 
-   * @return possible object is {@link GroovyExpression }
+   * @return possible object is {@link GroovyElement }
    * 
    */
-  public GroovyExpression getGroovy() {
+  public GroovyElement getGroovy() {
     return groovy;
   }
 
   /**
    * Sets the value of the groovy property.
    * 
-   * @param value allowed object is {@link GroovyExpression }
+   * @param value allowed object is {@link GroovyElement }
    * 
    */
-  public void setGroovy(GroovyExpression value) {
+  public void setGroovy(GroovyElement value) {
     this.groovy = value;
   }
 
   /**
    * Gets the value of the header property.
    * 
-   * @return possible object is {@link HeaderExpression }
+   * @return possible object is {@link HeaderElement }
    * 
    */
-  public HeaderExpression getHeader() {
+  public HeaderElement getHeader() {
     return header;
   }
 
   /**
    * Sets the value of the header property.
    * 
-   * @param value allowed object is {@link HeaderExpression }
+   * @param value allowed object is {@link HeaderElement }
    * 
    */
-  public void setHeader(HeaderExpression value) {
+  public void setHeader(HeaderElement value) {
     this.header = value;
   }
 
   /**
    * Gets the value of the jxpath property.
    * 
-   * @return possible object is {@link JxPathExpression }
+   * @return possible object is {@link JxpathElement }
    * 
    */
-  public JxPathExpression getJxpath() {
+  public JxpathElement getJxpath() {
     return jxpath;
   }
 
   /**
    * Sets the value of the jxpath property.
    * 
-   * @param value allowed object is {@link JxPathExpression }
+   * @param value allowed object is {@link JxpathElement }
    * 
    */
-  public void setJxpath(JxPathExpression value) {
+  public void setJxpath(JxpathElement value) {
     this.jxpath = value;
   }
 
   /**
    * Gets the value of the javaScript property.
    * 
-   * @return possible object is {@link JavaScriptExpression }
+   * @return possible object is {@link JavaScriptElement }
    * 
    */
-  public JavaScriptExpression getJavaScript() {
+  public JavaScriptElement getJavaScript() {
     return javaScript;
   }
 
   /**
    * Sets the value of the javaScript property.
    * 
-   * @param value allowed object is {@link JavaScriptExpression }
+   * @param value allowed object is {@link JavaScriptElement }
    * 
    */
-  public void setJavaScript(JavaScriptExpression value) {
+  public void setJavaScript(JavaScriptElement value) {
     this.javaScript = value;
   }
 
   /**
    * Gets the value of the jsonpath property.
    * 
-   * @return possible object is {@link JsonPathExpression }
+   * @return possible object is {@link JsonpathElement }
    * 
    */
-  public JsonPathExpression getJsonpath() {
+  public JsonpathElement getJsonpath() {
     return jsonpath;
   }
 
   /**
    * Sets the value of the jsonpath property.
    * 
-   * @param value allowed object is {@link JsonPathExpression }
+   * @param value allowed object is {@link JsonpathElement }
    * 
    */
-  public void setJsonpath(JsonPathExpression value) {
+  public void setJsonpath(JsonpathElement value) {
     this.jsonpath = value;
   }
 
   /**
    * Gets the value of the language property.
    * 
-   * @return possible object is {@link LanguageExpression }
+   * @return possible object is {@link LanguageElement }
    * 
    */
-  public LanguageExpression getLanguage() {
+  public LanguageElement getLanguage() {
     return language;
   }
 
   /**
    * Sets the value of the language property.
    * 
-   * @param value allowed object is {@link LanguageExpression }
+   * @param value allowed object is {@link LanguageElement }
    * 
    */
-  public void setLanguage(LanguageExpression value) {
+  public void setLanguage(LanguageElement value) {
     this.language = value;
   }
 
   /**
    * Gets the value of the method property.
    * 
-   * @return possible object is {@link MethodCallExpression }
+   * @return possible object is {@link MethodElement }
    * 
    */
-  public MethodCallExpression getMethod() {
+  public MethodElement getMethod() {
     return method;
   }
 
   /**
    * Sets the value of the method property.
    * 
-   * @param value allowed object is {@link MethodCallExpression }
+   * @param value allowed object is {@link MethodElement }
    * 
    */
-  public void setMethod(MethodCallExpression value) {
+  public void setMethod(MethodElement value) {
     this.method = value;
   }
 
   /**
    * Gets the value of the mvel property.
    * 
-   * @return possible object is {@link MvelExpression }
+   * @return possible object is {@link MvelElement }
    * 
    */
-  public MvelExpression getMvel() {
+  public MvelElement getMvel() {
     return mvel;
   }
 
   /**
    * Sets the value of the mvel property.
    * 
-   * @param value allowed object is {@link MvelExpression }
+   * @param value allowed object is {@link MvelElement }
    * 
    */
-  public void setMvel(MvelExpression value) {
+  public void setMvel(MvelElement value) {
     this.mvel = value;
   }
 
   /**
    * Gets the value of the ognl property.
    * 
-   * @return possible object is {@link OgnlExpression }
+   * @return possible object is {@link OgnlElement }
    * 
    */
-  public OgnlExpression getOgnl() {
+  public OgnlElement getOgnl() {
     return ognl;
   }
 
   /**
    * Sets the value of the ognl property.
    * 
-   * @param value allowed object is {@link OgnlExpression }
+   * @param value allowed object is {@link OgnlElement }
    * 
    */
-  public void setOgnl(OgnlExpression value) {
+  public void setOgnl(OgnlElement value) {
     this.ognl = value;
   }
 
   /**
    * Gets the value of the php property.
    * 
-   * @return possible object is {@link PhpExpression }
+   * @return possible object is {@link PhpElement }
    * 
    */
-  public PhpExpression getPhp() {
+  public PhpElement getPhp() {
     return php;
   }
 
   /**
    * Sets the value of the php property.
    * 
-   * @param value allowed object is {@link PhpExpression }
+   * @param value allowed object is {@link PhpElement }
    * 
    */
-  public void setPhp(PhpExpression value) {
+  public void setPhp(PhpElement value) {
     this.php = value;
   }
 
@@ -555,80 +555,80 @@ public class ResequenceDefinition extends ProcessorDefinition {
   /**
    * Gets the value of the python property.
    * 
-   * @return possible object is {@link PythonExpression }
+   * @return possible object is {@link PythonElement }
    * 
    */
-  public PythonExpression getPython() {
+  public PythonElement getPython() {
     return python;
   }
 
   /**
    * Sets the value of the python property.
    * 
-   * @param value allowed object is {@link PythonExpression }
+   * @param value allowed object is {@link PythonElement }
    * 
    */
-  public void setPython(PythonExpression value) {
+  public void setPython(PythonElement value) {
     this.python = value;
   }
 
   /**
    * Gets the value of the ref property.
    * 
-   * @return possible object is {@link RefExpression }
+   * @return possible object is {@link RefElement }
    * 
    */
-  public RefExpression getRef() {
+  public RefElement getRef() {
     return ref;
   }
 
   /**
    * Sets the value of the ref property.
    * 
-   * @param value allowed object is {@link RefExpression }
+   * @param value allowed object is {@link RefElement }
    * 
    */
-  public void setRef(RefExpression value) {
+  public void setRef(RefElement value) {
     this.ref = value;
   }
 
   /**
    * Gets the value of the ruby property.
    * 
-   * @return possible object is {@link RubyExpression }
+   * @return possible object is {@link RubyElement }
    * 
    */
-  public RubyExpression getRuby() {
+  public RubyElement getRuby() {
     return ruby;
   }
 
   /**
    * Sets the value of the ruby property.
    * 
-   * @param value allowed object is {@link RubyExpression }
+   * @param value allowed object is {@link RubyElement }
    * 
    */
-  public void setRuby(RubyExpression value) {
+  public void setRuby(RubyElement value) {
     this.ruby = value;
   }
 
   /**
    * Gets the value of the simple property.
    * 
-   * @return possible object is {@link SimpleExpression }
+   * @return possible object is {@link SimpleElement }
    * 
    */
-  public SimpleExpression getSimple() {
+  public SimpleElement getSimple() {
     return simple;
   }
 
   /**
    * Sets the value of the simple property.
    * 
-   * @param value allowed object is {@link SimpleExpression }
+   * @param value allowed object is {@link SimpleElement }
    * 
    */
-  public void setSimple(SimpleExpression value) {
+  public void setSimple(SimpleElement value) {
     this.simple = value;
   }
 
@@ -655,20 +655,20 @@ public class ResequenceDefinition extends ProcessorDefinition {
   /**
    * Gets the value of the sql property.
    * 
-   * @return possible object is {@link SqlExpression }
+   * @return possible object is {@link SqlElement }
    * 
    */
-  public SqlExpression getSql() {
+  public SqlElement getSql() {
     return sql;
   }
 
   /**
    * Sets the value of the sql property.
    * 
-   * @param value allowed object is {@link SqlExpression }
+   * @param value allowed object is {@link SqlElement }
    * 
    */
-  public void setSql(SqlExpression value) {
+  public void setSql(SqlElement value) {
     this.sql = value;
   }
 
@@ -735,40 +735,40 @@ public class ResequenceDefinition extends ProcessorDefinition {
   /**
    * Gets the value of the xpath property.
    * 
-   * @return possible object is {@link XPathExpression }
+   * @return possible object is {@link XpathElement }
    * 
    */
-  public XPathExpression getXpath() {
+  public XpathElement getXpath() {
     return xpath;
   }
 
   /**
    * Sets the value of the xpath property.
    * 
-   * @param value allowed object is {@link XPathExpression }
+   * @param value allowed object is {@link XpathElement }
    * 
    */
-  public void setXpath(XPathExpression value) {
+  public void setXpath(XpathElement value) {
     this.xpath = value;
   }
 
   /**
    * Gets the value of the xquery property.
    * 
-   * @return possible object is {@link XQueryExpression }
+   * @return possible object is {@link XqueryElement }
    * 
    */
-  public XQueryExpression getXquery() {
+  public XqueryElement getXquery() {
     return xquery;
   }
 
   /**
    * Sets the value of the xquery property.
    * 
-   * @param value allowed object is {@link XQueryExpression }
+   * @param value allowed object is {@link XqueryElement }
    * 
    */
-  public void setXquery(XQueryExpression value) {
+  public void setXquery(XqueryElement value) {
     this.xquery = value;
   }
 
@@ -789,23 +789,22 @@ public class ResequenceDefinition extends ProcessorDefinition {
    * 
    * 
    * <p>
-   * Objects of the following type(s) are allowed in the list {@link AopDefinition } {@link AggregateDefinition }
-   * {@link BeanDefinition } {@link CatchDefinition } {@link WhenDefinition } {@link ChoiceDefinition }
-   * {@link OtherwiseDefinition } {@link ConvertBodyDefinition } {@link DelayDefinition } {@link DynamicRouterDefinition }
-   * {@link EnrichDefinition } {@link FilterDefinition } {@link FinallyDefinition } {@link IdempotentConsumerDefinition }
-   * {@link InOnlyDefinition } {@link InOutDefinition } {@link InterceptDefinition } {@link InterceptFromDefinition }
-   * {@link InterceptSendToEndpointDefinition } {@link LoadBalanceDefinition } {@link LogDefinition }
-   * {@link LoopDefinition } {@link MarshalDefinition } {@link MulticastDefinition } {@link OnCompletionDefinition }
-   * {@link OnExceptionDefinition } {@link PipelineDefinition } {@link PolicyDefinition } {@link PollEnrichDefinition }
-   * {@link ProcessDefinition } {@link RecipientListDefinition } {@link RemoveHeaderDefinition }
-   * {@link RemoveHeadersDefinition } {@link RemovePropertyDefinition } {@link ResequenceDefinition }
-   * {@link RollbackDefinition } {@link RouteDefinition } {@link RoutingSlipDefinition } {@link SamplingDefinition }
-   * {@link SetBodyDefinition } {@link SetExchangePatternDefinition } {@link SetFaultBodyDefinition }
-   * {@link SetHeaderDefinition } {@link SetOutHeaderDefinition } {@link SetPropertyDefinition } {@link SortDefinition }
-   * {@link SplitDefinition } {@link StopDefinition } {@link ThreadsDefinition } {@link ThrottleDefinition }
-   * {@link ThrowExceptionDefinition } {@link ToDefinition } {@link TransactedDefinition } {@link TransformDefinition }
-   * {@link TryDefinition } {@link UnmarshalDefinition } {@link ValidateDefinition } {@link WireTapDefinition }
-   * {@link RestBindingDefinition }
+   * Objects of the following type(s) are allowed in the list {@link AopDefinition } {@link AggregateElement }
+   * {@link BeanElement } {@link CatchDefinition } {@link WhenDefinition } {@link ChoiceElement } {@link OtherwiseElement }
+   * {@link ConvertBodyDefinition } {@link DelayElement } {@link DynamicRouterDefinition } {@link EnrichDefinition }
+   * {@link FilterElement } {@link FinallyDefinition } {@link IdempotentConsumerDefinition } {@link InOnlyDefinition }
+   * {@link InOutDefinition } {@link InterceptDefinition } {@link InterceptFromDefinition }
+   * {@link InterceptSendToEndpointDefinition } {@link LoadBalanceDefinition } {@link LogElement } {@link LoopDefinition }
+   * {@link MarshalDefinition } {@link MulticastDefinition } {@link OnCompletionDefinition } {@link OnExceptionDefinition }
+   * {@link PipelineElement } {@link PolicyDefinition } {@link PollEnrichDefinition } {@link ProcessElement }
+   * {@link RecipientListDefinition } {@link RemoveHeaderDefinition } {@link RemoveHeadersDefinition }
+   * {@link RemovePropertyDefinition } {@link ResequenceDefinition } {@link RollbackDefinition } {@link RouteElement }
+   * {@link RoutingSlipDefinition } {@link SamplingDefinition } {@link SetBodyDefinition }
+   * {@link SetExchangePatternDefinition } {@link SetFaultBodyDefinition } {@link SetHeaderDefinition }
+   * {@link SetOutHeaderDefinition } {@link SetPropertyDefinition } {@link SortDefinition } {@link SplitDefinition }
+   * {@link StopDefinition } {@link ThreadsDefinition } {@link ThrottleDefinition } {@link ThrowExceptionDefinition }
+   * {@link ToElement } {@link TransactedDefinition } {@link TransformElement } {@link TryDefinition }
+   * {@link UnmarshalDefinition } {@link ValidateDefinition } {@link WireTapDefinition } {@link RestBindingElement }
    * 
    * 
    */
@@ -831,62 +830,62 @@ public class ResequenceDefinition extends ProcessorDefinition {
     return this;
   }
 
-  public ResequenceDefinition withConstant(ConstantExpression value) {
+  public ResequenceDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
-  public ResequenceDefinition withEl(ElExpression value) {
+  public ResequenceDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
-  public ResequenceDefinition withGroovy(GroovyExpression value) {
+  public ResequenceDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
-  public ResequenceDefinition withHeader(HeaderExpression value) {
+  public ResequenceDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
-  public ResequenceDefinition withJxpath(JxPathExpression value) {
+  public ResequenceDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
-  public ResequenceDefinition withJavaScript(JavaScriptExpression value) {
+  public ResequenceDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
-  public ResequenceDefinition withJsonpath(JsonPathExpression value) {
+  public ResequenceDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
-  public ResequenceDefinition withLanguage(LanguageExpression value) {
+  public ResequenceDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
-  public ResequenceDefinition withMethod(MethodCallExpression value) {
+  public ResequenceDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
-  public ResequenceDefinition withMvel(MvelExpression value) {
+  public ResequenceDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
-  public ResequenceDefinition withOgnl(OgnlExpression value) {
+  public ResequenceDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
-  public ResequenceDefinition withPhp(PhpExpression value) {
+  public ResequenceDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -896,22 +895,22 @@ public class ResequenceDefinition extends ProcessorDefinition {
     return this;
   }
 
-  public ResequenceDefinition withPython(PythonExpression value) {
+  public ResequenceDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
-  public ResequenceDefinition withRef(RefExpression value) {
+  public ResequenceDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
-  public ResequenceDefinition withRuby(RubyExpression value) {
+  public ResequenceDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
-  public ResequenceDefinition withSimple(SimpleExpression value) {
+  public ResequenceDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -921,7 +920,7 @@ public class ResequenceDefinition extends ProcessorDefinition {
     return this;
   }
 
-  public ResequenceDefinition withSql(SqlExpression value) {
+  public ResequenceDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -941,12 +940,12 @@ public class ResequenceDefinition extends ProcessorDefinition {
     return this;
   }
 
-  public ResequenceDefinition withXpath(XPathExpression value) {
+  public ResequenceDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
-  public ResequenceDefinition withXquery(XQueryExpression value) {
+  public ResequenceDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -974,7 +973,7 @@ public class ResequenceDefinition extends ProcessorDefinition {
   }
 
   @Override
-  public ResequenceDefinition withDescription(DescriptionDefinition value) {
+  public ResequenceDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

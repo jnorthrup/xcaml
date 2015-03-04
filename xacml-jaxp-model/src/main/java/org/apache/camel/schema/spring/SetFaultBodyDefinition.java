@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -47,73 +47,73 @@ public class SetFaultBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetFaultBodyDefinition withConstant(ConstantExpression value) {
+  public SetFaultBodyDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withEl(ElExpression value) {
+  public SetFaultBodyDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withGroovy(GroovyExpression value) {
+  public SetFaultBodyDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withHeader(HeaderExpression value) {
+  public SetFaultBodyDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withJxpath(JxPathExpression value) {
+  public SetFaultBodyDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withJavaScript(JavaScriptExpression value) {
+  public SetFaultBodyDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withJsonpath(JsonPathExpression value) {
+  public SetFaultBodyDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withLanguage(LanguageExpression value) {
+  public SetFaultBodyDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withMethod(MethodCallExpression value) {
+  public SetFaultBodyDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withMvel(MvelExpression value) {
+  public SetFaultBodyDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withOgnl(OgnlExpression value) {
+  public SetFaultBodyDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withPhp(PhpExpression value) {
+  public SetFaultBodyDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -125,25 +125,25 @@ public class SetFaultBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetFaultBodyDefinition withPython(PythonExpression value) {
+  public SetFaultBodyDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withRef(RefExpression value) {
+  public SetFaultBodyDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withRuby(RubyExpression value) {
+  public SetFaultBodyDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withSimple(SimpleExpression value) {
+  public SetFaultBodyDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -155,7 +155,7 @@ public class SetFaultBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetFaultBodyDefinition withSql(SqlExpression value) {
+  public SetFaultBodyDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -179,13 +179,13 @@ public class SetFaultBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetFaultBodyDefinition withXpath(XPathExpression value) {
+  public SetFaultBodyDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public SetFaultBodyDefinition withXquery(XQueryExpression value) {
+  public SetFaultBodyDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -215,7 +215,7 @@ public class SetFaultBodyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetFaultBodyDefinition withDescription(DescriptionDefinition value) {
+  public SetFaultBodyDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

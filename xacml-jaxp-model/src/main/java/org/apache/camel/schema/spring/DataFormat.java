@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -39,14 +39,13 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlType(name = "dataFormat")
 @XmlSeeAlso({
     CustomDataFormat.class, CsvDataFormat.class, ZipFileDataFormat.class, CastorDataFormat.class,
-    AvroDataFormat.class, ZipDataFormat.class, BeanioDataFormat.class, XStreamDataFormat.class,
-    BindyDataFormat.class, SyslogDataFormat.class, JaxbDataFormat.class, RssDataFormat.class,
+    AvroDataFormat.class, ZipDataFormat.class, BindyDataFormat.class, RssDataFormat.class,
     PgpDataFormat.class, XmlBeansDataFormat.class, GzipDataFormat.class, XmlJsonDataFormat.class,
-    ProtobufDataFormat.class, TidyMarkupDataFormat.class, Base64DataFormat.class,
-    XmlRpcDataFormat.class, XmlSecurityDataFormat.class, BarcodeDataFormat.class,
-    CryptoDataFormat.class, SoapJaxbDataFormat.class, Hl7DataFormat.class, StringDataFormat.class,
-    JsonDataFormat.class, JibxDataFormat.class, FlatpackDataFormat.class,
-    SerializationDataFormat.class})
+    ProtobufDataFormat.class, TidyMarkupDataFormat.class, XmlRpcDataFormat.class,
+    XmlSecurityDataFormat.class, CryptoDataFormat.class, SoapJaxbDataFormat.class,
+    Hl7DataFormat.class, JibxDataFormat.class, FlatpackDataFormat.class,
+    SerializationDataFormat.class, JsonElement.class, StringElement.class, Base64Element.class,
+    JaxbElement.class, SyslogElement.class, XstreamElement.class, BeanioElement.class})
 public class DataFormat extends IdentifiedType {
 
   @Override

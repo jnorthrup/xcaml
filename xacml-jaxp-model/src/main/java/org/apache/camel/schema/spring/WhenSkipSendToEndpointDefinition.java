@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -47,73 +47,73 @@ public class WhenSkipSendToEndpointDefinition extends WhenDefinition {
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withConstant(ConstantExpression value) {
+  public WhenSkipSendToEndpointDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withEl(ElExpression value) {
+  public WhenSkipSendToEndpointDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withGroovy(GroovyExpression value) {
+  public WhenSkipSendToEndpointDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withHeader(HeaderExpression value) {
+  public WhenSkipSendToEndpointDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withJxpath(JxPathExpression value) {
+  public WhenSkipSendToEndpointDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withJavaScript(JavaScriptExpression value) {
+  public WhenSkipSendToEndpointDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withJsonpath(JsonPathExpression value) {
+  public WhenSkipSendToEndpointDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withLanguage(LanguageExpression value) {
+  public WhenSkipSendToEndpointDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withMethod(MethodCallExpression value) {
+  public WhenSkipSendToEndpointDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withMvel(MvelExpression value) {
+  public WhenSkipSendToEndpointDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withOgnl(OgnlExpression value) {
+  public WhenSkipSendToEndpointDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withPhp(PhpExpression value) {
+  public WhenSkipSendToEndpointDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -125,25 +125,25 @@ public class WhenSkipSendToEndpointDefinition extends WhenDefinition {
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withPython(PythonExpression value) {
+  public WhenSkipSendToEndpointDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withRef(RefExpression value) {
+  public WhenSkipSendToEndpointDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withRuby(RubyExpression value) {
+  public WhenSkipSendToEndpointDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withSimple(SimpleExpression value) {
+  public WhenSkipSendToEndpointDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -155,7 +155,7 @@ public class WhenSkipSendToEndpointDefinition extends WhenDefinition {
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withSql(SqlExpression value) {
+  public WhenSkipSendToEndpointDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -179,13 +179,13 @@ public class WhenSkipSendToEndpointDefinition extends WhenDefinition {
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withXpath(XPathExpression value) {
+  public WhenSkipSendToEndpointDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withXquery(XQueryExpression value) {
+  public WhenSkipSendToEndpointDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -216,7 +216,7 @@ public class WhenSkipSendToEndpointDefinition extends WhenDefinition {
   }
 
   @Override
-  public WhenSkipSendToEndpointDefinition withDescription(DescriptionDefinition value) {
+  public WhenSkipSendToEndpointDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

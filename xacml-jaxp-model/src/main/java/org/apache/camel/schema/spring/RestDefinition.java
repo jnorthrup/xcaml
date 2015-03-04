@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -63,7 +63,7 @@ public class RestDefinition extends OptionalIdentifiedDefinition {
       @XmlElement(name = "get", type = GetVerbDefinition.class),
       @XmlElement(name = "head", type = HeadVerbDefinition.class),
       @XmlElement(name = "post", type = PostVerbDefinition.class),
-      @XmlElement(name = "put", type = PutVerbDefinition.class)})
+      @XmlElement(name = "put", type = PutElement.class)})
   protected List<VerbDefinition> verbOrDeleteOrGet;
   @XmlAttribute(name = "path")
   protected String path;
@@ -96,7 +96,7 @@ public class RestDefinition extends OptionalIdentifiedDefinition {
    * 
    * <p>
    * Objects of the following type(s) are allowed in the list {@link VerbDefinition } {@link DeleteVerbDefinition }
-   * {@link GetVerbDefinition } {@link HeadVerbDefinition } {@link PostVerbDefinition } {@link PutVerbDefinition }
+   * {@link GetVerbDefinition } {@link HeadVerbDefinition } {@link PostVerbDefinition } {@link PutElement }
    * 
    * 
    */
@@ -274,7 +274,7 @@ public class RestDefinition extends OptionalIdentifiedDefinition {
   }
 
   @Override
-  public RestDefinition withDescription(DescriptionDefinition value) {
+  public RestDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

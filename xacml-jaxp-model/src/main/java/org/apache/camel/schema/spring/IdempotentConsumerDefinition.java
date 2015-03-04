@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -161,73 +161,73 @@ public class IdempotentConsumerDefinition extends ExpressionNode {
   }
 
   @Override
-  public IdempotentConsumerDefinition withConstant(ConstantExpression value) {
+  public IdempotentConsumerDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withEl(ElExpression value) {
+  public IdempotentConsumerDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withGroovy(GroovyExpression value) {
+  public IdempotentConsumerDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withHeader(HeaderExpression value) {
+  public IdempotentConsumerDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withJxpath(JxPathExpression value) {
+  public IdempotentConsumerDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withJavaScript(JavaScriptExpression value) {
+  public IdempotentConsumerDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withJsonpath(JsonPathExpression value) {
+  public IdempotentConsumerDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withLanguage(LanguageExpression value) {
+  public IdempotentConsumerDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withMethod(MethodCallExpression value) {
+  public IdempotentConsumerDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withMvel(MvelExpression value) {
+  public IdempotentConsumerDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withOgnl(OgnlExpression value) {
+  public IdempotentConsumerDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withPhp(PhpExpression value) {
+  public IdempotentConsumerDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -239,25 +239,25 @@ public class IdempotentConsumerDefinition extends ExpressionNode {
   }
 
   @Override
-  public IdempotentConsumerDefinition withPython(PythonExpression value) {
+  public IdempotentConsumerDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withRef(RefExpression value) {
+  public IdempotentConsumerDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withRuby(RubyExpression value) {
+  public IdempotentConsumerDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withSimple(SimpleExpression value) {
+  public IdempotentConsumerDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -269,7 +269,7 @@ public class IdempotentConsumerDefinition extends ExpressionNode {
   }
 
   @Override
-  public IdempotentConsumerDefinition withSql(SqlExpression value) {
+  public IdempotentConsumerDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -293,13 +293,13 @@ public class IdempotentConsumerDefinition extends ExpressionNode {
   }
 
   @Override
-  public IdempotentConsumerDefinition withXpath(XPathExpression value) {
+  public IdempotentConsumerDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public IdempotentConsumerDefinition withXquery(XQueryExpression value) {
+  public IdempotentConsumerDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -330,7 +330,7 @@ public class IdempotentConsumerDefinition extends ExpressionNode {
   }
 
   @Override
-  public IdempotentConsumerDefinition withDescription(DescriptionDefinition value) {
+  public IdempotentConsumerDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

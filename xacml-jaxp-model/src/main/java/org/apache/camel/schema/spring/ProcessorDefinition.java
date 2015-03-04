@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -45,10 +45,9 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "processorDefinition")
 @XmlSeeAlso({
-    LoadBalanceDefinition.class, RouteDefinition.class, OnExceptionDefinition.class,
-    ChoiceDefinition.class, OnCompletionDefinition.class, CatchDefinition.class,
-    AggregateDefinition.class, ResequenceDefinition.class, NoOutputDefinition.class, Output.class,
-    ExpressionNode.class})
+    CatchDefinition.class, LoadBalanceDefinition.class, OnCompletionDefinition.class,
+    OnExceptionDefinition.class, ResequenceDefinition.class, ExpressionNode.class, Output.class,
+    ChoiceElement.class, AggregateElement.class, RouteElement.class, NoOutputDefinition.class})
 public abstract class ProcessorDefinition extends OptionalIdentifiedDefinition {
 
   @XmlAttribute(name = "inheritErrorHandler")
@@ -98,7 +97,7 @@ public abstract class ProcessorDefinition extends OptionalIdentifiedDefinition {
   }
 
   @Override
-  public ProcessorDefinition withDescription(DescriptionDefinition value) {
+  public ProcessorDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

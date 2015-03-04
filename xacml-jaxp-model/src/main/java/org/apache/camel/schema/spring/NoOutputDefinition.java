@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -39,12 +39,12 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "noOutputDefinition")
 @XmlSeeAlso({
-    ConvertBodyDefinition.class, SetExchangePatternDefinition.class, StopDefinition.class,
-    LogDefinition.class, PollEnrichDefinition.class, RestBindingDefinition.class,
-    RollbackDefinition.class, WireTapDefinition.class, MarshalDefinition.class,
-    EnrichDefinition.class, BeanDefinition.class, RemoveHeaderDefinition.class,
-    RemovePropertyDefinition.class, RemoveHeadersDefinition.class, ProcessDefinition.class,
-    ThrowExceptionDefinition.class, UnmarshalDefinition.class, SendDefinition.class})
+    ConvertBodyDefinition.class, EnrichDefinition.class, MarshalDefinition.class,
+    PollEnrichDefinition.class, RemoveHeaderDefinition.class, RemoveHeadersDefinition.class,
+    RemovePropertyDefinition.class, RollbackDefinition.class, SetExchangePatternDefinition.class,
+    StopDefinition.class, ThrowExceptionDefinition.class, UnmarshalDefinition.class,
+    WireTapDefinition.class, RestBindingElement.class, ProcessElement.class, LogElement.class,
+    BeanElement.class, SendDefinition.class})
 public abstract class NoOutputDefinition extends ProcessorDefinition {
 
   @Override
@@ -54,7 +54,7 @@ public abstract class NoOutputDefinition extends ProcessorDefinition {
   }
 
   @Override
-  public NoOutputDefinition withDescription(DescriptionDefinition value) {
+  public NoOutputDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

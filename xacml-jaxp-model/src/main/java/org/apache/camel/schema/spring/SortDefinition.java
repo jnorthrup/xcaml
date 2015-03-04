@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -77,73 +77,73 @@ public class SortDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SortDefinition withConstant(ConstantExpression value) {
+  public SortDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public SortDefinition withEl(ElExpression value) {
+  public SortDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public SortDefinition withGroovy(GroovyExpression value) {
+  public SortDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public SortDefinition withHeader(HeaderExpression value) {
+  public SortDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public SortDefinition withJxpath(JxPathExpression value) {
+  public SortDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public SortDefinition withJavaScript(JavaScriptExpression value) {
+  public SortDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public SortDefinition withJsonpath(JsonPathExpression value) {
+  public SortDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public SortDefinition withLanguage(LanguageExpression value) {
+  public SortDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public SortDefinition withMethod(MethodCallExpression value) {
+  public SortDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public SortDefinition withMvel(MvelExpression value) {
+  public SortDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public SortDefinition withOgnl(OgnlExpression value) {
+  public SortDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public SortDefinition withPhp(PhpExpression value) {
+  public SortDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -155,25 +155,25 @@ public class SortDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SortDefinition withPython(PythonExpression value) {
+  public SortDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public SortDefinition withRef(RefExpression value) {
+  public SortDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public SortDefinition withRuby(RubyExpression value) {
+  public SortDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public SortDefinition withSimple(SimpleExpression value) {
+  public SortDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -185,7 +185,7 @@ public class SortDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SortDefinition withSql(SqlExpression value) {
+  public SortDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -209,13 +209,13 @@ public class SortDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SortDefinition withXpath(XPathExpression value) {
+  public SortDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public SortDefinition withXquery(XQueryExpression value) {
+  public SortDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -245,7 +245,7 @@ public class SortDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SortDefinition withDescription(DescriptionDefinition value) {
+  public SortDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

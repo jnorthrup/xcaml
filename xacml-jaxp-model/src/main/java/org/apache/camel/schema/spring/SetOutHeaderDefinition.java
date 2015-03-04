@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -77,73 +77,73 @@ public class SetOutHeaderDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetOutHeaderDefinition withConstant(ConstantExpression value) {
+  public SetOutHeaderDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withEl(ElExpression value) {
+  public SetOutHeaderDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withGroovy(GroovyExpression value) {
+  public SetOutHeaderDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withHeader(HeaderExpression value) {
+  public SetOutHeaderDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withJxpath(JxPathExpression value) {
+  public SetOutHeaderDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withJavaScript(JavaScriptExpression value) {
+  public SetOutHeaderDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withJsonpath(JsonPathExpression value) {
+  public SetOutHeaderDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withLanguage(LanguageExpression value) {
+  public SetOutHeaderDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withMethod(MethodCallExpression value) {
+  public SetOutHeaderDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withMvel(MvelExpression value) {
+  public SetOutHeaderDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withOgnl(OgnlExpression value) {
+  public SetOutHeaderDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withPhp(PhpExpression value) {
+  public SetOutHeaderDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -155,25 +155,25 @@ public class SetOutHeaderDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetOutHeaderDefinition withPython(PythonExpression value) {
+  public SetOutHeaderDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withRef(RefExpression value) {
+  public SetOutHeaderDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withRuby(RubyExpression value) {
+  public SetOutHeaderDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withSimple(SimpleExpression value) {
+  public SetOutHeaderDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -185,7 +185,7 @@ public class SetOutHeaderDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetOutHeaderDefinition withSql(SqlExpression value) {
+  public SetOutHeaderDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -209,13 +209,13 @@ public class SetOutHeaderDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetOutHeaderDefinition withXpath(XPathExpression value) {
+  public SetOutHeaderDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public SetOutHeaderDefinition withXquery(XQueryExpression value) {
+  public SetOutHeaderDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -245,7 +245,7 @@ public class SetOutHeaderDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetOutHeaderDefinition withDescription(DescriptionDefinition value) {
+  public SetOutHeaderDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

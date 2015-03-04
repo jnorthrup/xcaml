@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -49,73 +49,73 @@ public class WhenDefinition extends ExpressionNode {
   }
 
   @Override
-  public WhenDefinition withConstant(ConstantExpression value) {
+  public WhenDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withEl(ElExpression value) {
+  public WhenDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withGroovy(GroovyExpression value) {
+  public WhenDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withHeader(HeaderExpression value) {
+  public WhenDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withJxpath(JxPathExpression value) {
+  public WhenDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withJavaScript(JavaScriptExpression value) {
+  public WhenDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withJsonpath(JsonPathExpression value) {
+  public WhenDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withLanguage(LanguageExpression value) {
+  public WhenDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withMethod(MethodCallExpression value) {
+  public WhenDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withMvel(MvelExpression value) {
+  public WhenDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withOgnl(OgnlExpression value) {
+  public WhenDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withPhp(PhpExpression value) {
+  public WhenDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -127,25 +127,25 @@ public class WhenDefinition extends ExpressionNode {
   }
 
   @Override
-  public WhenDefinition withPython(PythonExpression value) {
+  public WhenDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withRef(RefExpression value) {
+  public WhenDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withRuby(RubyExpression value) {
+  public WhenDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withSimple(SimpleExpression value) {
+  public WhenDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -157,7 +157,7 @@ public class WhenDefinition extends ExpressionNode {
   }
 
   @Override
-  public WhenDefinition withSql(SqlExpression value) {
+  public WhenDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -181,13 +181,13 @@ public class WhenDefinition extends ExpressionNode {
   }
 
   @Override
-  public WhenDefinition withXpath(XPathExpression value) {
+  public WhenDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public WhenDefinition withXquery(XQueryExpression value) {
+  public WhenDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -217,7 +217,7 @@ public class WhenDefinition extends ExpressionNode {
   }
 
   @Override
-  public WhenDefinition withDescription(DescriptionDefinition value) {
+  public WhenDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -40,10 +40,10 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "noOutputExpressionNode")
 @XmlSeeAlso({
-    RecipientListDefinition.class, SetHeaderDefinition.class, SetPropertyDefinition.class,
-    ValidateDefinition.class, SetBodyDefinition.class, DynamicRouterDefinition.class,
-    SetOutHeaderDefinition.class, SortDefinition.class, RoutingSlipDefinition.class,
-    TransformDefinition.class, SetFaultBodyDefinition.class})
+    RecipientListDefinition.class, DynamicRouterDefinition.class, RoutingSlipDefinition.class,
+    SetBodyDefinition.class, SetFaultBodyDefinition.class, SetHeaderDefinition.class,
+    SetOutHeaderDefinition.class, SetPropertyDefinition.class, SortDefinition.class,
+    ValidateDefinition.class, TransformElement.class})
 public class NoOutputExpressionNode extends ExpressionNode {
 
   @Override
@@ -53,73 +53,73 @@ public class NoOutputExpressionNode extends ExpressionNode {
   }
 
   @Override
-  public NoOutputExpressionNode withConstant(ConstantExpression value) {
+  public NoOutputExpressionNode withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withEl(ElExpression value) {
+  public NoOutputExpressionNode withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withGroovy(GroovyExpression value) {
+  public NoOutputExpressionNode withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withHeader(HeaderExpression value) {
+  public NoOutputExpressionNode withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withJxpath(JxPathExpression value) {
+  public NoOutputExpressionNode withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withJavaScript(JavaScriptExpression value) {
+  public NoOutputExpressionNode withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withJsonpath(JsonPathExpression value) {
+  public NoOutputExpressionNode withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withLanguage(LanguageExpression value) {
+  public NoOutputExpressionNode withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withMethod(MethodCallExpression value) {
+  public NoOutputExpressionNode withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withMvel(MvelExpression value) {
+  public NoOutputExpressionNode withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withOgnl(OgnlExpression value) {
+  public NoOutputExpressionNode withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withPhp(PhpExpression value) {
+  public NoOutputExpressionNode withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -131,25 +131,25 @@ public class NoOutputExpressionNode extends ExpressionNode {
   }
 
   @Override
-  public NoOutputExpressionNode withPython(PythonExpression value) {
+  public NoOutputExpressionNode withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withRef(RefExpression value) {
+  public NoOutputExpressionNode withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withRuby(RubyExpression value) {
+  public NoOutputExpressionNode withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withSimple(SimpleExpression value) {
+  public NoOutputExpressionNode withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -161,7 +161,7 @@ public class NoOutputExpressionNode extends ExpressionNode {
   }
 
   @Override
-  public NoOutputExpressionNode withSql(SqlExpression value) {
+  public NoOutputExpressionNode withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -185,13 +185,13 @@ public class NoOutputExpressionNode extends ExpressionNode {
   }
 
   @Override
-  public NoOutputExpressionNode withXpath(XPathExpression value) {
+  public NoOutputExpressionNode withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public NoOutputExpressionNode withXquery(XQueryExpression value) {
+  public NoOutputExpressionNode withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -221,7 +221,7 @@ public class NoOutputExpressionNode extends ExpressionNode {
   }
 
   @Override
-  public NoOutputExpressionNode withDescription(DescriptionDefinition value) {
+  public NoOutputExpressionNode withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

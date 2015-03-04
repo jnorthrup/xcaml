@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -133,73 +133,73 @@ public class RoutingSlipDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RoutingSlipDefinition withConstant(ConstantExpression value) {
+  public RoutingSlipDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withEl(ElExpression value) {
+  public RoutingSlipDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withGroovy(GroovyExpression value) {
+  public RoutingSlipDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withHeader(HeaderExpression value) {
+  public RoutingSlipDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withJxpath(JxPathExpression value) {
+  public RoutingSlipDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withJavaScript(JavaScriptExpression value) {
+  public RoutingSlipDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withJsonpath(JsonPathExpression value) {
+  public RoutingSlipDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withLanguage(LanguageExpression value) {
+  public RoutingSlipDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withMethod(MethodCallExpression value) {
+  public RoutingSlipDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withMvel(MvelExpression value) {
+  public RoutingSlipDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withOgnl(OgnlExpression value) {
+  public RoutingSlipDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withPhp(PhpExpression value) {
+  public RoutingSlipDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -211,25 +211,25 @@ public class RoutingSlipDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RoutingSlipDefinition withPython(PythonExpression value) {
+  public RoutingSlipDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withRef(RefExpression value) {
+  public RoutingSlipDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withRuby(RubyExpression value) {
+  public RoutingSlipDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withSimple(SimpleExpression value) {
+  public RoutingSlipDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -241,7 +241,7 @@ public class RoutingSlipDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RoutingSlipDefinition withSql(SqlExpression value) {
+  public RoutingSlipDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -265,13 +265,13 @@ public class RoutingSlipDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RoutingSlipDefinition withXpath(XPathExpression value) {
+  public RoutingSlipDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public RoutingSlipDefinition withXquery(XQueryExpression value) {
+  public RoutingSlipDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -301,7 +301,7 @@ public class RoutingSlipDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public RoutingSlipDefinition withDescription(DescriptionDefinition value) {
+  public RoutingSlipDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

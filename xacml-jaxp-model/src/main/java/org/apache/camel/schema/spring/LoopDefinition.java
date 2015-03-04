@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -77,73 +77,73 @@ public class LoopDefinition extends ExpressionNode {
   }
 
   @Override
-  public LoopDefinition withConstant(ConstantExpression value) {
+  public LoopDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withEl(ElExpression value) {
+  public LoopDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withGroovy(GroovyExpression value) {
+  public LoopDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withHeader(HeaderExpression value) {
+  public LoopDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withJxpath(JxPathExpression value) {
+  public LoopDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withJavaScript(JavaScriptExpression value) {
+  public LoopDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withJsonpath(JsonPathExpression value) {
+  public LoopDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withLanguage(LanguageExpression value) {
+  public LoopDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withMethod(MethodCallExpression value) {
+  public LoopDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withMvel(MvelExpression value) {
+  public LoopDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withOgnl(OgnlExpression value) {
+  public LoopDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withPhp(PhpExpression value) {
+  public LoopDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -155,25 +155,25 @@ public class LoopDefinition extends ExpressionNode {
   }
 
   @Override
-  public LoopDefinition withPython(PythonExpression value) {
+  public LoopDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withRef(RefExpression value) {
+  public LoopDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withRuby(RubyExpression value) {
+  public LoopDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withSimple(SimpleExpression value) {
+  public LoopDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -185,7 +185,7 @@ public class LoopDefinition extends ExpressionNode {
   }
 
   @Override
-  public LoopDefinition withSql(SqlExpression value) {
+  public LoopDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -209,13 +209,13 @@ public class LoopDefinition extends ExpressionNode {
   }
 
   @Override
-  public LoopDefinition withXpath(XPathExpression value) {
+  public LoopDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public LoopDefinition withXquery(XQueryExpression value) {
+  public LoopDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -245,7 +245,7 @@ public class LoopDefinition extends ExpressionNode {
   }
 
   @Override
-  public LoopDefinition withDescription(DescriptionDefinition value) {
+  public LoopDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

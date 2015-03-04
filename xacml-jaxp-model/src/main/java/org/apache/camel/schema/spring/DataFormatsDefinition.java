@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -77,9 +77,9 @@ public class DataFormatsDefinition {
 
   @XmlElements({
       @XmlElement(name = "avro", type = AvroDataFormat.class),
-      @XmlElement(name = "barcode", type = BarcodeDataFormat.class),
-      @XmlElement(name = "base64", type = Base64DataFormat.class),
-      @XmlElement(name = "beanio", type = BeanioDataFormat.class),
+      @XmlElement(name = "barcode", type = BarcodeElement.class),
+      @XmlElement(name = "base64", type = Base64Element.class),
+      @XmlElement(name = "beanio", type = BeanioElement.class),
       @XmlElement(name = "bindy", type = BindyDataFormat.class),
       @XmlElement(name = "castor", type = CastorDataFormat.class),
       @XmlElement(name = "crypto", type = CryptoDataFormat.class),
@@ -88,25 +88,25 @@ public class DataFormatsDefinition {
       @XmlElement(name = "flatpack", type = FlatpackDataFormat.class),
       @XmlElement(name = "gzip", type = GzipDataFormat.class),
       @XmlElement(name = "hl7", type = Hl7DataFormat.class),
-      @XmlElement(name = "jaxb", type = JaxbDataFormat.class),
+      @XmlElement(name = "jaxb", type = JaxbElement.class),
       @XmlElement(name = "jibx", type = JibxDataFormat.class),
-      @XmlElement(name = "json", type = JsonDataFormat.class),
+      @XmlElement(name = "json", type = JsonElement.class),
       @XmlElement(name = "protobuf", type = ProtobufDataFormat.class),
       @XmlElement(name = "rss", type = RssDataFormat.class),
       @XmlElement(name = "secureXML", type = XmlSecurityDataFormat.class),
       @XmlElement(name = "serialization", type = SerializationDataFormat.class),
       @XmlElement(name = "soapjaxb", type = SoapJaxbDataFormat.class),
-      @XmlElement(name = "string", type = StringDataFormat.class),
-      @XmlElement(name = "syslog", type = SyslogDataFormat.class),
+      @XmlElement(name = "string", type = StringElement.class),
+      @XmlElement(name = "syslog", type = SyslogElement.class),
       @XmlElement(name = "tidyMarkup", type = TidyMarkupDataFormat.class),
       @XmlElement(name = "xmlBeans", type = XmlBeansDataFormat.class),
       @XmlElement(name = "xmljson", type = XmlJsonDataFormat.class),
       @XmlElement(name = "xmlrpc", type = XmlRpcDataFormat.class),
-      @XmlElement(name = "xstream", type = XStreamDataFormat.class),
+      @XmlElement(name = "xstream", type = XstreamElement.class),
       @XmlElement(name = "pgp", type = PgpDataFormat.class),
       @XmlElement(name = "zip", type = ZipDataFormat.class),
       @XmlElement(name = "zipFile", type = ZipFileDataFormat.class)})
-  protected List<DataFormat> avroOrBarcodeOrBase64;
+  protected List<Object> avroOrBarcodeOrBase64;
 
   /**
    * Gets the value of the avroOrBarcodeOrBase64 property.
@@ -125,34 +125,34 @@ public class DataFormatsDefinition {
    * 
    * 
    * <p>
-   * Objects of the following type(s) are allowed in the list {@link AvroDataFormat } {@link BarcodeDataFormat }
-   * {@link Base64DataFormat } {@link BeanioDataFormat } {@link BindyDataFormat } {@link CastorDataFormat }
+   * Objects of the following type(s) are allowed in the list {@link AvroDataFormat } {@link BarcodeElement }
+   * {@link Base64Element } {@link BeanioElement } {@link BindyDataFormat } {@link CastorDataFormat }
    * {@link CryptoDataFormat } {@link CsvDataFormat } {@link CustomDataFormat } {@link FlatpackDataFormat }
-   * {@link GzipDataFormat } {@link Hl7DataFormat } {@link JaxbDataFormat } {@link JibxDataFormat } {@link JsonDataFormat }
+   * {@link GzipDataFormat } {@link Hl7DataFormat } {@link JaxbElement } {@link JibxDataFormat } {@link JsonElement }
    * {@link ProtobufDataFormat } {@link RssDataFormat } {@link XmlSecurityDataFormat } {@link SerializationDataFormat }
-   * {@link SoapJaxbDataFormat } {@link StringDataFormat } {@link SyslogDataFormat } {@link TidyMarkupDataFormat }
-   * {@link XmlBeansDataFormat } {@link XmlJsonDataFormat } {@link XmlRpcDataFormat } {@link XStreamDataFormat }
+   * {@link SoapJaxbDataFormat } {@link StringElement } {@link SyslogElement } {@link TidyMarkupDataFormat }
+   * {@link XmlBeansDataFormat } {@link XmlJsonDataFormat } {@link XmlRpcDataFormat } {@link XstreamElement }
    * {@link PgpDataFormat } {@link ZipDataFormat } {@link ZipFileDataFormat }
    * 
    * 
    */
-  public List<DataFormat> getAvroOrBarcodeOrBase64() {
+  public List<Object> getAvroOrBarcodeOrBase64() {
     if (avroOrBarcodeOrBase64 == null) {
-      avroOrBarcodeOrBase64 = new ArrayList<DataFormat>();
+      avroOrBarcodeOrBase64 = new ArrayList<Object>();
     }
     return this.avroOrBarcodeOrBase64;
   }
 
-  public DataFormatsDefinition withAvroOrBarcodeOrBase64(DataFormat... values) {
+  public DataFormatsDefinition withAvroOrBarcodeOrBase64(Object... values) {
     if (values != null) {
-      for (DataFormat value : values) {
+      for (Object value : values) {
         getAvroOrBarcodeOrBase64().add(value);
       }
     }
     return this;
   }
 
-  public DataFormatsDefinition withAvroOrBarcodeOrBase64(Collection<DataFormat> values) {
+  public DataFormatsDefinition withAvroOrBarcodeOrBase64(Collection<Object> values) {
     if (values != null) {
       getAvroOrBarcodeOrBase64().addAll(values);
     }

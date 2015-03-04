@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -47,73 +47,73 @@ public class ValidateDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public ValidateDefinition withConstant(ConstantExpression value) {
+  public ValidateDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withEl(ElExpression value) {
+  public ValidateDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withGroovy(GroovyExpression value) {
+  public ValidateDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withHeader(HeaderExpression value) {
+  public ValidateDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withJxpath(JxPathExpression value) {
+  public ValidateDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withJavaScript(JavaScriptExpression value) {
+  public ValidateDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withJsonpath(JsonPathExpression value) {
+  public ValidateDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withLanguage(LanguageExpression value) {
+  public ValidateDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withMethod(MethodCallExpression value) {
+  public ValidateDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withMvel(MvelExpression value) {
+  public ValidateDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withOgnl(OgnlExpression value) {
+  public ValidateDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withPhp(PhpExpression value) {
+  public ValidateDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -125,25 +125,25 @@ public class ValidateDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public ValidateDefinition withPython(PythonExpression value) {
+  public ValidateDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withRef(RefExpression value) {
+  public ValidateDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withRuby(RubyExpression value) {
+  public ValidateDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withSimple(SimpleExpression value) {
+  public ValidateDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -155,7 +155,7 @@ public class ValidateDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public ValidateDefinition withSql(SqlExpression value) {
+  public ValidateDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -179,13 +179,13 @@ public class ValidateDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public ValidateDefinition withXpath(XPathExpression value) {
+  public ValidateDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public ValidateDefinition withXquery(XQueryExpression value) {
+  public ValidateDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -215,7 +215,7 @@ public class ValidateDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public ValidateDefinition withDescription(DescriptionDefinition value) {
+  public ValidateDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

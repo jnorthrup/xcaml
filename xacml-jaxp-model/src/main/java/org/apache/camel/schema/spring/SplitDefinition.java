@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -357,73 +357,73 @@ public class SplitDefinition extends ExpressionNode {
   }
 
   @Override
-  public SplitDefinition withConstant(ConstantExpression value) {
+  public SplitDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withEl(ElExpression value) {
+  public SplitDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withGroovy(GroovyExpression value) {
+  public SplitDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withHeader(HeaderExpression value) {
+  public SplitDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withJxpath(JxPathExpression value) {
+  public SplitDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withJavaScript(JavaScriptExpression value) {
+  public SplitDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withJsonpath(JsonPathExpression value) {
+  public SplitDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withLanguage(LanguageExpression value) {
+  public SplitDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withMethod(MethodCallExpression value) {
+  public SplitDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withMvel(MvelExpression value) {
+  public SplitDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withOgnl(OgnlExpression value) {
+  public SplitDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withPhp(PhpExpression value) {
+  public SplitDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -435,25 +435,25 @@ public class SplitDefinition extends ExpressionNode {
   }
 
   @Override
-  public SplitDefinition withPython(PythonExpression value) {
+  public SplitDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withRef(RefExpression value) {
+  public SplitDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withRuby(RubyExpression value) {
+  public SplitDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withSimple(SimpleExpression value) {
+  public SplitDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -465,7 +465,7 @@ public class SplitDefinition extends ExpressionNode {
   }
 
   @Override
-  public SplitDefinition withSql(SqlExpression value) {
+  public SplitDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -489,13 +489,13 @@ public class SplitDefinition extends ExpressionNode {
   }
 
   @Override
-  public SplitDefinition withXpath(XPathExpression value) {
+  public SplitDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public SplitDefinition withXquery(XQueryExpression value) {
+  public SplitDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -525,7 +525,7 @@ public class SplitDefinition extends ExpressionNode {
   }
 
   @Override
-  public SplitDefinition withDescription(DescriptionDefinition value) {
+  public SplitDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

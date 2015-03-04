@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -77,73 +77,73 @@ public class SetPropertyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetPropertyDefinition withConstant(ConstantExpression value) {
+  public SetPropertyDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withEl(ElExpression value) {
+  public SetPropertyDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withGroovy(GroovyExpression value) {
+  public SetPropertyDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withHeader(HeaderExpression value) {
+  public SetPropertyDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withJxpath(JxPathExpression value) {
+  public SetPropertyDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withJavaScript(JavaScriptExpression value) {
+  public SetPropertyDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withJsonpath(JsonPathExpression value) {
+  public SetPropertyDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withLanguage(LanguageExpression value) {
+  public SetPropertyDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withMethod(MethodCallExpression value) {
+  public SetPropertyDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withMvel(MvelExpression value) {
+  public SetPropertyDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withOgnl(OgnlExpression value) {
+  public SetPropertyDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withPhp(PhpExpression value) {
+  public SetPropertyDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -155,25 +155,25 @@ public class SetPropertyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetPropertyDefinition withPython(PythonExpression value) {
+  public SetPropertyDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withRef(RefExpression value) {
+  public SetPropertyDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withRuby(RubyExpression value) {
+  public SetPropertyDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withSimple(SimpleExpression value) {
+  public SetPropertyDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -185,7 +185,7 @@ public class SetPropertyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetPropertyDefinition withSql(SqlExpression value) {
+  public SetPropertyDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -209,13 +209,13 @@ public class SetPropertyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetPropertyDefinition withXpath(XPathExpression value) {
+  public SetPropertyDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public SetPropertyDefinition withXquery(XQueryExpression value) {
+  public SetPropertyDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -245,7 +245,7 @@ public class SetPropertyDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public SetPropertyDefinition withDescription(DescriptionDefinition value) {
+  public SetPropertyDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

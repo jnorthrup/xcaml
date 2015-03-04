@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -77,8 +77,8 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 public class UnmarshalDefinition extends NoOutputDefinition {
 
   protected AvroDataFormat avro;
-  protected Base64DataFormat base64;
-  protected BeanioDataFormat beanio;
+  protected Base64Element base64;
+  protected BeanioElement beanio;
   protected BindyDataFormat bindy;
   protected CastorDataFormat castor;
   protected CryptoDataFormat crypto;
@@ -87,21 +87,21 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   protected FlatpackDataFormat flatpack;
   protected GzipDataFormat gzip;
   protected Hl7DataFormat hl7;
-  protected JaxbDataFormat jaxb;
+  protected JaxbElement jaxb;
   protected JibxDataFormat jibx;
-  protected JsonDataFormat json;
+  protected JsonElement json;
   protected ProtobufDataFormat protobuf;
   protected RssDataFormat rss;
   protected XmlSecurityDataFormat secureXML;
   protected SerializationDataFormat serialization;
   protected SoapJaxbDataFormat soapjaxb;
-  protected StringDataFormat string;
-  protected SyslogDataFormat syslog;
+  protected StringElement string;
+  protected SyslogElement syslog;
   protected TidyMarkupDataFormat tidyMarkup;
   protected XmlBeansDataFormat xmlBeans;
   protected XmlJsonDataFormat xmljson;
   protected XmlRpcDataFormat xmlrpc;
-  protected XStreamDataFormat xstream;
+  protected XstreamElement xstream;
   protected PgpDataFormat pgp;
   protected ZipDataFormat zip;
   protected ZipFileDataFormat zipFile;
@@ -131,40 +131,40 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   /**
    * Gets the value of the base64 property.
    * 
-   * @return possible object is {@link Base64DataFormat }
+   * @return possible object is {@link Base64Element }
    * 
    */
-  public Base64DataFormat getBase64() {
+  public Base64Element getBase64() {
     return base64;
   }
 
   /**
    * Sets the value of the base64 property.
    * 
-   * @param value allowed object is {@link Base64DataFormat }
+   * @param value allowed object is {@link Base64Element }
    * 
    */
-  public void setBase64(Base64DataFormat value) {
+  public void setBase64(Base64Element value) {
     this.base64 = value;
   }
 
   /**
    * Gets the value of the beanio property.
    * 
-   * @return possible object is {@link BeanioDataFormat }
+   * @return possible object is {@link BeanioElement }
    * 
    */
-  public BeanioDataFormat getBeanio() {
+  public BeanioElement getBeanio() {
     return beanio;
   }
 
   /**
    * Sets the value of the beanio property.
    * 
-   * @param value allowed object is {@link BeanioDataFormat }
+   * @param value allowed object is {@link BeanioElement }
    * 
    */
-  public void setBeanio(BeanioDataFormat value) {
+  public void setBeanio(BeanioElement value) {
     this.beanio = value;
   }
 
@@ -331,20 +331,20 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   /**
    * Gets the value of the jaxb property.
    * 
-   * @return possible object is {@link JaxbDataFormat }
+   * @return possible object is {@link JaxbElement }
    * 
    */
-  public JaxbDataFormat getJaxb() {
+  public JaxbElement getJaxb() {
     return jaxb;
   }
 
   /**
    * Sets the value of the jaxb property.
    * 
-   * @param value allowed object is {@link JaxbDataFormat }
+   * @param value allowed object is {@link JaxbElement }
    * 
    */
-  public void setJaxb(JaxbDataFormat value) {
+  public void setJaxb(JaxbElement value) {
     this.jaxb = value;
   }
 
@@ -371,20 +371,20 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   /**
    * Gets the value of the json property.
    * 
-   * @return possible object is {@link JsonDataFormat }
+   * @return possible object is {@link JsonElement }
    * 
    */
-  public JsonDataFormat getJson() {
+  public JsonElement getJson() {
     return json;
   }
 
   /**
    * Sets the value of the json property.
    * 
-   * @param value allowed object is {@link JsonDataFormat }
+   * @param value allowed object is {@link JsonElement }
    * 
    */
-  public void setJson(JsonDataFormat value) {
+  public void setJson(JsonElement value) {
     this.json = value;
   }
 
@@ -491,40 +491,40 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   /**
    * Gets the value of the string property.
    * 
-   * @return possible object is {@link StringDataFormat }
+   * @return possible object is {@link StringElement }
    * 
    */
-  public StringDataFormat getString() {
+  public StringElement getString() {
     return string;
   }
 
   /**
    * Sets the value of the string property.
    * 
-   * @param value allowed object is {@link StringDataFormat }
+   * @param value allowed object is {@link StringElement }
    * 
    */
-  public void setString(StringDataFormat value) {
+  public void setString(StringElement value) {
     this.string = value;
   }
 
   /**
    * Gets the value of the syslog property.
    * 
-   * @return possible object is {@link SyslogDataFormat }
+   * @return possible object is {@link SyslogElement }
    * 
    */
-  public SyslogDataFormat getSyslog() {
+  public SyslogElement getSyslog() {
     return syslog;
   }
 
   /**
    * Sets the value of the syslog property.
    * 
-   * @param value allowed object is {@link SyslogDataFormat }
+   * @param value allowed object is {@link SyslogElement }
    * 
    */
-  public void setSyslog(SyslogDataFormat value) {
+  public void setSyslog(SyslogElement value) {
     this.syslog = value;
   }
 
@@ -611,20 +611,20 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   /**
    * Gets the value of the xstream property.
    * 
-   * @return possible object is {@link XStreamDataFormat }
+   * @return possible object is {@link XstreamElement }
    * 
    */
-  public XStreamDataFormat getXstream() {
+  public XstreamElement getXstream() {
     return xstream;
   }
 
   /**
    * Sets the value of the xstream property.
    * 
-   * @param value allowed object is {@link XStreamDataFormat }
+   * @param value allowed object is {@link XstreamElement }
    * 
    */
-  public void setXstream(XStreamDataFormat value) {
+  public void setXstream(XstreamElement value) {
     this.xstream = value;
   }
 
@@ -713,12 +713,12 @@ public class UnmarshalDefinition extends NoOutputDefinition {
     return this;
   }
 
-  public UnmarshalDefinition withBase64(Base64DataFormat value) {
+  public UnmarshalDefinition withBase64(Base64Element value) {
     setBase64(value);
     return this;
   }
 
-  public UnmarshalDefinition withBeanio(BeanioDataFormat value) {
+  public UnmarshalDefinition withBeanio(BeanioElement value) {
     setBeanio(value);
     return this;
   }
@@ -763,7 +763,7 @@ public class UnmarshalDefinition extends NoOutputDefinition {
     return this;
   }
 
-  public UnmarshalDefinition withJaxb(JaxbDataFormat value) {
+  public UnmarshalDefinition withJaxb(JaxbElement value) {
     setJaxb(value);
     return this;
   }
@@ -773,7 +773,7 @@ public class UnmarshalDefinition extends NoOutputDefinition {
     return this;
   }
 
-  public UnmarshalDefinition withJson(JsonDataFormat value) {
+  public UnmarshalDefinition withJson(JsonElement value) {
     setJson(value);
     return this;
   }
@@ -803,12 +803,12 @@ public class UnmarshalDefinition extends NoOutputDefinition {
     return this;
   }
 
-  public UnmarshalDefinition withString(StringDataFormat value) {
+  public UnmarshalDefinition withString(StringElement value) {
     setString(value);
     return this;
   }
 
-  public UnmarshalDefinition withSyslog(SyslogDataFormat value) {
+  public UnmarshalDefinition withSyslog(SyslogElement value) {
     setSyslog(value);
     return this;
   }
@@ -833,7 +833,7 @@ public class UnmarshalDefinition extends NoOutputDefinition {
     return this;
   }
 
-  public UnmarshalDefinition withXstream(XStreamDataFormat value) {
+  public UnmarshalDefinition withXstream(XstreamElement value) {
     setXstream(value);
     return this;
   }
@@ -865,7 +865,7 @@ public class UnmarshalDefinition extends NoOutputDefinition {
   }
 
   @Override
-  public UnmarshalDefinition withDescription(DescriptionDefinition value) {
+  public UnmarshalDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

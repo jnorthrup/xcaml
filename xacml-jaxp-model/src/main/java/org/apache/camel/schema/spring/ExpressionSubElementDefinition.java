@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -68,31 +68,31 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 public class ExpressionSubElementDefinition {
 
   protected Expression expressionDefinition;
-  protected ConstantExpression constant;
-  protected ElExpression el;
-  protected GroovyExpression groovy;
-  protected HeaderExpression header;
-  protected JxPathExpression jxpath;
-  protected JavaScriptExpression javaScript;
-  protected JsonPathExpression jsonpath;
-  protected LanguageExpression language;
-  protected MethodCallExpression method;
-  protected MvelExpression mvel;
-  protected OgnlExpression ognl;
-  protected PhpExpression php;
+  protected ConstantElement constant;
+  protected ElElement el;
+  protected GroovyElement groovy;
+  protected HeaderElement header;
+  protected JxpathElement jxpath;
+  protected JavaScriptElement javaScript;
+  protected JsonpathElement jsonpath;
+  protected LanguageElement language;
+  protected MethodElement method;
+  protected MvelElement mvel;
+  protected OgnlElement ognl;
+  protected PhpElement php;
   @XmlElement(nillable = true)
   protected Object property;
-  protected PythonExpression python;
-  protected RefExpression ref;
-  protected RubyExpression ruby;
-  protected SimpleExpression simple;
+  protected PythonElement python;
+  protected RefElement ref;
+  protected RubyElement ruby;
+  protected SimpleElement simple;
   protected SpELExpression spel;
-  protected SqlExpression sql;
+  protected SqlElement sql;
   protected TokenizerExpression tokenize;
   protected VtdXmlExpression vtdxml;
   protected XmlTokenizerExpression xtokenize;
-  protected XPathExpression xpath;
-  protected XQueryExpression xquery;
+  protected XpathElement xpath;
+  protected XqueryElement xquery;
 
   /**
    * Gets the value of the expressionDefinition property.
@@ -117,240 +117,240 @@ public class ExpressionSubElementDefinition {
   /**
    * Gets the value of the constant property.
    * 
-   * @return possible object is {@link ConstantExpression }
+   * @return possible object is {@link ConstantElement }
    * 
    */
-  public ConstantExpression getConstant() {
+  public ConstantElement getConstant() {
     return constant;
   }
 
   /**
    * Sets the value of the constant property.
    * 
-   * @param value allowed object is {@link ConstantExpression }
+   * @param value allowed object is {@link ConstantElement }
    * 
    */
-  public void setConstant(ConstantExpression value) {
+  public void setConstant(ConstantElement value) {
     this.constant = value;
   }
 
   /**
    * Gets the value of the el property.
    * 
-   * @return possible object is {@link ElExpression }
+   * @return possible object is {@link ElElement }
    * 
    */
-  public ElExpression getEl() {
+  public ElElement getEl() {
     return el;
   }
 
   /**
    * Sets the value of the el property.
    * 
-   * @param value allowed object is {@link ElExpression }
+   * @param value allowed object is {@link ElElement }
    * 
    */
-  public void setEl(ElExpression value) {
+  public void setEl(ElElement value) {
     this.el = value;
   }
 
   /**
    * Gets the value of the groovy property.
    * 
-   * @return possible object is {@link GroovyExpression }
+   * @return possible object is {@link GroovyElement }
    * 
    */
-  public GroovyExpression getGroovy() {
+  public GroovyElement getGroovy() {
     return groovy;
   }
 
   /**
    * Sets the value of the groovy property.
    * 
-   * @param value allowed object is {@link GroovyExpression }
+   * @param value allowed object is {@link GroovyElement }
    * 
    */
-  public void setGroovy(GroovyExpression value) {
+  public void setGroovy(GroovyElement value) {
     this.groovy = value;
   }
 
   /**
    * Gets the value of the header property.
    * 
-   * @return possible object is {@link HeaderExpression }
+   * @return possible object is {@link HeaderElement }
    * 
    */
-  public HeaderExpression getHeader() {
+  public HeaderElement getHeader() {
     return header;
   }
 
   /**
    * Sets the value of the header property.
    * 
-   * @param value allowed object is {@link HeaderExpression }
+   * @param value allowed object is {@link HeaderElement }
    * 
    */
-  public void setHeader(HeaderExpression value) {
+  public void setHeader(HeaderElement value) {
     this.header = value;
   }
 
   /**
    * Gets the value of the jxpath property.
    * 
-   * @return possible object is {@link JxPathExpression }
+   * @return possible object is {@link JxpathElement }
    * 
    */
-  public JxPathExpression getJxpath() {
+  public JxpathElement getJxpath() {
     return jxpath;
   }
 
   /**
    * Sets the value of the jxpath property.
    * 
-   * @param value allowed object is {@link JxPathExpression }
+   * @param value allowed object is {@link JxpathElement }
    * 
    */
-  public void setJxpath(JxPathExpression value) {
+  public void setJxpath(JxpathElement value) {
     this.jxpath = value;
   }
 
   /**
    * Gets the value of the javaScript property.
    * 
-   * @return possible object is {@link JavaScriptExpression }
+   * @return possible object is {@link JavaScriptElement }
    * 
    */
-  public JavaScriptExpression getJavaScript() {
+  public JavaScriptElement getJavaScript() {
     return javaScript;
   }
 
   /**
    * Sets the value of the javaScript property.
    * 
-   * @param value allowed object is {@link JavaScriptExpression }
+   * @param value allowed object is {@link JavaScriptElement }
    * 
    */
-  public void setJavaScript(JavaScriptExpression value) {
+  public void setJavaScript(JavaScriptElement value) {
     this.javaScript = value;
   }
 
   /**
    * Gets the value of the jsonpath property.
    * 
-   * @return possible object is {@link JsonPathExpression }
+   * @return possible object is {@link JsonpathElement }
    * 
    */
-  public JsonPathExpression getJsonpath() {
+  public JsonpathElement getJsonpath() {
     return jsonpath;
   }
 
   /**
    * Sets the value of the jsonpath property.
    * 
-   * @param value allowed object is {@link JsonPathExpression }
+   * @param value allowed object is {@link JsonpathElement }
    * 
    */
-  public void setJsonpath(JsonPathExpression value) {
+  public void setJsonpath(JsonpathElement value) {
     this.jsonpath = value;
   }
 
   /**
    * Gets the value of the language property.
    * 
-   * @return possible object is {@link LanguageExpression }
+   * @return possible object is {@link LanguageElement }
    * 
    */
-  public LanguageExpression getLanguage() {
+  public LanguageElement getLanguage() {
     return language;
   }
 
   /**
    * Sets the value of the language property.
    * 
-   * @param value allowed object is {@link LanguageExpression }
+   * @param value allowed object is {@link LanguageElement }
    * 
    */
-  public void setLanguage(LanguageExpression value) {
+  public void setLanguage(LanguageElement value) {
     this.language = value;
   }
 
   /**
    * Gets the value of the method property.
    * 
-   * @return possible object is {@link MethodCallExpression }
+   * @return possible object is {@link MethodElement }
    * 
    */
-  public MethodCallExpression getMethod() {
+  public MethodElement getMethod() {
     return method;
   }
 
   /**
    * Sets the value of the method property.
    * 
-   * @param value allowed object is {@link MethodCallExpression }
+   * @param value allowed object is {@link MethodElement }
    * 
    */
-  public void setMethod(MethodCallExpression value) {
+  public void setMethod(MethodElement value) {
     this.method = value;
   }
 
   /**
    * Gets the value of the mvel property.
    * 
-   * @return possible object is {@link MvelExpression }
+   * @return possible object is {@link MvelElement }
    * 
    */
-  public MvelExpression getMvel() {
+  public MvelElement getMvel() {
     return mvel;
   }
 
   /**
    * Sets the value of the mvel property.
    * 
-   * @param value allowed object is {@link MvelExpression }
+   * @param value allowed object is {@link MvelElement }
    * 
    */
-  public void setMvel(MvelExpression value) {
+  public void setMvel(MvelElement value) {
     this.mvel = value;
   }
 
   /**
    * Gets the value of the ognl property.
    * 
-   * @return possible object is {@link OgnlExpression }
+   * @return possible object is {@link OgnlElement }
    * 
    */
-  public OgnlExpression getOgnl() {
+  public OgnlElement getOgnl() {
     return ognl;
   }
 
   /**
    * Sets the value of the ognl property.
    * 
-   * @param value allowed object is {@link OgnlExpression }
+   * @param value allowed object is {@link OgnlElement }
    * 
    */
-  public void setOgnl(OgnlExpression value) {
+  public void setOgnl(OgnlElement value) {
     this.ognl = value;
   }
 
   /**
    * Gets the value of the php property.
    * 
-   * @return possible object is {@link PhpExpression }
+   * @return possible object is {@link PhpElement }
    * 
    */
-  public PhpExpression getPhp() {
+  public PhpElement getPhp() {
     return php;
   }
 
   /**
    * Sets the value of the php property.
    * 
-   * @param value allowed object is {@link PhpExpression }
+   * @param value allowed object is {@link PhpElement }
    * 
    */
-  public void setPhp(PhpExpression value) {
+  public void setPhp(PhpElement value) {
     this.php = value;
   }
 
@@ -377,80 +377,80 @@ public class ExpressionSubElementDefinition {
   /**
    * Gets the value of the python property.
    * 
-   * @return possible object is {@link PythonExpression }
+   * @return possible object is {@link PythonElement }
    * 
    */
-  public PythonExpression getPython() {
+  public PythonElement getPython() {
     return python;
   }
 
   /**
    * Sets the value of the python property.
    * 
-   * @param value allowed object is {@link PythonExpression }
+   * @param value allowed object is {@link PythonElement }
    * 
    */
-  public void setPython(PythonExpression value) {
+  public void setPython(PythonElement value) {
     this.python = value;
   }
 
   /**
    * Gets the value of the ref property.
    * 
-   * @return possible object is {@link RefExpression }
+   * @return possible object is {@link RefElement }
    * 
    */
-  public RefExpression getRef() {
+  public RefElement getRef() {
     return ref;
   }
 
   /**
    * Sets the value of the ref property.
    * 
-   * @param value allowed object is {@link RefExpression }
+   * @param value allowed object is {@link RefElement }
    * 
    */
-  public void setRef(RefExpression value) {
+  public void setRef(RefElement value) {
     this.ref = value;
   }
 
   /**
    * Gets the value of the ruby property.
    * 
-   * @return possible object is {@link RubyExpression }
+   * @return possible object is {@link RubyElement }
    * 
    */
-  public RubyExpression getRuby() {
+  public RubyElement getRuby() {
     return ruby;
   }
 
   /**
    * Sets the value of the ruby property.
    * 
-   * @param value allowed object is {@link RubyExpression }
+   * @param value allowed object is {@link RubyElement }
    * 
    */
-  public void setRuby(RubyExpression value) {
+  public void setRuby(RubyElement value) {
     this.ruby = value;
   }
 
   /**
    * Gets the value of the simple property.
    * 
-   * @return possible object is {@link SimpleExpression }
+   * @return possible object is {@link SimpleElement }
    * 
    */
-  public SimpleExpression getSimple() {
+  public SimpleElement getSimple() {
     return simple;
   }
 
   /**
    * Sets the value of the simple property.
    * 
-   * @param value allowed object is {@link SimpleExpression }
+   * @param value allowed object is {@link SimpleElement }
    * 
    */
-  public void setSimple(SimpleExpression value) {
+  public void setSimple(SimpleElement value) {
     this.simple = value;
   }
 
@@ -477,20 +477,20 @@ public class ExpressionSubElementDefinition {
   /**
    * Gets the value of the sql property.
    * 
-   * @return possible object is {@link SqlExpression }
+   * @return possible object is {@link SqlElement }
    * 
    */
-  public SqlExpression getSql() {
+  public SqlElement getSql() {
     return sql;
   }
 
   /**
    * Sets the value of the sql property.
    * 
-   * @param value allowed object is {@link SqlExpression }
+   * @param value allowed object is {@link SqlElement }
    * 
    */
-  public void setSql(SqlExpression value) {
+  public void setSql(SqlElement value) {
     this.sql = value;
   }
 
@@ -557,40 +557,40 @@ public class ExpressionSubElementDefinition {
   /**
    * Gets the value of the xpath property.
    * 
-   * @return possible object is {@link XPathExpression }
+   * @return possible object is {@link XpathElement }
    * 
    */
-  public XPathExpression getXpath() {
+  public XpathElement getXpath() {
     return xpath;
   }
 
   /**
    * Sets the value of the xpath property.
    * 
-   * @param value allowed object is {@link XPathExpression }
+   * @param value allowed object is {@link XpathElement }
    * 
    */
-  public void setXpath(XPathExpression value) {
+  public void setXpath(XpathElement value) {
     this.xpath = value;
   }
 
   /**
    * Gets the value of the xquery property.
    * 
-   * @return possible object is {@link XQueryExpression }
+   * @return possible object is {@link XqueryElement }
    * 
    */
-  public XQueryExpression getXquery() {
+  public XqueryElement getXquery() {
     return xquery;
   }
 
   /**
    * Sets the value of the xquery property.
    * 
-   * @param value allowed object is {@link XQueryExpression }
+   * @param value allowed object is {@link XqueryElement }
    * 
    */
-  public void setXquery(XQueryExpression value) {
+  public void setXquery(XqueryElement value) {
     this.xquery = value;
   }
 
@@ -599,62 +599,62 @@ public class ExpressionSubElementDefinition {
     return this;
   }
 
-  public ExpressionSubElementDefinition withConstant(ConstantExpression value) {
+  public ExpressionSubElementDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withEl(ElExpression value) {
+  public ExpressionSubElementDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withGroovy(GroovyExpression value) {
+  public ExpressionSubElementDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withHeader(HeaderExpression value) {
+  public ExpressionSubElementDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withJxpath(JxPathExpression value) {
+  public ExpressionSubElementDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withJavaScript(JavaScriptExpression value) {
+  public ExpressionSubElementDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withJsonpath(JsonPathExpression value) {
+  public ExpressionSubElementDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withLanguage(LanguageExpression value) {
+  public ExpressionSubElementDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withMethod(MethodCallExpression value) {
+  public ExpressionSubElementDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withMvel(MvelExpression value) {
+  public ExpressionSubElementDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withOgnl(OgnlExpression value) {
+  public ExpressionSubElementDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withPhp(PhpExpression value) {
+  public ExpressionSubElementDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -664,22 +664,22 @@ public class ExpressionSubElementDefinition {
     return this;
   }
 
-  public ExpressionSubElementDefinition withPython(PythonExpression value) {
+  public ExpressionSubElementDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withRef(RefExpression value) {
+  public ExpressionSubElementDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withRuby(RubyExpression value) {
+  public ExpressionSubElementDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withSimple(SimpleExpression value) {
+  public ExpressionSubElementDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -689,7 +689,7 @@ public class ExpressionSubElementDefinition {
     return this;
   }
 
-  public ExpressionSubElementDefinition withSql(SqlExpression value) {
+  public ExpressionSubElementDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -709,12 +709,12 @@ public class ExpressionSubElementDefinition {
     return this;
   }
 
-  public ExpressionSubElementDefinition withXpath(XPathExpression value) {
+  public ExpressionSubElementDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
-  public ExpressionSubElementDefinition withXquery(XQueryExpression value) {
+  public ExpressionSubElementDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }

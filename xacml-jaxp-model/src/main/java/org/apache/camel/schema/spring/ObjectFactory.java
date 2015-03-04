@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -36,7 +36,6 @@ public class ObjectFactory {
       "http://camel.apache.org/schema/spring", "customDataFormat");
   private final static QName _IdempotentConsumer_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "idempotentConsumer");
-  private final static QName _Put_QNAME = new QName("http://camel.apache.org/schema/spring", "put");
   private final static QName _SetHeader_QNAME = new QName("http://camel.apache.org/schema/spring",
       "setHeader");
   private final static QName _When_QNAME = new QName("http://camel.apache.org/schema/spring",
@@ -51,8 +50,6 @@ public class ObjectFactory {
       "inOut");
   private final static QName _RouteContextRef_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "routeContextRef");
-  private final static QName _ContextScan_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "contextScan");
   private final static QName _InOnly_QNAME = new QName("http://camel.apache.org/schema/spring",
       "inOnly");
   private final static QName _Avro_QNAME = new QName("http://camel.apache.org/schema/spring",
@@ -65,16 +62,6 @@ public class ObjectFactory {
       "threadPool");
   private final static QName _Property_QNAME = new QName("http://camel.apache.org/schema/spring",
       "property");
-  private final static QName _JavaScript_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "javaScript");
-  private final static QName _Method_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "method");
-  private final static QName _Mvel_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "mvel");
-  private final static QName _Python_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "python");
-  private final static QName _Beanio_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "beanio");
   private final static QName _Zip_QNAME = new QName("http://camel.apache.org/schema/spring", "zip");
   private final static QName _RoundRobin_QNAME = new QName("http://camel.apache.org/schema/spring",
       "roundRobin");
@@ -84,59 +71,38 @@ public class ObjectFactory {
       "http://camel.apache.org/schema/spring", "optimisticLockRetryPolicy");
   private final static QName _Verb_QNAME = new QName("http://camel.apache.org/schema/spring",
       "verb");
-  private final static QName _RestProperty_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "restProperty");
   private final static QName _SetProperty_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "setProperty");
+  private final static QName _RestProperty_QNAME = new QName(
+      "http://camel.apache.org/schema/spring", "restProperty");
   private final static QName _Intercept_QNAME = new QName("http://camel.apache.org/schema/spring",
       "intercept");
-  private final static QName _BatchResequencerConfig_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "batchResequencerConfig");
   private final static QName _Stop_QNAME = new QName("http://camel.apache.org/schema/spring",
       "stop");
-  private final static QName _BeanPostProcessor_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "beanPostProcessor");
-  private final static QName _Delay_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "delay");
-  private final static QName _Groovy_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "groovy");
-  private final static QName _Route_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "route");
+  private final static QName _BatchResequencerConfig_QNAME = new QName(
+      "http://camel.apache.org/schema/spring", "batchResequencerConfig");
   private final static QName _Proxy_QNAME = new QName("http://camel.apache.org/schema/spring",
       "proxy");
   private final static QName _InterceptFrom_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "interceptFrom");
   private final static QName _ErrorHandler_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "errorHandler");
-  private final static QName _Xstream_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "xstream");
   private final static QName _Sticky_QNAME = new QName("http://camel.apache.org/schema/spring",
       "sticky");
-  private final static QName _Log_QNAME = new QName("http://camel.apache.org/schema/spring", "log");
   private final static QName _Throttle_QNAME = new QName("http://camel.apache.org/schema/spring",
       "throttle");
   private final static QName _Template_QNAME = new QName("http://camel.apache.org/schema/spring",
       "template");
-  private final static QName _RestBinding_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "restBinding");
   private final static QName _PollEnrich_QNAME = new QName("http://camel.apache.org/schema/spring",
       "pollEnrich");
-  private final static QName _Syslog_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "syslog");
-  private final static QName _Bindy_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "bindy");
   private final static QName _OnException_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "onException");
+  private final static QName _Bindy_QNAME = new QName("http://camel.apache.org/schema/spring",
+      "bindy");
   private final static QName _SslContextParameters_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "sslContextParameters");
   private final static QName _Get_QNAME = new QName("http://camel.apache.org/schema/spring", "get");
   private final static QName _Rss_QNAME = new QName("http://camel.apache.org/schema/spring", "rss");
-  private final static QName _Endpoint_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "endpoint");
-  private final static QName _Xpath_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "xpath");
-  private final static QName _Jaxb_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "jaxb");
   private final static QName _Policy_QNAME = new QName("http://camel.apache.org/schema/spring",
       "policy");
   private final static QName _Validate_QNAME = new QName("http://camel.apache.org/schema/spring",
@@ -149,15 +115,11 @@ public class ObjectFactory {
       "xmlBeans");
   private final static QName _ExpressionDefinition_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "expressionDefinition");
-  private final static QName _Jsonpath_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "jsonpath");
   private final static QName _Pgp_QNAME = new QName("http://camel.apache.org/schema/spring", "pgp");
   private final static QName _SecureRandomParameters_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "secureRandomParameters");
   private final static QName _RedeliveryPolicy_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "redeliveryPolicy");
-  private final static QName _Xquery_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "xquery");
   private final static QName _Expression_QNAME = new QName("http://camel.apache.org/schema/spring",
       "expression");
   private final static QName _Rollback_QNAME = new QName("http://camel.apache.org/schema/spring",
@@ -174,40 +136,22 @@ public class ObjectFactory {
       "rests");
   private final static QName _WireTap_QNAME = new QName("http://camel.apache.org/schema/spring",
       "wireTap");
-  private final static QName _Filter_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "filter");
-  private final static QName _Pipeline_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "pipeline");
   private final static QName _Xmljson_QNAME = new QName("http://camel.apache.org/schema/spring",
       "xmljson");
-  private final static QName _Choice_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "choice");
-  private final static QName _To_QNAME = new QName("http://camel.apache.org/schema/spring", "to");
+  private final static QName _Xtokenize_QNAME = new QName("http://camel.apache.org/schema/spring",
+      "xtokenize");
   private final static QName _SetOutHeader_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "setOutHeader");
   private final static QName _StreamCaching_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "streamCaching");
-  private final static QName _Xtokenize_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "xtokenize");
-  private final static QName _Php_QNAME = new QName("http://camel.apache.org/schema/spring", "php");
   private final static QName _DoTry_QNAME = new QName("http://camel.apache.org/schema/spring",
       "doTry");
-  private final static QName _Constant_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "constant");
   private final static QName _TidyMarkup_QNAME = new QName("http://camel.apache.org/schema/spring",
       "tidyMarkup");
   private final static QName _Protobuf_QNAME = new QName("http://camel.apache.org/schema/spring",
       "protobuf");
   private final static QName _Tokenize_QNAME = new QName("http://camel.apache.org/schema/spring",
       "tokenize");
-  private final static QName _Language_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "language");
-  private final static QName _Simple_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "simple");
-  private final static QName _Base64_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "base64");
-  private final static QName _CamelContext_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "camelContext");
   private final static QName _Marshal_QNAME = new QName("http://camel.apache.org/schema/spring",
       "marshal");
   private final static QName _PropertiesFunction_QNAME = new QName(
@@ -222,36 +166,20 @@ public class ObjectFactory {
       "post");
   private final static QName _Split_QNAME = new QName("http://camel.apache.org/schema/spring",
       "split");
-  private final static QName _Ref_QNAME = new QName("http://camel.apache.org/schema/spring", "ref");
   private final static QName _StreamResequencerConfig_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "streamResequencerConfig");
-  private final static QName _Routes_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "routes");
   private final static QName _InterceptToEndpoint_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "interceptToEndpoint");
-  private final static QName _Bean_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "bean");
-  private final static QName _Barcode_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "barcode");
-  private final static QName _Export_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "export");
   private final static QName _Weighted_QNAME = new QName("http://camel.apache.org/schema/spring",
       "weighted");
-  private final static QName _From_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "from");
   private final static QName _SecureXML_QNAME = new QName("http://camel.apache.org/schema/spring",
       "secureXML");
-  private final static QName _CircuitBreaker_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "circuitBreaker");
   private final static QName _Enrich_QNAME = new QName("http://camel.apache.org/schema/spring",
       "enrich");
-  private final static QName _El_QNAME = new QName("http://camel.apache.org/schema/spring", "el");
+  private final static QName _CircuitBreaker_QNAME = new QName(
+      "http://camel.apache.org/schema/spring", "circuitBreaker");
   private final static QName _CustomLoadBalancer_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "customLoadBalancer");
-  private final static QName _Ognl_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "ognl");
-  private final static QName _Otherwise_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "otherwise");
   private final static QName _Crypto_QNAME = new QName("http://camel.apache.org/schema/spring",
       "crypto");
   private final static QName _KeyStoreParameters_QNAME = new QName(
@@ -267,81 +195,48 @@ public class ObjectFactory {
       "soapjaxb");
   private final static QName _ThreadPoolProfile_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "threadPoolProfile");
-  private final static QName _JmxAgent_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "jmxAgent");
   private final static QName _RemoveProperty_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "removeProperty");
-  private final static QName _RestContext_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "restContext");
-  private final static QName _Header_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "header");
-  private final static QName _RouteBuilder_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "routeBuilder");
   private final static QName _Topic_QNAME = new QName("http://camel.apache.org/schema/spring",
       "topic");
-  private final static QName _RouteContext_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "routeContext");
   private final static QName _DoCatch_QNAME = new QName("http://camel.apache.org/schema/spring",
       "doCatch");
-  private final static QName _String_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "string");
   private final static QName _DoFinally_QNAME = new QName("http://camel.apache.org/schema/spring",
       "doFinally");
-  private final static QName _Jxpath_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "jxpath");
   private final static QName _OnCompletion_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "onCompletion");
-  private final static QName _Aggregate_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "aggregate");
-  private final static QName _PackageScan_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "packageScan");
-  private final static QName _Sql_QNAME = new QName("http://camel.apache.org/schema/spring", "sql");
   private final static QName _Delete_QNAME = new QName("http://camel.apache.org/schema/spring",
       "delete");
   private final static QName _RemoveHeaders_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "removeHeaders");
   private final static QName _Transacted_QNAME = new QName("http://camel.apache.org/schema/spring",
       "transacted");
-  private final static QName _Description_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "description");
   private final static QName _RoutingSlip_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "routingSlip");
-  private final static QName _Transform_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "transform");
   private final static QName _Random_QNAME = new QName("http://camel.apache.org/schema/spring",
       "random");
-  private final static QName _Head_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "head");
   private final static QName _Resequence_QNAME = new QName("http://camel.apache.org/schema/spring",
       "resequence");
-  private final static QName _Json_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "json");
+  private final static QName _Head_QNAME = new QName("http://camel.apache.org/schema/spring",
+      "head");
   private final static QName _Flatpack_QNAME = new QName("http://camel.apache.org/schema/spring",
       "flatpack");
   private final static QName _Jibx_QNAME = new QName("http://camel.apache.org/schema/spring",
       "jibx");
-  private final static QName _Process_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "process");
   private final static QName _Rest_QNAME = new QName("http://camel.apache.org/schema/spring",
       "rest");
-  private final static QName _Ruby_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "ruby");
   private final static QName _Multicast_QNAME = new QName("http://camel.apache.org/schema/spring",
       "multicast");
   private final static QName _ThrowException_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "throwException");
   private final static QName _Threads_QNAME = new QName("http://camel.apache.org/schema/spring",
       "threads");
-  private final static QName _PropertyPlaceholder_QNAME = new QName(
-      "http://camel.apache.org/schema/spring", "propertyPlaceholder");
   private final static QName _Unmarshal_QNAME = new QName("http://camel.apache.org/schema/spring",
       "unmarshal");
   private final static QName _Spel_QNAME = new QName("http://camel.apache.org/schema/spring",
       "spel");
   private final static QName _Serialization_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "serialization");
-  private final static QName _Properties_QNAME = new QName("http://camel.apache.org/schema/spring",
-      "properties");
   private final static QName _SetFaultBody_QNAME = new QName(
       "http://camel.apache.org/schema/spring", "setFaultBody");
   private final static QName _RedeliveryPolicyProfile_QNAME = new QName(
@@ -428,19 +323,355 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link PutVerbDefinition }
+   * Create an instance of {@link PutElement }
    * 
    */
-  public PutVerbDefinition createPutVerbDefinition() {
-    return new PutVerbDefinition();
+  public PutElement createPutElement() {
+    return new PutElement();
   }
 
   /**
-   * Create an instance of {@link SetHeaderDefinition }
+   * Create an instance of {@link VerbDefinition }
    * 
    */
-  public SetHeaderDefinition createSetHeaderDefinition() {
-    return new SetHeaderDefinition();
+  public VerbDefinition createVerbDefinition() {
+    return new VerbDefinition();
+  }
+
+  /**
+   * Create an instance of {@link DescriptionElement }
+   * 
+   */
+  public DescriptionElement createDescriptionElement() {
+    return new DescriptionElement();
+  }
+
+  /**
+   * Create an instance of {@link ToElement }
+   * 
+   */
+  public ToElement createToElement() {
+    return new ToElement();
+  }
+
+  /**
+   * Create an instance of {@link RouteElement }
+   * 
+   */
+  public RouteElement createRouteElement() {
+    return new RouteElement();
+  }
+
+  /**
+   * Create an instance of {@link FromElement }
+   * 
+   */
+  public FromElement createFromElement() {
+    return new FromElement();
+  }
+
+  /**
+   * Create an instance of {@link AggregateElement }
+   * 
+   */
+  public AggregateElement createAggregateElement() {
+    return new AggregateElement();
+  }
+
+  /**
+   * Create an instance of {@link ExpressionSubElementDefinition }
+   * 
+   */
+  public ExpressionSubElementDefinition createExpressionSubElementDefinition() {
+    return new ExpressionSubElementDefinition();
+  }
+
+  /**
+   * Create an instance of {@link OptimisticLockRetryPolicyDefinition }
+   * 
+   */
+  public OptimisticLockRetryPolicyDefinition createOptimisticLockRetryPolicyDefinition() {
+    return new OptimisticLockRetryPolicyDefinition();
+  }
+
+  /**
+   * Create an instance of {@link BeanElement }
+   * 
+   */
+  public BeanElement createBeanElement() {
+    return new BeanElement();
+  }
+
+  /**
+   * Create an instance of {@link CatchDefinition }
+   * 
+   */
+  public CatchDefinition createCatchDefinition() {
+    return new CatchDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ChoiceElement }
+   * 
+   */
+  public ChoiceElement createChoiceElement() {
+    return new ChoiceElement();
+  }
+
+  /**
+   * Create an instance of {@link OtherwiseElement }
+   * 
+   */
+  public OtherwiseElement createOtherwiseElement() {
+    return new OtherwiseElement();
+  }
+
+  /**
+   * Create an instance of {@link Output }
+   * 
+   */
+  public Output createOutput() {
+    return new Output();
+  }
+
+  /**
+   * Create an instance of {@link DelayElement }
+   * 
+   */
+  public DelayElement createDelayElement() {
+    return new DelayElement();
+  }
+
+  /**
+   * Create an instance of {@link ExpressionNode }
+   * 
+   */
+  public ExpressionNode createExpressionNode() {
+    return new ExpressionNode();
+  }
+
+  /**
+   * Create an instance of {@link Expression }
+   * 
+   */
+  public Expression createExpression() {
+    return new Expression();
+  }
+
+  /**
+   * Create an instance of {@link ConstantElement }
+   * 
+   */
+  public ConstantElement createConstantElement() {
+    return new ConstantElement();
+  }
+
+  /**
+   * Create an instance of {@link ElElement }
+   * 
+   */
+  public ElElement createElElement() {
+    return new ElElement();
+  }
+
+  /**
+   * Create an instance of {@link GroovyElement }
+   * 
+   */
+  public GroovyElement createGroovyElement() {
+    return new GroovyElement();
+  }
+
+  /**
+   * Create an instance of {@link HeaderElement }
+   * 
+   */
+  public HeaderElement createHeaderElement() {
+    return new HeaderElement();
+  }
+
+  /**
+   * Create an instance of {@link JxpathElement }
+   * 
+   */
+  public JxpathElement createJxpathElement() {
+    return new JxpathElement();
+  }
+
+  /**
+   * Create an instance of {@link JavaScriptElement }
+   * 
+   */
+  public JavaScriptElement createJavaScriptElement() {
+    return new JavaScriptElement();
+  }
+
+  /**
+   * Create an instance of {@link JsonpathElement }
+   * 
+   */
+  public JsonpathElement createJsonpathElement() {
+    return new JsonpathElement();
+  }
+
+  /**
+   * Create an instance of {@link LanguageElement }
+   * 
+   */
+  public LanguageElement createLanguageElement() {
+    return new LanguageElement();
+  }
+
+  /**
+   * Create an instance of {@link MethodElement }
+   * 
+   */
+  public MethodElement createMethodElement() {
+    return new MethodElement();
+  }
+
+  /**
+   * Create an instance of {@link MvelElement }
+   * 
+   */
+  public MvelElement createMvelElement() {
+    return new MvelElement();
+  }
+
+  /**
+   * Create an instance of {@link OgnlElement }
+   * 
+   */
+  public OgnlElement createOgnlElement() {
+    return new OgnlElement();
+  }
+
+  /**
+   * Create an instance of {@link PhpElement }
+   * 
+   */
+  public PhpElement createPhpElement() {
+    return new PhpElement();
+  }
+
+  /**
+   * Create an instance of {@link PythonElement }
+   * 
+   */
+  public PythonElement createPythonElement() {
+    return new PythonElement();
+  }
+
+  /**
+   * Create an instance of {@link RefElement }
+   * 
+   */
+  public RefElement createRefElement() {
+    return new RefElement();
+  }
+
+  /**
+   * Create an instance of {@link RubyElement }
+   * 
+   */
+  public RubyElement createRubyElement() {
+    return new RubyElement();
+  }
+
+  /**
+   * Create an instance of {@link SimpleElement }
+   * 
+   */
+  public SimpleElement createSimpleElement() {
+    return new SimpleElement();
+  }
+
+  /**
+   * Create an instance of {@link SpELExpression }
+   * 
+   */
+  public SpELExpression createSpELExpression() {
+    return new SpELExpression();
+  }
+
+  /**
+   * Create an instance of {@link SqlElement }
+   * 
+   */
+  public SqlElement createSqlElement() {
+    return new SqlElement();
+  }
+
+  /**
+   * Create an instance of {@link TokenizerExpression }
+   * 
+   */
+  public TokenizerExpression createTokenizerExpression() {
+    return new TokenizerExpression();
+  }
+
+  /**
+   * Create an instance of {@link VtdXmlExpression }
+   * 
+   */
+  public VtdXmlExpression createVtdXmlExpression() {
+    return new VtdXmlExpression();
+  }
+
+  /**
+   * Create an instance of {@link XmlTokenizerExpression }
+   * 
+   */
+  public XmlTokenizerExpression createXmlTokenizerExpression() {
+    return new XmlTokenizerExpression();
+  }
+
+  /**
+   * Create an instance of {@link XpathElement }
+   * 
+   */
+  public XpathElement createXpathElement() {
+    return new XpathElement();
+  }
+
+  /**
+   * Create an instance of {@link XqueryElement }
+   * 
+   */
+  public XqueryElement createXqueryElement() {
+    return new XqueryElement();
+  }
+
+  /**
+   * Create an instance of {@link DynamicRouterDefinition }
+   * 
+   */
+  public DynamicRouterDefinition createDynamicRouterDefinition() {
+    return new DynamicRouterDefinition();
+  }
+
+  /**
+   * Create an instance of {@link EnrichDefinition }
+   * 
+   */
+  public EnrichDefinition createEnrichDefinition() {
+    return new EnrichDefinition();
+  }
+
+  /**
+   * Create an instance of {@link FilterElement }
+   * 
+   */
+  public FilterElement createFilterElement() {
+    return new FilterElement();
+  }
+
+  /**
+   * Create an instance of {@link FinallyDefinition }
+   * 
+   */
+  public FinallyDefinition createFinallyDefinition() {
+    return new FinallyDefinition();
   }
 
   /**
@@ -452,14 +683,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link ContextScanDefinition }
-   * 
-   */
-  public ContextScanDefinition createContextScanDefinition() {
-    return new ContextScanDefinition();
-  }
-
-  /**
    * Create an instance of {@link InOutDefinition }
    * 
    */
@@ -468,11 +691,179 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link RouteContextRefDefinition }
+   * Create an instance of {@link InterceptDefinition }
    * 
    */
-  public RouteContextRefDefinition createRouteContextRefDefinition() {
-    return new RouteContextRefDefinition();
+  public InterceptDefinition createInterceptDefinition() {
+    return new InterceptDefinition();
+  }
+
+  /**
+   * Create an instance of {@link InterceptFromDefinition }
+   * 
+   */
+  public InterceptFromDefinition createInterceptFromDefinition() {
+    return new InterceptFromDefinition();
+  }
+
+  /**
+   * Create an instance of {@link InterceptSendToEndpointDefinition }
+   * 
+   */
+  public InterceptSendToEndpointDefinition createInterceptSendToEndpointDefinition() {
+    return new InterceptSendToEndpointDefinition();
+  }
+
+  /**
+   * Create an instance of {@link LoadBalanceDefinition }
+   * 
+   */
+  public LoadBalanceDefinition createLoadBalanceDefinition() {
+    return new LoadBalanceDefinition();
+  }
+
+  /**
+   * Create an instance of {@link LogElement }
+   * 
+   */
+  public LogElement createLogElement() {
+    return new LogElement();
+  }
+
+  /**
+   * Create an instance of {@link LoopDefinition }
+   * 
+   */
+  public LoopDefinition createLoopDefinition() {
+    return new LoopDefinition();
+  }
+
+  /**
+   * Create an instance of {@link MarshalDefinition }
+   * 
+   */
+  public MarshalDefinition createMarshalDefinition() {
+    return new MarshalDefinition();
+  }
+
+  /**
+   * Create an instance of {@link MulticastDefinition }
+   * 
+   */
+  public MulticastDefinition createMulticastDefinition() {
+    return new MulticastDefinition();
+  }
+
+  /**
+   * Create an instance of {@link OnCompletionDefinition }
+   * 
+   */
+  public OnCompletionDefinition createOnCompletionDefinition() {
+    return new OnCompletionDefinition();
+  }
+
+  /**
+   * Create an instance of {@link OnExceptionDefinition }
+   * 
+   */
+  public OnExceptionDefinition createOnExceptionDefinition() {
+    return new OnExceptionDefinition();
+  }
+
+  /**
+   * Create an instance of {@link PipelineElement }
+   * 
+   */
+  public PipelineElement createPipelineElement() {
+    return new PipelineElement();
+  }
+
+  /**
+   * Create an instance of {@link PolicyDefinition }
+   * 
+   */
+  public PolicyDefinition createPolicyDefinition() {
+    return new PolicyDefinition();
+  }
+
+  /**
+   * Create an instance of {@link PollEnrichDefinition }
+   * 
+   */
+  public PollEnrichDefinition createPollEnrichDefinition() {
+    return new PollEnrichDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ProcessElement }
+   * 
+   */
+  public ProcessElement createProcessElement() {
+    return new ProcessElement();
+  }
+
+  /**
+   * Create an instance of {@link RemoveHeaderDefinition }
+   * 
+   */
+  public RemoveHeaderDefinition createRemoveHeaderDefinition() {
+    return new RemoveHeaderDefinition();
+  }
+
+  /**
+   * Create an instance of {@link RemoveHeadersDefinition }
+   * 
+   */
+  public RemoveHeadersDefinition createRemoveHeadersDefinition() {
+    return new RemoveHeadersDefinition();
+  }
+
+  /**
+   * Create an instance of {@link RemovePropertyDefinition }
+   * 
+   */
+  public RemovePropertyDefinition createRemovePropertyDefinition() {
+    return new RemovePropertyDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ResequenceDefinition }
+   * 
+   */
+  public ResequenceDefinition createResequenceDefinition() {
+    return new ResequenceDefinition();
+  }
+
+  /**
+   * Create an instance of {@link RollbackDefinition }
+   * 
+   */
+  public RollbackDefinition createRollbackDefinition() {
+    return new RollbackDefinition();
+  }
+
+  /**
+   * Create an instance of {@link RoutingSlipDefinition }
+   * 
+   */
+  public RoutingSlipDefinition createRoutingSlipDefinition() {
+    return new RoutingSlipDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SamplingDefinition }
+   * 
+   */
+  public SamplingDefinition createSamplingDefinition() {
+    return new SamplingDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SetBodyDefinition }
+   * 
+   */
+  public SetBodyDefinition createSetBodyDefinition() {
+    return new SetBodyDefinition();
   }
 
   /**
@@ -484,19 +875,171 @@ public class ObjectFactory {
   }
 
   /**
+   * Create an instance of {@link SetFaultBodyDefinition }
+   * 
+   */
+  public SetFaultBodyDefinition createSetFaultBodyDefinition() {
+    return new SetFaultBodyDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SetHeaderDefinition }
+   * 
+   */
+  public SetHeaderDefinition createSetHeaderDefinition() {
+    return new SetHeaderDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SetOutHeaderDefinition }
+   * 
+   */
+  public SetOutHeaderDefinition createSetOutHeaderDefinition() {
+    return new SetOutHeaderDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SetPropertyDefinition }
+   * 
+   */
+  public SetPropertyDefinition createSetPropertyDefinition() {
+    return new SetPropertyDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SortDefinition }
+   * 
+   */
+  public SortDefinition createSortDefinition() {
+    return new SortDefinition();
+  }
+
+  /**
+   * Create an instance of {@link SplitDefinition }
+   * 
+   */
+  public SplitDefinition createSplitDefinition() {
+    return new SplitDefinition();
+  }
+
+  /**
+   * Create an instance of {@link StopDefinition }
+   * 
+   */
+  public StopDefinition createStopDefinition() {
+    return new StopDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ThreadsDefinition }
+   * 
+   */
+  public ThreadsDefinition createThreadsDefinition() {
+    return new ThreadsDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ThrottleDefinition }
+   * 
+   */
+  public ThrottleDefinition createThrottleDefinition() {
+    return new ThrottleDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ThrowExceptionDefinition }
+   * 
+   */
+  public ThrowExceptionDefinition createThrowExceptionDefinition() {
+    return new ThrowExceptionDefinition();
+  }
+
+  /**
+   * Create an instance of {@link TransactedDefinition }
+   * 
+   */
+  public TransactedDefinition createTransactedDefinition() {
+    return new TransactedDefinition();
+  }
+
+  /**
+   * Create an instance of {@link TransformElement }
+   * 
+   */
+  public TransformElement createTransformElement() {
+    return new TransformElement();
+  }
+
+  /**
+   * Create an instance of {@link NoOutputExpressionNode }
+   * 
+   */
+  public NoOutputExpressionNode createNoOutputExpressionNode() {
+    return new NoOutputExpressionNode();
+  }
+
+  /**
+   * Create an instance of {@link TryDefinition }
+   * 
+   */
+  public TryDefinition createTryDefinition() {
+    return new TryDefinition();
+  }
+
+  /**
+   * Create an instance of {@link UnmarshalDefinition }
+   * 
+   */
+  public UnmarshalDefinition createUnmarshalDefinition() {
+    return new UnmarshalDefinition();
+  }
+
+  /**
+   * Create an instance of {@link ValidateDefinition }
+   * 
+   */
+  public ValidateDefinition createValidateDefinition() {
+    return new ValidateDefinition();
+  }
+
+  /**
+   * Create an instance of {@link WireTapDefinition }
+   * 
+   */
+  public WireTapDefinition createWireTapDefinition() {
+    return new WireTapDefinition();
+  }
+
+  /**
+   * Create an instance of {@link RestBindingElement }
+   * 
+   */
+  public RestBindingElement createRestBindingElement() {
+    return new RestBindingElement();
+  }
+
+  /**
+   * Create an instance of {@link ContextScanElement }
+   * 
+   */
+  public ContextScanElement createContextScanElement() {
+    return new ContextScanElement();
+  }
+
+  /**
+   * Create an instance of {@link RouteContextRefDefinition }
+   * 
+   */
+  public RouteContextRefDefinition createRouteContextRefDefinition() {
+    return new RouteContextRefDefinition();
+  }
+
+  /**
    * Create an instance of {@link CamelThreadPoolFactoryBean }
    * 
    */
   public CamelThreadPoolFactoryBean createCamelThreadPoolFactoryBean() {
     return new CamelThreadPoolFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link VtdXmlExpression }
-   * 
-   */
-  public VtdXmlExpression createVtdXmlExpression() {
-    return new VtdXmlExpression();
   }
 
   /**
@@ -524,67 +1067,19 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link BeanioDataFormat }
+   * Create an instance of {@link BeanioElement }
    * 
    */
-  public BeanioDataFormat createBeanioDataFormat() {
-    return new BeanioDataFormat();
+  public BeanioElement createBeanioElement() {
+    return new BeanioElement();
   }
 
   /**
-   * Create an instance of {@link PythonExpression }
+   * Create an instance of {@link DataFormat }
    * 
    */
-  public PythonExpression createPythonExpression() {
-    return new PythonExpression();
-  }
-
-  /**
-   * Create an instance of {@link MvelExpression }
-   * 
-   */
-  public MvelExpression createMvelExpression() {
-    return new MvelExpression();
-  }
-
-  /**
-   * Create an instance of {@link MethodCallExpression }
-   * 
-   */
-  public MethodCallExpression createMethodCallExpression() {
-    return new MethodCallExpression();
-  }
-
-  /**
-   * Create an instance of {@link JavaScriptExpression }
-   * 
-   */
-  public JavaScriptExpression createJavaScriptExpression() {
-    return new JavaScriptExpression();
-  }
-
-  /**
-   * Create an instance of {@link VerbDefinition }
-   * 
-   */
-  public VerbDefinition createVerbDefinition() {
-    return new VerbDefinition();
-  }
-
-  /**
-   * Create an instance of {@link OptimisticLockRetryPolicyDefinition }
-   * 
-   */
-  public OptimisticLockRetryPolicyDefinition createOptimisticLockRetryPolicyDefinition() {
-    return new OptimisticLockRetryPolicyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link LoadBalanceDefinition }
-   * 
-   */
-  public LoadBalanceDefinition createLoadBalanceDefinition() {
-    return new LoadBalanceDefinition();
+  public DataFormat createDataFormat() {
+    return new DataFormat();
   }
 
   /**
@@ -604,35 +1099,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link CamelBeanPostProcessor }
+   * Create an instance of {@link BeanPostProcessorElement }
    * 
    */
-  public CamelBeanPostProcessor createCamelBeanPostProcessor() {
-    return new CamelBeanPostProcessor();
-  }
-
-  /**
-   * Create an instance of {@link DelayDefinition }
-   * 
-   */
-  public DelayDefinition createDelayDefinition() {
-    return new DelayDefinition();
-  }
-
-  /**
-   * Create an instance of {@link GroovyExpression }
-   * 
-   */
-  public GroovyExpression createGroovyExpression() {
-    return new GroovyExpression();
-  }
-
-  /**
-   * Create an instance of {@link RouteDefinition }
-   * 
-   */
-  public RouteDefinition createRouteDefinition() {
-    return new RouteDefinition();
+  public BeanPostProcessorElement createBeanPostProcessorElement() {
+    return new BeanPostProcessorElement();
   }
 
   /**
@@ -644,35 +1115,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link StopDefinition }
-   * 
-   */
-  public StopDefinition createStopDefinition() {
-    return new StopDefinition();
-  }
-
-  /**
-   * Create an instance of {@link InterceptDefinition }
-   * 
-   */
-  public InterceptDefinition createInterceptDefinition() {
-    return new InterceptDefinition();
-  }
-
-  /**
    * Create an instance of {@link RestPropertyDefinition }
    * 
    */
   public RestPropertyDefinition createRestPropertyDefinition() {
     return new RestPropertyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link SetPropertyDefinition }
-   * 
-   */
-  public SetPropertyDefinition createSetPropertyDefinition() {
-    return new SetPropertyDefinition();
   }
 
   /**
@@ -684,11 +1131,43 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link XStreamDataFormat }
+   * Create an instance of {@link XstreamElement }
    * 
    */
-  public XStreamDataFormat createXStreamDataFormat() {
-    return new XStreamDataFormat();
+  public XstreamElement createXstreamElement() {
+    return new XstreamElement();
+  }
+
+  /**
+   * Create an instance of {@link ConverterList }
+   * 
+   */
+  public ConverterList createConverterList() {
+    return new ConverterList();
+  }
+
+  /**
+   * Create an instance of {@link AliasList }
+   * 
+   */
+  public AliasList createAliasList() {
+    return new AliasList();
+  }
+
+  /**
+   * Create an instance of {@link OmitFieldList }
+   * 
+   */
+  public OmitFieldList createOmitFieldList() {
+    return new OmitFieldList();
+  }
+
+  /**
+   * Create an instance of {@link ImplicitCollectionList }
+   * 
+   */
+  public ImplicitCollectionList createImplicitCollectionList() {
+    return new ImplicitCollectionList();
   }
 
   /**
@@ -700,35 +1179,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link InterceptFromDefinition }
-   * 
-   */
-  public InterceptFromDefinition createInterceptFromDefinition() {
-    return new InterceptFromDefinition();
-  }
-
-  /**
    * Create an instance of {@link CamelProducerTemplateFactoryBean }
    * 
    */
   public CamelProducerTemplateFactoryBean createCamelProducerTemplateFactoryBean() {
     return new CamelProducerTemplateFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link ThrottleDefinition }
-   * 
-   */
-  public ThrottleDefinition createThrottleDefinition() {
-    return new ThrottleDefinition();
-  }
-
-  /**
-   * Create an instance of {@link LogDefinition }
-   * 
-   */
-  public LogDefinition createLogDefinition() {
-    return new LogDefinition();
   }
 
   /**
@@ -748,59 +1203,27 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link OnExceptionDefinition }
+   * Create an instance of {@link SyslogElement }
    * 
    */
-  public OnExceptionDefinition createOnExceptionDefinition() {
-    return new OnExceptionDefinition();
+  public SyslogElement createSyslogElement() {
+    return new SyslogElement();
   }
 
   /**
-   * Create an instance of {@link PollEnrichDefinition }
+   * Create an instance of {@link JaxbElement }
    * 
    */
-  public PollEnrichDefinition createPollEnrichDefinition() {
-    return new PollEnrichDefinition();
+  public JaxbElement createJaxbElement() {
+    return new JaxbElement();
   }
 
   /**
-   * Create an instance of {@link SyslogDataFormat }
+   * Create an instance of {@link EndpointElement }
    * 
    */
-  public SyslogDataFormat createSyslogDataFormat() {
-    return new SyslogDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link RestBindingDefinition }
-   * 
-   */
-  public RestBindingDefinition createRestBindingDefinition() {
-    return new RestBindingDefinition();
-  }
-
-  /**
-   * Create an instance of {@link JaxbDataFormat }
-   * 
-   */
-  public JaxbDataFormat createJaxbDataFormat() {
-    return new JaxbDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link CamelEndpointFactoryBean }
-   * 
-   */
-  public CamelEndpointFactoryBean createCamelEndpointFactoryBean() {
-    return new CamelEndpointFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link XPathExpression }
-   * 
-   */
-  public XPathExpression createXPathExpression() {
-    return new XPathExpression();
+  public EndpointElement createEndpointElement() {
+    return new EndpointElement();
   }
 
   /**
@@ -820,27 +1243,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JsonPathExpression }
-   * 
-   */
-  public JsonPathExpression createJsonPathExpression() {
-    return new JsonPathExpression();
-  }
-
-  /**
    * Create an instance of {@link PgpDataFormat }
    * 
    */
   public PgpDataFormat createPgpDataFormat() {
     return new PgpDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link Expression }
-   * 
-   */
-  public Expression createExpression() {
-    return new Expression();
   }
 
   /**
@@ -868,51 +1275,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link PolicyDefinition }
-   * 
-   */
-  public PolicyDefinition createPolicyDefinition() {
-    return new PolicyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ValidateDefinition }
-   * 
-   */
-  public ValidateDefinition createValidateDefinition() {
-    return new ValidateDefinition();
-  }
-
-  /**
-   * Create an instance of {@link RollbackDefinition }
-   * 
-   */
-  public RollbackDefinition createRollbackDefinition() {
-    return new RollbackDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ExpressionSubElementDefinition }
-   * 
-   */
-  public ExpressionSubElementDefinition createExpressionSubElementDefinition() {
-    return new ExpressionSubElementDefinition();
-  }
-
-  /**
    * Create an instance of {@link RedeliveryPolicyDefinition }
    * 
    */
   public RedeliveryPolicyDefinition createRedeliveryPolicyDefinition() {
     return new RedeliveryPolicyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link XQueryExpression }
-   * 
-   */
-  public XQueryExpression createXQueryExpression() {
-    return new XQueryExpression();
   }
 
   /**
@@ -940,75 +1307,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link SetBodyDefinition }
-   * 
-   */
-  public SetBodyDefinition createSetBodyDefinition() {
-    return new SetBodyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link SamplingDefinition }
-   * 
-   */
-  public SamplingDefinition createSamplingDefinition() {
-    return new SamplingDefinition();
-  }
-
-  /**
-   * Create an instance of {@link DynamicRouterDefinition }
-   * 
-   */
-  public DynamicRouterDefinition createDynamicRouterDefinition() {
-    return new DynamicRouterDefinition();
-  }
-
-  /**
-   * Create an instance of {@link FilterDefinition }
-   * 
-   */
-  public FilterDefinition createFilterDefinition() {
-    return new FilterDefinition();
-  }
-
-  /**
-   * Create an instance of {@link PipelineDefinition }
-   * 
-   */
-  public PipelineDefinition createPipelineDefinition() {
-    return new PipelineDefinition();
-  }
-
-  /**
    * Create an instance of {@link XmlJsonDataFormat }
    * 
    */
   public XmlJsonDataFormat createXmlJsonDataFormat() {
     return new XmlJsonDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link WireTapDefinition }
-   * 
-   */
-  public WireTapDefinition createWireTapDefinition() {
-    return new WireTapDefinition();
-  }
-
-  /**
-   * Create an instance of {@link PhpExpression }
-   * 
-   */
-  public PhpExpression createPhpExpression() {
-    return new PhpExpression();
-  }
-
-  /**
-   * Create an instance of {@link SetOutHeaderDefinition }
-   * 
-   */
-  public SetOutHeaderDefinition createSetOutHeaderDefinition() {
-    return new SetOutHeaderDefinition();
   }
 
   /**
@@ -1020,43 +1323,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link XmlTokenizerExpression }
-   * 
-   */
-  public XmlTokenizerExpression createXmlTokenizerExpression() {
-    return new XmlTokenizerExpression();
-  }
-
-  /**
-   * Create an instance of {@link ToDefinition }
-   * 
-   */
-  public ToDefinition createToDefinition() {
-    return new ToDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ChoiceDefinition }
-   * 
-   */
-  public ChoiceDefinition createChoiceDefinition() {
-    return new ChoiceDefinition();
-  }
-
-  /**
    * Create an instance of {@link ProtobufDataFormat }
    * 
    */
   public ProtobufDataFormat createProtobufDataFormat() {
     return new ProtobufDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link ConstantExpression }
-   * 
-   */
-  public ConstantExpression createConstantExpression() {
-    return new ConstantExpression();
   }
 
   /**
@@ -1068,67 +1339,19 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link TryDefinition }
+   * Create an instance of {@link Base64Element }
    * 
    */
-  public TryDefinition createTryDefinition() {
-    return new TryDefinition();
+  public Base64Element createBase64Element() {
+    return new Base64Element();
   }
 
   /**
-   * Create an instance of {@link Base64DataFormat }
+   * Create an instance of {@link RoutesElement }
    * 
    */
-  public Base64DataFormat createBase64DataFormat() {
-    return new Base64DataFormat();
-  }
-
-  /**
-   * Create an instance of {@link LanguageExpression }
-   * 
-   */
-  public LanguageExpression createLanguageExpression() {
-    return new LanguageExpression();
-  }
-
-  /**
-   * Create an instance of {@link SimpleExpression }
-   * 
-   */
-  public SimpleExpression createSimpleExpression() {
-    return new SimpleExpression();
-  }
-
-  /**
-   * Create an instance of {@link TokenizerExpression }
-   * 
-   */
-  public TokenizerExpression createTokenizerExpression() {
-    return new TokenizerExpression();
-  }
-
-  /**
-   * Create an instance of {@link InterceptSendToEndpointDefinition }
-   * 
-   */
-  public InterceptSendToEndpointDefinition createInterceptSendToEndpointDefinition() {
-    return new InterceptSendToEndpointDefinition();
-  }
-
-  /**
-   * Create an instance of {@link RoutesDefinition }
-   * 
-   */
-  public RoutesDefinition createRoutesDefinition() {
-    return new RoutesDefinition();
-  }
-
-  /**
-   * Create an instance of {@link RefExpression }
-   * 
-   */
-  public RefExpression createRefExpression() {
-    return new RefExpression();
+  public RoutesElement createRoutesElement() {
+    return new RoutesElement();
   }
 
   /**
@@ -1140,27 +1363,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link SplitDefinition }
-   * 
-   */
-  public SplitDefinition createSplitDefinition() {
-    return new SplitDefinition();
-  }
-
-  /**
    * Create an instance of {@link PostVerbDefinition }
    * 
    */
   public PostVerbDefinition createPostVerbDefinition() {
     return new PostVerbDefinition();
-  }
-
-  /**
-   * Create an instance of {@link LoopDefinition }
-   * 
-   */
-  public LoopDefinition createLoopDefinition() {
-    return new LoopDefinition();
   }
 
   /**
@@ -1180,27 +1387,91 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link CamelContextFactoryBean }
-   * 
-   */
-  public CamelContextFactoryBean createCamelContextFactoryBean() {
-    return new CamelContextFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link MarshalDefinition }
-   * 
-   */
-  public MarshalDefinition createMarshalDefinition() {
-    return new MarshalDefinition();
-  }
-
-  /**
    * Create an instance of {@link CamelPropertyPlaceholderFunctionDefinition }
    * 
    */
   public CamelPropertyPlaceholderFunctionDefinition createCamelPropertyPlaceholderFunctionDefinition() {
     return new CamelPropertyPlaceholderFunctionDefinition();
+  }
+
+  /**
+   * Create an instance of {@link CamelContextElement }
+   * 
+   */
+  public CamelContextElement createCamelContextElement() {
+    return new CamelContextElement();
+  }
+
+  /**
+   * Create an instance of {@link PropertiesElement }
+   * 
+   */
+  public PropertiesElement createPropertiesElement() {
+    return new PropertiesElement();
+  }
+
+  /**
+   * Create an instance of {@link PropertyPlaceholderElement }
+   * 
+   */
+  public PropertyPlaceholderElement createPropertyPlaceholderElement() {
+    return new PropertyPlaceholderElement();
+  }
+
+  /**
+   * Create an instance of {@link PackageScanElement }
+   * 
+   */
+  public PackageScanElement createPackageScanElement() {
+    return new PackageScanElement();
+  }
+
+  /**
+   * Create an instance of {@link JmxAgentElement }
+   * 
+   */
+  public JmxAgentElement createJmxAgentElement() {
+    return new JmxAgentElement();
+  }
+
+  /**
+   * Create an instance of {@link ExportElement }
+   * 
+   */
+  public ExportElement createExportElement() {
+    return new ExportElement();
+  }
+
+  /**
+   * Create an instance of {@link RouteBuilderElement }
+   * 
+   */
+  public RouteBuilderElement createRouteBuilderElement() {
+    return new RouteBuilderElement();
+  }
+
+  /**
+   * Create an instance of {@link ThreadPoolProfileDefinition }
+   * 
+   */
+  public ThreadPoolProfileDefinition createThreadPoolProfileDefinition() {
+    return new ThreadPoolProfileDefinition();
+  }
+
+  /**
+   * Create an instance of {@link CamelRedeliveryPolicyFactoryBean }
+   * 
+   */
+  public CamelRedeliveryPolicyFactoryBean createCamelRedeliveryPolicyFactoryBean() {
+    return new CamelRedeliveryPolicyFactoryBean();
+  }
+
+  /**
+   * Create an instance of {@link RestDefinition }
+   * 
+   */
+  public RestDefinition createRestDefinition() {
+    return new RestDefinition();
   }
 
   /**
@@ -1212,22 +1483,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link EnrichDefinition }
-   * 
-   */
-  public EnrichDefinition createEnrichDefinition() {
-    return new EnrichDefinition();
-  }
-
-  /**
-   * Create an instance of {@link FromDefinition }
-   * 
-   */
-  public FromDefinition createFromDefinition() {
-    return new FromDefinition();
-  }
-
-  /**
    * Create an instance of {@link XmlSecurityDataFormat }
    * 
    */
@@ -1236,19 +1491,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link BarcodeDataFormat }
+   * Create an instance of {@link BarcodeElement }
    * 
    */
-  public BarcodeDataFormat createBarcodeDataFormat() {
-    return new BarcodeDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link CamelServiceExporterDefinition }
-   * 
-   */
-  public CamelServiceExporterDefinition createCamelServiceExporterDefinition() {
-    return new CamelServiceExporterDefinition();
+  public BarcodeElement createBarcodeElement() {
+    return new BarcodeElement();
   }
 
   /**
@@ -1260,51 +1507,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link BeanDefinition }
-   * 
-   */
-  public BeanDefinition createBeanDefinition() {
-    return new BeanDefinition();
-  }
-
-  /**
-   * Create an instance of {@link OtherwiseDefinition }
-   * 
-   */
-  public OtherwiseDefinition createOtherwiseDefinition() {
-    return new OtherwiseDefinition();
-  }
-
-  /**
-   * Create an instance of {@link OgnlExpression }
-   * 
-   */
-  public OgnlExpression createOgnlExpression() {
-    return new OgnlExpression();
-  }
-
-  /**
    * Create an instance of {@link CustomLoadBalancerDefinition }
    * 
    */
   public CustomLoadBalancerDefinition createCustomLoadBalancerDefinition() {
     return new CustomLoadBalancerDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ElExpression }
-   * 
-   */
-  public ElExpression createElExpression() {
-    return new ElExpression();
-  }
-
-  /**
-   * Create an instance of {@link SortDefinition }
-   * 
-   */
-  public SortDefinition createSortDefinition() {
-    return new SortDefinition();
   }
 
   /**
@@ -1321,14 +1528,6 @@ public class ObjectFactory {
    */
   public CryptoDataFormat createCryptoDataFormat() {
     return new CryptoDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link RemoveHeaderDefinition }
-   * 
-   */
-  public RemoveHeaderDefinition createRemoveHeaderDefinition() {
-    return new RemoveHeaderDefinition();
   }
 
   /**
@@ -1356,27 +1555,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link CamelRouteContextFactoryBean }
+   * Create an instance of {@link RouteContextElement }
    * 
    */
-  public CamelRouteContextFactoryBean createCamelRouteContextFactoryBean() {
-    return new CamelRouteContextFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link HeaderExpression }
-   * 
-   */
-  public HeaderExpression createHeaderExpression() {
-    return new HeaderExpression();
-  }
-
-  /**
-   * Create an instance of {@link RouteBuilderDefinition }
-   * 
-   */
-  public RouteBuilderDefinition createRouteBuilderDefinition() {
-    return new RouteBuilderDefinition();
+  public RouteContextElement createRouteContextElement() {
+    return new RouteContextElement();
   }
 
   /**
@@ -1388,99 +1571,19 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link CamelRestContextFactoryBean }
+   * Create an instance of {@link RestContextElement }
    * 
    */
-  public CamelRestContextFactoryBean createCamelRestContextFactoryBean() {
-    return new CamelRestContextFactoryBean();
+  public RestContextElement createRestContextElement() {
+    return new RestContextElement();
   }
 
   /**
-   * Create an instance of {@link CamelJMXAgentDefinition }
+   * Create an instance of {@link StringElement }
    * 
    */
-  public CamelJMXAgentDefinition createCamelJMXAgentDefinition() {
-    return new CamelJMXAgentDefinition();
-  }
-
-  /**
-   * Create an instance of {@link RemovePropertyDefinition }
-   * 
-   */
-  public RemovePropertyDefinition createRemovePropertyDefinition() {
-    return new RemovePropertyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ThreadPoolProfileDefinition }
-   * 
-   */
-  public ThreadPoolProfileDefinition createThreadPoolProfileDefinition() {
-    return new ThreadPoolProfileDefinition();
-  }
-
-  /**
-   * Create an instance of {@link OnCompletionDefinition }
-   * 
-   */
-  public OnCompletionDefinition createOnCompletionDefinition() {
-    return new OnCompletionDefinition();
-  }
-
-  /**
-   * Create an instance of {@link FinallyDefinition }
-   * 
-   */
-  public FinallyDefinition createFinallyDefinition() {
-    return new FinallyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link JxPathExpression }
-   * 
-   */
-  public JxPathExpression createJxPathExpression() {
-    return new JxPathExpression();
-  }
-
-  /**
-   * Create an instance of {@link StringDataFormat }
-   * 
-   */
-  public StringDataFormat createStringDataFormat() {
-    return new StringDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link CatchDefinition }
-   * 
-   */
-  public CatchDefinition createCatchDefinition() {
-    return new CatchDefinition();
-  }
-
-  /**
-   * Create an instance of {@link DescriptionDefinition }
-   * 
-   */
-  public DescriptionDefinition createDescriptionDefinition() {
-    return new DescriptionDefinition();
-  }
-
-  /**
-   * Create an instance of {@link TransactedDefinition }
-   * 
-   */
-  public TransactedDefinition createTransactedDefinition() {
-    return new TransactedDefinition();
-  }
-
-  /**
-   * Create an instance of {@link RemoveHeadersDefinition }
-   * 
-   */
-  public RemoveHeadersDefinition createRemoveHeadersDefinition() {
-    return new RemoveHeadersDefinition();
+  public StringElement createStringElement() {
+    return new StringElement();
   }
 
   /**
@@ -1492,43 +1595,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link AggregateDefinition }
-   * 
-   */
-  public AggregateDefinition createAggregateDefinition() {
-    return new AggregateDefinition();
-  }
-
-  /**
-   * Create an instance of {@link PackageScanDefinition }
-   * 
-   */
-  public PackageScanDefinition createPackageScanDefinition() {
-    return new PackageScanDefinition();
-  }
-
-  /**
-   * Create an instance of {@link SqlExpression }
-   * 
-   */
-  public SqlExpression createSqlExpression() {
-    return new SqlExpression();
-  }
-
-  /**
    * Create an instance of {@link HeadVerbDefinition }
    * 
    */
   public HeadVerbDefinition createHeadVerbDefinition() {
     return new HeadVerbDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ResequenceDefinition }
-   * 
-   */
-  public ResequenceDefinition createResequenceDefinition() {
-    return new ResequenceDefinition();
   }
 
   /**
@@ -1540,43 +1611,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link RoutingSlipDefinition }
+   * Create an instance of {@link JsonElement }
    * 
    */
-  public RoutingSlipDefinition createRoutingSlipDefinition() {
-    return new RoutingSlipDefinition();
-  }
-
-  /**
-   * Create an instance of {@link TransformDefinition }
-   * 
-   */
-  public TransformDefinition createTransformDefinition() {
-    return new TransformDefinition();
-  }
-
-  /**
-   * Create an instance of {@link JsonDataFormat }
-   * 
-   */
-  public JsonDataFormat createJsonDataFormat() {
-    return new JsonDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link RestDefinition }
-   * 
-   */
-  public RestDefinition createRestDefinition() {
-    return new RestDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ProcessDefinition }
-   * 
-   */
-  public ProcessDefinition createProcessDefinition() {
-    return new ProcessDefinition();
+  public JsonElement createJsonElement() {
+    return new JsonElement();
   }
 
   /**
@@ -1596,91 +1635,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link CamelPropertyPlaceholderDefinition }
-   * 
-   */
-  public CamelPropertyPlaceholderDefinition createCamelPropertyPlaceholderDefinition() {
-    return new CamelPropertyPlaceholderDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ThreadsDefinition }
-   * 
-   */
-  public ThreadsDefinition createThreadsDefinition() {
-    return new ThreadsDefinition();
-  }
-
-  /**
-   * Create an instance of {@link ThrowExceptionDefinition }
-   * 
-   */
-  public ThrowExceptionDefinition createThrowExceptionDefinition() {
-    return new ThrowExceptionDefinition();
-  }
-
-  /**
-   * Create an instance of {@link MulticastDefinition }
-   * 
-   */
-  public MulticastDefinition createMulticastDefinition() {
-    return new MulticastDefinition();
-  }
-
-  /**
-   * Create an instance of {@link RubyExpression }
-   * 
-   */
-  public RubyExpression createRubyExpression() {
-    return new RubyExpression();
-  }
-
-  /**
    * Create an instance of {@link SerializationDataFormat }
    * 
    */
   public SerializationDataFormat createSerializationDataFormat() {
     return new SerializationDataFormat();
-  }
-
-  /**
-   * Create an instance of {@link SpELExpression }
-   * 
-   */
-  public SpELExpression createSpELExpression() {
-    return new SpELExpression();
-  }
-
-  /**
-   * Create an instance of {@link UnmarshalDefinition }
-   * 
-   */
-  public UnmarshalDefinition createUnmarshalDefinition() {
-    return new UnmarshalDefinition();
-  }
-
-  /**
-   * Create an instance of {@link CamelRedeliveryPolicyFactoryBean }
-   * 
-   */
-  public CamelRedeliveryPolicyFactoryBean createCamelRedeliveryPolicyFactoryBean() {
-    return new CamelRedeliveryPolicyFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link SetFaultBodyDefinition }
-   * 
-   */
-  public SetFaultBodyDefinition createSetFaultBodyDefinition() {
-    return new SetFaultBodyDefinition();
-  }
-
-  /**
-   * Create an instance of {@link PropertiesDefinition }
-   * 
-   */
-  public PropertiesDefinition createPropertiesDefinition() {
-    return new PropertiesDefinition();
   }
 
   /**
@@ -1700,6 +1659,14 @@ public class ObjectFactory {
   }
 
   /**
+   * Create an instance of {@link SslContextServerParametersFactoryBean }
+   * 
+   */
+  public SslContextServerParametersFactoryBean createSslContextServerParametersFactoryBean() {
+    return new SslContextServerParametersFactoryBean();
+  }
+
+  /**
    * Create an instance of {@link ImplicitCollectionEntry }
    * 
    */
@@ -1713,14 +1680,6 @@ public class ObjectFactory {
    */
   public OmitFieldEntry createOmitFieldEntry() {
     return new OmitFieldEntry();
-  }
-
-  /**
-   * Create an instance of {@link AliasList }
-   * 
-   */
-  public AliasList createAliasList() {
-    return new AliasList();
   }
 
   /**
@@ -1740,11 +1699,19 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link OmitFieldList }
+   * Create an instance of {@link ExpressionNodeHelper }
    * 
    */
-  public OmitFieldList createOmitFieldList() {
-    return new OmitFieldList();
+  public ExpressionNodeHelper createExpressionNodeHelper() {
+    return new ExpressionNodeHelper();
+  }
+
+  /**
+   * Create an instance of {@link SecureSocketProtocolsParameters }
+   * 
+   */
+  public SecureSocketProtocolsParameters createSecureSocketProtocolsParameters() {
+    return new SecureSocketProtocolsParameters();
   }
 
   /**
@@ -1764,6 +1731,14 @@ public class ObjectFactory {
   }
 
   /**
+   * Create an instance of {@link AliasEntry }
+   * 
+   */
+  public AliasEntry createAliasEntry() {
+    return new AliasEntry();
+  }
+
+  /**
    * Create an instance of {@link PropertyDefinition }
    * 
    */
@@ -1780,11 +1755,11 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link ImplicitCollectionList }
+   * Create an instance of {@link Constants }
    * 
    */
-  public ImplicitCollectionList createImplicitCollectionList() {
-    return new ImplicitCollectionList();
+  public Constants createConstants() {
+    return new Constants();
   }
 
   /**
@@ -1804,83 +1779,19 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link PropertyExpression }
-   * 
-   */
-  public PropertyExpression createPropertyExpression() {
-    return new PropertyExpression();
-  }
-
-  /**
-   * Create an instance of {@link Output }
-   * 
-   */
-  public Output createOutput() {
-    return new Output();
-  }
-
-  /**
-   * Create an instance of {@link SslContextServerParametersFactoryBean }
-   * 
-   */
-  public SslContextServerParametersFactoryBean createSslContextServerParametersFactoryBean() {
-    return new SslContextServerParametersFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link ExpressionNodeHelper }
-   * 
-   */
-  public ExpressionNodeHelper createExpressionNodeHelper() {
-    return new ExpressionNodeHelper();
-  }
-
-  /**
-   * Create an instance of {@link SecureSocketProtocolsParameters }
-   * 
-   */
-  public SecureSocketProtocolsParameters createSecureSocketProtocolsParameters() {
-    return new SecureSocketProtocolsParameters();
-  }
-
-  /**
-   * Create an instance of {@link ConverterList }
-   * 
-   */
-  public ConverterList createConverterList() {
-    return new ConverterList();
-  }
-
-  /**
-   * Create an instance of {@link AliasEntry }
-   * 
-   */
-  public AliasEntry createAliasEntry() {
-    return new AliasEntry();
-  }
-
-  /**
-   * Create an instance of {@link Constants }
-   * 
-   */
-  public Constants createConstants() {
-    return new Constants();
-  }
-
-  /**
-   * Create an instance of {@link NoOutputExpressionNode }
-   * 
-   */
-  public NoOutputExpressionNode createNoOutputExpressionNode() {
-    return new NoOutputExpressionNode();
-  }
-
-  /**
    * Create an instance of {@link ModelHelper }
    * 
    */
   public ModelHelper createModelHelper() {
     return new ModelHelper();
+  }
+
+  /**
+   * Create an instance of {@link PropertyExpression }
+   * 
+   */
+  public PropertyExpression createPropertyExpression() {
+    return new PropertyExpression();
   }
 
   /**
@@ -1897,22 +1808,6 @@ public class ObjectFactory {
    */
   public KeyManagersParametersFactoryBean createKeyManagersParametersFactoryBean() {
     return new KeyManagersParametersFactoryBean();
-  }
-
-  /**
-   * Create an instance of {@link ExpressionNode }
-   * 
-   */
-  public ExpressionNode createExpressionNode() {
-    return new ExpressionNode();
-  }
-
-  /**
-   * Create an instance of {@link DataFormat }
-   * 
-   */
-  public DataFormat createDataFormat() {
-    return new DataFormat();
   }
 
   /**
@@ -1991,15 +1886,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link PutVerbDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "put")
-  public JAXBElement<PutVerbDefinition> createPut(PutVerbDefinition value) {
-    return new JAXBElement<PutVerbDefinition>(_Put_QNAME, PutVerbDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link SetHeaderDefinition }{@code >}
    * 
    */
@@ -2069,16 +1955,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link ContextScanDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "contextScan")
-  public JAXBElement<ContextScanDefinition> createContextScan(ContextScanDefinition value) {
-    return new JAXBElement<ContextScanDefinition>(_ContextScan_QNAME, ContextScanDefinition.class,
-        null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link InOnlyDefinition }{@code >}
    * 
    */
@@ -2134,53 +2010,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link JavaScriptExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "javaScript")
-  public JAXBElement<JavaScriptExpression> createJavaScript(JavaScriptExpression value) {
-    return new JAXBElement<JavaScriptExpression>(_JavaScript_QNAME, JavaScriptExpression.class,
-        null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link MethodCallExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "method")
-  public JAXBElement<MethodCallExpression> createMethod(MethodCallExpression value) {
-    return new JAXBElement<MethodCallExpression>(_Method_QNAME, MethodCallExpression.class, null,
-        value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link MvelExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "mvel")
-  public JAXBElement<MvelExpression> createMvel(MvelExpression value) {
-    return new JAXBElement<MvelExpression>(_Mvel_QNAME, MvelExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link PythonExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "python")
-  public JAXBElement<PythonExpression> createPython(PythonExpression value) {
-    return new JAXBElement<PythonExpression>(_Python_QNAME, PythonExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link BeanioDataFormat }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "beanio")
-  public JAXBElement<BeanioDataFormat> createBeanio(BeanioDataFormat value) {
-    return new JAXBElement<BeanioDataFormat>(_Beanio_QNAME, BeanioDataFormat.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link ZipDataFormat }{@code >}
    * 
    */
@@ -2231,16 +2060,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RestPropertyDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "restProperty")
-  public JAXBElement<RestPropertyDefinition> createRestProperty(RestPropertyDefinition value) {
-    return new JAXBElement<RestPropertyDefinition>(_RestProperty_QNAME,
-        RestPropertyDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link SetPropertyDefinition }{@code >}
    * 
    */
@@ -2248,6 +2067,16 @@ public class ObjectFactory {
   public JAXBElement<SetPropertyDefinition> createSetProperty(SetPropertyDefinition value) {
     return new JAXBElement<SetPropertyDefinition>(_SetProperty_QNAME, SetPropertyDefinition.class,
         null, value);
+  }
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RestPropertyDefinition }{@code >}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "restProperty")
+  public JAXBElement<RestPropertyDefinition> createRestProperty(RestPropertyDefinition value) {
+    return new JAXBElement<RestPropertyDefinition>(_RestProperty_QNAME,
+        RestPropertyDefinition.class, null, value);
   }
 
   /**
@@ -2261,17 +2090,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link BatchResequencerConfig }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "batchResequencerConfig")
-  public JAXBElement<BatchResequencerConfig> createBatchResequencerConfig(
-      BatchResequencerConfig value) {
-    return new JAXBElement<BatchResequencerConfig>(_BatchResequencerConfig_QNAME,
-        BatchResequencerConfig.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link StopDefinition }{@code >}
    * 
    */
@@ -2281,40 +2099,14 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelBeanPostProcessor }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link BatchResequencerConfig }{@code >}
    * 
    */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "beanPostProcessor")
-  public JAXBElement<CamelBeanPostProcessor> createBeanPostProcessor(CamelBeanPostProcessor value) {
-    return new JAXBElement<CamelBeanPostProcessor>(_BeanPostProcessor_QNAME,
-        CamelBeanPostProcessor.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link DelayDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "delay")
-  public JAXBElement<DelayDefinition> createDelay(DelayDefinition value) {
-    return new JAXBElement<DelayDefinition>(_Delay_QNAME, DelayDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link GroovyExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "groovy")
-  public JAXBElement<GroovyExpression> createGroovy(GroovyExpression value) {
-    return new JAXBElement<GroovyExpression>(_Groovy_QNAME, GroovyExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RouteDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "route")
-  public JAXBElement<RouteDefinition> createRoute(RouteDefinition value) {
-    return new JAXBElement<RouteDefinition>(_Route_QNAME, RouteDefinition.class, null, value);
+  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "batchResequencerConfig")
+  public JAXBElement<BatchResequencerConfig> createBatchResequencerConfig(
+      BatchResequencerConfig value) {
+    return new JAXBElement<BatchResequencerConfig>(_BatchResequencerConfig_QNAME,
+        BatchResequencerConfig.class, null, value);
   }
 
   /**
@@ -2348,15 +2140,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link XStreamDataFormat }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "xstream")
-  public JAXBElement<XStreamDataFormat> createXstream(XStreamDataFormat value) {
-    return new JAXBElement<XStreamDataFormat>(_Xstream_QNAME, XStreamDataFormat.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link StickyLoadBalancerDefinition }{@code >}
    * 
    */
@@ -2364,15 +2147,6 @@ public class ObjectFactory {
   public JAXBElement<StickyLoadBalancerDefinition> createSticky(StickyLoadBalancerDefinition value) {
     return new JAXBElement<StickyLoadBalancerDefinition>(_Sticky_QNAME,
         StickyLoadBalancerDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link LogDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "log")
-  public JAXBElement<LogDefinition> createLog(LogDefinition value) {
-    return new JAXBElement<LogDefinition>(_Log_QNAME, LogDefinition.class, null, value);
   }
 
   /**
@@ -2397,16 +2171,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RestBindingDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "restBinding")
-  public JAXBElement<RestBindingDefinition> createRestBinding(RestBindingDefinition value) {
-    return new JAXBElement<RestBindingDefinition>(_RestBinding_QNAME, RestBindingDefinition.class,
-        null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link PollEnrichDefinition }{@code >}
    * 
    */
@@ -2417,12 +2181,13 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link SyslogDataFormat }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link OnExceptionDefinition }{@code >}
    * 
    */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "syslog")
-  public JAXBElement<SyslogDataFormat> createSyslog(SyslogDataFormat value) {
-    return new JAXBElement<SyslogDataFormat>(_Syslog_QNAME, SyslogDataFormat.class, null, value);
+  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "onException")
+  public JAXBElement<OnExceptionDefinition> createOnException(OnExceptionDefinition value) {
+    return new JAXBElement<OnExceptionDefinition>(_OnException_QNAME, OnExceptionDefinition.class,
+        null, value);
   }
 
   /**
@@ -2432,16 +2197,6 @@ public class ObjectFactory {
   @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "bindy")
   public JAXBElement<BindyDataFormat> createBindy(BindyDataFormat value) {
     return new JAXBElement<BindyDataFormat>(_Bindy_QNAME, BindyDataFormat.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link OnExceptionDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "onException")
-  public JAXBElement<OnExceptionDefinition> createOnException(OnExceptionDefinition value) {
-    return new JAXBElement<OnExceptionDefinition>(_OnException_QNAME, OnExceptionDefinition.class,
-        null, value);
   }
 
   /**
@@ -2471,34 +2226,6 @@ public class ObjectFactory {
   @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "rss")
   public JAXBElement<RssDataFormat> createRss(RssDataFormat value) {
     return new JAXBElement<RssDataFormat>(_Rss_QNAME, RssDataFormat.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelEndpointFactoryBean }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "endpoint")
-  public JAXBElement<CamelEndpointFactoryBean> createEndpoint(CamelEndpointFactoryBean value) {
-    return new JAXBElement<CamelEndpointFactoryBean>(_Endpoint_QNAME,
-        CamelEndpointFactoryBean.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link XPathExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "xpath")
-  public JAXBElement<XPathExpression> createXpath(XPathExpression value) {
-    return new JAXBElement<XPathExpression>(_Xpath_QNAME, XPathExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link JaxbDataFormat }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "jaxb")
-  public JAXBElement<JaxbDataFormat> createJaxb(JaxbDataFormat value) {
-    return new JAXBElement<JaxbDataFormat>(_Jaxb_QNAME, JaxbDataFormat.class, null, value);
   }
 
   /**
@@ -2561,16 +2288,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link JsonPathExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "jsonpath")
-  public JAXBElement<JsonPathExpression> createJsonpath(JsonPathExpression value) {
-    return new JAXBElement<JsonPathExpression>(_Jsonpath_QNAME, JsonPathExpression.class, null,
-        value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link PgpDataFormat }{@code >}
    * 
    */
@@ -2599,15 +2316,6 @@ public class ObjectFactory {
       RedeliveryPolicyDefinition value) {
     return new JAXBElement<RedeliveryPolicyDefinition>(_RedeliveryPolicy_QNAME,
         RedeliveryPolicyDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link XQueryExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "xquery")
-  public JAXBElement<XQueryExpression> createXquery(XQueryExpression value) {
-    return new JAXBElement<XQueryExpression>(_Xquery_QNAME, XQueryExpression.class, null, value);
   }
 
   /**
@@ -2687,25 +2395,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link FilterDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "filter")
-  public JAXBElement<FilterDefinition> createFilter(FilterDefinition value) {
-    return new JAXBElement<FilterDefinition>(_Filter_QNAME, FilterDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link PipelineDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "pipeline")
-  public JAXBElement<PipelineDefinition> createPipeline(PipelineDefinition value) {
-    return new JAXBElement<PipelineDefinition>(_Pipeline_QNAME, PipelineDefinition.class, null,
-        value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link XmlJsonDataFormat }{@code >}
    * 
    */
@@ -2715,21 +2404,13 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link ChoiceDefinition }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link XmlTokenizerExpression }{@code >}
    * 
    */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "choice")
-  public JAXBElement<ChoiceDefinition> createChoice(ChoiceDefinition value) {
-    return new JAXBElement<ChoiceDefinition>(_Choice_QNAME, ChoiceDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link ToDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "to")
-  public JAXBElement<ToDefinition> createTo(ToDefinition value) {
-    return new JAXBElement<ToDefinition>(_To_QNAME, ToDefinition.class, null, value);
+  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "xtokenize")
+  public JAXBElement<XmlTokenizerExpression> createXtokenize(XmlTokenizerExpression value) {
+    return new JAXBElement<XmlTokenizerExpression>(_Xtokenize_QNAME, XmlTokenizerExpression.class,
+        null, value);
   }
 
   /**
@@ -2754,41 +2435,12 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link XmlTokenizerExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "xtokenize")
-  public JAXBElement<XmlTokenizerExpression> createXtokenize(XmlTokenizerExpression value) {
-    return new JAXBElement<XmlTokenizerExpression>(_Xtokenize_QNAME, XmlTokenizerExpression.class,
-        null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link PhpExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "php")
-  public JAXBElement<PhpExpression> createPhp(PhpExpression value) {
-    return new JAXBElement<PhpExpression>(_Php_QNAME, PhpExpression.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link TryDefinition }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "doTry")
   public JAXBElement<TryDefinition> createDoTry(TryDefinition value) {
     return new JAXBElement<TryDefinition>(_DoTry_QNAME, TryDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link ConstantExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "constant")
-  public JAXBElement<ConstantExpression> createConstant(ConstantExpression value) {
-    return new JAXBElement<ConstantExpression>(_Constant_QNAME, ConstantExpression.class, null,
-        value);
   }
 
   /**
@@ -2819,44 +2471,6 @@ public class ObjectFactory {
   public JAXBElement<TokenizerExpression> createTokenize(TokenizerExpression value) {
     return new JAXBElement<TokenizerExpression>(_Tokenize_QNAME, TokenizerExpression.class, null,
         value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link LanguageExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "language")
-  public JAXBElement<LanguageExpression> createLanguage(LanguageExpression value) {
-    return new JAXBElement<LanguageExpression>(_Language_QNAME, LanguageExpression.class, null,
-        value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link SimpleExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "simple")
-  public JAXBElement<SimpleExpression> createSimple(SimpleExpression value) {
-    return new JAXBElement<SimpleExpression>(_Simple_QNAME, SimpleExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link Base64DataFormat }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "base64")
-  public JAXBElement<Base64DataFormat> createBase64(Base64DataFormat value) {
-    return new JAXBElement<Base64DataFormat>(_Base64_QNAME, Base64DataFormat.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelContextFactoryBean }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "camelContext")
-  public JAXBElement<CamelContextFactoryBean> createCamelContext(CamelContextFactoryBean value) {
-    return new JAXBElement<CamelContextFactoryBean>(_CamelContext_QNAME,
-        CamelContextFactoryBean.class, null, value);
   }
 
   /**
@@ -2927,15 +2541,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RefExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "ref")
-  public JAXBElement<RefExpression> createRef(RefExpression value) {
-    return new JAXBElement<RefExpression>(_Ref_QNAME, RefExpression.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link StreamResequencerConfig }{@code >}
    * 
    */
@@ -2944,15 +2549,6 @@ public class ObjectFactory {
       StreamResequencerConfig value) {
     return new JAXBElement<StreamResequencerConfig>(_StreamResequencerConfig_QNAME,
         StreamResequencerConfig.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RoutesDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "routes")
-  public JAXBElement<RoutesDefinition> createRoutes(RoutesDefinition value) {
-    return new JAXBElement<RoutesDefinition>(_Routes_QNAME, RoutesDefinition.class, null, value);
   }
 
   /**
@@ -2967,35 +2563,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link BeanDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "bean")
-  public JAXBElement<BeanDefinition> createBean(BeanDefinition value) {
-    return new JAXBElement<BeanDefinition>(_Bean_QNAME, BeanDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link BarcodeDataFormat }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "barcode")
-  public JAXBElement<BarcodeDataFormat> createBarcode(BarcodeDataFormat value) {
-    return new JAXBElement<BarcodeDataFormat>(_Barcode_QNAME, BarcodeDataFormat.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelServiceExporterDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "export")
-  public JAXBElement<CamelServiceExporterDefinition> createExport(
-      CamelServiceExporterDefinition value) {
-    return new JAXBElement<CamelServiceExporterDefinition>(_Export_QNAME,
-        CamelServiceExporterDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link WeightedLoadBalancerDefinition }{@code >}
    * 
    */
@@ -3007,15 +2574,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link FromDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "from")
-  public JAXBElement<FromDefinition> createFrom(FromDefinition value) {
-    return new JAXBElement<FromDefinition>(_From_QNAME, FromDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link XmlSecurityDataFormat }{@code >}
    * 
    */
@@ -3023,6 +2581,15 @@ public class ObjectFactory {
   public JAXBElement<XmlSecurityDataFormat> createSecureXML(XmlSecurityDataFormat value) {
     return new JAXBElement<XmlSecurityDataFormat>(_SecureXML_QNAME, XmlSecurityDataFormat.class,
         null, value);
+  }
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EnrichDefinition }{@code >}
+   * 
+   */
+  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "enrich")
+  public JAXBElement<EnrichDefinition> createEnrich(EnrichDefinition value) {
+    return new JAXBElement<EnrichDefinition>(_Enrich_QNAME, EnrichDefinition.class, null, value);
   }
 
   /**
@@ -3037,24 +2604,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link EnrichDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "enrich")
-  public JAXBElement<EnrichDefinition> createEnrich(EnrichDefinition value) {
-    return new JAXBElement<EnrichDefinition>(_Enrich_QNAME, EnrichDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link ElExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "el")
-  public JAXBElement<ElExpression> createEl(ElExpression value) {
-    return new JAXBElement<ElExpression>(_El_QNAME, ElExpression.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link CustomLoadBalancerDefinition }{@code >}
    * 
    */
@@ -3063,25 +2612,6 @@ public class ObjectFactory {
       CustomLoadBalancerDefinition value) {
     return new JAXBElement<CustomLoadBalancerDefinition>(_CustomLoadBalancer_QNAME,
         CustomLoadBalancerDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link OgnlExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "ognl")
-  public JAXBElement<OgnlExpression> createOgnl(OgnlExpression value) {
-    return new JAXBElement<OgnlExpression>(_Ognl_QNAME, OgnlExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link OtherwiseDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "otherwise")
-  public JAXBElement<OtherwiseDefinition> createOtherwise(OtherwiseDefinition value) {
-    return new JAXBElement<OtherwiseDefinition>(_Otherwise_QNAME, OtherwiseDefinition.class, null,
-        value);
   }
 
   /**
@@ -3165,16 +2695,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelJMXAgentDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "jmxAgent")
-  public JAXBElement<CamelJMXAgentDefinition> createJmxAgent(CamelJMXAgentDefinition value) {
-    return new JAXBElement<CamelJMXAgentDefinition>(_JmxAgent_QNAME, CamelJMXAgentDefinition.class,
-        null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link RemovePropertyDefinition }{@code >}
    * 
    */
@@ -3182,36 +2702,6 @@ public class ObjectFactory {
   public JAXBElement<RemovePropertyDefinition> createRemoveProperty(RemovePropertyDefinition value) {
     return new JAXBElement<RemovePropertyDefinition>(_RemoveProperty_QNAME,
         RemovePropertyDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelRestContextFactoryBean }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "restContext")
-  public JAXBElement<CamelRestContextFactoryBean> createRestContext(
-      CamelRestContextFactoryBean value) {
-    return new JAXBElement<CamelRestContextFactoryBean>(_RestContext_QNAME,
-        CamelRestContextFactoryBean.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link HeaderExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "header")
-  public JAXBElement<HeaderExpression> createHeader(HeaderExpression value) {
-    return new JAXBElement<HeaderExpression>(_Header_QNAME, HeaderExpression.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RouteBuilderDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "routeBuilder")
-  public JAXBElement<RouteBuilderDefinition> createRouteBuilder(RouteBuilderDefinition value) {
-    return new JAXBElement<RouteBuilderDefinition>(_RouteBuilder_QNAME,
-        RouteBuilderDefinition.class, null, value);
   }
 
   /**
@@ -3225,32 +2715,12 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelRouteContextFactoryBean }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "routeContext")
-  public JAXBElement<CamelRouteContextFactoryBean> createRouteContext(
-      CamelRouteContextFactoryBean value) {
-    return new JAXBElement<CamelRouteContextFactoryBean>(_RouteContext_QNAME,
-        CamelRouteContextFactoryBean.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link CatchDefinition }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "doCatch")
   public JAXBElement<CatchDefinition> createDoCatch(CatchDefinition value) {
     return new JAXBElement<CatchDefinition>(_DoCatch_QNAME, CatchDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link StringDataFormat }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "string")
-  public JAXBElement<StringDataFormat> createString(StringDataFormat value) {
-    return new JAXBElement<StringDataFormat>(_String_QNAME, StringDataFormat.class, null, value);
   }
 
   /**
@@ -3264,15 +2734,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link JxPathExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "jxpath")
-  public JAXBElement<JxPathExpression> createJxpath(JxPathExpression value) {
-    return new JAXBElement<JxPathExpression>(_Jxpath_QNAME, JxPathExpression.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link OnCompletionDefinition }{@code >}
    * 
    */
@@ -3280,35 +2741,6 @@ public class ObjectFactory {
   public JAXBElement<OnCompletionDefinition> createOnCompletion(OnCompletionDefinition value) {
     return new JAXBElement<OnCompletionDefinition>(_OnCompletion_QNAME,
         OnCompletionDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "aggregate")
-  public JAXBElement<AggregateDefinition> createAggregate(AggregateDefinition value) {
-    return new JAXBElement<AggregateDefinition>(_Aggregate_QNAME, AggregateDefinition.class, null,
-        value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link PackageScanDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "packageScan")
-  public JAXBElement<PackageScanDefinition> createPackageScan(PackageScanDefinition value) {
-    return new JAXBElement<PackageScanDefinition>(_PackageScan_QNAME, PackageScanDefinition.class,
-        null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link SqlExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "sql")
-  public JAXBElement<SqlExpression> createSql(SqlExpression value) {
-    return new JAXBElement<SqlExpression>(_Sql_QNAME, SqlExpression.class, null, value);
   }
 
   /**
@@ -3342,16 +2774,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link DescriptionDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "description")
-  public JAXBElement<DescriptionDefinition> createDescription(DescriptionDefinition value) {
-    return new JAXBElement<DescriptionDefinition>(_Description_QNAME, DescriptionDefinition.class,
-        null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link RoutingSlipDefinition }{@code >}
    * 
    */
@@ -3359,16 +2781,6 @@ public class ObjectFactory {
   public JAXBElement<RoutingSlipDefinition> createRoutingSlip(RoutingSlipDefinition value) {
     return new JAXBElement<RoutingSlipDefinition>(_RoutingSlip_QNAME, RoutingSlipDefinition.class,
         null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link TransformDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "transform")
-  public JAXBElement<TransformDefinition> createTransform(TransformDefinition value) {
-    return new JAXBElement<TransformDefinition>(_Transform_QNAME, TransformDefinition.class, null,
-        value);
   }
 
   /**
@@ -3382,15 +2794,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link HeadVerbDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "head")
-  public JAXBElement<HeadVerbDefinition> createHead(HeadVerbDefinition value) {
-    return new JAXBElement<HeadVerbDefinition>(_Head_QNAME, HeadVerbDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link ResequenceDefinition }{@code >}
    * 
    */
@@ -3401,12 +2804,12 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link JsonDataFormat }{@code >}
+   * Create an instance of {@link JAXBElement }{@code <}{@link HeadVerbDefinition }{@code >}
    * 
    */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "json")
-  public JAXBElement<JsonDataFormat> createJson(JsonDataFormat value) {
-    return new JAXBElement<JsonDataFormat>(_Json_QNAME, JsonDataFormat.class, null, value);
+  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "head")
+  public JAXBElement<HeadVerbDefinition> createHead(HeadVerbDefinition value) {
+    return new JAXBElement<HeadVerbDefinition>(_Head_QNAME, HeadVerbDefinition.class, null, value);
   }
 
   /**
@@ -3429,30 +2832,12 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link ProcessDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "process")
-  public JAXBElement<ProcessDefinition> createProcess(ProcessDefinition value) {
-    return new JAXBElement<ProcessDefinition>(_Process_QNAME, ProcessDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link RestDefinition }{@code >}
    * 
    */
   @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "rest")
   public JAXBElement<RestDefinition> createRest(RestDefinition value) {
     return new JAXBElement<RestDefinition>(_Rest_QNAME, RestDefinition.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link RubyExpression }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "ruby")
-  public JAXBElement<RubyExpression> createRuby(RubyExpression value) {
-    return new JAXBElement<RubyExpression>(_Ruby_QNAME, RubyExpression.class, null, value);
   }
 
   /**
@@ -3485,17 +2870,6 @@ public class ObjectFactory {
   }
 
   /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link CamelPropertyPlaceholderDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "propertyPlaceholder")
-  public JAXBElement<CamelPropertyPlaceholderDefinition> createPropertyPlaceholder(
-      CamelPropertyPlaceholderDefinition value) {
-    return new JAXBElement<CamelPropertyPlaceholderDefinition>(_PropertyPlaceholder_QNAME,
-        CamelPropertyPlaceholderDefinition.class, null, value);
-  }
-
-  /**
    * Create an instance of {@link JAXBElement }{@code <}{@link UnmarshalDefinition }{@code >}
    * 
    */
@@ -3522,16 +2896,6 @@ public class ObjectFactory {
   public JAXBElement<SerializationDataFormat> createSerialization(SerializationDataFormat value) {
     return new JAXBElement<SerializationDataFormat>(_Serialization_QNAME,
         SerializationDataFormat.class, null, value);
-  }
-
-  /**
-   * Create an instance of {@link JAXBElement }{@code <}{@link PropertiesDefinition }{@code >}
-   * 
-   */
-  @XmlElementDecl(namespace = "http://camel.apache.org/schema/spring", name = "properties")
-  public JAXBElement<PropertiesDefinition> createProperties(PropertiesDefinition value) {
-    return new JAXBElement<PropertiesDefinition>(_Properties_QNAME, PropertiesDefinition.class,
-        null, value);
   }
 
   /**

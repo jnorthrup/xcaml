@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -105,73 +105,73 @@ public class DynamicRouterDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public DynamicRouterDefinition withConstant(ConstantExpression value) {
+  public DynamicRouterDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withEl(ElExpression value) {
+  public DynamicRouterDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withGroovy(GroovyExpression value) {
+  public DynamicRouterDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withHeader(HeaderExpression value) {
+  public DynamicRouterDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withJxpath(JxPathExpression value) {
+  public DynamicRouterDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withJavaScript(JavaScriptExpression value) {
+  public DynamicRouterDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withJsonpath(JsonPathExpression value) {
+  public DynamicRouterDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withLanguage(LanguageExpression value) {
+  public DynamicRouterDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withMethod(MethodCallExpression value) {
+  public DynamicRouterDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withMvel(MvelExpression value) {
+  public DynamicRouterDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withOgnl(OgnlExpression value) {
+  public DynamicRouterDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withPhp(PhpExpression value) {
+  public DynamicRouterDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -183,25 +183,25 @@ public class DynamicRouterDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public DynamicRouterDefinition withPython(PythonExpression value) {
+  public DynamicRouterDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withRef(RefExpression value) {
+  public DynamicRouterDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withRuby(RubyExpression value) {
+  public DynamicRouterDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withSimple(SimpleExpression value) {
+  public DynamicRouterDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -213,7 +213,7 @@ public class DynamicRouterDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public DynamicRouterDefinition withSql(SqlExpression value) {
+  public DynamicRouterDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -237,13 +237,13 @@ public class DynamicRouterDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public DynamicRouterDefinition withXpath(XPathExpression value) {
+  public DynamicRouterDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public DynamicRouterDefinition withXquery(XQueryExpression value) {
+  public DynamicRouterDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -273,7 +273,7 @@ public class DynamicRouterDefinition extends NoOutputExpressionNode {
   }
 
   @Override
-  public DynamicRouterDefinition withDescription(DescriptionDefinition value) {
+  public DynamicRouterDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

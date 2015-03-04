@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -42,12 +42,11 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "optionalIdentifiedDefinition", propOrder = {"description"})
 @XmlSeeAlso({
-    RestsDefinition.class, RoutesDefinition.class, FromDefinition.class,
-    ThreadPoolProfileDefinition.class, VerbDefinition.class, RestDefinition.class,
-    ProcessorDefinition.class})
+    RestsDefinition.class, ThreadPoolProfileDefinition.class, RestDefinition.class,
+    RoutesElement.class, FromElement.class, ProcessorDefinition.class, VerbDefinition.class})
 public abstract class OptionalIdentifiedDefinition {
 
-  protected DescriptionDefinition description;
+  protected DescriptionElement description;
   @XmlAttribute(name = "customId")
   protected Boolean customId;
   @XmlAttribute(name = "id")
@@ -56,20 +55,20 @@ public abstract class OptionalIdentifiedDefinition {
   /**
    * Gets the value of the description property.
    * 
-   * @return possible object is {@link DescriptionDefinition }
+   * @return possible object is {@link DescriptionElement }
    * 
    */
-  public DescriptionDefinition getDescription() {
+  public DescriptionElement getDescription() {
     return description;
   }
 
   /**
    * Sets the value of the description property.
    * 
-   * @param value allowed object is {@link DescriptionDefinition }
+   * @param value allowed object is {@link DescriptionElement }
    * 
    */
-  public void setDescription(DescriptionDefinition value) {
+  public void setDescription(DescriptionElement value) {
     this.description = value;
   }
 
@@ -113,7 +112,7 @@ public abstract class OptionalIdentifiedDefinition {
     this.id = value;
   }
 
-  public OptionalIdentifiedDefinition withDescription(DescriptionDefinition value) {
+  public OptionalIdentifiedDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }

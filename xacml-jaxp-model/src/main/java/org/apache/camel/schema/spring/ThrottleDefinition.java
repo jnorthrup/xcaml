@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.04 at 01:11:38 AM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -189,73 +189,73 @@ public class ThrottleDefinition extends ExpressionNode {
   }
 
   @Override
-  public ThrottleDefinition withConstant(ConstantExpression value) {
+  public ThrottleDefinition withConstant(ConstantElement value) {
     setConstant(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withEl(ElExpression value) {
+  public ThrottleDefinition withEl(ElElement value) {
     setEl(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withGroovy(GroovyExpression value) {
+  public ThrottleDefinition withGroovy(GroovyElement value) {
     setGroovy(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withHeader(HeaderExpression value) {
+  public ThrottleDefinition withHeader(HeaderElement value) {
     setHeader(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withJxpath(JxPathExpression value) {
+  public ThrottleDefinition withJxpath(JxpathElement value) {
     setJxpath(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withJavaScript(JavaScriptExpression value) {
+  public ThrottleDefinition withJavaScript(JavaScriptElement value) {
     setJavaScript(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withJsonpath(JsonPathExpression value) {
+  public ThrottleDefinition withJsonpath(JsonpathElement value) {
     setJsonpath(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withLanguage(LanguageExpression value) {
+  public ThrottleDefinition withLanguage(LanguageElement value) {
     setLanguage(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withMethod(MethodCallExpression value) {
+  public ThrottleDefinition withMethod(MethodElement value) {
     setMethod(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withMvel(MvelExpression value) {
+  public ThrottleDefinition withMvel(MvelElement value) {
     setMvel(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withOgnl(OgnlExpression value) {
+  public ThrottleDefinition withOgnl(OgnlElement value) {
     setOgnl(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withPhp(PhpExpression value) {
+  public ThrottleDefinition withPhp(PhpElement value) {
     setPhp(value);
     return this;
   }
@@ -267,25 +267,25 @@ public class ThrottleDefinition extends ExpressionNode {
   }
 
   @Override
-  public ThrottleDefinition withPython(PythonExpression value) {
+  public ThrottleDefinition withPython(PythonElement value) {
     setPython(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withRef(RefExpression value) {
+  public ThrottleDefinition withRef(RefElement value) {
     setRef(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withRuby(RubyExpression value) {
+  public ThrottleDefinition withRuby(RubyElement value) {
     setRuby(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withSimple(SimpleExpression value) {
+  public ThrottleDefinition withSimple(SimpleElement value) {
     setSimple(value);
     return this;
   }
@@ -297,7 +297,7 @@ public class ThrottleDefinition extends ExpressionNode {
   }
 
   @Override
-  public ThrottleDefinition withSql(SqlExpression value) {
+  public ThrottleDefinition withSql(SqlElement value) {
     setSql(value);
     return this;
   }
@@ -321,13 +321,13 @@ public class ThrottleDefinition extends ExpressionNode {
   }
 
   @Override
-  public ThrottleDefinition withXpath(XPathExpression value) {
+  public ThrottleDefinition withXpath(XpathElement value) {
     setXpath(value);
     return this;
   }
 
   @Override
-  public ThrottleDefinition withXquery(XQueryExpression value) {
+  public ThrottleDefinition withXquery(XqueryElement value) {
     setXquery(value);
     return this;
   }
@@ -357,7 +357,7 @@ public class ThrottleDefinition extends ExpressionNode {
   }
 
   @Override
-  public ThrottleDefinition withDescription(DescriptionDefinition value) {
+  public ThrottleDefinition withDescription(DescriptionElement value) {
     setDescription(value);
     return this;
   }
