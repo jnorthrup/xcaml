@@ -3,7 +3,7 @@
 // v2.2.10-b140310.1920
 // See <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
 // Any modifications to this file will be lost upon recompilation of the source schema.
-// Generated on: 2015.02.24 at 01:59:12 PM PST
+// Generated on: 2015.03.03 at 06:28:20 PM PST
 //
 
 package org.apache.camel.schema.spring;
@@ -11,20 +11,25 @@ package org.apache.camel.schema.spring;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import javax.xml.bind.annotation.*;
-
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 
 /**
  * <p>
- * Java class for camelContextFactoryBean complex type.
+ * Java class for anonymous complex type.
  * 
  * <p>
  * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="camelContextFactoryBean">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;extension base="{http://camel.apache.org/schema/spring}abstractCamelContextFactoryBean">
  *       &lt;sequence>
@@ -86,14 +91,14 @@ import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "camelContext")
-@XmlType(name = "camelContextFactoryBean", propOrder = {
+@XmlType(name = "", propOrder = {
     "properties", "propertyPlaceholder", "_package", "packageScan", "contextScan", "streamCaching",
     "jmxAgent", "templateOrConsumerTemplateOrProxy", "routeBuilder", "routeContextRef",
     "restContextRef", "threadPoolProfile", "threadPool", "endpoint", "dataFormats",
     "redeliveryPolicyProfile", "onException", "onCompletion", "intercept", "interceptFrom",
     "interceptSendToEndpoint", "restConfiguration", "rest", "route"})
-public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
+@XmlRootElement(name = "camelContext")
+public class CamelContext extends AbstractCamelContextFactoryBean {
 
   protected PropertiesDefinition properties;
   protected CamelPropertyPlaceholderDefinition propertyPlaceholder;
@@ -1155,17 +1160,17 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     this.typeConverterStatisticsEnabled = value;
   }
 
-  public CamelContextFactoryBean withProperties(PropertiesDefinition value) {
+  public CamelContext withProperties(PropertiesDefinition value) {
     setProperties(value);
     return this;
   }
 
-  public CamelContextFactoryBean withPropertyPlaceholder(CamelPropertyPlaceholderDefinition value) {
+  public CamelContext withPropertyPlaceholder(CamelPropertyPlaceholderDefinition value) {
     setPropertyPlaceholder(value);
     return this;
   }
 
-  public CamelContextFactoryBean withPackage(String... values) {
+  public CamelContext withPackage(String... values) {
     if (values != null) {
       for (String value : values) {
         getPackage().add(value);
@@ -1174,34 +1179,34 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withPackage(Collection<String> values) {
+  public CamelContext withPackage(Collection<String> values) {
     if (values != null) {
       getPackage().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withPackageScan(PackageScanDefinition value) {
+  public CamelContext withPackageScan(PackageScanDefinition value) {
     setPackageScan(value);
     return this;
   }
 
-  public CamelContextFactoryBean withContextScan(ContextScanDefinition value) {
+  public CamelContext withContextScan(ContextScanDefinition value) {
     setContextScan(value);
     return this;
   }
 
-  public CamelContextFactoryBean withStreamCaching(CamelStreamCachingStrategyDefinition value) {
+  public CamelContext withStreamCaching(CamelStreamCachingStrategyDefinition value) {
     setStreamCaching(value);
     return this;
   }
 
-  public CamelContextFactoryBean withJmxAgent(CamelJMXAgentDefinition value) {
+  public CamelContext withJmxAgent(CamelJMXAgentDefinition value) {
     setJmxAgent(value);
     return this;
   }
 
-  public CamelContextFactoryBean withTemplateOrConsumerTemplateOrProxy(IdentifiedType... values) {
+  public CamelContext withTemplateOrConsumerTemplateOrProxy(IdentifiedType... values) {
     if (values != null) {
       for (IdentifiedType value : values) {
         getTemplateOrConsumerTemplateOrProxy().add(value);
@@ -1210,15 +1215,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withTemplateOrConsumerTemplateOrProxy(
-      Collection<IdentifiedType> values) {
+  public CamelContext withTemplateOrConsumerTemplateOrProxy(Collection<IdentifiedType> values) {
     if (values != null) {
       getTemplateOrConsumerTemplateOrProxy().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withRouteBuilder(RouteBuilderDefinition... values) {
+  public CamelContext withRouteBuilder(RouteBuilderDefinition... values) {
     if (values != null) {
       for (RouteBuilderDefinition value : values) {
         getRouteBuilder().add(value);
@@ -1227,14 +1231,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRouteBuilder(Collection<RouteBuilderDefinition> values) {
+  public CamelContext withRouteBuilder(Collection<RouteBuilderDefinition> values) {
     if (values != null) {
       getRouteBuilder().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withRouteContextRef(RouteContextRefDefinition... values) {
+  public CamelContext withRouteContextRef(RouteContextRefDefinition... values) {
     if (values != null) {
       for (RouteContextRefDefinition value : values) {
         getRouteContextRef().add(value);
@@ -1243,14 +1247,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRouteContextRef(Collection<RouteContextRefDefinition> values) {
+  public CamelContext withRouteContextRef(Collection<RouteContextRefDefinition> values) {
     if (values != null) {
       getRouteContextRef().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withRestContextRef(RestContextRefDefinition... values) {
+  public CamelContext withRestContextRef(RestContextRefDefinition... values) {
     if (values != null) {
       for (RestContextRefDefinition value : values) {
         getRestContextRef().add(value);
@@ -1259,14 +1263,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRestContextRef(Collection<RestContextRefDefinition> values) {
+  public CamelContext withRestContextRef(Collection<RestContextRefDefinition> values) {
     if (values != null) {
       getRestContextRef().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withThreadPoolProfile(ThreadPoolProfileDefinition... values) {
+  public CamelContext withThreadPoolProfile(ThreadPoolProfileDefinition... values) {
     if (values != null) {
       for (ThreadPoolProfileDefinition value : values) {
         getThreadPoolProfile().add(value);
@@ -1275,15 +1279,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withThreadPoolProfile(
-      Collection<ThreadPoolProfileDefinition> values) {
+  public CamelContext withThreadPoolProfile(Collection<ThreadPoolProfileDefinition> values) {
     if (values != null) {
       getThreadPoolProfile().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withThreadPool(CamelThreadPoolFactoryBean... values) {
+  public CamelContext withThreadPool(CamelThreadPoolFactoryBean... values) {
     if (values != null) {
       for (CamelThreadPoolFactoryBean value : values) {
         getThreadPool().add(value);
@@ -1292,14 +1295,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withThreadPool(Collection<CamelThreadPoolFactoryBean> values) {
+  public CamelContext withThreadPool(Collection<CamelThreadPoolFactoryBean> values) {
     if (values != null) {
       getThreadPool().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withEndpoint(CamelEndpointFactoryBean... values) {
+  public CamelContext withEndpoint(CamelEndpointFactoryBean... values) {
     if (values != null) {
       for (CamelEndpointFactoryBean value : values) {
         getEndpoint().add(value);
@@ -1308,20 +1311,19 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withEndpoint(Collection<CamelEndpointFactoryBean> values) {
+  public CamelContext withEndpoint(Collection<CamelEndpointFactoryBean> values) {
     if (values != null) {
       getEndpoint().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withDataFormats(DataFormatsDefinition value) {
+  public CamelContext withDataFormats(DataFormatsDefinition value) {
     setDataFormats(value);
     return this;
   }
 
-  public CamelContextFactoryBean withRedeliveryPolicyProfile(
-      CamelRedeliveryPolicyFactoryBean... values) {
+  public CamelContext withRedeliveryPolicyProfile(CamelRedeliveryPolicyFactoryBean... values) {
     if (values != null) {
       for (CamelRedeliveryPolicyFactoryBean value : values) {
         getRedeliveryPolicyProfile().add(value);
@@ -1330,7 +1332,7 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRedeliveryPolicyProfile(
+  public CamelContext withRedeliveryPolicyProfile(
       Collection<CamelRedeliveryPolicyFactoryBean> values) {
     if (values != null) {
       getRedeliveryPolicyProfile().addAll(values);
@@ -1338,7 +1340,7 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withOnException(OnExceptionDefinition... values) {
+  public CamelContext withOnException(OnExceptionDefinition... values) {
     if (values != null) {
       for (OnExceptionDefinition value : values) {
         getOnException().add(value);
@@ -1347,14 +1349,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withOnException(Collection<OnExceptionDefinition> values) {
+  public CamelContext withOnException(Collection<OnExceptionDefinition> values) {
     if (values != null) {
       getOnException().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withOnCompletion(OnCompletionDefinition... values) {
+  public CamelContext withOnCompletion(OnCompletionDefinition... values) {
     if (values != null) {
       for (OnCompletionDefinition value : values) {
         getOnCompletion().add(value);
@@ -1363,14 +1365,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withOnCompletion(Collection<OnCompletionDefinition> values) {
+  public CamelContext withOnCompletion(Collection<OnCompletionDefinition> values) {
     if (values != null) {
       getOnCompletion().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withIntercept(InterceptDefinition... values) {
+  public CamelContext withIntercept(InterceptDefinition... values) {
     if (values != null) {
       for (InterceptDefinition value : values) {
         getIntercept().add(value);
@@ -1379,14 +1381,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withIntercept(Collection<InterceptDefinition> values) {
+  public CamelContext withIntercept(Collection<InterceptDefinition> values) {
     if (values != null) {
       getIntercept().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withInterceptFrom(InterceptFromDefinition... values) {
+  public CamelContext withInterceptFrom(InterceptFromDefinition... values) {
     if (values != null) {
       for (InterceptFromDefinition value : values) {
         getInterceptFrom().add(value);
@@ -1395,15 +1397,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withInterceptFrom(Collection<InterceptFromDefinition> values) {
+  public CamelContext withInterceptFrom(Collection<InterceptFromDefinition> values) {
     if (values != null) {
       getInterceptFrom().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withInterceptSendToEndpoint(
-      InterceptSendToEndpointDefinition... values) {
+  public CamelContext withInterceptSendToEndpoint(InterceptSendToEndpointDefinition... values) {
     if (values != null) {
       for (InterceptSendToEndpointDefinition value : values) {
         getInterceptSendToEndpoint().add(value);
@@ -1412,7 +1413,7 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withInterceptSendToEndpoint(
+  public CamelContext withInterceptSendToEndpoint(
       Collection<InterceptSendToEndpointDefinition> values) {
     if (values != null) {
       getInterceptSendToEndpoint().addAll(values);
@@ -1420,12 +1421,12 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRestConfiguration(RestConfigurationDefinition value) {
+  public CamelContext withRestConfiguration(RestConfigurationDefinition value) {
     setRestConfiguration(value);
     return this;
   }
 
-  public CamelContextFactoryBean withRest(RestDefinition... values) {
+  public CamelContext withRest(RestDefinition... values) {
     if (values != null) {
       for (RestDefinition value : values) {
         getRest().add(value);
@@ -1434,14 +1435,14 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRest(Collection<RestDefinition> values) {
+  public CamelContext withRest(Collection<RestDefinition> values) {
     if (values != null) {
       getRest().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withRoute(RouteDefinition... values) {
+  public CamelContext withRoute(RouteDefinition... values) {
     if (values != null) {
       for (RouteDefinition value : values) {
         getRoute().add(value);
@@ -1450,110 +1451,110 @@ public class CamelContextFactoryBean extends AbstractCamelContextFactoryBean {
     return this;
   }
 
-  public CamelContextFactoryBean withRoute(Collection<RouteDefinition> values) {
+  public CamelContext withRoute(Collection<RouteDefinition> values) {
     if (values != null) {
       getRoute().addAll(values);
     }
     return this;
   }
 
-  public CamelContextFactoryBean withDependsOn(String value) {
+  public CamelContext withDependsOn(String value) {
     setDependsOn(value);
     return this;
   }
 
-  public CamelContextFactoryBean withTrace(String value) {
+  public CamelContext withTrace(String value) {
     setTrace(value);
     return this;
   }
 
-  public CamelContextFactoryBean withMessageHistory(String value) {
+  public CamelContext withMessageHistory(String value) {
     setMessageHistory(value);
     return this;
   }
 
-  public CamelContextFactoryBean withStreamCache(String value) {
+  public CamelContext withStreamCache(String value) {
     setStreamCache(value);
     return this;
   }
 
-  public CamelContextFactoryBean withDelayer(String value) {
+  public CamelContext withDelayer(String value) {
     setDelayer(value);
     return this;
   }
 
-  public CamelContextFactoryBean withHandleFault(String value) {
+  public CamelContext withHandleFault(String value) {
     setHandleFault(value);
     return this;
   }
 
-  public CamelContextFactoryBean withErrorHandlerRef(String value) {
+  public CamelContext withErrorHandlerRef(String value) {
     setErrorHandlerRef(value);
     return this;
   }
 
-  public CamelContextFactoryBean withAutoStartup(String value) {
+  public CamelContext withAutoStartup(String value) {
     setAutoStartup(value);
     return this;
   }
 
-  public CamelContextFactoryBean withShutdownEager(String value) {
+  public CamelContext withShutdownEager(String value) {
     setShutdownEager(value);
     return this;
   }
 
-  public CamelContextFactoryBean withUseMDCLogging(String value) {
+  public CamelContext withUseMDCLogging(String value) {
     setUseMDCLogging(value);
     return this;
   }
 
-  public CamelContextFactoryBean withUseBreadcrumb(String value) {
+  public CamelContext withUseBreadcrumb(String value) {
     setUseBreadcrumb(value);
     return this;
   }
 
-  public CamelContextFactoryBean withAllowUseOriginalMessage(String value) {
+  public CamelContext withAllowUseOriginalMessage(String value) {
     setAllowUseOriginalMessage(value);
     return this;
   }
 
-  public CamelContextFactoryBean withRuntimeEndpointRegistryEnabled(String value) {
+  public CamelContext withRuntimeEndpointRegistryEnabled(String value) {
     setRuntimeEndpointRegistryEnabled(value);
     return this;
   }
 
-  public CamelContextFactoryBean withManagementNamePattern(String value) {
+  public CamelContext withManagementNamePattern(String value) {
     setManagementNamePattern(value);
     return this;
   }
 
-  public CamelContextFactoryBean withThreadNamePattern(String value) {
+  public CamelContext withThreadNamePattern(String value) {
     setThreadNamePattern(value);
     return this;
   }
 
-  public CamelContextFactoryBean withShutdownRoute(ShutdownRoute value) {
+  public CamelContext withShutdownRoute(ShutdownRoute value) {
     setShutdownRoute(value);
     return this;
   }
 
-  public CamelContextFactoryBean withShutdownRunningTask(ShutdownRunningTask value) {
+  public CamelContext withShutdownRunningTask(ShutdownRunningTask value) {
     setShutdownRunningTask(value);
     return this;
   }
 
-  public CamelContextFactoryBean withLazyLoadTypeConverters(Boolean value) {
+  public CamelContext withLazyLoadTypeConverters(Boolean value) {
     setLazyLoadTypeConverters(value);
     return this;
   }
 
-  public CamelContextFactoryBean withTypeConverterStatisticsEnabled(Boolean value) {
+  public CamelContext withTypeConverterStatisticsEnabled(Boolean value) {
     setTypeConverterStatisticsEnabled(value);
     return this;
   }
 
   @Override
-  public CamelContextFactoryBean withId(String value) {
+  public CamelContext withId(String value) {
     setId(value);
     return this;
   }
