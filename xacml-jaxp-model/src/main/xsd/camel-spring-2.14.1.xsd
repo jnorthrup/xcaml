@@ -21,8 +21,6 @@
 
   <xs:element name="bindy" type="tns:bindyDataFormat"/>
 
-  <xs:element name="camelContext" type="tns:camelContextFactoryBean"/>
-
   <xs:element name="castor" type="tns:castorDataFormat"/>
 
   <xs:element name="choice" type="tns:choiceDefinition"/>
@@ -3189,63 +3187,65 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="camelContextFactoryBean">
-    <xs:complexContent>
-      <xs:extension base="tns:abstractCamelContextFactoryBean">
-        <xs:sequence>
-          <xs:element ref="tns:properties" minOccurs="0"/>
-          <xs:element ref="tns:propertyPlaceholder" minOccurs="0"/>
-          <xs:element name="package" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:packageScan" minOccurs="0"/>
-          <xs:element ref="tns:contextScan" minOccurs="0"/>
-          <xs:element ref="tns:streamCaching" minOccurs="0"/>
-          <xs:element ref="tns:jmxAgent" minOccurs="0"/>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element ref="tns:template"/>
-            <xs:element ref="tns:consumerTemplate"/>
-            <xs:element ref="tns:proxy"/>
-            <xs:element ref="tns:export"/>
-            <xs:element ref="tns:errorHandler"/>
-          </xs:choice>
-          <xs:element ref="tns:routeBuilder" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:routeContextRef" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:restContextRef" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:threadPoolProfile" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:threadPool" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:endpoint" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:dataFormats" minOccurs="0"/>
-          <xs:element ref="tns:redeliveryPolicyProfile" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:onException" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:onCompletion" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:intercept" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:interceptFrom" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="interceptSendToEndpoint" type="tns:interceptSendToEndpointDefinition" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:restConfiguration" minOccurs="0"/>
-          <xs:element ref="tns:rest" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element ref="tns:route" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-        <xs:attribute name="depends-on" type="xs:string"/>
-        <xs:attribute name="trace" type="xs:string"/>
-        <xs:attribute name="messageHistory" type="xs:string"/>
-        <xs:attribute name="streamCache" type="xs:string"/>
-        <xs:attribute name="delayer" type="xs:string"/>
-        <xs:attribute name="handleFault" type="xs:string"/>
-        <xs:attribute name="errorHandlerRef" type="xs:string"/>
-        <xs:attribute name="autoStartup" type="xs:string"/>
-        <xs:attribute name="shutdownEager" type="xs:string"/>
-        <xs:attribute name="useMDCLogging" type="xs:string"/>
-        <xs:attribute name="useBreadcrumb" type="xs:string"/>
-        <xs:attribute name="allowUseOriginalMessage" type="xs:string"/>
-        <xs:attribute name="runtimeEndpointRegistryEnabled" type="xs:string"/>
-        <xs:attribute name="managementNamePattern" type="xs:string"/>
-        <xs:attribute name="threadNamePattern" type="xs:string"/>
-        <xs:attribute name="shutdownRoute" type="tns:shutdownRoute"/>
-        <xs:attribute name="shutdownRunningTask" type="tns:shutdownRunningTask"/>
-        <xs:attribute name="lazyLoadTypeConverters" type="xs:boolean"/>
-        <xs:attribute name="typeConverterStatisticsEnabled" type="xs:boolean"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
+  <xs:element name="camelContext" >
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="tns:abstractCamelContextFactoryBean">
+                    <xs:sequence>
+                        <xs:element ref="tns:properties" minOccurs="0"/>
+                        <xs:element ref="tns:propertyPlaceholder" minOccurs="0"/>
+                        <xs:element name="package" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:packageScan" minOccurs="0"/>
+                        <xs:element ref="tns:contextScan" minOccurs="0"/>
+                        <xs:element ref="tns:streamCaching" minOccurs="0"/>
+                        <xs:element ref="tns:jmxAgent" minOccurs="0"/>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element ref="tns:template"/>
+                            <xs:element ref="tns:consumerTemplate"/>
+                            <xs:element ref="tns:proxy"/>
+                            <xs:element ref="tns:export"/>
+                            <xs:element ref="tns:errorHandler"/>
+                        </xs:choice>
+                        <xs:element ref="tns:routeBuilder" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:routeContextRef" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:restContextRef" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:threadPoolProfile" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:threadPool" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:endpoint" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:dataFormats" minOccurs="0"/>
+                        <xs:element ref="tns:redeliveryPolicyProfile" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:onException" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:onCompletion" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:intercept" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:interceptFrom" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="interceptSendToEndpoint" type="tns:interceptSendToEndpointDefinition" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:restConfiguration" minOccurs="0"/>
+                        <xs:element ref="tns:rest" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element ref="tns:route" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                    <xs:attribute name="depends-on" type="xs:string"/>
+                    <xs:attribute name="trace" type="xs:string"/>
+                    <xs:attribute name="messageHistory" type="xs:string"/>
+                    <xs:attribute name="streamCache" type="xs:string"/>
+                    <xs:attribute name="delayer" type="xs:string"/>
+                    <xs:attribute name="handleFault" type="xs:string"/>
+                    <xs:attribute name="errorHandlerRef" type="xs:string"/>
+                    <xs:attribute name="autoStartup" type="xs:string"/>
+                    <xs:attribute name="shutdownEager" type="xs:string"/>
+                    <xs:attribute name="useMDCLogging" type="xs:string"/>
+                    <xs:attribute name="useBreadcrumb" type="xs:string"/>
+                    <xs:attribute name="allowUseOriginalMessage" type="xs:string"/>
+                    <xs:attribute name="runtimeEndpointRegistryEnabled" type="xs:string"/>
+                    <xs:attribute name="managementNamePattern" type="xs:string"/>
+                    <xs:attribute name="threadNamePattern" type="xs:string"/>
+                    <xs:attribute name="shutdownRoute" type="tns:shutdownRoute"/>
+                    <xs:attribute name="shutdownRunningTask" type="tns:shutdownRunningTask"/>
+                    <xs:attribute name="lazyLoadTypeConverters" type="xs:boolean"/>
+                    <xs:attribute name="typeConverterStatisticsEnabled" type="xs:boolean"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
 
   <xs:complexType name="camelProducerTemplateFactoryBean">
     <xs:complexContent>
