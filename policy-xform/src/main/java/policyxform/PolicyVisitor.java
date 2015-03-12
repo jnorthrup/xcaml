@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
 import org.apache.camel.schema.spring.CamelContextElement;
 import org.apache.camel.schema.spring.DescriptionElement;
-import org.apache.camel.schema.spring.ObjectFactory;
+import org.apache.camel.schema.spring.FromElement;
 import org.apache.camel.schema.spring.RouteElement;
 import org.springframework.schema.beans.Beans;
 import org.springframework.schema.beans.Description;
@@ -33,8 +33,10 @@ import java.util.stream.Collectors;
 public class PolicyVisitor {
 
     public static final Class[] COMMON_CLASSES = new Class[]{
-            org.springframework.schema.beans.ObjectFactory.class, ObjectFactory.class,
+            org.springframework.schema.beans.ObjectFactory.class,
+            org.apache.camel.schema.spring.ObjectFactory.class,
             oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class};
+    public static final String LINE_SEPARATOR = System.lineSeparator();
     long c = 0;
     JAXBContext currentJaxbContext;
     private CamelContextElement currentCamelContext;
@@ -72,6 +74,10 @@ public class PolicyVisitor {
 
     static JAXBContext createJaxbContext(Class... classes) throws JAXBException {
         return JAXBContext.newInstance(classes.length == 0 ? COMMON_CLASSES : classes);
+    }
+
+    public static String trace() {
+        return "+trace.out: " + traceDescriptionElement(3);
     }
 
     public void visitXml(String... args) throws JAXBException, ParserConfigurationException,
@@ -125,14 +131,16 @@ public class PolicyVisitor {
         currentPolicy.getRuleCombiningAlgId();
         // final RouteElement routeElement = new RouteElement().withDescription(traceDescriptionElement( ));
 
-        currentRoutElement = new RouteElement().withDescription(new DescriptionElement()
-                        .withValue(
-                                currentPolicy .getDescription()+
-                                        System.lineSeparator() +
-                                        "+trace.out: " +
-                                        traceDescriptionElement())
-        );
+        final String s = trace();
+        final String description = currentPolicy.getDescription();
+        currentRoutElement =
+                new RouteElement().withId(id()).withDescription(
+                        new DescriptionElement().withValue(description + LINE_SEPARATOR + s));
+
         currentCamelContext.getRoute().add(currentRoutElement);
+
+        final Object o = visitTarget(currentPolicy.getTarget());
+
     }
 
     public StringWriter reifyProxy() throws JAXBException {
@@ -202,10 +210,23 @@ public class PolicyVisitor {
         return null;
     }
 
-    public Object visitTarget(Parent graph, Object parent, TargetType targetType) {
-        Object val = null;
+    public Object visitTarget(TargetType targetType) {
 
-        return val;
+        final String id = id();
+        RouteElement rt = new RouteElement().withId(id), currentRoutElement = rt, parent =
+                this.currentRoutElement;
+        rt.getFrom().add(new FromElement().withRef(parent.getId()));
+        targetType.getAnyOf().forEach(anyOfType -> {
+
+            anyOfType.getAllOf().forEach(allOfType -> {
+                allOfType.getMatch().forEach(matchType -> {
+                    System.err.println("matchId" + matchType.getMatchId());
+                });
+            });
+        });
+        currentCamelContext.getRoute().add(rt);
+
+        return targetType;
     }
 
     public String getContentString(List<Object> content) {
