@@ -43,7 +43,7 @@ public class PolicyVisitor {
   private Beans beans;
   private PolicyType currentPolicy;
   private PolicySetType currentPolicySet;
-  private RouteElement currentRoutElement;
+  private RouteElement currentRouteElement;
 
   ;
 
@@ -103,15 +103,17 @@ public class PolicyVisitor {
     switch (tagName) {
       case "PolicySet": {
         JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
-        currentCamelContext.setId(e.getValue().getPolicySetId());
+        currentCamelContext.setId(id() + '-' + urnTip(e.getValue().getPolicySetId()));
         visitPolicySet(e, currentCamelContext);
         break;
       }
 
       case "Policy": {
         JAXBElement<PolicyType> e = unmarshaller.unmarshal(doc, PolicyType.class);
-        currentCamelContext.setId(e.getValue().getPolicyId());
-        visitPolicy(e, currentCamelContext);
+          final String policyId = e.getValue().getPolicyId();
+          final String s = ncName(policyId);
+          currentCamelContext.setId(id() + '-' + s);
+          visitPolicy(e, currentCamelContext);
         break;
       }
       default:
@@ -123,39 +125,46 @@ public class PolicyVisitor {
     writeGraph(beans, out);
   }
 
-  public void visitPolicy(JAXBElement<PolicyType> e, Object... createEdgeToHere)
+    public String ncName(String urn) {
+        return urnTip(urn).replaceAll("^:(.*)", "$1");
+    }
+
+    public void visitPolicy(JAXBElement<PolicyType> e, Object... createEdgeToHere)
       throws JAXBException {
     currentPolicy = e.getValue();
     String policySetId = currentPolicy.getPolicyId();
-    currentCamelContext.setId(policySetId);
+
     currentPolicy.getRuleCombiningAlgId();
     // final RouteElement routeElement = new RouteElement().withDescription(traceDescriptionElement( ));
 
     final String s = trace();
     final String description = currentPolicy.getDescription();
-    currentRoutElement =
+    currentRouteElement =
         new RouteElement().withId(id()).withDescription(
             new DescriptionElement().withValue(description + LINE_SEPARATOR + s));
 
-    currentCamelContext.getRoute().add(currentRoutElement);
-
-    final Object o = visitTarget(currentPolicy.getTarget());
+    currentCamelContext.getRoute().add(currentRouteElement);
+    final Object o = visitTarget(currentPolicy.getTarget(), this.currentRouteElement);
     final String ruleCombiningAlgId = currentPolicy.getRuleCombiningAlgId();
     final List<Object> combinerParametersOrRuleCombinerParametersOrVariableDefinition =
         currentPolicy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition();
     for (Object o1 : combinerParametersOrRuleCombinerParametersOrVariableDefinition) {
       if (o1 instanceof RuleType) {
-        RuleType ruleType = (RuleType) o1;
-        visitRule(ruleType);
+        visitRule((RuleType) o1);
       }
-    }
+      /*
+       * if (o1 instanceof AdviceExpressionsType) { AdviceExpressionsType adviceExpressionsType =
+       * (AdviceExpressionsType) o1; visitAdviceExpressions(new Parent() { },adviceExpressionsType ); }
+       */
 
+    }
   }
 
   private void visitRule(RuleType o1) {
-    currentRoutElement = new RouteElement().withId(o1.getRuleId());
+    RouteElement currentRouteElement1 = new RouteElement().withId(o1.getRuleId());
     final TargetType target = o1.getTarget();
-    visitTarget(target);
+    visitTarget(target, currentRouteElement1);
+    currentRouteElement = currentRouteElement1;
 
   }
 
@@ -221,16 +230,11 @@ public class PolicyVisitor {
     return null;
   }
 
-  public Node visitRule(Node topLink, Parent c, Node prevLink, RuleType ruleType) {
-
-    return null;
-  }
-
-  public Object visitTarget(TargetType targetType) {
+  public Object visitTarget(TargetType targetType, RouteElement routeElement) {
 
         final String id = id();
         RouteElement rt = new RouteElement().withId(id), currentRoutElement = rt, parent =
-                this.currentRoutElement;
+                routeElement;
         rt.getFrom().add(new FromElement().withRef(parent.getId()));
         targetType.getAnyOf().forEach(anyOfType -> {
             anyOfType.getAllOf().forEach(allOfType -> {

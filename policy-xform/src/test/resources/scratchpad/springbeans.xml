@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:ns2="http://camel.apache.org/schema/spring" xmlns:ns3="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17">
+    <description>beans::foo n4</description>
+
+    <ns2:camelContext id="n0-SimplePolicy1">
+        <ns2:route id="n1">
+            <ns2:description> Medi Corp access control policy
+                +trace.out: visitPolicy (PolicyVisitor.java:140 )</ns2:description>
+        </ns2:route>
+        <ns2:route id="n2">
+            <ns2:from ref="n1"/>
+        </ns2:route>
+        <ns2:route id="n3">
+            <ns2:description>Match::urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match</ns2:description>
+            <ns2:from ref="urn:oasis:names:tc:xacml:3.0:example:SimpleRule1"/>
+        </ns2:route>
+    </ns2:camelContext>
+</beans>
