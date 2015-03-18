@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:ns2="http://camel.apache.org/schema/spring" xmlns:ns3="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xacml="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" xmlns:util="http://www.springframework.org/schema/util"
+>
     <description>beans::foo n4</description>
+    <!--http://stackoverflow.com/a/20745461/1577005-->
+    <bean id="theResponse" scope="prototype" class="oasis.names.tc.xacml._3_0.core.schema.wd_17.ResponseType"/>
 
-    <ns2:camelContext id="n0-SimplePolicy1">
-        <ns2:route id="n1">
-            <ns2:description> Medi Corp access control policy
-                +trace.out: visitPolicy (PolicyVisitor.java:140 )</ns2:description>
-        </ns2:route>
-        <ns2:route id="n2">
-            <ns2:from ref="n1"/>
-        </ns2:route>
-        <ns2:route id="n3">
-            <ns2:description>Match::urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match</ns2:description>
-            <ns2:from ref="urn:oasis:names:tc:xacml:3.0:example:SimpleRule1"/>
-        </ns2:route>
-    </ns2:camelContext>
+    <camel:setProperty propertyName="buzz">
+  <camel:simple>${bean:theResponse}</camel:simple>
+</camel:setProperty>
+
+    <camel:routeContext>
+        <!--policy-->
+        <camel:route id="rule1"/>
+        <camel:route id="rule2"/>
+        <camel:route id="rule3"/>
+        <camel:route id="rule4"/>
+        <camel:route id="rule5"/>
+    </camel:routeContext>
+
+
+    <camel:camelContext id="n0-SimplePolicy1">
+        <!--policy doc-->
+        <camel:route id="n1">
+            <camel:description> Medi Corp access control policy
+                +trace.out: visitPolicy (PolicyVisitor.java:140 )</camel:description>
+        </camel:route>
+        <camel:route id="n2">
+            <camel:from ref="n1"/>
+        </camel:route>
+        <camel:route id="n3">
+            <camel:description>Match::urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match</camel:description>
+            <camel:from ref="urn:oasis:names:tc:xacml:3.0:example:SimpleRule1"/>
+        </camel:route>
+
+    </camel:camelContext>
 </beans>
