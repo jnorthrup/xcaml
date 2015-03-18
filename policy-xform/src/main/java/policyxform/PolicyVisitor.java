@@ -4,8 +4,10 @@ import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
 import org.apache.camel.schema.spring.*;
-import org.springframework.schema.beans.Beans;
-import org.springframework.schema.beans.Description;
+
+import org.apache.camel.schema.spring.DescriptionElement;
+
+import org.springframework.schema.beans.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -42,7 +44,7 @@ public class PolicyVisitor {
     long c;
     JAXBContext currentJaxbContext;
     private CamelContextElement currentCamelContext;
-    private Beans beans;
+    private BeansElement beans;
     private PolicyType currentPolicy;
     private PolicySetType currentPolicySet;
     private RouteElement currentRouteElement;
@@ -118,9 +120,10 @@ public class PolicyVisitor {
             default:
                 System.exit(1);
         }
-        beans =
-                new Beans().withImportOrAliasOrBean(currentCamelContext).withDescription(
-                        new Description().withContent("beans::foo " + this.id()));
+        final String value = "beans::foo " + this.id();
+        beans = new BeansElement().withImportOrAliasOrBean(currentCamelContext).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+
+
         this.writeGraph(beans, out);
     }
 
@@ -283,7 +286,8 @@ public class PolicyVisitor {
 
     String hashTip(String dataType1) {
         char ch = '#';
-        return this.urnTip(this.stringTip(dataType1, ch));
+        final String attributeId = this.stringTip(dataType1, ch);
+        return this.urnTip(attributeId);
     }
 
     String urnTip(String attributeId) {
@@ -327,7 +331,7 @@ public class PolicyVisitor {
         return null;
     }
 
-    public void writeGraph(Beans graph, String out) throws JAXBException, IOException,
+    public void writeGraph(BeansElement graph, String out) throws JAXBException, IOException,
             InterruptedException {
         Marshaller marshaller = this.createMarshaller(COMMON_CLASSES);
         // output pretty printed
