@@ -8,6 +8,7 @@ import org.apache.camel.schema.spring.*;
 import org.apache.camel.schema.spring.DescriptionElement;
 
 import org.springframework.schema.beans.*;
+import org.springframework.schema.beans.BeanElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -37,10 +38,11 @@ import java.util.stream.Collectors;
 public class PolicyVisitor {
 
     public static final Class[] COMMON_CLASSES = {
+            oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class,
             org.springframework.schema.beans.ObjectFactory.class,
             org.springframework.schema.util.ObjectFactory.class,
             org.apache.camel.schema.spring.ObjectFactory.class,
-            oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class};
+    };
     public static final String LINE_SEPARATOR = System.lineSeparator();
     long c;
     JAXBContext currentJaxbContext;
@@ -103,6 +105,12 @@ public class PolicyVisitor {
         System.err.println("" + tagName);
         String out = args[1];
         currentCamelContext = new CamelContextElement();
+        String value = "beans::foo " + this.id();
+
+        BeanElement responseBean= new BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
+        BeanElement requestBean = new BeanElement().withId("theRequest").withLazyInit(DefaultableBoolean.DEFAULT).withScope("prototype").withClazz(RequestType.class.getCanonicalName());
+        beans = new BeansElement().withImportOrAliasOrBean(requestBean,responseBean,currentCamelContext).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+
         switch (tagName) {
             case "PolicySet": {
                 JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
@@ -121,8 +129,6 @@ public class PolicyVisitor {
             default:
                 System.exit(1);
         }
-        final String value = "beans::foo " + this.id();
-        beans = new BeansElement().withImportOrAliasOrBean(currentCamelContext).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
 
 
         this.writeGraph(beans, out);
@@ -143,24 +149,19 @@ public class PolicyVisitor {
         String s = trace();
         String description = currentPolicy.getDescription();
         currentRouteElement =
-                new RouteElement().withId(this.id()).withDescription(
+                new RouteElement().withId(id()).withDescription(
                         new DescriptionElement().withValue(description + LINE_SEPARATOR + s));
 
+
         currentCamelContext.getRoute().add(currentRouteElement);
+        PropertiesElement properties = currentCamelContext.getProperties();
         Object o = this.visitTarget(currentPolicy.getTarget(), currentRouteElement);
         String ruleCombiningAlgId = currentPolicy.getRuleCombiningAlgId();
         List<Object> combinerParametersOrRuleCombinerParametersOrVariableDefinition =
                 currentPolicy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition();
-        for (Object o1 : combinerParametersOrRuleCombinerParametersOrVariableDefinition) {
-            if (o1 instanceof RuleType) {
-                this.visitRule((RuleType) o1);
-            }
-      /*
-       * if (o1 instanceof AdviceExpressionsType) { AdviceExpressionsType adviceExpressionsType =
-       * (AdviceExpressionsType) o1; visitAdviceExpressions(new Parent() { },adviceExpressionsType ); }
-       */
 
-        }
+        for (Object o1 : combinerParametersOrRuleCombinerParametersOrVariableDefinition)
+            if (o1 instanceof RuleType) visitRule((RuleType) o1);
     }
 
     private void visitRule(RuleType o1) {
@@ -288,7 +289,7 @@ public class PolicyVisitor {
 
     String hashTip(String dataType1) {
         char ch = '#';
-        final String attributeId = this.stringTip(dataType1, ch);
+        String attributeId = this.stringTip(dataType1, ch);
         return this.urnTip(attributeId);
     }
 

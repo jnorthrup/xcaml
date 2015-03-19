@@ -3,9 +3,9 @@
 >
     <description>beans::foo n4</description>
     <!--http://stackoverflow.com/a/20745461/1577005-->
-    <bean id="theResponse" scope="prototype" class="oasis.names.tc.xacml._3_0.core.schema.wd_17.ResponseType"/>
+    <bean id="theResponse" scope="prototype" lazy-init="true" class="oasis.names.tc.xacml._3_0.core.schema.wd_17.ResponseType"/>
 
-    <camel:setProperty propertyName="buzz">
+    <camel:setProperty propertyName="response">
   <camel:simple>${bean:theResponse}</camel:simple>
 </camel:setProperty>
 
