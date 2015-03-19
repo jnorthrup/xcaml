@@ -2,13 +2,10 @@ package policyxform;
 
 import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
-//import ;
 import org.apache.camel.schema.spring.*;
-
-import org.apache.camel.schema.spring.DescriptionElement;
-
-import org.springframework.schema.beans.*;
 import org.springframework.schema.beans.BeanElement;
+import org.springframework.schema.beans.BeansElement;
+import org.springframework.schema.beans.DefaultableBoolean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -34,6 +31,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+//import ;
 
 public class PolicyVisitor {
 
@@ -107,9 +106,14 @@ public class PolicyVisitor {
         currentCamelContext = new CamelContextElement();
         String value = "beans::foo " + this.id();
 
-        BeanElement responseBean= new BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
+        BeanElement responseBean = new BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
         BeanElement requestBean = new BeanElement().withId("theRequest").withLazyInit(DefaultableBoolean.DEFAULT).withScope("prototype").withClazz(RequestType.class.getCanonicalName());
-        beans = new BeansElement().withImportOrAliasOrBean(requestBean,responseBean,currentCamelContext).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+
+        final org.springframework.schema.util.MapElement envMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("Env data")).withKeyType(String.class.getCanonicalName()).withId("EnvData").withScope("singleton");
+        final org.springframework.schema.util.MapElement pipMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("PIP data")).withKeyType(String.class.getCanonicalName()).withId("PIPdata").withScope("prototype");
+
+
+        beans = new BeansElement().withImportOrAliasOrBean(requestBean, responseBean, envMap, pipMap, currentCamelContext).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
 
         switch (tagName) {
             case "PolicySet": {
@@ -263,7 +267,7 @@ public class PolicyVisitor {
                     String optKey = attributeDesignator.getIssuer();
 
 
-                    System.err.println("ao" );
+                    System.err.println("ao");
                     //todo: write a request attribute extractor
 
                     //                    System.err.println("matchId" + matchId);

@@ -19,12 +19,16 @@
     </camel:routeContext>
 
 
+
     <camel:camelContext id="n0-SimplePolicy1">
+
+
         <!--policy doc-->
         <camel:route id="n1">
             <camel:description> Medi Corp access control policy
                 +trace.out: visitPolicy (PolicyVisitor.java:140 )</camel:description>
         </camel:route>
+
         <camel:route id="n2">
             <camel:from ref="n1"/>
         </camel:route>
