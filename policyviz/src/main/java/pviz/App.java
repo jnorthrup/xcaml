@@ -45,7 +45,7 @@ public class App {
 
   public static void main(String[] args) throws JAXBException, ParserConfigurationException,
       IOException, SAXException, InterruptedException {
-    JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class.getPackage().getName());
+    JAXBContext jc = JAXBContext.newInstance(ObjectFactory.class);
     DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
     documentBuilderFactory.setNamespaceAware(true);
     DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();

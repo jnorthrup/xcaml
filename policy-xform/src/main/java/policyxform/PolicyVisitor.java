@@ -2,7 +2,7 @@ package policyxform;
 
 import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
+//import ;
 import org.apache.camel.schema.spring.*;
 
 import org.apache.camel.schema.spring.DescriptionElement;
@@ -38,8 +38,9 @@ public class PolicyVisitor {
 
     public static final Class[] COMMON_CLASSES = {
             org.springframework.schema.beans.ObjectFactory.class,
+            org.springframework.schema.util.ObjectFactory.class,
             org.apache.camel.schema.spring.ObjectFactory.class,
-            ObjectFactory.class};
+            oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class};
     public static final String LINE_SEPARATOR = System.lineSeparator();
     long c;
     JAXBContext currentJaxbContext;
@@ -85,7 +86,7 @@ public class PolicyVisitor {
     public void visitXml(String... args) throws JAXBException, ParserConfigurationException,
             IOException, SAXException, InterruptedException {
         JAXBContext jc =
-                JAXBContext.newInstance(ObjectFactory.class);
+                JAXBContext.newInstance(oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class);
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         documentBuilderFactory.setNamespaceAware(true);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -235,7 +236,7 @@ public class PolicyVisitor {
     public Object visitTarget(TargetType targetType, RouteElement routeElement) {
 
         String id = this.id();
-        RouteElement rt = new RouteElement().withId(id), currentRoutElement = rt, parent =
+        RouteElement rt = new RouteElement().withId(id), parent =
                 routeElement;
         rt.getFrom().add(new FromElement().withRef(parent.getId()));
         targetType.getAnyOf().forEach(anyOfType -> {
@@ -259,6 +260,7 @@ public class PolicyVisitor {
                     String dataType = attributeDesignator.getDataType();
                     XacmlDataType from = XacmlDataType.from(dataType);
                     String optKey = attributeDesignator.getIssuer();
+
 
                     System.err.println("ao" );
                     //todo: write a request attribute extractor

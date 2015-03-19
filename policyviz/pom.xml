@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>xcaml</groupId>
-            <artifactId>xacml-jaxp-model</artifactId>
+            <artifactId>xacml-jaxb-model</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
