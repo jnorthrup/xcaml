@@ -150,11 +150,10 @@ public class PolicyVisitor {
         currentPolicy.getRuleCombiningAlgId();
         // final RouteElement routeElement = new RouteElement().withDescription(traceDescriptionElement( ));
 
-        String s = trace();
         String description = currentPolicy.getDescription();
         currentRouteElement =
                 new RouteElement().withId(id()).withDescription(
-                        new DescriptionElement().withValue(description + LINE_SEPARATOR + s));
+                        new DescriptionElement().withValue(description + LINE_SEPARATOR + trace()));
 
 
         currentCamelContext.getRoute().add(currentRouteElement);
@@ -250,12 +249,15 @@ public class PolicyVisitor {
                     /*match is a (function with a designator ) or a selector */
                     String matchId = matchType.getMatchId();
                     XacmlFunctionProto func = XacmlFunctionProto.from(matchId);
+                    //todo: extractors for bean values go here
+
+                    final FilterElement filterElement = new FilterElement();
+
+
                     XacmlDataType res = XacmlDataType.from(matchType.getAttributeValue().getDataType());
                     String args = Joiner.on(' ').join(matchType.getAttributeValue().getContent().stream().map(Object::toString).iterator()).trim();
                     Map<QName, String> otherAttributes = matchType.getAttributeValue().getOtherAttributes();
                     assert func.returns == res;
-
-
 
                     /*extract this from our state context, whatever that may have been designated last*/
                     //body.foo
@@ -267,11 +269,18 @@ public class PolicyVisitor {
                     String optKey = attributeDesignator.getIssuer();
 
 
-                    System.err.println("ao");
-                    //todo: write a request attribute extractor
+                    final String value = "specified.XacmlFunctionProto.from(\"" + matchId + "\").apply(\'"+args+"\',  ${ in.body['" + key1 + "." + key2 + "'] });";
 
-                    //                    System.err.println("matchId" + matchId);
-//                    rt.setDescription(new DescriptionElement().withValue("Match::"+matchId));
+                    rt.getAopOrAggregateOrBean().add(filterElement.withGroovy(new GroovyElement().withValue(value)));
+                    rt.getAopOrAggregateOrBean().add(new ToElement().withUri("direct:match"));
+
+
+                    System.err.println("ao");
+                    /*
+                    todo: write a request attribute extractor
+                    System.err.println("matchId" + matchId);
+                    rt.setDescription(new DescriptionElement().withValue("Match::"+matchId));
+                    */
                 });
             });
         });
