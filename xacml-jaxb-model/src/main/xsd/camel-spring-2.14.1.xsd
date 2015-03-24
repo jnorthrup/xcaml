@@ -1532,7 +1532,7 @@
                         <xs:element ref="mvel"/>
                         <xs:element ref="ognl"/>
                         <xs:element ref="php"/>
-                        <xs:element ref="property"/>
+                        <!--<xs:element ref="property"/>-->
                         <xs:element ref="python"/>
                         <xs:element ref="ref"/>
                         <xs:element ref="ruby"/>
