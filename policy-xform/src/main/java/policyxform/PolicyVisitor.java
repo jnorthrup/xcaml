@@ -251,7 +251,6 @@ public class PolicyVisitor {
                     XacmlFunctionProto func = XacmlFunctionProto.from(matchId);
                     //todo: extractors for bean values go here
 
-                    final FilterElement filterElement = new FilterElement();
 
 
                     XacmlDataType res = XacmlDataType.from(matchType.getAttributeValue().getDataType());
@@ -269,11 +268,13 @@ public class PolicyVisitor {
                     String optKey = attributeDesignator.getIssuer();
 
 
-                    final String value = "specified.XacmlFunctionProto.from(\"" + matchId + "\").apply(\'"+args+"\',  ${ in.body['" + key1 + "." + key2 + "'] });";
+                    final String value = "specified.XacmlFunctionProto.from(\"" + matchId + "\").apply(\'" + args + "\',  ${body['" + key1 + "." + key2 + "'] });";
+                    final FilterElement filterElement = new FilterElement().withSimple(new SimpleElement().withValue(value));
 
-                    rt.getAopOrAggregateOrBean().add(filterElement.withGroovy(new GroovyElement().withValue(value)));
-                    rt.getAopOrAggregateOrBean().add(new ToElement().withUri("direct:match"));
+                    rt.getAopOrAggregateOrBean().add(filterElement);
 
+                    filterElement.getAopOrAggregateOrBean().add(new ToElement().withUri("direct:permit"));
+                    filterElement.getAopOrAggregateOrBean().add(new OtherwiseElement().withAopOrAggregateOrBean(new ToElement().withUri("direct:deny")));
 
                     System.err.println("ao");
                     /*
