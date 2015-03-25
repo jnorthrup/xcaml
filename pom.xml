@@ -15,8 +15,8 @@
     <modules>
         <module>xacml-jaxb-model</module>
         <module>xacml-constants</module>
-        <module>policy-xform</module>
-        <module>pdp-core</module>
+	    <module>pdp-core</module>
+	    <module>policy-xform</module>
         <!--
         policyviz is an discrete build not part of deliverables henceforth
         <module>policyviz</module>-->

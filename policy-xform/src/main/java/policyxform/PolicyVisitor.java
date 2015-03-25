@@ -11,6 +11,7 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 import specified.XacmlDataType;
 import specified.XacmlFunctionProto;
+import xcaml.pdp.PdpTx;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;
@@ -50,7 +51,8 @@ public class PolicyVisitor {
     private PolicyType currentPolicy;
     private PolicySetType currentPolicySet;
     private RouteElement currentRouteElement;
-
+    private PdpTx tx;
+    
     public PolicyVisitor() throws JAXBException {
         currentJaxbContext = createJaxbContext();
     }
@@ -109,11 +111,11 @@ public class PolicyVisitor {
         BeanElement responseBean = new BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
         BeanElement requestBean = new BeanElement().withId("theRequest").withLazyInit(DefaultableBoolean.DEFAULT).withScope("prototype").withClazz(RequestType.class.getCanonicalName());
 
+        final String[] txId = new String[1];
         final org.springframework.schema.util.MapElement envMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("Env data")).withKeyType(String.class.getCanonicalName()).withId("EnvData").withScope("singleton");
         final org.springframework.schema.util.MapElement pipMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("PIP data")).withKeyType(String.class.getCanonicalName()).withId("PIPdata").withScope("prototype");
 
-
-        beans = new BeansElement().withImportOrAliasOrBean(requestBean, responseBean, envMap, pipMap, currentCamelContext).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+        beans = new BeansElement().withImportOrAliasOrBean(requestBean, responseBean, envMap, pipMap ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
 
         switch (tagName) {
             case "PolicySet": {
@@ -124,7 +126,16 @@ public class PolicyVisitor {
             }
 
             case "Policy":
+
                 JAXBElement<PolicyType> e = unmarshaller.unmarshal(doc, PolicyType.class);
+                currentPolicy= e.getValue();
+                getTx().getPolicyIndex().keySet().stream().forEach(strings -> {
+                    System.err.println(
+                        String.valueOf(strings) +
+                                '+' + trace());
+                    txId[0] = id();
+                    beans.getImportOrAliasOrBean().add(new BeanElement().withClazz(PdpTx.class.getCanonicalName()).withId(txId[0]));
+                });
                 String policyId = e.getValue().getPolicyId();
                 String s = this.ncName(policyId);
                 currentCamelContext.setId(this.id() + '-' + s);
@@ -134,7 +145,11 @@ public class PolicyVisitor {
                 System.exit(1);
         }
 
+              tx.getPolicyIndex().keySet().forEach(strings -> {
 
+              });
+
+        beans.getImportOrAliasOrBean().add(currentCamelContext);
         this.writeGraph(beans, out);
     }
 
@@ -162,7 +177,6 @@ public class PolicyVisitor {
         String ruleCombiningAlgId = currentPolicy.getRuleCombiningAlgId();
         List<Object> combinerParametersOrRuleCombinerParametersOrVariableDefinition =
                 currentPolicy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition();
-
         for (Object o1 : combinerParametersOrRuleCombinerParametersOrVariableDefinition)
             if (o1 instanceof RuleType) visitRule((RuleType) o1);
     }
@@ -172,7 +186,7 @@ public class PolicyVisitor {
         TargetType target = o1.getTarget();
         this.visitTarget(target, currentRouteElement1);
         currentRouteElement = currentRouteElement1;
-
+        getTx().preindexRule(o1, target);
     }
 
     public StringWriter reifyProxy() throws JAXBException {
@@ -362,6 +376,14 @@ public class PolicyVisitor {
         JAXBContext jaxbContext = currentJaxbContext;
 
         return jaxbContext.createMarshaller();
+    }
+
+    public PdpTx getTx() {
+        return tx==null?tx=new PdpTx(currentPolicy) : tx;
+    }
+
+    public void setTx(PdpTx tx) {
+        this.tx = tx;
     }
 
     interface Parent {

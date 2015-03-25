@@ -3,9 +3,15 @@ package xcaml.pdp;
 import com.google.auto.factory.AutoFactory;
 import com.google.auto.factory.Provided;
 import com.google.auto.value.AutoValue;
-import com.google.common.collect.*;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Multiset;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
-import specified.*;
+import specified.XacmlCombiningAlgorithm;
+import specified.XacmlDataType;
+import specified.XacmlEvaluation;
+import specified.XacmlFunctionProto;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,25 +21,37 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @AutoFactory
 public class PdpTx {
-  @AutoValue
-  abstract static class Tuple {
-    abstract RuleType ruleType();
-
-    abstract MatchType matchType();
-
-    abstract AttributeDesignatorType attributeDesignatorType();
-
-    static Tuple tuple(RuleType ruleType, MatchType matchType,
-        AttributeDesignatorType attributeDesignatorType) {
-      return new AutoValue_PdpTx_Tuple(ruleType, matchType, attributeDesignatorType);
+    public static PolicyType getPolicy() {
+        return policy;
     }
-  }
 
-  private static PolicyType policy;
-  final Multimap<List<String>, Tuple> policyIndex = ArrayListMultimap.create();
-
-  public PdpTx( @Provided PolicyType policy) {
+    public static void setPolicy(PolicyType policy) {
         PdpTx.policy = policy;
+    }
+
+    public Multimap<List<String>, Tuple> getPolicyIndex() {
+        return policyIndex;
+    }
+
+    @AutoValue
+    abstract static class Tuple {
+        abstract RuleType ruleType();
+
+        abstract MatchType matchType();
+
+        abstract AttributeDesignatorType attributeDesignatorType();
+
+        static Tuple tuple(RuleType ruleType, MatchType matchType,
+                           AttributeDesignatorType attributeDesignatorType) {
+            return new AutoValue_PdpTx_Tuple(ruleType, matchType, attributeDesignatorType);
+        }
+    }
+
+    private static PolicyType policy;
+    private final Multimap<List<String>, Tuple> policyIndex = ArrayListMultimap.create();
+
+    public PdpTx(@Provided PolicyType policy) {
+        PdpTx.setPolicy(policy);
         assert policy.getTarget().getAnyOf().isEmpty() : "top level target not yet implemented"; //todo: impl
         policy.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().stream().forEach(o -> {
             System.err.println("resolving: " + o.toString());
@@ -41,48 +59,51 @@ public class PdpTx {
 
             RuleType rule = (RuleType) o;
             System.err.println("eval Rule: " + rule.getRuleId());
-            TargetType target1 = rule.getTarget();
 
-            target1.getAnyOf().forEach(anyOfType -> anyOfType.getAllOf().forEach(allOfType -> allOfType.getMatch().forEach(action -> {
-                String matchId = action.getMatchId();
-                XacmlFunctionProto func = XacmlFunctionProto.from(matchId);
-                assert func.returns == XacmlDataType.from("http://www.w3.org/2001/XMLSchema#boolean") : "we only support predicate operation in this test";//todo: impl
-                System.err.println("eval match: " + matchId);
-                AttributeDesignatorType attributeDesignator = action.getAttributeDesignator();
-                if (attributeDesignator != null) {
-                    String category = attributeDesignator.getCategory();
-                    String attributeId = attributeDesignator.getAttributeId();
-                    List<String> key = Arrays.asList(category, attributeId);
-
-                    policyIndex.put(key, Tuple.tuple(rule, action, attributeDesignator));
-                }
-            })));
+            preindexRule(rule, rule.getTarget());
         });
     }
 
-  /**
-   * <ul>
-   * todo:
-   * <li>need a global singleton "direct:" endpoint per policy</li>
-   * <li>need a per-tx "direct:" inbound endpoint per request</li>
-   * <li>need a 2nd per-tx "direct:" outbound endpoint per request for the CombiningAlgorithm</li>
-   * <li>pipe the combining algorithm into the inner loop as an endpoint</li>
-   * <li>when the combining algorithm decides to exit early, end the resolver endpoints early and fire the combiner
-   * endpoint</li>
-   * </ul>
-   * 
-   * @param requestBody
-   * @return algorithm specific resolution
-   */
-  public XacmlEvaluation evaluatePolicyAndRequest(RequestType requestBody) {
+    public void preindexRule(RuleType rule, TargetType target1) {
+        target1.getAnyOf().forEach(anyOfType -> anyOfType.getAllOf().forEach(allOfType -> allOfType.getMatch().forEach(action -> {
+            String matchId = action.getMatchId();
+            XacmlFunctionProto func = XacmlFunctionProto.from(matchId);
+            assert func.returns == XacmlDataType.from("http://www.w3.org/2001/XMLSchema#boolean") : "we only support predicate operation in this test";//todo: impl
+            System.err.println("eval match: " + matchId);
+            AttributeDesignatorType attributeDesignator = action.getAttributeDesignator();
+            if (attributeDesignator != null) {
+                String category = attributeDesignator.getCategory();
+                String attributeId = attributeDesignator.getAttributeId();
+                List<String> key = Arrays.asList(category, attributeId);
+
+                getPolicyIndex().put(key, Tuple.tuple(rule, action, attributeDesignator));
+            }
+        })));
+    }
+
+    /**
+     * <ul>
+     * todo:
+     * <li>need a global singleton "direct:" endpoint per policy</li>
+     * <li>need a per-tx "direct:" inbound endpoint per request</li>
+     * <li>need a 2nd per-tx "direct:" outbound endpoint per request for the CombiningAlgorithm</li>
+     * <li>pipe the combining algorithm into the inner loop as an endpoint</li>
+     * <li>when the combining algorithm decides to exit early, end the resolver endpoints early and fire the combiner
+     * endpoint</li>
+     * </ul>
+     *
+     * @param requestBody
+     * @return algorithm specific resolution
+     */
+    public XacmlEvaluation evaluateRequest(RequestType requestBody) {
         Map<List<String>, AttributeType> reqIndex = new TreeMap<>();
-        Multiset<XacmlEvaluation> resolutionBag= HashMultiset.create();
+        Multiset<XacmlEvaluation> resolutionBag = HashMultiset.create();
         requestBody.getAttributes().stream().forEach(attributesType -> {
             String category = attributesType.getCategory();
             attributesType.getAttribute().forEach(reqAtt -> {
                 String attributeId = reqAtt.getAttributeId();
                 List<String> key = Arrays.asList(category, attributeId);
-                policyIndex.get(key).forEach(matchTypeAttributeDesignatorTypePair -> {
+                getPolicyIndex().get(key).forEach(matchTypeAttributeDesignatorTypePair -> {
                     XacmlEvaluation eff = XacmlEvaluation.NotApplicable;
 
                     AtomicInteger c = new AtomicInteger(0);
@@ -122,9 +143,9 @@ public class PdpTx {
             });
         });
 
-        String ruleCombiningAlgId = policy.getRuleCombiningAlgId();
+        String ruleCombiningAlgId = getPolicy().getRuleCombiningAlgId();
         System.err.println("combine using " + ruleCombiningAlgId);
-        String policyId = policy.getPolicyId();
+        String policyId = getPolicy().getPolicyId();
 
         XacmlCombiningAlgorithm combiningAlgorithm = XacmlCombiningAlgorithm.from(ruleCombiningAlgId);
 
