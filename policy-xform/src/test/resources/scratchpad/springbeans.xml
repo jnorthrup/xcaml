@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ns2:beans xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" xmlns:ns2="http://www.springframework.org/schema/beans" xmlns:ns3="http://www.springframework.org/schema/util" xmlns:ns4="http://camel.apache.org/schema/spring">
   <ns2:description>beans::foo n0</ns2:description>
-  <ns2:bean class="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType" scope="prototype" lazy-init="default" id="theRequest"/>
-  <ns2:bean class="oasis.names.tc.xacml._3_0.core.schema.wd_17.ResponseType" scope="prototype" lazy-init="true" id="theResponse"/>
   <ns3:map id="EnvData" scope="singleton" key-type="java.lang.String">
     <ns2:description>Env data</ns2:description>
   </ns3:map>
@@ -10,17 +8,10 @@
     <ns2:description>PIP data</ns2:description>
   </ns3:map>
   <ns4:camelContext id="n1-SimplePolicy1">
-    <ns4:route id="n2">
-      <ns4:description> Medi Corp access control policy
-        +trace.out: visitPolicy (PolicyVisitor.java:156 )</ns4:description>
-    </ns4:route>
-    <ns4:route id="n3">
-      <ns4:from ref="n2"/>
-    </ns4:route>
-    <ns4:route id="n4">
-      <ns4:from ref="urn:oasis:names:tc:xacml:3.0:example:SimpleRule1"/>
+    <ns4:route>
+      <ns4:from uri="direct:request"/>
       <ns4:filter>
-        <ns4:simple>specified.XacmlFunctionProto.from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com',  ${body['urn:oasis:names:tc:xacml:1.0:subject-category:access-subject.urn:oasis:names:tc:xacml:1.0:subject:subject-id'] });</ns4:simple>
+        <ns4:groovy>specified.XacmlFunctionProto.from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com', policyxform.PolicyVisitor.RequestTupleUtil.lookup( ${body},"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject","urn:oasis:names:tc:xacml:1.0:subject:subject-id" ) );</ns4:groovy>
         <ns4:to uri="direct:permit"/>
         <ns4:otherwise>
           <ns4:to uri="direct:deny"/>
