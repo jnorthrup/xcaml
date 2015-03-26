@@ -104,7 +104,8 @@ public class PolicyVisitor {
         String tagName = documentElement.getTagName();
         System.err.println("" + tagName);
         String out = args[1];
-        currentCamelContext = new CamelContextElement();
+        currentCamelContext = new CamelContextElement().withDataFormats(new DataFormatsDefinition().withAvroOrBarcodeOrBase64(new JaxbElement().withContextPath(RequestType.class.getPackage().getName()).withMustBeJAXBElement(true).withEncoding("UTF-8").withPrettyPrint(true).withId("xacml_3_parser")));
+        currentCamelContext.getRoute().add(new RouteElement().withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new MarshalDefinition().withRef("xacml_3_parser")).withAopOrAggregateOrBean(new ToElement().withUri("direct:request")));
         String value = "beans::foo " + this.id();
 
 /*
@@ -117,8 +118,7 @@ public class PolicyVisitor {
         final org.springframework.schema.util.MapElement pipMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("PIP data")).withKeyType(String.class.getCanonicalName()).withId("PIPdata").withScope("prototype");
 
         beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean, */envMap, pipMap ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
-        primaryRoute = new RouteElement().withFrom(  new FromElement().withUri("direct:request"));
-
+        primaryRoute = new RouteElement().withFrom(new FromElement().withUri("direct:request"));
         switch (tagName) {
             case "PolicySet": {
                 JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);

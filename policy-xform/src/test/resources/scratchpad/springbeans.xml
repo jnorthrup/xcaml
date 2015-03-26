@@ -8,6 +8,14 @@
     <ns2:description>PIP data</ns2:description>
   </ns3:map>
   <ns4:camelContext id="n1-SimplePolicy1">
+    <ns4:dataFormats>
+      <ns4:jaxb contextPath="oasis.names.tc.xacml._3_0.core.schema.wd_17" prettyPrint="true" mustBeJAXBElement="true" encoding="UTF-8" id="xacml_3_parser"/>
+    </ns4:dataFormats>
+    <ns4:route>
+      <ns4:from uri="direct:start"/>
+      <ns4:marshal ref="xacml_3_parser"/>
+      <ns4:to uri="direct:request"/>
+    </ns4:route>
     <ns4:route>
       <ns4:from uri="direct:request"/>
       <ns4:filter>
