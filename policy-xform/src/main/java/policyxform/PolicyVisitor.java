@@ -35,13 +35,15 @@ import java.util.stream.Collectors;
 public class PolicyVisitor {
 
     public static final Class[] COMMON_CLASSES = {
+            org.apache.camel.schema.spring.ObjectFactory.class,
             oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class,
             org.springframework.schema.beans.ObjectFactory.class,
             org.springframework.schema.util.ObjectFactory.class,
-            org.apache.camel.schema.spring.ObjectFactory.class,
     };
 
     public static final String LINE_SEPARATOR = System.lineSeparator();
+    public static final String XACML_3_PARSER = "xacml_3_parser";
+    public static final String JSON_REQ_PARSER = "json_req_parser";
     long c;
     JAXBContext currentJaxbContext;
     private CamelContextElement currentCamelContext;
@@ -104,9 +106,10 @@ public class PolicyVisitor {
         String tagName = documentElement.getTagName();
         System.err.println("" + tagName);
         String out = args[1];
-        currentCamelContext = new CamelContextElement().withDataFormats(new DataFormatsDefinition().withAvroOrBarcodeOrBase64(new JaxbElement().withContextPath(RequestType.class.getPackage().getName()).withMustBeJAXBElement(true).withEncoding("UTF-8").withPrettyPrint(true).withId("xacml_3_parser")));
-        currentCamelContext.getRoute().add(new RouteElement().withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new MarshalDefinition().withRef("xacml_3_parser")).withAopOrAggregateOrBean(new ToElement().withUri("direct:request")));
+        currentCamelContext = new CamelContextElement().withDataFormats(new DataFormatsDefinition().withAvroOrBarcodeOrBase64(new JsonElement().withId(JSON_REQ_PARSER).withLibrary(JsonLibrary.JACKSON).withPrettyPrint(Boolean.TRUE).withUnmarshalTypeName(RequestType.class.getCanonicalName()), new JaxbElement().withContextPath(RequestType.class.getPackage().getName()).withMustBeJAXBElement(true).withEncoding("UTF-8").withPrettyPrint(true).withId(XACML_3_PARSER)));
+        currentCamelContext.getRoute().add(new RouteElement().withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new MarshalDefinition().withRef(JSON_REQ_PARSER)).withAopOrAggregateOrBean(new ToElement().withUri("direct:request")));
         String value = "beans::foo " + this.id();
+
 
 /*
         BeanElement responseBean = new BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
