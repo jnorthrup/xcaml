@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns3:beans xmlns="http://camel.apache.org/schema/spring" xmlns:ns2="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" xmlns:ns3="http://www.springframework.org/schema/beans" xmlns:ns4="http://www.springframework.org/schema/util">
-  <ns3:description>beans::foo n0</ns3:description>
-  <ns4:map id="EnvData" scope="singleton" key-type="java.lang.String">
-    <ns3:description>Env data</ns3:description>
-  </ns4:map>
-  <ns4:map id="PIPdata" scope="prototype" key-type="java.lang.String">
-    <ns3:description>PIP data</ns3:description>
-  </ns4:map>
+<ns2:beans xmlns="http://camel.apache.org/schema/spring" xmlns:ns2="http://www.springframework.org/schema/beans"
+  xmlns:ns3="http://www.springframework.org/schema/util">
+  <ns2:description>beans::foo n0</ns2:description>
+  <ns3:map id="EnvData" scope="singleton" key-type="java.lang.String">
+    <ns2:description>Env data</ns2:description>
+  </ns3:map>
+  <ns3:map id="PIPdata" scope="prototype" key-type="java.lang.String">
+    <ns2:description>PIP data</ns2:description>
+  </ns3:map>
   <camelContext id="n1-SimplePolicy1">
     <dataFormats>
-      <json id="json_req_parser" library="Jackson"   unmarshalTypeName="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType"  />
-
-      <jaxb contextPath="oasis.names.tc.xacml._3_0.core.schema.wd_17" prettyPrint="true" mustBeJAXBElement="true" encoding="UTF-8" id="xacml_3_parser"/>
+      <json prettyPrint="true" library="Jackson"
+        unmarshalTypeName="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType" id="json_req_parser" />
+      <jaxb contextPath="oasis.names.tc.xacml._3_0.core.schema.wd_17" prettyPrint="true" mustBeJAXBElement="true"
+        encoding="UTF-8" id="xacml_3_parser" />
     </dataFormats>
     <route>
-      <from uri="direct:start"/>
-      <marshal ref="xacml_3_parser"/>
-      <to uri="direct:request"/>
+      <from uri="direct:start" />
+      <marshal ref="json_req_parser" />
+      <to uri="direct:request" />
     </route>
     <route>
-      <from uri="direct:start"/>
-      <marshal ref="xacml_3_parser"/>
-      <to uri="direct:request"/>
-    </route>
-    <route>
-      <from uri="direct:request"/>
+      <from uri="direct:request" />
       <filter>
-        <groovy>specified.XacmlFunctionProto.from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com', policyxform.PolicyVisitor.RequestTupleUtil.lookup( ${body},"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject","urn:oasis:names:tc:xacml:1.0:subject:subject-id" ) );</groovy>
-        <to uri="direct:permit"/>
+        <groovy>
+          specified.XacmlFunctionProto.from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com',
+          policyxform.PolicyVisitor.RequestTupleUtil.lookup(
+          ${body},"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject","urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+          ) );
+        </groovy>
+        <to uri="direct:permit" />
         <otherwise>
-          <to uri="direct:deny"/>
+          <to uri="direct:deny" />
         </otherwise>
       </filter>
     </route>
   </camelContext>
-</ns3:beans>
+</ns2:beans>

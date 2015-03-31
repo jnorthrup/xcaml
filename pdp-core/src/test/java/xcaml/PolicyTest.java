@@ -18,7 +18,7 @@ import xcaml.pdp.PdpTx;
 import java.io.InputStream;
 
 public class PolicyTest extends CamelTestSupport {
-
+  org.apache.camel.spring.Main a;
   public static final String MOCK_POLICY_SOURCE = "mock:policy_source";
   private static final String MOCK_REQUEST_SOURCE = "mock:request_source";;
   private static final String MOCK_RESOLUTION_SOURCE = "mock:resolution_source";;

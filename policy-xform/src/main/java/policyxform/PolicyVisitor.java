@@ -35,10 +35,10 @@ import java.util.stream.Collectors;
 public class PolicyVisitor {
 
     public static final Class[] COMMON_CLASSES = {
-            org.apache.camel.schema.spring.ObjectFactory.class,
-            oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class,
             org.springframework.schema.beans.ObjectFactory.class,
             org.springframework.schema.util.ObjectFactory.class,
+            org.apache.camel.schema.spring.ObjectFactory.class,
+            oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class,
     };
 
     public static final String LINE_SEPARATOR = System.lineSeparator();
@@ -117,10 +117,12 @@ public class PolicyVisitor {
 */
 
         final String[] txId = new String[1];
+/*
         final org.springframework.schema.util.MapElement envMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("Env data")).withKeyType(String.class.getCanonicalName()).withId("EnvData").withScope("singleton");
         final org.springframework.schema.util.MapElement pipMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("PIP data")).withKeyType(String.class.getCanonicalName()).withId("PIPdata").withScope("prototype");
+*/
 
-        beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean, */envMap, pipMap ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+        beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean,envMap, pipMap */ ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
         primaryRoute = new RouteElement().withFrom(new FromElement().withUri("direct:request"));
         switch (tagName) {
             case "PolicySet": {

@@ -8,7 +8,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>pdp-core</artifactId>
     <dependencies>
         <dependency>
@@ -71,11 +70,48 @@
             <artifactId>auto-value</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring-integration</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>xcaml</groupId>-->
+            <!--<artifactId>policy-xform</artifactId>-->
+            <!--<version>0.0.1</version>-->
+        <!--</dependency>-->
+        <dependency>
+  <groupId>org.apache.camel</groupId>
+  <artifactId>camel-jackson</artifactId>
+  <version>${camel.version}</version>
+</dependency>
+
+
+        <dependency>
+  <groupId>org.apache.camel</groupId>
+  <artifactId>camel-jaxb</artifactId>
+  <version>${camel.version}</version>
+</dependency>
+        <dependency>
+  <groupId>org.apache.camel</groupId>
+  <artifactId>camel-groovy</artifactId>
+  <version>${camel.version}</version>
+</dependency>
     </dependencies>
     <properties>
     </properties>
     <build>
         <plugins>
+                        <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-maven-plugin</artifactId>
+          <version>${camel.version}</version>
+      </plugin>
 
         </plugins>
     </build>

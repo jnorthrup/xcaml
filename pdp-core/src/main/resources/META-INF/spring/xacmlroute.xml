@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:ns2="http://www.springframework.org/schema/util" xmlns:ns3="http://camel.apache.org/schema/spring" xmlns:ns4="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+  <description>beans::foo n0</description>
+  <ns3:camelContext id="n1-SimplePolicy1">
+    <ns3:dataFormats>
+      <ns3:json prettyPrint="true" library="Jackson" unmarshalTypeName="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType" id="json_req_parser"/>
+      <ns3:jaxb contextPath="oasis.names.tc.xacml._3_0.core.schema.wd_17" prettyPrint="true" mustBeJAXBElement="true" encoding="UTF-8" id="xacml_3_parser"/>
+    </ns3:dataFormats>
+    <ns3:route>
+      <ns3:from uri="direct:start"/>
+      <ns3:marshal ref="json_req_parser"/>
+      <ns3:to uri="direct:request"/>
+    </ns3:route>
+    <ns3:route>
+      <ns3:from uri="direct:request"/>
+      <ns3:filter>
+        <ns3:groovy>specified.XacmlFunctionProto.from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com', policyxform.PolicyVisitor.RequestTupleUtil.lookup( ${body},"urn:oasis:names:tc:xacml:1.0:subject-category:access-subject","urn:oasis:names:tc:xacml:1.0:subject:subject-id" ) );</ns3:groovy>
+        <ns3:to uri="direct:permit"/>
+        <ns3:otherwise>
+          <ns3:to uri="direct:deny"/>
+        </ns3:otherwise>
+      </ns3:filter>
+    </ns3:route>
+  </ns3:camelContext>
+</beans>
