@@ -35,9 +35,9 @@ import java.util.stream.Collectors;
 public class PolicyVisitor {
 
     public static final Class[] COMMON_CLASSES = {
+            org.apache.camel.schema.spring.ObjectFactory.class,
             org.springframework.schema.beans.ObjectFactory.class,
             org.springframework.schema.util.ObjectFactory.class,
-            org.apache.camel.schema.spring.ObjectFactory.class,
             oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class,
     };
 
