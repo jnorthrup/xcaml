@@ -3,9 +3,7 @@ package policyxform;
 import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
 import org.apache.camel.schema.spring.*;
-import org.springframework.schema.beans.BeanElement;
 import org.springframework.schema.beans.BeansElement;
-import org.springframework.schema.beans.DefaultableBoolean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -22,6 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,6 +46,7 @@ public class PolicyVisitor {
     long c;
     JAXBContext currentJaxbContext;
     private CamelContextElement currentCamelContext;
+    private RouteContextElement currentRouteContext;
     private BeansElement beans;
     private PolicyType currentPolicy;
     private PolicySetType currentPolicySet;
@@ -106,9 +106,16 @@ public class PolicyVisitor {
         String tagName = documentElement.getTagName();
         System.err.println("" + tagName);
         String out = args[1];
-        currentCamelContext = new CamelContextElement().withDataFormats(new DataFormatsDefinition().withAvroOrBarcodeOrBase64(new JsonElement().withId(JSON_REQ_PARSER).withLibrary(JsonLibrary.JACKSON).withPrettyPrint(Boolean.TRUE).withUnmarshalTypeName(RequestType.class.getCanonicalName()), new JaxbElement().withContextPath(RequestType.class.getPackage().getName()).withMustBeJAXBElement(true).withEncoding("UTF-8").withPrettyPrint(true).withId(XACML_3_PARSER)));
-        currentCamelContext.getRoute().add(new RouteElement().withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new MarshalDefinition().withRef(JSON_REQ_PARSER)).withAopOrAggregateOrBean(new ToElement().withUri("direct:request")));
+        final JsonElement jsonElement = new JsonElement().withId(JSON_REQ_PARSER).withLibrary(JsonLibrary.JACKSON).withPrettyPrint(Boolean.TRUE).withUnmarshalTypeName(RequestType.class.getCanonicalName());
+        final JaxbElement jaxbElement = new JaxbElement().withContextPath(RequestType.class.getPackage().getName()).withMustBeJAXBElement(true).withEncoding("UTF-8").withPrettyPrint(true).withId(XACML_3_PARSER);
+        final DataFormatsDefinition dataFormatsDefinition = new DataFormatsDefinition().withAvroOrBarcodeOrBase64(jsonElement, jaxbElement);
+
+        currentRouteContext=new RouteContextElement().withId(id());
+        final RouteElement e1 = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new MarshalDefinition().withRef(JSON_REQ_PARSER)).withAopOrAggregateOrBean(new ToElement().withUri("direct:request"));
+        currentRouteContext.getRoute().add(e1);
         String value = "beans::foo " + this.id();
+        currentCamelContext = new CamelContextElement().withRouteContextRef(new RouteContextRefDefinition().withRef(currentRouteContext.getId())).withDataFormats(dataFormatsDefinition);
+
 
 
 /*
@@ -117,13 +124,11 @@ public class PolicyVisitor {
 */
 
         final String[] txId = new String[1];
-/*
         final org.springframework.schema.util.MapElement envMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("Env data")).withKeyType(String.class.getCanonicalName()).withId("EnvData").withScope("singleton");
         final org.springframework.schema.util.MapElement pipMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("PIP data")).withKeyType(String.class.getCanonicalName()).withId("PIPdata").withScope("prototype");
-*/
 
-        beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean,envMap, pipMap */ ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
-        primaryRoute = new RouteElement().withFrom(new FromElement().withUri("direct:request"));
+        beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean, */envMap, pipMap ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+        primaryRoute = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:request"));
         switch (tagName) {
             case "PolicySet": {
                 JAXBElement<PolicySetType> e = unmarshaller.unmarshal(doc, PolicySetType.class);
@@ -141,13 +146,14 @@ public class PolicyVisitor {
 //                currentCamelContext.getRoute().add(primaryRoute);
                 currentRouteElement= primaryRoute;
 
-                this.visitPolicy(e, currentCamelContext);
+                this.visitPolicy(e);
                 break;
             default:
                 System.exit(1);
         }
 
 
+        beans.getImportOrAliasOrBean().add(currentRouteContext);
         beans.getImportOrAliasOrBean().add(currentCamelContext);
         this.writeGraph(beans, out);
     }
@@ -156,15 +162,15 @@ public class PolicyVisitor {
         return this.urnTip(urn).replaceAll("^:(.*)", "$1");
     }
 
-    public void visitPolicy(JAXBElement<PolicyType> e, Object... createEdgeToHere)
+    public void visitPolicy(JAXBElement<PolicyType> e)
             throws JAXBException {
         currentPolicy = e.getValue();
-        String policySetId = currentPolicy.getPolicyId();
+        String policyId = currentPolicy.getPolicyId();
 
         currentPolicy.getRuleCombiningAlgId();
 
 
-        currentCamelContext.getRoute().add(currentRouteElement);
+        currentRouteContext.getRoute().add(currentRouteElement);
         PropertiesElement properties = currentCamelContext.getProperties();
         Object o = this.visitTarget(currentPolicy.getTarget(), currentRouteElement);
         String ruleCombiningAlgId = currentPolicy.getRuleCombiningAlgId();
@@ -189,11 +195,11 @@ public class PolicyVisitor {
         return writer;
     }
 
-    public void visitPolicySet(JAXBElement<PolicySetType> e, CamelContextElement graph,
+    public void visitPolicySet(JAXBElement<PolicySetType> e,
                                Object... createEdgeToHere) {
         currentPolicySet = e.getValue();
         String policySetId = currentPolicySet.getPolicySetId();
-        graph.setId(policySetId);
+        currentRouteContext.setId(policySetId);
 
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         Object[] objects =
@@ -268,7 +274,10 @@ public class PolicyVisitor {
                     XacmlDataType from = XacmlDataType.from(dataType);
                     String optKey = attributeDesignator.getIssuer();
 
-                    final String value = "specified.XacmlFunctionProto.from(\"" + matchId + "\").apply(\'" + args + "\', policyxform.PolicyVisitor.RequestTupleUtil.lookup( ${body},\""+key1+"\",\""+key2+"\" ) );";
+                    final String value = "import static specified.XacmlFunctionProto.from\n" +
+                            "import static xcaml.pdp.RequestTupleUtil.lookup\n" +
+                            "\n" +
+                            "from(\"" + matchId + "\").apply('" + args + "', lookup( ${body} , \"" + key1 + "\" , \"" + key2 + "\" ) );";
                     final FilterElement filterElement = new FilterElement().withGroovy(new GroovyElement().withValue(value));
 
                     rt.getAopOrAggregateOrBean().add(filterElement);
@@ -276,12 +285,6 @@ public class PolicyVisitor {
                     filterElement.getAopOrAggregateOrBean().add(new ToElement().withUri("direct:permit"));
                     filterElement.getAopOrAggregateOrBean().add(new OtherwiseElement().withAopOrAggregateOrBean(new ToElement().withUri("direct:deny")));
 
-                    System.err.println("ao");
-                    /*
-                    todo: write a request attribute extractor
-                    System.err.println("matchId" + matchId);
-                    rt.setDescription(new DescriptionElement().withValue("Match::"+matchId));
-                    */
                 });
             });
         });
@@ -352,7 +355,13 @@ public class PolicyVisitor {
             InterruptedException {
         Marshaller marshaller = this.createMarshaller(COMMON_CLASSES);
         // output pretty printed
+        marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,
+                "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd " +
+                        "http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd");
+
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+
         marshaller.marshal(graph, Paths.get(out + ".spring.xml").toFile());
         marshaller.marshal(graph, System.out);
 
@@ -372,16 +381,4 @@ public class PolicyVisitor {
     interface Node {
     }
 
- public static class RequestTupleUtil{
-     public static <T>T lookup(RequestType rt,String...tuple){
-
-         for (AttributesType attributesType : rt.getAttributes()) {
-             if((attributesType.getCategory() == tuple[0]) && (attributesType.getId() == tuple[1])){
-                 return (T) rt.getAttributes().iterator().next().getContent();
-
-             }
-         }
-         return null;
-     }
- }
 }
