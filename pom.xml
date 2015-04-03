@@ -128,7 +128,33 @@
     			<groupId>commons-lang</groupId>
     			<artifactId>commons-lang</artifactId>
     			<version>2.6</version>
-    		</dependency>
+    		</dependency>         <dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-spring-integration</artifactId>
+		    <version>${camel.version}</version>
+	    </dependency>
+		    <dependency>
+			    <groupId>org.apache.camel</groupId>
+			    <artifactId>camel-spring</artifactId>
+			    <version>${camel.version}</version>
+		    </dependency>
+		    <!--<dependency>-->
+		    <!--<groupId>xcaml</groupId>-->
+		    <!--<artifactId>policy-xform</artifactId>-->
+		    <!--<version>0.0.1</version>-->
+		    <!--</dependency>-->
+		    <dependency>
+			    <groupId>org.apache.camel</groupId>
+			    <artifactId>camel-jackson</artifactId>
+			    <version>${camel.version}</version>
+		    </dependency>
+
+
+		    <dependency>
+			    <groupId>org.apache.camel</groupId>
+			    <artifactId>camel-groovy</artifactId>
+			    <version>${camel.version}</version>
+		    </dependency>
     	</dependencies>
     </dependencyManagement>
 </project>

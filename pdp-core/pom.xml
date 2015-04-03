@@ -77,35 +77,19 @@
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring</artifactId>
-      <version>${camel.version}</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>xcaml</groupId>-->
-    <!--<artifactId>policy-xform</artifactId>-->
-    <!--<version>0.0.1</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-jackson</artifactId>
-      <version>${camel.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jaxb</artifactId>
-      <version>${camel.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-groovy</artifactId>
       <version>${camel.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-restlet</artifactId>
-      <version>${camel.version}</version>
-    </dependency>
+
   </dependencies>
-  <properties></properties>
+
   <build>
     <plugins>
       <plugin>
@@ -113,14 +97,14 @@
         <artifactId>camel-maven-plugin</artifactId>
         <version>${camel.version}</version>
       </plugin>
-                     <plugin>
-  <groupId>io.hawt</groupId>
-  <artifactId>hawtio-maven-plugin</artifactId>
-  <version>1.4.48</version>
-  <configuration>
-    <!-- configuration options goes here -->
-  </configuration>
-</plugin>
+      <plugin>
+        <groupId>io.hawt</groupId>
+        <artifactId>hawtio-maven-plugin</artifactId>
+        <version>1.4.48</version>
+        <configuration>
+          <!-- configuration options goes here -->
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <reporting>
@@ -132,4 +116,89 @@
       </plugin>
     </plugins>
   </reporting>
+  <profiles>
+    <profile>
+      <id>camel-netty-http</id>
+      <properties>
+        <rest_provider>netty-http</rest_provider>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-netty-http</artifactId>
+          <version>${camel.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>camel-jetty</id>
+      <properties>
+        <rest_provider>jetty</rest_provider>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-jetty</artifactId>
+          <version>${camel.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>camel-restlet</id>
+      <properties>
+        <rest_provider>restlet</rest_provider>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-restlet</artifactId>
+          <version>${camel.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>camel-servlet</id>
+      <properties>
+        <rest_provider>servlet</rest_provider>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-servlet</artifactId>
+          <version>${camel.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>camel-spark-rest</id>
+      <properties>
+        <rest_provider>spark-rest</rest_provider>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-spark-rest</artifactId>
+          <version>${camel.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>camel-netty4-http</id>
+      <properties>
+        <rest_provider>netty4-http</rest_provider>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.apache.camel</groupId>
+          <artifactId>camel-netty4-http</artifactId>
+          <version>${camel.version}</version>
+        </dependency>
+      </dependencies>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+
+  </profiles>
+
 </project>

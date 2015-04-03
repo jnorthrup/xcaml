@@ -2,10 +2,9 @@ package policyxform;
 
 import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
 import org.apache.camel.schema.spring.*;
-import org.apache.camel.schema.spring.BeanElement;
-import org.springframework.schema.beans.*;
+import org.springframework.schema.beans.BeansElement;
+import org.springframework.schema.beans.DefaultableBoolean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -22,18 +21,20 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.MessageFormat;
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
 //import ;
+
 
 public class PolicyVisitor {
 
@@ -44,9 +45,17 @@ public class PolicyVisitor {
             oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory.class,
     };
 
-    public static final String LINE_SEPARATOR = System.lineSeparator();
-    public static final String XACML_3_PARSER = "xacml_3_parser";
-    public static final String JSON_REQ_PARSER = "json_req_parser";
+    public static final String REST_PROVIDER = Config.get("rest_provider",
+            //            "netty-http"
+            "netty4-http"
+            //            "jetty"
+            //            "restlet"
+            //            "servlet"
+            //            "spark-rest""netty4-http";
+            )
+            ;
+    public static final String REST_HOST = Config.get("rest_host", "0.0.0.0");
+    public static final String REST_PORT = Config.get("rest_port", "8901");
     long c;
     JAXBContext currentJaxbContext;
     private CamelContextElement currentCamelContext;
@@ -56,7 +65,6 @@ public class PolicyVisitor {
     private PolicyType currentPolicy;
     private PolicySetType currentPolicySet;
     private RouteElement currentRouteElement;
-    private PdpTx tx;
     private RouteElement primaryRoute;
 
     public PolicyVisitor() throws JAXBException {
@@ -100,7 +108,7 @@ public class PolicyVisitor {
         documentBuilderFactory.setNamespaceAware(true);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 
-        String infile = args[0];
+        String infile = Config.get("input",args[0]);
         Path path1 = Paths.get(infile);
         byte[] input = Files.readAllBytes(path1);
         Document doc =
@@ -110,9 +118,9 @@ public class PolicyVisitor {
         Element documentElement = doc.getDocumentElement();
         String tagName = documentElement.getTagName();
         System.err.println("" + tagName);
-        String out = args[1];
+        String out = Config.get("output", args[1]);
 
-        currentRouteContext=new RouteContextElement().withId(id());
+        currentRouteContext = new RouteContextElement().withId(id());
 
         final RouteElement e1 = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new ToElement().withUri("direct:request"));
         currentRouteContext.getRoute().add(e1);
@@ -120,14 +128,14 @@ public class PolicyVisitor {
 
 
         final RestDefinition restDefinition = new RestDefinition().withBindingMode(RestBindingMode.JSON_XML).withId(id()).withPath("/pdp").withVerbOrDeleteOrGet(new PostVerbDefinition().withBindingMode(RestBindingMode.JSON_XML).withTo(new ToElement().withUri("direct:request")).withType(RequestType.class.getCanonicalName()));
-        final RestConfigurationDefinition restlet = new RestConfigurationDefinition().withBindingMode(RestBindingMode.JSON_XML).withComponent("restlet");
+        final RestConfigurationDefinition restlet = new RestConfigurationDefinition().withBindingMode(RestBindingMode.JSON_XML).withComponent(REST_PROVIDER).withHost(REST_HOST).withPort(REST_PORT);
 
-        currentRestContext= new RestContextElement().withId(id()).withRest(restDefinition);
+        currentRestContext = new RestContextElement().withId(id()).withRest(restDefinition);
 
         final RestContextRefDefinition restContextRefDefinition = new RestContextRefDefinition().withRef(currentRestContext.getId());
         currentCamelContext = new CamelContextElement().withRouteContextRef(new RouteContextRefDefinition().withRef(currentRouteContext.getId()))
 
-        .withRestContextRef(restContextRefDefinition).withRestConfiguration(restlet);
+                .withRestContextRef(restContextRefDefinition).withRestConfiguration(restlet);
 
 
         org.springframework.schema.beans.BeanElement responseBean = new org.springframework.schema.beans.BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
@@ -137,7 +145,7 @@ public class PolicyVisitor {
         final org.springframework.schema.util.MapElement envMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("Env data")).withKeyType(String.class.getCanonicalName()).withId("EnvData").withScope("singleton");
         final org.springframework.schema.util.MapElement pipMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("PIP data")).withKeyType(String.class.getCanonicalName()).withId("PIPdata").withScope("prototype");
 
-        beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean, */envMap, pipMap ).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
+        beans = new BeansElement().withImportOrAliasOrBean(/*requestBean, responseBean, */envMap, pipMap).withDescription(new org.springframework.schema.beans.DescriptionElement().withContent(value));
         primaryRoute = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:request"));
         switch (tagName) {
             case "PolicySet": {
@@ -149,12 +157,12 @@ public class PolicyVisitor {
 
             case "Policy":
                 JAXBElement<PolicyType> e = unmarshaller.unmarshal(doc, PolicyType.class);
-                currentPolicy= e.getValue();
+                currentPolicy = e.getValue();
                 String policyId = e.getValue().getPolicyId();
                 String s = this.ncName(policyId);
                 currentCamelContext.setId(this.id() + '-' + s);
 //                currentCamelContext.getRoute().add(primaryRoute);
-                currentRouteElement= primaryRoute;
+                currentRouteElement = primaryRoute;
 
                 this.visitPolicy(e);
                 break;
@@ -262,7 +270,7 @@ public class PolicyVisitor {
     public Object visitTarget(TargetType targetType, RouteElement routeElement) {
 
         String id = this.id();
-        RouteElement rt =  routeElement;
+        RouteElement rt = routeElement;
         targetType.getAnyOf().forEach(anyOfType -> {
             anyOfType.getAllOf().forEach(allOfType -> {
                 allOfType.getMatch().forEach(matchType -> {
@@ -373,7 +381,6 @@ public class PolicyVisitor {
                         "http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd");
 
 
-
         marshaller.marshal(graph, Paths.get(out + ".spring.xml").toFile());
         marshaller.marshal(graph, System.out);
 
@@ -384,7 +391,6 @@ public class PolicyVisitor {
 
         return jaxbContext.createMarshaller();
     }
-
 
 
     interface Parent {
