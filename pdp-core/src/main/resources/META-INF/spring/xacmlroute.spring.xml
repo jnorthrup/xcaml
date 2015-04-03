@@ -10,10 +10,9 @@
     <routeContext id="n0">
         <route id="n1">
             <from uri="direct:start"/>
-            <marshal ref="json_req_parser"/>
             <to uri="direct:request"/>
         </route>
-        <route id="n6">
+        <route id="n5">
             <from uri="direct:request"/>
             <filter>
                 <groovy>import static specified.XacmlFunctionProto.from
@@ -27,28 +26,16 @@ from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.exampl
             </filter>
         </route>
     </routeContext>
-    <restContext id="n5">
-        <rest path="/pdp" id="n3">
-            <post uri="/js">
-                <route>
-                    <marshal ref="json_req_parser"/>
-                    <to uri="direct:request"/>
-                </route>
-            </post>
-            <post uri="/xacml3">
-                <route id="n4">
-                    <marshal ref="xacml_3_parser"/>
-                    <to uri="direct:request"/>
-                </route>
+    <restContext id="n4">
+        <rest path="/pdp" bindingMode="json_xml" id="n3">
+            <post bindingMode="json_xml" type="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType">
+                <to uri="direct:request"/>
             </post>
         </rest>
     </restContext>
-    <camelContext id="n7-SimplePolicy1">
+    <camelContext id="n6-SimplePolicy1">
         <routeContextRef ref="n0"/>
-        <restContextRef ref="n5"/>
-        <dataFormats>
-            <json prettyPrint="true" library="Jackson" unmarshalTypeName="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType" id="json_req_parser"/>
-            <jaxb contextPath="oasis.names.tc.xacml._3_0.core.schema.wd_17" prettyPrint="true" mustBeJAXBElement="true" encoding="UTF-8" id="xacml_3_parser"/>
-        </dataFormats>
+        <restContextRef ref="n4"/>
+        <restConfiguration component="restlet" bindingMode="json_xml"/>
     </camelContext>
 </ns2:beans>

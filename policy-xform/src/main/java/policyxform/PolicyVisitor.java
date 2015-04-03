@@ -111,41 +111,25 @@ public class PolicyVisitor {
         String tagName = documentElement.getTagName();
         System.err.println("" + tagName);
         String out = args[1];
-        final JsonElement jsonElement = new JsonElement().withId(JSON_REQ_PARSER).withLibrary(JsonLibrary.JACKSON).withPrettyPrint(Boolean.TRUE).withUnmarshalTypeName(RequestType.class.getCanonicalName());
-        final JaxbElement jaxbElement = new JaxbElement().withContextPath(RequestType.class.getPackage().getName()).withMustBeJAXBElement(true).withEncoding("UTF-8").withPrettyPrint(true).withId(XACML_3_PARSER);
-        final DataFormatsDefinition dataFormatsDefinition = new DataFormatsDefinition().withAvroOrBarcodeOrBase64(jsonElement, jaxbElement);
 
         currentRouteContext=new RouteContextElement().withId(id());
-        final MarshalDefinition marshalDefinition = new MarshalDefinition();
-        final RouteElement e1 = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(marshalDefinition.withRef(JSON_REQ_PARSER)).withAopOrAggregateOrBean(new ToElement().withUri("direct:request"));
+
+        final RouteElement e1 = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new ToElement().withUri("direct:request"));
         currentRouteContext.getRoute().add(e1);
         String value = "beans::foo " + this.id();
 
-        final PostVerbDefinition postVerbDefinition = new PostVerbDefinition().withUri("/js").withRoute(new RouteElement().withAopOrAggregateOrBean(marshalDefinition, (new ToElement().withUri("direct:request"))));
-        final RestDefinition restDefinition = new RestDefinition().withId(id()).withPath("/pdp").withVerbOrDeleteOrGet(asList(postVerbDefinition,new PostVerbDefinition().withUri("/xacml3").withRoute(new RouteElement().withId(id()).withAopOrAggregateOrBean(new MarshalDefinition().withRef(jaxbElement .getId()), new ToElement().withUri("direct:request")))));
+
+        final RestDefinition restDefinition = new RestDefinition().withBindingMode(RestBindingMode.JSON_XML).withId(id()).withPath("/pdp").withVerbOrDeleteOrGet(new PostVerbDefinition().withBindingMode(RestBindingMode.JSON_XML).withTo(new ToElement().withUri("direct:request")).withType(RequestType.class.getCanonicalName()));
+        final RestConfigurationDefinition restlet = new RestConfigurationDefinition().withBindingMode(RestBindingMode.JSON_XML).withComponent("restlet");
 
         currentRestContext= new RestContextElement().withId(id()).withRest(restDefinition);
 
         final RestContextRefDefinition restContextRefDefinition = new RestContextRefDefinition().withRef(currentRestContext.getId());
-        currentCamelContext = new CamelContextElement().withRouteContextRef(new RouteContextRefDefinition().withRef(currentRouteContext.getId())).withDataFormats(dataFormatsDefinition)
-        .withRestContextRef(restContextRefDefinition);
+        currentCamelContext = new CamelContextElement().withRouteContextRef(new RouteContextRefDefinition().withRef(currentRouteContext.getId()))
 
- /*
-                                                   <rest path="/say">
-    <get uri="/hello">
-      <to uri="direct:hello"/>
-    </get>
-    <get uri="/bye" consumes="application/json">
-      <to uri="direct:bye"/>
-    </get>
-    <post uri="/bye">
-      <to uri="mock:update"/>
-    </post>
-  </rest>
-  */
+        .withRestContextRef(restContextRefDefinition).withRestConfiguration(restlet);
 
-/*
-*/
+
         org.springframework.schema.beans.BeanElement responseBean = new org.springframework.schema.beans.BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
         org.springframework.schema.beans.BeanElement requestBean = new org.springframework.schema.beans.BeanElement().withId("theRequest").withLazyInit(DefaultableBoolean.DEFAULT).withScope("prototype").withClazz(RequestType.class.getCanonicalName());
 
