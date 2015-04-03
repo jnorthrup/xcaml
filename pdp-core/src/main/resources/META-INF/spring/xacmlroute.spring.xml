@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:beans xmlns="http://camel.apache.org/schema/spring" xmlns:ns2="http://www.springframework.org/schema/beans" xmlns:ns3="http://www.springframework.org/schema/util" xmlns:ns4="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <ns2:description>beans::foo n2</ns2:description>
+    <ns3:map id="EnvData" scope="singleton" key-type="java.lang.String">
+        <ns2:description>Env data</ns2:description>
+    </ns3:map>
+    <ns3:map id="PIPdata" scope="prototype" key-type="java.lang.String">
+        <ns2:description>PIP data</ns2:description>
+    </ns3:map>
+    <routeContext id="n0">
+        <route id="n1">
+            <from uri="direct:start"/>
+            <marshal ref="json_req_parser"/>
+            <to uri="direct:request"/>
+        </route>
+        <route id="n6">
+            <from uri="direct:request"/>
+            <filter>
+                <groovy>import static specified.XacmlFunctionProto.from
+import static xcaml.pdp.RequestTupleUtil.lookup
+
+from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com', lookup( ${body} , "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" , "urn:oasis:names:tc:xacml:1.0:subject:subject-id" ) );</groovy>
+                <to uri="direct:permit"/>
+                <otherwise>
+                    <to uri="direct:deny"/>
+                </otherwise>
+            </filter>
+        </route>
+    </routeContext>
+    <restContext id="n5">
+        <rest path="/pdp" id="n3">
+            <post uri="/js">
+                <route>
+                    <marshal ref="json_req_parser"/>
+                    <to uri="direct:request"/>
+                </route>
+            </post>
+            <post uri="/xacml3">
+                <route id="n4">
+                    <marshal ref="xacml_3_parser"/>
+                    <to uri="direct:request"/>
+                </route>
+            </post>
+        </rest>
+    </restContext>
+    <camelContext id="n7-SimplePolicy1">
+        <routeContextRef ref="n0"/>
+        <restContextRef ref="n5"/>
+        <dataFormats>
+            <json prettyPrint="true" library="Jackson" unmarshalTypeName="oasis.names.tc.xacml._3_0.core.schema.wd_17.RequestType" id="json_req_parser"/>
+            <jaxb contextPath="oasis.names.tc.xacml._3_0.core.schema.wd_17" prettyPrint="true" mustBeJAXBElement="true" encoding="UTF-8" id="xacml_3_parser"/>
+        </dataFormats>
+    </camelContext>
+</ns2:beans>

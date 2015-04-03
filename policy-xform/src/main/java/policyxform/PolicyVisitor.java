@@ -2,8 +2,10 @@ package policyxform;
 
 import com.google.common.base.Joiner;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.*;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
 import org.apache.camel.schema.spring.*;
-import org.springframework.schema.beans.BeansElement;
+import org.apache.camel.schema.spring.BeanElement;
+import org.springframework.schema.beans.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -29,6 +31,8 @@ import java.text.MessageFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.asList;
+
 //import ;
 
 public class PolicyVisitor {
@@ -47,6 +51,7 @@ public class PolicyVisitor {
     JAXBContext currentJaxbContext;
     private CamelContextElement currentCamelContext;
     private RouteContextElement currentRouteContext;
+    private RestContextElement currentRestContext;
     private BeansElement beans;
     private PolicyType currentPolicy;
     private PolicySetType currentPolicySet;
@@ -66,7 +71,7 @@ public class PolicyVisitor {
     static String traceDescriptionElement(int... skip) {
         int sk = skip.length < 1 ? 2 : skip[0];
         Iterator<StackTraceElement> x =
-                Arrays.asList(Thread.currentThread().getStackTrace()).stream().skip(sk).limit(1).iterator();
+                asList(Thread.currentThread().getStackTrace()).stream().skip(sk).limit(1).iterator();
         String value = null;
         while (x.hasNext()) {
             StackTraceElement next = x.next();
@@ -111,17 +116,38 @@ public class PolicyVisitor {
         final DataFormatsDefinition dataFormatsDefinition = new DataFormatsDefinition().withAvroOrBarcodeOrBase64(jsonElement, jaxbElement);
 
         currentRouteContext=new RouteContextElement().withId(id());
-        final RouteElement e1 = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(new MarshalDefinition().withRef(JSON_REQ_PARSER)).withAopOrAggregateOrBean(new ToElement().withUri("direct:request"));
+        final MarshalDefinition marshalDefinition = new MarshalDefinition();
+        final RouteElement e1 = new RouteElement().withId(id()).withFrom(new FromElement().withUri("direct:start")).withAopOrAggregateOrBean(marshalDefinition.withRef(JSON_REQ_PARSER)).withAopOrAggregateOrBean(new ToElement().withUri("direct:request"));
         currentRouteContext.getRoute().add(e1);
         String value = "beans::foo " + this.id();
-        currentCamelContext = new CamelContextElement().withRouteContextRef(new RouteContextRefDefinition().withRef(currentRouteContext.getId())).withDataFormats(dataFormatsDefinition);
 
+        final PostVerbDefinition postVerbDefinition = new PostVerbDefinition().withUri("/js").withRoute(new RouteElement().withAopOrAggregateOrBean(marshalDefinition, (new ToElement().withUri("direct:request"))));
+        final RestDefinition restDefinition = new RestDefinition().withId(id()).withPath("/pdp").withVerbOrDeleteOrGet(asList(postVerbDefinition,new PostVerbDefinition().withUri("/xacml3").withRoute(new RouteElement().withId(id()).withAopOrAggregateOrBean(new MarshalDefinition().withRef(jaxbElement .getId()), new ToElement().withUri("direct:request")))));
 
+        currentRestContext= new RestContextElement().withId(id()).withRest(restDefinition);
+
+        final RestContextRefDefinition restContextRefDefinition = new RestContextRefDefinition().withRef(currentRestContext.getId());
+        currentCamelContext = new CamelContextElement().withRouteContextRef(new RouteContextRefDefinition().withRef(currentRouteContext.getId())).withDataFormats(dataFormatsDefinition)
+        .withRestContextRef(restContextRefDefinition);
+
+ /*
+                                                   <rest path="/say">
+    <get uri="/hello">
+      <to uri="direct:hello"/>
+    </get>
+    <get uri="/bye" consumes="application/json">
+      <to uri="direct:bye"/>
+    </get>
+    <post uri="/bye">
+      <to uri="mock:update"/>
+    </post>
+  </rest>
+  */
 
 /*
-        BeanElement responseBean = new BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
-        BeanElement requestBean = new BeanElement().withId("theRequest").withLazyInit(DefaultableBoolean.DEFAULT).withScope("prototype").withClazz(RequestType.class.getCanonicalName());
 */
+        org.springframework.schema.beans.BeanElement responseBean = new org.springframework.schema.beans.BeanElement().withId("theResponse").withLazyInit(DefaultableBoolean.TRUE).withScope("prototype").withClazz(ResponseType.class.getCanonicalName());
+        org.springframework.schema.beans.BeanElement requestBean = new org.springframework.schema.beans.BeanElement().withId("theRequest").withLazyInit(DefaultableBoolean.DEFAULT).withScope("prototype").withClazz(RequestType.class.getCanonicalName());
 
         final String[] txId = new String[1];
         final org.springframework.schema.util.MapElement envMap = new org.springframework.schema.util.MapElement().withDescription(new org.springframework.schema.beans.DescriptionElement().withContent("Env data")).withKeyType(String.class.getCanonicalName()).withId("EnvData").withScope("singleton");
@@ -154,6 +180,7 @@ public class PolicyVisitor {
 
 
         beans.getImportOrAliasOrBean().add(currentRouteContext);
+        beans.getImportOrAliasOrBean().add(currentRestContext);
         beans.getImportOrAliasOrBean().add(currentCamelContext);
         this.writeGraph(beans, out);
     }
@@ -203,7 +230,7 @@ public class PolicyVisitor {
 
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         Object[] objects =
-                Arrays.asList(stackTrace).stream().skip(1).limit(1).distinct().toArray();
+                asList(stackTrace).stream().skip(1).limit(1).distinct().toArray();
 
         // Node policySet = new Node().withId(id()).withLabel("PolicySet:" + urnTip(policySetId));
         // addChildToFirstOf(policySet, graph);
@@ -355,11 +382,12 @@ public class PolicyVisitor {
             InterruptedException {
         Marshaller marshaller = this.createMarshaller(COMMON_CLASSES);
         // output pretty printed
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,
                 "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd " +
+                        "http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd " +
                         "http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd");
 
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 
         marshaller.marshal(graph, Paths.get(out + ".spring.xml").toFile());
