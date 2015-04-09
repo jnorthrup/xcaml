@@ -15,10 +15,18 @@
         <route id="n5">
             <from uri="direct:request"/>
             <filter>
-                <groovy>import static specified.XacmlFunctionProto.from
-import static xcaml.pdp.RequestTupleUtil.lookup
-
-from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match").apply('med.example.com', lookup( ${body} , "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" , "urn:oasis:names:tc:xacml:1.0:subject:subject-id" ) );</groovy>
+                <groovy id="n9" trim="true">
+import static specified.XacmlFunctionProto.from as from
+import static xcaml.pdp.RequestTupleUtil.lookup as lookup
+XacmlFunctionProto functionProto = from("urn:oasis:names:tc:xacml:1.0:function:rfc822Name-match")
+RequestType xacmlRequest = ${body}
+String args= "med.example.com"
+String tupleCat= "urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+String tupleAttId= "urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+def tupleValue = lookup(xacmlRequest, tupleCat, tupleAttId)
+def result = functionProto.apply(args, tupleValue)
+return result
+</groovy>
                 <to uri="direct:permit"/>
                 <otherwise>
                     <to uri="direct:deny"/>

@@ -10,7 +10,6 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 import specified.XacmlDataType;
 import specified.XacmlFunctionProto;
-import xcaml.pdp.PdpTx;
 
 import javax.xml.bind.*;
 import javax.xml.namespace.QName;
@@ -52,8 +51,7 @@ public class PolicyVisitor {
             //            "restlet"
             //            "servlet"
             //            "spark-rest""netty4-http";
-            )
-            ;
+    );
     public static final String REST_HOST = Config.get("rest_host", "0.0.0.0");
     public static final String REST_PORT = Config.get("rest_port", "8901");
     long c;
@@ -108,7 +106,7 @@ public class PolicyVisitor {
         documentBuilderFactory.setNamespaceAware(true);
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 
-        String infile = Config.get("input",args[0]);
+        String infile = Config.get("input", args[0]);
         Path path1 = Paths.get(infile);
         byte[] input = Files.readAllBytes(path1);
         Document doc =
@@ -287,17 +285,24 @@ public class PolicyVisitor {
                     /*extract this from our state context, whatever that may have been designated last*/
                     //body.foo
                     AttributeDesignatorType attributeDesignator = matchType.getAttributeDesignator();
-                    String key1 = attributeDesignator.getCategory();
-                    String key2 = attributeDesignator.getAttributeId();
+                    String cat = attributeDesignator.getCategory();
+                    String attId = attributeDesignator.getAttributeId();
                     String dataType = attributeDesignator.getDataType();
                     XacmlDataType from = XacmlDataType.from(dataType);
                     String optKey = attributeDesignator.getIssuer();
 
-                    final String value = "import static specified.XacmlFunctionProto.from\n" +
-                            "import static xcaml.pdp.RequestTupleUtil.lookup\n" +
-                            "\n" +
-                            "from(\"" + matchId + "\").apply('" + args + "', lookup( ${body} , \"" + key1 + "\" , \"" + key2 + "\" ) );";
-                    final FilterElement filterElement = new FilterElement().withGroovy(new GroovyElement().withValue(value));
+                    final String value = "\n" +
+                            "import static specified.XacmlFunctionProto.from as from\n" +
+                            "import static xcaml.pdp.RequestTupleUtil.lookup as lookup\n" +
+                            "XacmlFunctionProto functionProto = from(\"" + matchId + "\")" + "\n" +
+                            "RequestType xacmlRequest = ${body}\n" +
+                            "String args= \"" + args + "\"\n" +
+                            "String tupleCat= \"" + cat + "\"\n" +
+                            "String tupleAttId= \"" + attId + "\"\n" +
+                            "def tupleValue = lookup(xacmlRequest, tupleCat, tupleAttId)\n" +
+                            "def result = functionProto.apply(args, tupleValue)\n" +
+                            "return result\n";
+                    final FilterElement filterElement = new FilterElement().withGroovy(new GroovyElement().withTrim(true).withId(id()).withValue(value));
 
                     rt.getAopOrAggregateOrBean().add(filterElement);
 
@@ -378,7 +383,8 @@ public class PolicyVisitor {
         marshaller.setProperty(Marshaller.JAXB_SCHEMA_LOCATION,
                 "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd " +
                         "http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd " +
-                        "http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd");
+                        "http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd"
+        );
 
 
         marshaller.marshal(graph, Paths.get(out + ".spring.xml").toFile());
