@@ -744,7 +744,24 @@ public enum XacmlFunctionProto implements F {
   @XacmlSignature({
       XacmlDataType.http$3A$2F$2Fwww$2Ew3$2Eorg$2F2001$2FXMLSchema$23__string,
       XacmlDataType.urn$3Aoasis$3Anames$3Atc$3Axacml$3A1$2E0$3Adata_$2D_type$3A__rfc822Name})
-  urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__rfc822Name_$2D_match,
+  urn$3Aoasis$3Anames$3Atc$3Axacml$3A_1$2E0_$3Afunction$3A__rfc822Name_$2D_match {
+    @Override
+    public <T> T apply(Object... p) {
+      String match = String.valueOf(p[0]);
+      String email = String.valueOf(p[1]);
+      Rfc822Name n = Rfc822Name.create(email);
+      boolean ret;
+      if (match.startsWith(".")) {
+        ret = n.domain().toLowerCase().endsWith(match.toLowerCase());
+      } else if (match.contains("@")) {
+        String[] split = match.split("@", 2);
+        ret = split[0].equals(n.name()) && split[1].equalsIgnoreCase(n.domain());
+      } else {
+        ret = match.equalsIgnoreCase(n.domain());
+      }
+      return (T) (Boolean) ret;
+    }
+  },
   /**
    * urn:oasis:names:tc:xacml:1.0:function:string-regexp-match
    */
@@ -1095,7 +1112,7 @@ public enum XacmlFunctionProto implements F {
     static {
       try {
         topLevelClasses =
-            ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClasses(
+            ClassPath.from(Thread.currentThread().getContextClassLoader()).getTopLevelClasses(
                 implPackage.getName());
       } catch (IOException e) {
       }
