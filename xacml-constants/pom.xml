@@ -27,6 +27,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>xcaml</groupId>
             <artifactId>xacml-jaxb-model</artifactId>
             <version>1.0-SNAPSHOT</version>
